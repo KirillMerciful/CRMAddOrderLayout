@@ -26,10 +26,6 @@
   --WidhtMainMenu: 50px;
 }
 
-.jjjj {
-  color: red;
-}
-
 body {
     background-color: var(--backgrounBody-color, rgb(193, 222, 255));
     overflow  : hidden;
