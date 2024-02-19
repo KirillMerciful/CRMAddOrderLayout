@@ -1,0 +1,1283 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
+
+@font-face {
+	font-family: 'Roboto'; 
+	src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap); 
+}
+
+:root{
+  --mainA-color: rgb(3, 158, 245);
+  --LightA-color: rgb(3, 168, 245);
+  --mainB-color: rgb(243, 247, 250);
+  --mainC-color: rgb(224, 231, 235);
+  --mainCHover-color: rgb(214, 219, 221);
+  --backgrounBody-color: rgb(193, 222, 255);
+  --slayder-color: #ccc;
+  --mainText-color: rgb(243, 247, 250);
+  --Text2-Color: black;
+  --TimeChange1: 0.2s;
+  --TimeChangeSlider: 0.4s;
+  --ColorSostaAndSoy: #7f7f7f;
+  --ColorWindowSaleSum: rgb(224, 231, 235);
+  --ScrollBarBackGround: #dcdcdc;
+  --ScrollBarThumb: #a3a3a3;
+  --ScrollBarThumbHover: #7e7e7e;
+  --ColorHoverDeleteAndCancel: rgba(255, 210, 210, 0.123);
+  --WidhtMainMenu: 50px;
+}
+
+body {
+    background-color: var(--backgrounBody-color, rgb(193, 222, 255));
+    overflow  : hidden;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+    
+}
+.GlobalDiv{
+  display: flex;
+  width: 100%;
+}
+
+.MainDiv {
+    margin-left: 50px;
+    font-family: "Roboto";
+    font-size: 12pt;
+    display: flex;
+    width: 100%;    
+    gap: 10px;
+    
+}
+
+.MainDivStopList {
+    margin-left: 50px;
+    font-family: "Roboto";
+    font-size: 12pt;
+    display: flex;
+    width: 96vw;    
+    height: 100vh;
+    gap: 10px;
+
+
+}
+
+.StopListDiv{
+  width: 100%;    
+  height: 100%;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
+}
+
+.MainOrder {
+    background-color: var(--mainB-color, rgb(243, 247, 250));
+    width: 30%;
+    min-height: 100vh;
+    max-height: 100vh;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;    
+}
+
+.OrderOrder{
+    color: var(--Text2-Color, black);
+    min-height: 85vh;
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+  
+
+
+.MainDetal {
+  height:  100vh;
+  color: var(--mainB-color, rgb(243, 247, 250));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrderTit {
+    font-size: 10pt;
+    color: var(--mainText-color, rgb(243, 247, 250));
+    background-color: var(--LightA-color, rgb(3, 168, 245));
+    width: 100%;
+    height: 30px;
+    border-bottom: solid 2px rgb(92, 92, 92);
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrderTitName{
+    width: 50%;
+}
+
+.OrderTitEditNum {
+    width: 5%;
+}
+
+.OrderTitNum {
+    width: 15%;
+}
+
+.OrderTitPrice {
+    width: 15%;
+}
+
+.OrderTitSum {
+    width: 30%;
+}
+
+  
+.MainDetal {
+    background-color: rgb(112, 112, 112);
+    width: 20%;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.MainCateg {
+    background-color:var(--mainB-color, rgb(243, 247, 250));
+    width: 10%;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CatButton.active {
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+}
+
+.CatButton:hover{
+    background-color: var(--LightA-color, rgb(3, 168, 245));
+    color: var(--mainText-color, rgb(243, 247, 250));
+}
+
+.CatButton {    
+    cursor: pointer;
+    background-color: var(--mainC-color, rgb(224, 231, 235));
+    color: var(--Text2-Color, black);
+    margin-left: 5%;
+    margin-top: 8px;
+    width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.MainPosition {
+    background-color: var(--mainB-color, rgb(243, 247, 250));
+    width: 40%;
+    height: 100vh;
+    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+  }
+  
+  
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--slayder-color, #ccc);
+    transition: var(--TimeChangeSlider, 0.4s);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 3px;
+    background-color: var(--mainB-color, rgb(243, 247, 250));
+    transition: var(--TimeChangeSlider, 0.4s);
+  }
+  
+  input:checked + .slider {
+    background-color: var(--LightA-color, rgb(3, 168, 245));
+  }
+  
+  
+  input:checked + .slider:before {  
+    transform: translateX(18px);
+  }
+  
+  
+  .slider.round {
+    border-radius: 22px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  .PosTitle {
+    font-family: "Roboto";
+    border-bottom: 1px solid grey;
+  }
+
+  .BPos {
+    
+    font-family: "Roboto";
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+  }
+
+  .titleText{
+    color: var(--Text2-Color, black);
+    transition: color var(--TimeChange1, 0.2s) ease-in-out;
+  }
+
+  .PosButtonsclass {
+    cursor: pointer;
+    color: var(--Text2-Color, black);
+    background-color: var(--mainC-color, rgb(224, 231, 235));
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 130px;
+    height: 50px;
+    font-size: 9pt;  
+    border-radius: 10px;
+    transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  }
+
+  .PosButtonsclass:hover {
+    transition: all var(--TimeChange1, 0.2s) ease-in-out;
+    background-color: var(--mainCHover-color, rgb(214, 219, 221)) ;
+  }
+
+
+.PodCatButtonWOK.unactive {
+  background-color: var(--slayder-color, #ccc);
+}
+
+.unactive {
+    background-color: var(--slayder-color, #ccc);
+  }
+
+.unactive:hover{
+  background-color: var(--slayder-color, #ccc);
+}
+
+  .ButtonPName {
+    width: 100%;
+    max-height: 65%;
+    overflow: hidden;
+  }
+
+
+  
+  .OrdPosSouse {
+    color: var(--ColorSostaAndSoy, #7f7f7f);
+    font-size: 7pt;
+    width: 45%;
+    margin-left: 10px;
+    transition: color var(--TimeChange1, 0.2s) ease-in-out;
+  }
+
+  .OrdTB {
+    margin-top: 10px;
+    font-size: 9pt;  
+    border-bottom: 1px dashed grey;
+    
+  }
+
+.OrdPosName{
+    width: 50%;
+}
+
+.OrdPosEdit {
+    width: 5%;
+}
+
+.OrdPosNum {
+    width: 5%;
+}
+
+.OrdPosPrice {
+    width: 15%;
+    text-align: end;
+}
+
+.OrdPosSum {
+    width: 30%;
+    text-align: end;
+}
+
+.OrdPosInp {
+  color: var(--Text2-Color, black);
+  width: 60%; 
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.OrdButtonEditPlus {
+  color: var(--mainB-color, rgb(243, 247, 250));
+  border: none;
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  font-family: "Roboto";
+  text-align: center;
+  margin-top: 2px;
+  width: 70%;
+  height: 100%;
+  font-size: 9pt;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdButtonEditMinus {
+  color: var(--mainB-color, rgb(243, 247, 250));
+  border: none;
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  font-family: "Roboto";
+  text-align: center;
+  margin-top: 2px;
+  width: 70%;
+  height: 100%;
+  font-size: 9pt;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ButtonPositions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+
+.editdiam {
+  position: relative;
+  left: 5px;
+  display: inline-block;
+  width: 38px; 
+  height: 20px;
+}
+
+
+
+.editdiamslide {
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--slayder-color, #ccc);
+  transition: var(--TimeChangeSlider, 0.4s);
+}
+
+.editdiamslide:before {
+  z-index: 1;
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 19px;
+  left: 2px;
+  bottom: 4px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: var(--TimeChangeSlider, 0.4s);
+}
+
+input:checked + .editdiamslide {
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+}
+
+
+input:checked + .editdiamslide:before {  
+  transform: translateX(15px);
+}
+
+
+.editdiamslide.round {
+  border-radius: 22px;
+}
+
+.editdiamslide.round:before {
+  border-radius: 50%;
+}
+
+.OpenDobPizza {
+  margin-left: 10px;
+  color: var(--mainB-color, rgb(243, 247, 250));
+  border: none;
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  font-family: "Roboto";
+  text-align: center;
+  margin-top: 2px;
+  font-size: 9pt;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OpenDobPizza:hover {
+  color: var(--mainC-color, rgb(224, 231, 235));
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+}
+
+
+.DobPizzaMain {
+  position: relative;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  border: solid 1px gray;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 8pt;
+  max-width: 100%;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdSost{
+  position: relative;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  border: solid 1px gray;
+  color: var(--ColorSostaAndSoy, #7f7f7f);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 8pt;
+  max-width: 100%;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PositionsWOKDob{
+  margin-bottom: 10px;
+  margin-top: 5px;
+  display: flex;
+}
+
+.PodCatButtons{
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.PodCatButton{
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  border-radius: 10px;
+  margin-bottom: 2.5px;
+  margin-top: 2.5px;
+  font-size: 7pt;
+  width: 80px;
+  height: 35px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PodCatButton.unactive {
+  background-color: var(--slayder-color, #ccc);
+}
+
+.DobPizza {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.OrdDobTB {
+  font-size: 9pt;
+  width: 100%;
+}
+
+
+.OrdDobName{
+  width: 50%;
+}
+
+.OrdDobEdit {
+  width: 5%;
+}
+
+.OrdDobNum {
+  width: 5%;
+}
+
+.OrdDobPrice {
+  width: 15%;
+  text-align: end;
+}
+
+.OrdDobSum {
+  width: 30%;
+  text-align: end;
+}
+
+.OrdDobInp {
+width: 60%;
+color: var(--Text2-Color, black);
+background-color: var(--mainB-color, rgb(243, 247, 250));
+border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+outline: none;
+transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out, outline var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdDobButtonEditPlus {
+color: var(--mainB-color, rgb(243, 247, 250));
+border: none;
+background-color: var(--LightA-color, rgb(3, 168, 245));
+font-family: "Roboto";
+text-align: center;
+margin-top: 2px;
+width: 70%;
+height: 100%;
+font-size: 9pt;
+transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdDobButtonEditMinus {
+color: var(--mainB-color, rgb(243, 247, 250));
+border: none;
+background-color: var(--LightA-color, rgb(3, 168, 245));
+font-family: "Roboto";
+text-align: center;
+margin-top: 2px;
+width: 70%;
+height: 100%;
+font-size: 9pt;
+transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SwitchPos {
+  display: flex;
+
+  
+}
+
+.switchPosLabel {
+  margin-top: 5px;
+  left: 35%;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+
+.DobWOKMain {
+  position: relative;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 8pt;
+  max-width: 100%;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OpenDobWOK {
+  margin-left: 10px;
+  color: var(--mainB-color, rgb(243, 247, 250));
+  border: none;
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  font-family: "Roboto";
+  text-align: center;
+  margin-top: 2px;
+  font-size: 9pt;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OpenDobWOK:hover {
+  color: var(--mainC-color, rgb(224, 231, 235));
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+}
+
+.DobavkiWokButtons {
+  display: flex;
+}
+
+.DobavkiWOKTitle
+{
+  
+  font-family: "Roboto";
+  font-size: 9pt;
+}
+
+.PodCatButtonWOK {
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  border-radius: 10px;
+  font-size: 7pt;
+  width: 80px;
+  height: 35px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdSostWOKName{
+  width: 50%;
+}
+
+.OrdSostWOKEdit {
+  width: 5%;
+}
+
+.OrdSostWOKNum {
+  width: 5%;
+}
+
+.OrdSostWOKPrice {
+  width: 15%;
+  text-align: end;
+}
+
+.OrdSostWOKSum {
+  width: 30%;
+  text-align: end;
+}
+
+.OrdSostWOKInp {
+width: 60%;
+color: var(--Text2-Color, black);
+background-color: var(--mainB-color, rgb(243, 247, 250));
+border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+outline: none;
+transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out, outline var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdSostWOKButtonEditPlus {
+color: var(--mainB-color, rgb(243, 247, 250));
+border: none;
+background-color: var(--LightA-color, rgb(3, 168, 245));
+font-family: "Roboto";
+text-align: center;
+margin-top: 2px;
+width: 70%;
+height: 100%;
+font-size: 9pt;
+transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrddSostWOKButtonEditMinus {
+color: var(--mainB-color, rgb(243, 247, 250));
+border: none;
+background-color: var(--LightA-color, rgb(3, 168, 245));
+font-family: "Roboto";
+text-align: center;
+margin-top: 2px;
+width: 70%;
+height: 100%;
+font-size: 9pt;
+transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrdDownPanel{
+  border-top: solid 1px gray;
+  width: 100%;
+}
+
+.DownPanelButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.DownPanelButtonLeft {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DownPanelButtonLeftSale{
+  position: relative;
+  bottom: 0.6em;
+  margin-left: 10px;
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  font-size: 10pt;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DownPanelButtonLeftSale.active{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+}
+
+.IconSale {
+  color: var(--Text2-Color, black);
+  width: 100%;
+  height: 100%;
+  transition: color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.IconPrib {
+  color: var(--Text2-Color, black);
+  width: 100%;
+  height: 100%;
+  transition: color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.IconDelete{
+  color: var(--Text2-Color, black);
+  width: 100%;
+  height: 100%;
+  transition: color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DownPanelButtonRight {
+  display: flex;
+}
+
+.DownPanelButtonRightDelete {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DownPanelButtonRightDelete:hover{
+  background-color: var(--ColorHoverDeleteAndCancel, rgba(255, 210, 210, 0.123));
+}
+
+.DownPanelButtonRightSave {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 110px;
+  height: 30px;
+  border-radius: 10px;
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DownPanelButtonRightSave:hover {
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+}
+
+.TotalSumOrder {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+  align-content: end;
+  margin-top: 10px;
+  font-family: "Roboto";
+  font-size: 12pt;
+}
+
+.TotalSoyOrder{
+  font-size: 10pt;
+  margin-left: 10px;
+  color: var(--ColorSostaAndSoy, #7f7f7f);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.TotalSumOrderDownPanel {
+  color: var(--Text2-Color, black);
+  display: flex;
+  width: 98%;
+  justify-content: end;
+  margin-top: 10px;
+  font-family: "Roboto";
+  font-size: 12pt;
+  transition: color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TablewaresButton:hover{
+  color: var(--mainText-color, rgb(243, 247, 250)); 
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  
+}
+
+.TablewaresButton{
+  margin-top: 5px;
+  width: 70px;
+  height: 25px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PopupTableware {
+  position: relative;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 8pt;
+  max-width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 0.7em;
+  background-color: var(--ScrollBarBackGround, #dcdcdc);
+  border-radius: 9em;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: var(--ScrollBarThumb, #a3a3a3);
+  border-radius: 9em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ScrollBarThumbHover, #7e7e7e);
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start {
+  width: 0;
+  height: 0;
+}
+
+
+::-webkit-scrollbar-button:vertical:end {/*Нижняя кнопка*/
+  width: 0;
+  height: 0;
+}
+
+
+
+
+
+.OrdTablewaresTB {
+  margin-top: 10px;
+  font-size: 9pt;  
+  border-bottom: 1px dashed grey;
+}
+
+.OrdTablewaresName{
+  width: 33em;
+}
+
+
+.OrdTablewaresNum {
+  width: 10%;
+}
+
+.OrdTablewaresPrice {
+  width: 13.3%;
+  text-align: end;
+}
+
+.OrdTablewaresSum {
+  width: 21%;
+  text-align: end;
+}
+
+.SaleSumWindowMain{
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SaleSumWindowContent{
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 250px;
+  height: 80px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+}
+
+.SaleWindowInp{
+  margin-top: 5px; 
+  color: black;
+  width: 98%;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SaleWindowButtons{
+  display: flex;
+  height: 45%;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.ButtonSaleWindowCancel{
+  height: 25px;
+  width: 70px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonSaleWindowCancel:hover{
+  background-color: var(--ColorHoverDeleteAndCancel, rgba(255, 210, 210, 0.123));
+}
+
+.ButtonSaleWindowOK{
+  height: 25px;
+  width: 110px;
+  border-radius: 10px;
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonSaleWindowOK:hover {
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+}
+
+
+
+.SaleButton{
+  margin-top: 5px;
+  width: 90px;
+  height: 25px;
+  border-radius: 10px;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SaleButton:hover{
+  color: var(--mainText-color, rgb(243, 247, 250)); 
+  background-color: var(--LightA-color, rgb(3, 158, 245));
+}
+
+.popup-arrow{
+  color: rgb(205, 216, 223);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.MenuLeftPanel{
+  display: flex;
+  justify-content: end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 110vh;
+  width: var(--WidhtMainMenu, 50px);
+  background-color: black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  z-index: 2;
+}
+
+.ButtonsMenu{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+  z-index: 2;
+}
+
+.ContentOpenMenu {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.ContentOpenMenu:hover{
+  background-color: rgb(17, 17, 17);
+}
+
+.TextOpenMenuMenu{
+  color: rgb(119, 119, 119);
+  font-size: 14pt;
+}
+
+.IconOpenMenu{
+  transform:rotate(0deg);
+  color: var(--mainC-color, rgb(224, 231, 235));
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s,background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.open {
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transform:rotate(-180deg);
+}
+
+.ContentNewOrderMenu{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ContentNewOrderMenu:hover{
+  background-color: rgb(17, 17, 17);
+}
+
+
+.TextNewOrderMenu {
+  color: rgb(119, 119, 119);
+  font-size: 14pt;
+}
+
+.IconNewOrder {
+  margin-top: 10px;
+  color: var(--mainC-color, rgb(224, 231, 235));
+  width: 35px;
+  height: 35px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ContentStopListMenu{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ContentStopListMenu:hover{
+  background-color: rgb(17, 17, 17);
+}
+
+.TextStopListMenu{
+  color: rgb(119, 119, 119);
+  font-size: 14pt;
+}
+
+.IconStopList{
+  margin-top: 10px;
+  color: var(--mainC-color, rgb(224, 231, 235));
+  width: 35px;
+  height: 35px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ActivateTabText{
+  color: white;
+}
+
+.ActivateTab{
+  color: var(--LightA-color, rgb(3, 168, 245))
+}
+
+.StopListCatName{
+  font-size: 12pt;
+  width: 100%;
+  border-bottom: 1px dashed gray;
+  color: var(--Text2-Color, black);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonCatNameStop{
+  cursor: pointer;
+  border: none;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonCatNameStop.closed {
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  color:  var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonCatNameStop.closed:hover {
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  color:  var(--mainA-color, rgb(3, 158, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CheckBoxStopCat{
+  cursor: pointer;
+}
+
+.StopListPositionName{
+  display: flex;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 10pt;
+  color: var(--Text2-Color, black);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CheckBoxStopPosition{
+  cursor: pointer;
+}
+
+
+.IconSun{
+  margin-top: 10px;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ContentChangeThemeMenu{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ContentChangeThemeMenu:hover{
+  background-color: rgb(17, 17, 17);
+}
+
+.TextChangeThemeMenu{
+  color: rgb(119, 119, 119);
+  font-size: 14pt;
+}
+
+.DivStopAlerts{
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+
+.StopAlertMainDiv{
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 300px;
+  height: 20px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+}
+
+.StopAlertMainDiv.active{ 
+  animation-name: Alert;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes Alert {
+  from {
+    right: -400px;
+  }
+  7%{
+    right: 20px;
+  }
+  10% {
+    top: 0px;
+    right: 0px;
+  }
+  90% {
+    top: 0px;
+    right: 0px;
+  }
+  91% {
+    top: 0px;
+    right: 5px;
+  }
+  to {
+    top: 0px;
+    right: -400px
+  }
+}
+
+.StopAlertMainDiv.deleted{ 
+  right: -400px;
+  animation-name: ClickedAlert;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes ClickedAlert {
+  from {
+    right: 0px;
+    top: 0px
+  }
+  5% {
+    top: 0px;
+    right: 5px;
+  }
+  to {
+    top: 0px;
+    right: -400px
+  }
+}
+
+.StopSauceLimitContent{
+  display: flex;
+  font-size: 10pt;
+}
+
+.StopSauceSumLimitContent{
+  display: flex;
+  font-size: 8pt;
+}
+
+.IconStopCat{
+  position: relative;
+  top: 0px;
+  right: 5px;
+  color: rgb(255, 201, 101);
+  height: 20px;
+  width: 20px;
+}
+
+.StopPositionContent{
+  display: flex;
+  font-size: 11pt;
+}
+
+.IconStopPosition{
+  position: relative;
+  top: 0px;
+  right: 5px;
+  color: rgb(255, 124, 124);
+  height: 20px;
+  width: 20px;
+}
+
+.StopCatContent{
+  display: flex;
+  font-size: 10.5pt;
+}
+
+.CityStop{
+  position: relative;
+  right: -200px;
+}
+
