@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoChevronDown } from "react-icons/io5";
 
 import OrderTitle from './components/OrderTitle';
 import Categories from './components/Categories';
@@ -10,10 +11,11 @@ import TotalSum from './components/TotalSum';
 import TablewaresAdd from './components/Tablewares/TablewaresAdd';
 import SaleSumWindow from './components/SALE/SALESumWindow';
 import MenuMain from './components/Menu/MenuMain';
-import StopListMain from './components/StopList/StopListMain';
 import StopAlerts from './components/StopList/StopAlerts';
 import Cities from './components/StopList/Cities';
-
+import CityList from './components/CityList';
+import SavedOrdersMain from './components/SavedOrders/SavedOrdersMain';
+import LastWindow from './components/SavedOrders/LastWindow';
 
 
 
@@ -24,6 +26,7 @@ class App extends React.Component {
             openMenu: false,
             ActiveComponent: 0,//выбранный активный компонент
             SSumWindowActive: false,//активность окна для ввода скидки суммой
+            LastWindowSaved: false, //активность окна для сохранения заказа
             totalSoy: 0, //счетчик соевых
             foridSost: 1, //счетчик для присваивания айди добавкам в ВОК
             foridDob: 1, //счетчик для присваивания айди добавкам в пиццу
@@ -509,29 +512,64 @@ class App extends React.Component {
                     idCity: 1,
                     city: "Шахты",
                     street: "пр. Победа Революции",
+                    house: "83Б",
                     delivery: 60,
-                    takeaway: 20
+                    takeaway: 20,
+                    condition: "Активен"
                 },
                 {
                     idCity: 2,
                     city: "Ессентуки",
                     street: "ул. Октябрьская",
+                    house: "369/1",
                     delivery: 60,
-                    takeaway: 20
+                    takeaway: 20,
+                    condition: "Активен"
                 },
                 {
                     idCity: 3,
                     city: "Азов",
                     street: "ул. Московская",
+                    house: "62",
                     delivery: 60,
-                    takeaway: 20
+                    takeaway: 20,
+                    condition: "Активен"
                 },
                 {
                     idCity: 4,
-                    city: "Ростов",
+                    city: "Ростов-на-Дону",
                     street: "ул. Ерёменко",
+                    house: "67/2",
                     delivery: 60,
-                    takeaway: 20
+                    takeaway: 20,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 5,
+                    city: "Ростов-на-Дону",
+                    street: "пр. Коммунистический ",
+                    house: "32",
+                    delivery: 60,
+                    takeaway: 20,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 6,
+                    city: "Новочеркасск",
+                    street: "ул. Калинина",
+                    house: "55",
+                    delivery: 60,
+                    takeaway: 20,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 7,
+                    city: "Каменск Шахтинский",
+                    street: "пр. Карла Маркса",
+                    house: "73А",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
                 },
             ],
             orderPosition: [//массив добавленных в заказ позиций 
@@ -544,7 +582,7 @@ class App extends React.Component {
             
             ],
             orderTablewares: [//массив для приборов
-            
+            {num: 0}
             ],
             AlertCheck: [//массив для хранения уведомлений
                 {
@@ -555,9 +593,26 @@ class App extends React.Component {
             StopList: [
                
             ],
+            StopCat: [
+
+            ],
+            StopPodCat: [
+
+            ],
+            OnCity: 
+                {
+                idCity: 0,
+                city: "— Выберите филиал —",
+                street: "",
+                house: "",
+                delivery: "--",
+                takeaway: "--"
+                },
+            OpenListCity: false,
             Saved: [
                 
-            ]
+            ],
+            TimeSave: "",
             
         }
 
@@ -571,8 +626,10 @@ class App extends React.Component {
         this.AddDob = this.AddDob.bind(this) 
         this.deleteOrder = this.deleteOrder.bind(this) 
         this.EditInputOrd = this.EditInputOrd.bind(this) 
-
-        this.SaveFucntion = this.SaveFucntion.bind(this) 
+        
+        this.SaveFunction = this.SaveFunction.bind(this) 
+        this.SavedButtonClick = this.SavedButtonClick.bind(this) 
+        this.CloseLastWindow = this.CloseLastWindow.bind(this) 
         
 
         this.BPlusDob = this.BPlusDob.bind(this) 
@@ -603,20 +660,33 @@ class App extends React.Component {
         
         this.StopListON = this.StopListON.bind(this)
         this.NewOrderON = this.NewOrderON.bind(this)      
+        this.SavedOrdersON = this.SavedOrdersON.bind(this)
         this.openMenuFunction = this.openMenuFunction.bind(this)     
         
         this.StopListChekFunction = this.StopListChekFunction.bind(this)    
         this.StopListChekFunctionCat = this.StopListChekFunctionCat.bind(this)    
         this.StopListChekFunctionPodcat = this.StopListChekFunctionPodcat.bind(this)    
-
+        this.StopListCityAdd = this.StopListCityAdd.bind(this)    
+        
         
         
         this.AlertAdd = this.AlertAdd.bind(this)    
         this.AlertDelete = this.AlertDelete.bind(this)    
         this.AllertClick = this.AllertClick.bind(this)    
         
+        this.StopListChekFunctionOnCity = this.StopListChekFunctionOnCity.bind(this)   
+        this.StopListChekFunctionCatOnCity = this.StopListChekFunctionCatOnCity.bind(this) 
+        this.StopListChecCatOnPositionOnCity = this.StopListChecCatOnPositionOnCity.bind(this)   
+        this.StopListChekFunctionPodcatOnCity = this.StopListChekFunctionPodcatOnCity.bind(this)   
         
+        this.CityChange = this.CityChange.bind(this)   
+        this.CloseCityist = this.CloseCityist.bind(this)   
+        this.ChangeTimeDeliveryCity = this.ChangeTimeDeliveryCity.bind(this)
+        this.ChangeTimeTakeawayCity = this.ChangeTimeTakeawayCity.bind(this)
+        this.ClearTimeOneCity = this.ClearTimeOneCity.bind(this)
+        this.ChangeConditionCity = this.ChangeConditionCity.bind(this)
         
+        this.getTime = this.getTime.bind(this)
         
 
     }
@@ -626,15 +696,22 @@ class App extends React.Component {
     if (this.state.ActiveComponent === 0)
     {
     return (      
-    <div className='GlobalDiv'> 
+    <div className='GlobalDiv' onClick={(() => {
+        if(this.state.OpenListCity === true)
+        this.CloseCityist()
+    })}> 
 
         <div className='MainMenu'>
-            
+            {this.state.LastWindowSaved === true && <LastWindow
+            SaveFunction={this.SaveFunction}
+            CloseLastWindow={this.CloseLastWindow}
+            />}
             <MenuMain 
                 openMenu={this.state.openMenu}
                 openMenuFunction={this.openMenuFunction}
                 StopListON={this.StopListON}
                 NewOrderON={this.NewOrderON}
+                SavedOrdersON={this.SavedOrdersON}
                 ActiveComponent={this.state.ActiveComponent}
             />
         </div>
@@ -646,6 +723,7 @@ class App extends React.Component {
                 AllertClick={this.AllertClick}
             />
         <div className='MainOrder'>
+            
             <SaleSumWindow 
                 SaleInpEdit={this.SaleInpEdit}
                 SSumWindowActive={this.state.SSumWindowActive}
@@ -655,12 +733,7 @@ class App extends React.Component {
             />
             <OrderTitle />
             <div className='OrderOrder'>
-            {/*<button onClick={(() => {
-                
-                    this.StopListCity()
-                    
-                console.log(this.state.StopList)
-            })}>FFFF</button>*/}
+            
             {this.state.orderPosition.map((el) => (
                 <AddOrder 
                     AlertAdd={this.AlertAdd}
@@ -685,7 +758,6 @@ class App extends React.Component {
                     OrdPos={el} 
                     PDK={this.state.pdkon} 
                     key={el.idOrd} 
-                    
                 />
             ))}
         {this.state.orderTablewares.map((el) => (
@@ -702,8 +774,9 @@ class App extends React.Component {
             </div>
             
             <div className='OrdDownPanel'>
-                < OrderDownPanel 
-                    checkOnPanel = {this.state.orderPosition.length}
+                < OrderDownPanel
+                    SavedButtonClick={this.SavedButtonClick}
+                    checkOnPanel={this.state.orderPosition.length}
                     addTW={this.addTablewares}
                     totalSumSale={this.state.totalSumSale}
                     clOrd={this.cleanOrder}
@@ -718,7 +791,53 @@ class App extends React.Component {
         </div>   
 
         <div className='MainDetal'>
-            <h3>Тут будут детали и отметки</h3>
+            <div className='City'>
+                <div className='CityText'>
+                    Филиал:
+                </div>
+                <div className={this.state.OpenListCity === true ? "CityName OpenCity" : "CityName"}>
+                    <label className='CityNameText' onClick={(() => {
+                this.setState({
+                    OpenListCity: !this.state.OpenListCity
+                })
+            })}>
+                <div>
+                    <span className='CityNameTextMain'>
+                    {this.state.OnCity.city}
+                    </span>
+                    <br/>
+                    <span className='CityNameTextStreet'>
+                    {this.state.OnCity.street + " " + this.state.OnCity.house}
+                    </span>
+                </div>
+                        <IoChevronDown className={this.state.OpenListCity === true ? "CityNameIconArrow OpenCity" : "CityNameIconArrow"}/>
+                        </label>
+                    <div className={this.state.OpenListCity === true ? "CitySelector OpenCity" : "CitySelector"}>
+                        {this.state.OpenListCity === true && this.state.City.map((el) => (<CityList
+                        CloseCityist={this.CloseCityist}
+                        CityChange={this.CityChange}
+                        City={el}
+                        key={el.id}
+                        />))}
+                    </div>
+                </div>
+            </div>
+            <div className='TimeCity'>
+                            <div className='TimeDeliveryMain'>
+                                Время на доставку: 
+                                <div className='TimeDelivery'>
+                                    {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.delivery }
+                                </div>
+                            </div>
+                            <div className='TimeTakeAwayMain'>
+                                Время на вынос: 
+                                <div className='TimeTakeAway'>
+                                    {this.state.OnCity.condition === "Вынос остановлен" ? "СТОП" : this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.takeaway}
+                                </div>
+                            </div>
+                            
+            </div>
+            
         </div> 
     
         <div className='MainCateg'>
@@ -758,22 +877,20 @@ class App extends React.Component {
                 <div  className='MainDivStopList'>
                 <Cities 
                         City={this.state.City}
-                        StopListChekFunctionPodcat={this.StopListChekFunctionPodcat}
-                        StopListChekFunctionCat={this.StopListChekFunctionCat}
-                        StopListChekFunction={this.StopListChekFunction}
+                        ChangeTimeDeliveryCity={this.ChangeTimeDeliveryCity}
+                        ChangeTimeTakeawayCity={this.ChangeTimeTakeawayCity}
+                        ChangeConditionCity={this.ChangeConditionCity}
+                        ClearTimeOneCity={this.ClearTimeOneCity}
+                        StopListChecCatOnPositionOnCity={this.StopListChecCatOnPositionOnCity}
+                        StopListChekFunctionPodcatOnCity={this.StopListChekFunctionPodcatOnCity}
+                        StopListChekFunctionCatOnCity={this.StopListChekFunctionCatOnCity}
+                        StopListChekFunctionOnCity={this.StopListChekFunctionOnCity}
                         cat={this.state.cat}
                         position={this.state.position}
                         podcat={this.state.podcat}
-                    />                
-                </div>
-                <div className='MainDivStopList'>
-                    <StopListMain 
-                        StopListChekFunctionPodcat={this.StopListChekFunctionPodcat}
-                        StopListChekFunctionCat={this.StopListChekFunctionCat}
-                        StopListChekFunction={this.StopListChekFunction}
-                        cat={this.state.cat}
-                        position={this.state.position}
-                        podcat={this.state.podcat}
+                        StopList={this.state.StopList}
+                        StopCat={this.state.StopCat}
+                        StopPodCat={this.state.StopPodCat}
                     />                
                 </div>
 
@@ -783,6 +900,7 @@ class App extends React.Component {
                         openMenuFunction={this.openMenuFunction}
                         StopListON={this.StopListON}
                         NewOrderON={this.NewOrderON}
+                        SavedOrdersON={this.SavedOrdersON}
                         ActiveComponent={this.state.ActiveComponent}
                     />
                 </div>
@@ -791,6 +909,30 @@ class App extends React.Component {
         </div>
             
         )
+        }
+        if(this.state.ActiveComponent === 2)
+        {
+            return(
+                <div className='GlobalDiv'>
+
+                    <div className='SavedOrdersMainDiv'>
+                        <SavedOrdersMain 
+                        Saved = {this.state.Saved}
+                        />
+                    </div>
+
+                    <div className='MainMenu'>
+                        <MenuMain 
+                            openMenu={this.state.openMenu }
+                            openMenuFunction={this.openMenuFunction}
+                            StopListON={this.StopListON}
+                            NewOrderON={this.NewOrderON}
+                            SavedOrdersON={this.SavedOrdersON}
+                            ActiveComponent={this.state.ActiveComponent}
+                        />
+                    </div>
+                </div>
+            )
         }
     }
     }
@@ -1196,10 +1338,18 @@ this.state.orderPosition.map((a) => {
     async BPlusSostWOK(id) {//кнопка "+" в заказе прикрепленная к составляющей ВОКа, для добавления кол-ва
         this.state.orderSostWOK.map((a) => {
             if(a.idSost === id)
+                if(a.podcat !== "Соус В Вок")
+                {
                 a.num = parseInt(a.num) + 1
                 a.totalprice = a.price * a.num
                 a.totaldkprice = a.dkprice * a.num
                 this.setState({orderSostWOK: [...this.state.orderSostWOK]}) 
+                return(a)
+                }
+                else
+                {
+                    this.AlertAdd("SauceSumLimit")
+                }
                 return(a)
         })
         await this.setState
@@ -1277,6 +1427,9 @@ this.state.orderPosition.map((a) => {
         this.setState({ //очистка кол-ва приборов
             orderTablewares: this.state.orderTablewares.filter((el) => el.id === id)
         })
+        this.setState({
+            orderTablewares: [{num: 0}]
+        })
         this.setState({//очистка скидки
             Sale: 1
         })
@@ -1288,6 +1441,31 @@ this.state.orderPosition.map((a) => {
         })
         this.setState({
             totalSoy: 0
+        })
+        this.setState({
+            OnCity: {idCity: 0, city: "— Выберите филиал —", street:"", house: "", delivery:"--", takeaway: "--", condition: "Активен"} 
+        })
+        
+        this.state.position.map((el) => {
+            el.CheckStopList = false
+            return(el)
+        })
+        this.setState({
+            position: [...this.state.position]
+        })
+        this.state.cat.map((el) => {
+            el.CheckStopList = false
+            return(el)
+        })
+        this.setState({
+            cat: [...this.state.cat]
+        })
+        this.state.podcat.map((el) => {
+            el.CheckStopList = false
+            return(el)
+        })
+        this.setState({
+            podcat: [...this.state.podcat]
         })
 
         await this.setState 
@@ -1502,6 +1680,9 @@ this.state.orderPosition.map((a) => {
                 this.setState({
                     orderTablewares: this.state.orderTablewares.filter((el) => el.id === pos.id)
                 })
+                this.setState({
+                    orderTablewares: [{num: 0}]
+                })
             }
     }
 
@@ -1534,17 +1715,28 @@ this.state.orderPosition.map((a) => {
         this.setState({
             ActiveComponent: 1  
         })
-        setTimeout(() => {
-            this.StopListChecCatOnPosition()
-        }, 1)//вызов функции для проверки стопов по категориям, для корректного отображения
+       
         
     }
 
     NewOrderON(){//переключение "вкладки" на создание нового
+        if(this.state.ActiveComponent !== 0)
+        {
         this.setState({
             ActiveComponent: 0
         })
+    }
+    else
+    {
+        this.cleanOrder()
+    }
         
+    }
+
+    SavedOrdersON(){
+        this.setState({
+            ActiveComponent: 2
+        })
     }
 
     openMenuFunction() {//функия раскрытия/скрытия меню
@@ -1581,7 +1773,6 @@ this.state.orderPosition.map((a) => {
             return(a)
         })
         this.StopListChecCatOnPosition()//вызов функции для проверки стопов по категориям, для корректного отображения
-        this.StopListChekFunctionCat()
         
     }
 
@@ -1823,26 +2014,553 @@ this.state.orderPosition.map((a) => {
        
     }
 
-    SaveFucntion() {
+    
+    async StopListCityAdd() {
+        var StopPosArray = []
+        var StopCatArray = []
+        var StopPodCatArray = []
+        for(var i = 0; i < this.state.City.length; i++)
+        {
+            for(var j = 0; j < this.state.position.length; j++)
+            {
+                StopPosArray.push({name: this.state.position[j].name, id: this.state.position[j].id, categ: this.state.position[j].categ, podcat: this.state.position[j].podcat, idCity: this.state.City[i].idCity, CheckStopList: false}) 
+                
+            }
+            for(var j1 = 0; j1 < this.state.cat.length; j1++)
+            {
+                StopCatArray.push({name: this.state.cat[j1].name, id: this.state.cat[j1].id, idCity: this.state.City[i].idCity, CheckStopList: false, CheckIndeterminate: false}) 
+                
+            }
+            for(var j2 = 0; j2 < this.state.podcat.length; j2++)
+            {
+                StopPodCatArray.push({name: this.state.podcat[j2].name, id: this.state.podcat[j2].id, categ: this.state.podcat[j2].categ, idCity: this.state.City[i].idCity, CheckStopList: false, CheckIndeterminate: false}) 
+                
+            }
+        }
+
+
+        this.setState({
+            StopList: StopPosArray
+        })
+
+        this.setState({
+            StopCat: StopCatArray
+        })
+
+        this.setState({
+            StopPodCat: StopPodCatArray
+        })
+        
+        await this.setState
+
+    }
+
+    componentDidMount(){
+        this.StopListCityAdd()
+    }
+    
+    StopListChekFunctionOnCity(pos, idCity)//добавление позиции в стоп лист
+    {
+        this.state.StopList.map((a) =>
+        {
+            if(a.id === pos.id && a.idCity === idCity)
+            {
+                    
+                    a.CheckStopList = !a.CheckStopList
+                    this.setState({
+                        StopList: [...this.state.StopList]
+                    })
+                
+            }
+            
+            return(a)
+        })
+        this.StopListChecCatOnPositionOnCity(idCity)//вызов функции для проверки стопов по категориям, для корректного отображения
+       
+        
+    }
+
+   StopListChecCatOnPositionOnCity(idCity)//функция для проверки стопов по категориям, для корректного отображения
+    {
+        this.state.StopCat.map((el) => {
+            
+            if(el.name !== "Добавка В Вок" && el.idCity === idCity)
+            {
+            var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
+            var CheckPos = 0//счетчик для общего кол-ва позиций из категории
+            this.state.StopList.map((a) => {
+                if(a.categ === el.name && a.idCity === el.idCity)
+                {
+                    CheckPos = CheckPos + 1
+                    if(a.CheckStopList === true)
+                    {
+                        CheckCat = CheckCat + 1
+                    }
+                }
+                return(a)
+            })
+            if(CheckCat === CheckPos)
+            {
+                el.CheckStopList = true
+                el.CheckIndeterminate = false
+                this.setState({
+                    StopCat: [...this.state.StopCat]
+                })
+                document.getElementById('StopListCatCheck' + el.id + " " + el.idCity).indeterminate  = false
+            }
+            else
+            {
+                if(CheckCat === 0)
+                {
+                    el.CheckStopList = false
+                    el.CheckIndeterminate = false
+                    this.setState({
+                    StopCat: [...this.state.StopCat]
+                })
+                    document.getElementById('StopListCatCheck' + el.id + " " + el.idCity).indeterminate  = false
+                }
+                else
+                {
+                    el.CheckStopList = false
+                    el.CheckIndeterminate = true
+                    this.setState({
+                    StopCat: [...this.state.StopCat]
+                    })
+                    document.getElementById('StopListCatCheck' + el.id + " " + el.idCity).indeterminate  = true
+                }
+            }
+        }
+            return(el)
+            
+        })
+
+        this.state.StopPodCat.map((el) => {
+            
+            if(el.idCity === idCity)
+            {
+            var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
+            var CheckPos = 0//счетчик для общего кол-ва позиций из категории
+            this.state.StopList.map((a) => {
+                if(a.categ === "Добавка В Вок")
+                if(a.podcat === el.name && a.idCity === el.idCity)
+                {
+                    CheckPos = CheckPos + 1
+                    if(a.CheckStopList === true)
+                    {
+                        CheckCat = CheckCat + 1
+                    }
+                }
+                return(a)
+            })
+            if(CheckCat === CheckPos)
+            {
+                el.CheckStopList = true
+                el.CheckIndeterminate = false
+                this.setState({
+                    StopPodCat: [...this.state.StopPodCat]
+                })
+                document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = false
+            }
+            else
+            {
+                if(CheckCat === 0)
+                {
+                    el.CheckStopList = false
+                    el.CheckIndeterminate = false
+                    this.setState({
+                        StopPodCat: [...this.state.StopPodCat]
+                })
+                    document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = false
+                }
+                else
+                {
+                    el.CheckStopList = false
+                    el.CheckIndeterminate = true
+                    this.setState({
+                        StopPodCat: [...this.state.StopPodCat]
+                    })
+                    document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = true
+                }
+            }
+        }
+            return(el)
+            
+        })
+    }
+
+    StopListChekFunctionCatOnCity(id, idCity){
+        this.state.StopCat.map((a) =>
+        {
+            if(a.id === id && a.idCity === idCity)
+            {
+                if(a.CheckStopList === true || a.CheckIndeterminate === true)
+                {
+                    a.CheckStopList = false
+                    if (a.CheckIndeterminate === true)
+                    {
+                        a.CheckIndeterminate = false
+                    }
+                    this.setState({
+                        StopCat: [...this.state.StopCat]
+                    })
+                }
+                else
+                {
+                    a.CheckStopList = true
+                   
+                    this.setState({
+                        StopCat: [...this.state.StopCat]
+                    })
+                }
+            
+                this.state.StopList.map((el) => {
+                    if(a.name === el.categ && el.idCity === a.idCity)
+                    {
+                        if(a.CheckStopList === false)
+                        {
+                        el.CheckStopList = false
+                        this.setState({
+                            StopList: [...this.state.StopList]
+                        })
+                        }
+                        else
+                        {
+                            el.CheckStopList = true
+                            this.setState({
+                                StopList: [...this.state.StopList]
+                            })
+                        }
+                    
+                        
+                    }
+                    return(el)
+                })
+            }
+            return(a)
+        })
+    }
+
+    StopListChekFunctionPodcatOnCity(id, idCity){
+        this.state.StopPodCat.map((a) =>
+        {
+            if(a.id === id && a.idCity === idCity)
+            {
+                if(a.CheckStopList === true || a.CheckIndeterminate === true)
+                {
+                    a.CheckStopList = false
+                    if (a.CheckIndeterminate === true)
+                    {
+                        a.CheckIndeterminate = false
+                    }
+                    this.setState({
+                        StopPodCat: [...this.state.StopPodCat]
+                    })
+                }
+                else
+                {
+                    a.CheckStopList = true
+                   
+                    this.setState({
+                        StopPodCat: [...this.state.StopPodCat]
+                    })
+                }
+            
+                this.state.StopList.map((el) => {
+                    if(a.name === el.podcat && el.idCity === a.idCity)
+                    {
+                        if(a.CheckStopList === false)
+                        {
+                        el.CheckStopList = false
+                        this.setState({
+                            StopList: [...this.state.StopList]
+                        })
+                        }
+                        else
+                        {
+                            el.CheckStopList = true
+                            this.setState({
+                                StopList: [...this.state.StopList]
+                            })
+                        }
+                    
+                        
+                    }
+                    return(el)
+                })
+            }
+            return(a)
+        })
+    }
+
+    CityChange(city) {
+        this.setState({
+            OnCity: {idCity: city.idCity, city: city.city, street: city.street, house: city.house, delivery: city.delivery, takeaway: city.takeaway, condition: city.condition} 
+        })
+        this.state.StopList.map((el) => {
+            if(el.idCity === city.idCity)
+            {
+                this.state.position.map((a) => 
+                {
+                    if(a.id === el.id)
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            position: [...this.state.position]
+                        })
+                    }
+                    return(a)
+                })
+            }
+            return(el)
+        })
+
+        this.state.StopCat.map((el) => {
+            if(el.idCity === city.idCity)
+            {
+                this.state.cat.map((a) => 
+                {
+                    if(a.id === el.id && el.name !== "Добавка В Вок")
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            cat: [...this.state.cat]
+                        })
+                    }
+                    return(a)
+                })
+            }
+            return(el)
+        })
+
+        this.state.StopPodCat.map((el) => {
+            if(el.idCity === city.idCity)
+            {
+                this.state.podcat.map((a) => 
+                {
+                    if(a.id === el.id)
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            podcat: [...this.state.podcat]
+                        })
+                    }
+                    return(a)
+                })
+            }
+            return(el)
+        })
+    }
+
+    CloseCityist(){
+        this.setState({
+            OpenListCity: false
+        })
+    }
+
+    ChangeTimeDeliveryCity(val, idCity){
+        this.state.City.map((el) => {
+            if(el.idCity === idCity)
+            {
+                el.delivery = val
+                this.setState({
+                    City: [...this.state.City]
+                })
+            }
+            return(el)
+        })
+    }
+
+    ChangeTimeTakeawayCity(val, idCity){
+        this.state.City.map((el) => {
+            if(el.idCity === idCity)
+            {
+                el.takeaway = val
+                this.setState({
+                    City: [...this.state.City]
+                })
+            }
+            return(el)
+        })
+    }
+
+    ClearTimeOneCity(idCity){
+        this.state.City.map((el) => {
+            if(el.idCity === idCity)
+            {
+                el.delivery = 60
+                el.takeaway = 20
+                this.setState({
+                    City: [...this.state.City]
+                })
+            }
+            return(el)
+        })
+    }
+
+    ChangeConditionCity(val, idCity){
+        this.state.City.map((el) => {
+            if(el.idCity === idCity)
+            {
+                el.condition = val
+                this.setState({
+                    City: [...this.state.City]
+                })
+            }
+            return(el)
+        })
+    }
+
+    async SavedButtonClick() {
+        if(this.state.OnCity.idCity !== 0)
+        {
+            this.setState({
+                LastWindowSaved: true
+        })
+        this.state.StopList.map((el) => {
+            if(el.idCity === this.state.OnCity.idCity)
+            {
+                this.state.orderPosition.map((a) => 
+                {
+                    if(a.id === el.id)
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            orderPosition: [...this.state.orderPosition]
+                        })
+                        
+                    }
+                    return(a)
+                })
+            }
+            return(el)})
+            this.getTime()
+            await this.setState
+            this.state.orderPosition.map((el) => {
+                if(el.CheckStopList === true)
+                {
+                    this.AlertAdd("StopOnSave")
+                }
+                return(el)
+            })
+                
+        }
+        else
+        {
+            this.AlertAdd("UnderCity")
+        }
+    }
+
+    CloseLastWindow(){
+        this.setState({
+            LastWindowSaved: false
+        })
+    }
+
+    async SaveFunction() {
+        
+        this.setState({
+            LastWindowSaved: false
+        })
+        if(this.state.OnCity.idCity !== 0)
+        {
         const SavedIdOrd = this.state.SavedIdOrd
         this.setState({SavedIdOrd: parseInt(this.state.SavedIdOrd) + 1})
+        var orderPosSaved = []
+        var orderDobPizzaSaved = []
+        var orderSostWOKSaved = []
+        var orderCity = []
+        var orderDetal = []
+        this.state.orderPosition.map((el) => {
+            
+            orderPosSaved.push({id: el.id + " " + SavedIdOrd, 
+            idOrd: el.idOrd,
+            name: el.name, 
+            price: el.price, 
+            dkprice: el.dkprice, 
+            price36: el.price36, 
+            dkprice36: el.dkprice36, 
+            num: el.num, 
+            salecheck: el.salecheck,
+            totalprice: el.totalprice,
+            podcat: el.podcat,
+            categ: el.categ,
+            CheckStopList: el.CheckStopList,
+            soysause: el.soysause,
+            sost: el.sost,
+         })
+         return(el)
+        })
+        this.state.orderDobPizza.map((el) => {
+            orderDobPizzaSaved.push({
+                id: el.id + " " + SavedIdOrd,
+                idOrd: el.idOrd,
+                price: el.price,
+                dkprice: el.dkprice,
+                name: el.name,
+                num: el.num, 
+                salecheck: el.salecheck,
+                totalprice: el.totalprice,
+                podcat: el.podcat,
+                categ: el.categ,
+                CheckStopList: el.CheckStopList,
+            })
+            return(el)
+        })
+        this.state.orderSostWOK.map((el) => {
+            orderSostWOKSaved.push({
+                id: el.id + " " + SavedIdOrd,
+                idOrd: el.idOrd,
+                price: el.price,
+                dkprice: el.dkprice,
+                name: el.name,
+                num: el.num, 
+                salecheck: el.salecheck,
+                totalprice: el.totalprice,
+                podcat: el.podcat,
+                categ: el.categ,
+                CheckStopList: el.CheckStopList,
+            })
+            return(el)
+        })
+        orderCity.push({idCity: this.state.OnCity.idCity,
+            city: this.state.OnCity.city, 
+            street: this.state.OnCity.street, 
+            house: this.state.OnCity.house, 
+            delivery: this.state.OnCity.delivery,
+            takeaway: this.state.OnCity.takeaway
+        })
+        orderDetal.push({
+            pdkon: this.state.pdkon,
+            Tablewares: this.state.orderTablewares[0].num !== undefined ? this.state.orderTablewares[0].num : 0,
+            totalSum: this.state.totalSum,
+            totalSumSale: this.state.totalSumSale,
+            Sale: this.state.Sale,
+            SaleInp: this.state.SaleInp,
+            TotalSale: this.state.TotalSale,
+            TimeSave: this.state.TimeSave
+        })
         this.setState({
-            Saved: [...this.state.Saved, 
-                SavedIdOrd, 
-                this.state.orderPosition, 
-                this.state.orderDobPizza,
-                this.state.orderSostWOK, 
-                this.state.orderTablewares, 
-                this.state.totalSum, 
-                this.state.totalSumSale, 
-                this.state.Sale, 
-                this.state.SaleInp, 
-                this.state.TotalSale, 
-                this.state.pdkon ]
+            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderDobPizzaSaved, orderSostWOKSaved}]
+        })
+        await this.setState
+        console.log(this.state.Saved)
+        this.cleanOrder()
+        this.setState({
+            ActiveComponent: 2
         })
     }
     
+    }
 
+    getTime(){
+        var today = new Date(),
+
+        TimeSave = today.getHours() + ':' + today.getMinutes();
+        this.setState({
+            TimeSave: TimeSave
+        })
+    }
+    
     
 }
 export default App

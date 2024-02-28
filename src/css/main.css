@@ -24,6 +24,8 @@
   --ScrollBarThumbHover: #7e7e7e;
   --ColorHoverDeleteAndCancel: rgba(255, 210, 210, 0.123);
   --WidhtMainMenu: 50px;
+  --DarkA-Color: rgb(3, 100, 245);
+  --DarkB-Color: rgb(3, 100, 245);
 }
 
 body {
@@ -56,14 +58,27 @@ body {
     height: 100vh;
     gap: 10px;
 
+}
+
+
+.SavedOrdersMainDiv {
+  margin-left: 50px;
+  font-family: "Roboto";
+  font-size: 12pt;
+  display: flex;
+  width: 96vw;    
+  height: 100vh;
+  gap: 10px;
 
 }
+
 
 .StopListDiv{
   width: 100%;    
   height: 100%;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
+  
 }
 
 .MainOrder {
@@ -83,15 +98,6 @@ body {
     transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
-  
-
-
-.MainDetal {
-  height:  100vh;
-  color: var(--mainB-color, rgb(243, 247, 250));
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
 .OrderTit {
     font-size: 10pt;
     color: var(--mainText-color, rgb(243, 247, 250));
@@ -100,6 +106,10 @@ body {
     height: 30px;
     border-bottom: solid 2px rgb(92, 92, 92);
     transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.OrderTitTable{
+  height: 100%;
 }
 
 .OrderTitName{
@@ -124,7 +134,8 @@ body {
 
   
 .MainDetal {
-    background-color: rgb(112, 112, 112);
+    background-color: var(--mainB-color, rgb(243, 247, 250));
+    color: var(--Text2-Color, black);
     width: 20%;
     min-height: 100vh;
     max-height: 100vh;
@@ -909,6 +920,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 }
 
 .SaleSumWindowContent{
+  box-shadow: 0px 0px 5px 0px black;
   padding: 10px;
   border-radius: 10px;
   color: var(--Text2-Color, black);
@@ -1083,6 +1095,30 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.ContentSavedOrdersMenu{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ContentSavedOrdersMenu:hover{
+  background-color: rgb(17, 17, 17);
+}
+
+.TextSavedOrdersMenu{
+  color: rgb(119, 119, 119);
+  font-size: 14pt;
+}
+
+.IconSavedOrders{
+  margin-top: 10px;
+  color: var(--mainC-color, rgb(224, 231, 235));
+  width: 35px;
+  height: 35px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
 .ActivateTabText{
   color: white;
 }
@@ -1095,27 +1131,31 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   font-size: 12pt;
   width: 100%;
   border-bottom: 1px dashed gray;
+  
   color: var(--Text2-Color, black);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListCatName.Unfind{
+  position: absolute;
+  top: -100px;
 }
 
 .ButtonCatNameStop{
   cursor: pointer;
   border: none;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
-  background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ButtonCatNameStop.closed {
-  background-color: var(--mainB-color, rgb(243, 247, 250));
   color:  var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ButtonCatNameStop.closed:hover {
-  background-color: var(--mainB-color, rgb(243, 247, 250));
-  color:  var(--mainA-color, rgb(3, 158, 245));
+  color: var(--DarkA-Color, rgb(3, 100, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -1125,11 +1165,20 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 
 .StopListPositionName{
   display: flex;
-  cursor: pointer;
   margin-left: 15px;
   font-size: 10pt;
   color: var(--Text2-Color, black);
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListPositionNameText{
+  cursor: pointer;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListPositionNameText:hover{
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .CheckBoxStopPosition{
@@ -1248,6 +1297,42 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   font-size: 8pt;
 }
 
+.AlertLastWindowStopPos{
+  display: flex;
+  font-size: 9pt;
+}
+
+.StopAlertLastMainDiv{
+  z-index: 1001;
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 300px;
+  height: 20px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+}
+
+.StopAlertLastMainDiv.active{ 
+  animation-name: Alert;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+.StopAlertLastMainDiv.deleted{ 
+  right: -400px;
+  animation-name: ClickedAlert;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
 .IconStopCat{
   position: relative;
   top: 0px;
@@ -1281,3 +1366,439 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   right: -200px;
 }
 
+.City{
+  font-size: 12pt;
+  font-family: 'Roboto'; 
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CitySelector{
+  margin-top: 2px;
+  cursor: pointer;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  width: 240px;
+  color: var(--Text2-Color, black);
+  position: absolute;
+  z-index: 2;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CitySelector.OpenCity {
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.StopListOnCityUpdate {
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  width: 305px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--Text2-Color, black);
+  position: absolute;
+  z-index: 2;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListOnCityUpdate.OpenStop{
+  max-height: 300px;
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.CityListMain{
+  padding-left: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityListMain:hover{
+  color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityName{
+  margin-right: 5px;
+  width: 70%;
+  border: 1px solid var(--LightA-color, rgb(3, 168, 245));
+}
+
+.CityName.OpenCity{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityNameText{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5px;
+  overflow  : hidden;
+}
+
+.CityNameTextMain{
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+.CityNameTextStreet{
+  align-items: center;
+  font-size: 11pt;
+}
+
+
+.CityNameIconArrow{
+  margin-right: 4px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityNameIconArrow.OpenCity{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeCity{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.TimeDeliveryMain{
+  display: flex;
+  justify-content: space-between;
+}
+
+.TimeDelivery{
+  margin-right: 150px;
+}
+
+.TimeTakeAwayMain{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.TimeTakeAway{
+  margin-right: 150px;
+}
+
+.TimeDeliveryStopListMain{
+  cursor: pointer;
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--Text2-Color, black);
+  border: 1px solid var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeDeliveryStopListMain.OpenDrop{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.TimeDeliveryStopList{
+  margin-left: 3px;
+}
+
+.TimeDeliveryStopListIcon{
+  margin-right: 4px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeDeliveryStopListIcon.OpenDrop{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityDeliveryTime{
+  padding: 3px;
+  cursor: pointer;
+  color: var(--Text2-Color, black);
+}
+
+.CityDeliveryTime:hover{
+  color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeTakeAwayStopListMain{
+  cursor: pointer;
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--Text2-Color, black);
+  border: 1px solid var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeTakeAwayStopListMain.OpenDrop{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeeTakeAwayStopList{
+  margin-left: 3px;
+}
+
+.TimeeTakeAwayStopListIcon{
+  margin-right: 4px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeeTakeAwayStopListIcon.OpenDrop{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeDeliverySelector{
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  color: var(--Text2-Color, black);
+  width: 62px;
+  position: absolute;
+}
+
+.TimeDeliverySelector.OpenDrop{
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.TimeTakeawaySelector{
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  color: var(--Text2-Color, black);
+  width: 62px;
+  position: absolute;
+}
+
+.TimeTakeawaySelector.OpenDrop{
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.StopListCity{
+  display: flex;
+  font-size: 12pt;
+  height: 50px;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px dashed gray;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListCityTable{
+  font-weight: 300;
+  padding-top: 5px;
+  color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  padding-left: 10px;
+  width: 100%;
+  border-bottom: 1px dashed gray;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonResetTimeOneCity{
+  cursor: pointer;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  border-radius: 5px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonResetTimeOneCity:hover{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all ease-in-out;
+}
+
+.CityConditionMainDiv{
+  font-size: 12pt;
+  cursor: pointer;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--Text2-Color, black);
+  border: 1px solid var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityConditionMainDiv.OpenDrop{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ConditionSelector{
+  cursor: pointer;
+  width: 252px;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  color: var(--Text2-Color, black);
+  position: absolute;
+}
+
+.ConditionSelector.OpenDrop{
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+
+.ConditionStopListCity{
+  padding: 3px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ConditionStopListCity:hover{
+  color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ConditionStopListText{
+  margin-left: 5px;
+}
+
+.CityConditionIcon{
+  margin-right: 4px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CityConditionIcon.OpenDrop{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.InputStopListCity{
+  cursor: pointer;
+  height: 17px;
+  width: 300px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.InputStopListCity.OpenDrop{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.InputStopListCityDiv{
+  display: flex;
+  align-items: center;
+}
+
+.InputStopListCityIcon{
+  cursor: pointer;
+  position: relative;
+  right: 20px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.InputStopListCityIcon.OpenDrop{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListCityTableOneCity{
+  padding-left: 10px;
+  width: 100%;
+}
+
+
+.ThCityName{
+  width: 15%;
+  text-align: start;
+}
+
+.ThCityStreet{
+  width: 15%;
+  text-align: start;
+}
+
+.ThCityDelivery{
+  width: 5%;
+  text-align: start;
+}
+
+.ThCityTakeaway{
+  width: 5%;
+  text-align: start;
+}
+
+.ThButtonReset{
+  width: 3%;
+  text-align: start;
+}
+
+.ThCityCondition{
+  width: 17%;
+  text-align: start;
+}
+
+.ThCityStopList{
+  width: 40%;
+  text-align: start;
+}
+
+.SavedOrdDiv{
+  position: relative;
+}
+
+.SavedBodyDiv{
+  padding-top: 5px;
+  width: 100vw;    
+  height: 100vh;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
+}
+
+
+.LastWindowMainDiv{
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.LastWindowContent{
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 250px;
+  height: 80px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+}

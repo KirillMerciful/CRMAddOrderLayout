@@ -16,7 +16,7 @@ class AddSostWOK extends React.Component {
                             
                             <td className="OrdSostWOKName">{"-- " + this.props.ordSWOk.name}</td>                           
                             <td className="OrdSostWOKEdit"><button className='OrddSostWOKButtonEditMinus' id={"buttonSostWOKMinus" + this.props.ordSWOk.idDob} onClick={(() => {
-                                    if (this.props.ordSWOk.num !== 1)
+                                    if (this.props.ordSWOk.num !== 1 && this.props.ordSWOk.podcat !== "Соус В Вок")
                                     {
                                         this.props.BMSW(this.props.ordSWOk.idSost)
                                     }
@@ -28,8 +28,10 @@ class AddSostWOK extends React.Component {
                             )}           
                             /* кнопка "-" отнимает 1 от num*/>-</button></td>
                             <td className='OrdSostWOKNum'>
-                                <input type='number' className="OrdSostWOKInp" value={this.props.ordSWOk.num} id={"ordSostWOKNum" + this.props.ordSWOk.idSost} 
+                                <input type='number' className="OrdSostWOKInp" value={this.props.ordSWOk.podcat !== "Соус В Вок" ? this.props.ordSWOk.num : this.props.ordPos.num} id={"ordSostWOKNum" + this.props.ordSWOk.idSost} 
                                 onChange={((e) => {
+                                    if(this.props.ordSWOk.podcat !== "Соус В Вок")
+                                    {
                                     if (e.target.value > 99)
                                     {
                                         e.target.value = 99
@@ -39,6 +41,11 @@ class AddSostWOK extends React.Component {
                                         e.target.value = 1
                                     }
                                     this.props.EISW(this.props.ordSWOk.idSost, e.target.value)
+                                    }
+                                    else
+                                    {
+                                        this.props.AlertAdd("SauceSumLimit")
+                                    }
                                     })/*это изменение значения при изменении инпута ручками */}
 
                                         ></input>

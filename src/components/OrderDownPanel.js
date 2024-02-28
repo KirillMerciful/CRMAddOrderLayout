@@ -51,7 +51,9 @@ class OrderDownPanel extends React.Component {
             ><IoTrashSharp className='IconDelete' /></button>
             </div>
             <div>
-            <button className='DownPanelButtonRightSave'>Сохранить</button>
+            <button className='DownPanelButtonRightSave' onClick={(() => {
+              this.props.SavedButtonClick()
+            })}>Сохранить</button>
             </div>
           </div>
 

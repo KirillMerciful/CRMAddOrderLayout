@@ -104,6 +104,7 @@ this.PositionCheck = this.PositionCheck.bind(this)
         </table>
         {this.props.ordSWOk.map((el) => (
           <AddSostWOK
+            AlertAdd={this.props.AlertAdd}
             ordPos={this.props.OrdPos}
             EISW={this.props.EISW}
             BMSW={this.props.BMSW}
@@ -140,7 +141,6 @@ this.PositionCheck = this.PositionCheck.bind(this)
         openPopup: !this.state.openPopup,
         closePopup: !this.state.closePopup
       })
-      console.log(this.state.PositionPopupTop)
     }, 1)
   }
 }

@@ -45,8 +45,7 @@ class StopAlert extends React.Component {
         </div>    
         )
       }
-      else
-      {
+      
         if(this.props.AlertCheck.Alert === "SauceLimit")
         {
         return(
@@ -64,8 +63,7 @@ class StopAlert extends React.Component {
         </div>   
         ) 
       }
-      else
-      {
+      
         if(this.props.AlertCheck.Alert === "SauceSumLimit")
         {
         return(
@@ -83,8 +81,43 @@ class StopAlert extends React.Component {
         </div>   
         ) 
       }
-      }
-      }
+      
+        if(this.props.AlertCheck.Alert === "UnderCity")
+        {
+          return(
+            <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+              this.props.AllertClick(this.props.AlertCheck.Check)
+            })}>
+              <div className='StopSauceLimitContent'>
+                <div>
+              <IoCloseCircleSharp className="IconStopPosition"/>  
+              </div>
+              <div>
+              Не выбран филиал
+              </div>
+              </div>
+            </div>    
+            ) 
+        }
+      
+        if(this.props.AlertCheck.Alert === "StopOnSave")
+        {
+          return(
+            <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+              this.props.AllertClick(this.props.AlertCheck.Check)
+            })}>
+              <div className='AlertLastWindowStopPos'>
+                <div>
+              <IoCloseCircleSharp className="IconStopPosition"/>  
+              </div>
+              <div>
+              Одна из выбранных позиций находится в стоп листе
+              </div>
+              </div>
+            </div>    
+            ) 
+        }
+      
       
     }
       

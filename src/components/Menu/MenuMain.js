@@ -1,5 +1,5 @@
 import React from "react"
-import { IoSunny, IoDocumentLock , IoDuplicate, IoArrowForwardCircle } from "react-icons/io5";
+import { IoSunny, IoDocumentLock , IoDuplicate, IoArrowForwardCircle, IoCartSharp  } from "react-icons/io5";
 
 
 class MenuMain extends React.Component {
@@ -36,6 +36,15 @@ class MenuMain extends React.Component {
               </div>
                 <IoDuplicate id="IconNewOrderID" className="IconNewOrder ActivateTab"/>
           </div>
+
+          <div className="ContentSavedOrdersMenu" onClick={(() => {
+                this.props.SavedOrdersON()
+              })}>
+            <div className="TextSavedOrdersMenu">
+                  {this.props.openMenu === true && 'Заказы'}
+                </div>
+              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders" />
+          </div> 
           
           <div className="ContentStopListMenu" onClick={(() => {
                 this.props.StopListON()
@@ -61,6 +70,8 @@ class MenuMain extends React.Component {
     }
     else
     {
+      if(this.props.ActiveComponent === 1)
+      {
       return (
         <div className="MenuLeftPanel">
           <div className="ButtonsMenu">
@@ -82,6 +93,15 @@ class MenuMain extends React.Component {
               </div>
                 <IoDuplicate id="IconNewOrderID" className="IconNewOrder"/>
             </div>
+
+            <div className="ContentSavedOrdersMenu" onClick={(() => {
+                this.props.SavedOrdersON()
+              })}>
+            <div className="TextSavedOrdersMenu">
+                  {this.props.openMenu === true && 'Заказы'}
+                </div>
+              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders" />
+          </div> 
             
             <div className="ContentStopListMenu"  onClick={(() => {
                 this.props.StopListON()
@@ -104,6 +124,62 @@ class MenuMain extends React.Component {
           </div>
         </div>
       )
+      }
+      if(this.props.ActiveComponent === 2)
+      {
+        return(
+          <div className="MenuLeftPanel">
+          <div className="ButtonsMenu">
+            
+            <div className="ContentOpenMenu" onClick={(() => {
+                 this.props.openMenuFunction()
+              })}>
+            <div className="TextOpenMenuMenu">
+                {this.props.openMenu === true && 'Скрыть меню'}
+              </div>
+              <IoArrowForwardCircle className={this.props.openMenu === true ? "IconOpenMenu open" : "IconOpenMenu"} id="IconOM"/>
+
+            </div>
+            <div className="ContentNewOrderMenu" onClick={(() => {
+                  this.props.NewOrderON()
+                })}>
+              <div className="TextNewOrderMenu">
+                {this.props.openMenu === true && 'Новый заказ'}
+              </div>
+                <IoDuplicate id="IconNewOrderID" className="IconNewOrder"/>
+            </div>
+
+            <div className="ContentSavedOrdersMenu" onClick={(() => {
+                this.props.SavedOrdersON()
+              })}>
+            <div className="TextSavedOrdersMenu ActivateTabText">
+                  {this.props.openMenu === true && 'Заказы'}
+                </div>
+              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders ActivateTab" />
+          </div> 
+            
+            <div className="ContentStopListMenu"  onClick={(() => {
+                this.props.StopListON()
+              })}>
+              <div className="TextStopListMenu">
+                {this.props.openMenu === true && 'Стоп лист'}
+              </div>
+              <IoDocumentLock id="IconStopListID" className="IconStopList"/>
+            </div>    
+  
+            <div className="ContentChangeThemeMenu" onClick={(() => {
+                this.ChangeColorTheme() 
+              })}>      
+              <div className="TextChangeThemeMenu">
+                  {this.props.openMenu === true && 'Сменить тему'}
+                </div>        
+              <IoSunny className="IconSun" id='ISun' />
+            </div> 
+  
+          </div>
+        </div>
+        )
+      }
     }
   }
 
@@ -119,6 +195,8 @@ class MenuMain extends React.Component {
       document.documentElement.style.setProperty('--mainC-color', '#612bc5')
       document.documentElement.style.setProperty('--mainCHover-color', '#5d2abd')    
       document.documentElement.style.setProperty('--backgrounBody-color', '#160150')
+      document.documentElement.style.setProperty('--DarkA-Color', '#3d2754')
+      document.documentElement.style.setProperty('--DarkB-Color', '#f3f7fa')
       document.documentElement.style.setProperty('--slayder-color', '#3d2754')
       document.documentElement.style.setProperty('--mainText-color', '#f3f7fa')
       document.documentElement.style.setProperty('--Text2-Color', '#f3f7fa')
@@ -136,7 +214,10 @@ class MenuMain extends React.Component {
       document.documentElement.style.setProperty('--mainB-color', '#f3f7fa')
       document.documentElement.style.setProperty('--mainC-color', '#e0e7eb')
       document.documentElement.style.setProperty('--backgrounBody-color', '#c1deff')
+      document.documentElement.style.setProperty('--backgrounBody-color', '#c1deff')
       document.documentElement.style.setProperty('--slayder-color', '#ccc')
+      document.documentElement.style.setProperty('--DarkA-Color', '#0364f5')
+      document.documentElement.style.setProperty('--DarkB-Color', '#0364f5')
       document.documentElement.style.setProperty('--mainText-color', '#f3f7fa')
       document.documentElement.style.setProperty('--Text2-Color', '#000000')
       document.documentElement.style.setProperty('--ColorSostaAndSoy', '#7f7f7f')

@@ -4,7 +4,7 @@ class OrderTitle extends React.Component {
     render() {
         return(
             <div className='OrderTit'>
-                <table>
+                <table className='OrderTitTable'>
                     <tbody>
                         <tr>
                             <td className='OrderTitName'>Наименование</td>    

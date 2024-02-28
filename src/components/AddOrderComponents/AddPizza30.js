@@ -270,7 +270,6 @@ this.PositionCheck = this.PositionCheck.bind(this)
           openPopup: !this.state.openPopup,
           closePopup: !this.state.closePopup
         })
-        console.log(this.state.PositionPopupTop)
       }, 1)
     }
 }
