@@ -2,185 +2,65 @@ import React from 'react';
 
 
 class Position extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            sm36: false,
-            finalprice: 0,
-            
-    }
-}
+    
 
-    OK36 = this.props.OK + "36"
-    position = this.props.position
     render() {
-        if(this.position.CheckStopList === false)
-        {
-            if (this.position.categ === this.props.OK)
+            if (this.props.position.categ === this.props.onCat)
             {    
-                if (this.position.categ !== "Пицца")
-                {      
-                    return(         
-                    <div>
-                        <button className={'PosButtonsclass'} id={"PosBut" + this.position.id} onClick={() => {
-                                this.props.onAdd(this.position)
-                        }}              
-                        ><div className='ButtonPName'>{this.position.name}</div>
-                        <div> {this.props.PDK === 0 ? this.position.price + " руб." : this.position.dkprice + " руб."} </div>
-                    
-                        
-                    
-                        </button>
-                        
-                    </div>
-                
-                    )
-                }        
-                else 
-                {
-                    if (this.state.sm36 !== true)
-                    {
-                    return (
-                        
-                        <div>
-                            <button className={'PosButtonsclass'} id={"PosBut" + this.position.id} onClick={() => {
-                                    this.props.onAdd(this.position)
-                            }
-                            }                
-                            ><div className='ButtonPName'>{this.position.name + " 30см"}</div>
-                            <div> {this.props.PDK === 0 ? this.position.price + " руб." : this.position.dkprice + " руб."} </div>
-                
-                            
-                        
-                
-                            </button>
-                            <div className='SwitchPos'>
-                            
-                                <label className="switchPosLabel">
-                                    <input type="checkbox" onChange={(() => {
-                                        this.setState({sm36: !this.state.sm36})
-                                        })}/>
-                                    <span className="slider round"></span>
-                                </label>
-                                        
-                            </div>
-                            </div>
-                        )
-                    }
-                    else
-                    {
-                        return (
-                        <div>
-                            <button className={'PosButtonsclass'} id={"PosBut" + this.position.id} onClick={() => {
-                                    this.props.onAdd2(this.position)
-                            }
-                            }                
-                            ><div className='ButtonPName'>{this.position.name + " 36см"}</div>
-                            <div> {this.props.PDK === 0 ? this.position.price36 + " руб.": this.position.dkprice36 + " руб."}</div>
-                            </button>
-                            
-                            <div className='SwitchPos'>
-                                
-                                <label className="switchPosLabel">
-                                    <input type="checkbox" onChange={(() => {
-                                        this.setState({sm36: !this.state.sm36})
-                                        })}/>
-                                    <span className="slider round"></span>
-                                </label>
-                                            
-                            </div>
-                            </div>
-                        )
-                    }
-                }
-            }
-    }
-    else
-    {
-        if (this.position.categ === this.props.OK)
-            {    
-                if (this.position.categ !== "Пицца")
-                {      
-                    return(         
-                    <div>
-                        <button className={'PosButtonsclass unactive'} id={"PosBut" + this.position.id} onClick={() => {
-                                this.props.AlertAdd("Stop")
-                        }}              
-                        ><div className='ButtonPName'>{this.position.name}</div>
-                        <div> {this.props.PDK === 0 ? this.position.price + " руб." : this.position.dkprice + " руб."} </div>
-                    
-                        
-                    
-                        </button>
-                        
-                    </div>
-                
-                    )
-                }        
-                else 
-                {
-                    if (this.state.sm36 !== true)
-                    {
-                    return (
-                        
-                        <div>
-                            <button className={'PosButtonsclass unactive'} id={"PosBut" + this.position.id} onClick={() => {
+        return(
+        <div>
+            <button id={"PosBut" + this.props.position.id} 
+            className={this.props.position.categ === "Пицца" ?
+            this.props.position.CheckStopList === false ? 'PosButtonsclassPizza' : 'PosButtonsclassPizza unactive'
+            : this.props.position.CheckStopList === false ? 'PosButtonsclass' : 'PosButtonsclass unactive'}
+            onClick={() => {
+                                if(this.props.position.CheckStopList !== true)
+                                {
+                                    if(this.props.OnCity.idCity === 0)
+                                    {
+                                        this.props.AlertAdd("UnderCityOnPosition")
+                                    }
+                                    this.props.addOrder(this.props.position)
+                                }
+                                else
+                                {
                                     this.props.AlertAdd("Stop")
-                            }
-                            }                
-                            ><div className='ButtonPName'>{this.position.name + " 30см"}</div>
-                            <div> {this.props.PDK === 0 ? this.position.price + " руб." : this.position.dkprice + " руб."} </div>
-                
-                            
-                        
-                
-                            </button>
-                            <div div className='SwitchPos'>
-                            
-                                <label className="switchPosLabel">
-                                    <input type="checkbox" onChange={(() => {
-                                        this.setState({sm36: !this.state.sm36})
-                                        })}/>
-                                    <span className="slider round"></span>
-                                </label>
+                                }
+                        }}              
+                        ><div className='ButtonPName'>{this.props.position.name}</div>
+                        <div> {this.props.pdkon === 0 ? 
+                        this.props.position.Proverka36 !== true ? this.props.position.price + " руб." : this.props.position.price36 + " руб."  
+                        :this.props.position.Proverka36 !== true ? this.props.position.dkprice + " руб." : this.props.position.dkprice36 + " руб." } </div>
+                        </button>
+                        {this.props.position.categ === "Пицца" && 
+                        <div className='PosButtonsclassPizzaChangeDiamDiv'>
+                            <table className='PosButtonsclassPizzaChangeDiamTable'>
+                                <tbody>
+                                    <tr>
+                                        <td className='PosButtonsclassPizzaChangeDiamTd'>
+                                            <button 
+                                            className={this.props.position.Proverka36 === false ? 'PosButtonsclassPizzaChangeDiam30 Actived' : 'PosButtonsclassPizzaChangeDiam30'}
+                                            onClick={(() => {
+                                                this.props.ChangeDiamPizzaOnPositionMenu(false, this.props.position.id)
+                                            })}
+                                            >30 см</button>
                                         
-                            </div>
-                            </div>
-                        )
-                    }
-                    else
-                    {
-                        return (
-                        <div>
-                            <button className={'PosButtonsclass unactive'} id={"PosBut" + this.position.id} onClick={() => {
-                                    this.props.AlertAdd("Stop")
-                            }
-                            }                
-                            ><div className='ButtonPName'>{this.position.name + " 36см"}</div>
-                            <div> {this.props.PDK === 0 ? this.position.price36 + " руб.": this.position.dkprice36 + " руб."}</div>
-                
-                           
-                        
-                
-                            </button>
-                            
-                            <div className='SwitchPos'>
-                                
-                                <label className="switchPosLabel">
-                                    <input type="checkbox" onChange={(() => {
-                                        this.setState({sm36: !this.state.sm36})
-                                        })}/>
-                                    <span className="slider round"></span>
-                                </label>
-                                            
-                            </div>
-                            </div>
-                        )
-                    }
-                }
-            }
-    }
-            
+                                            <button 
+                                            className={this.props.position.Proverka36 === false ? 'PosButtonsclassPizzaChangeDiam36' : 'PosButtonsclassPizzaChangeDiam36 Actived'}
+                                            onClick={(() => {
+                                                this.props.ChangeDiamPizzaOnPositionMenu(true, this.props.position.id)
+                                            })}
+                                            >36 см</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        }
+        </div>
+        )
+        }
+        
     }
 
     

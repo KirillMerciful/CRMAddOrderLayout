@@ -5,7 +5,7 @@ class AddSostWOK extends React.Component {
     
 
     render() {
-        if(this.props.ordSWOk.idOrd === this.props.idOrd)
+        if(this.props.ordSWOk.idOrd === this.props.orderPosition.idOrd)
         if(this.props.ordSWOk.idSost > 0)
         return(
             
@@ -18,7 +18,7 @@ class AddSostWOK extends React.Component {
                             <td className="OrdSostWOKEdit"><button className='OrddSostWOKButtonEditMinus' id={"buttonSostWOKMinus" + this.props.ordSWOk.idDob} onClick={(() => {
                                     if (this.props.ordSWOk.num !== 1 && this.props.ordSWOk.podcat !== "Соус В Вок")
                                     {
-                                        this.props.BMSW(this.props.ordSWOk.idSost)
+                                        this.props.BMinusSostWOK(this.props.ordSWOk.idSost)
                                     }
                                     else
                                     {
@@ -28,7 +28,10 @@ class AddSostWOK extends React.Component {
                             )}           
                             /* кнопка "-" отнимает 1 от num*/>-</button></td>
                             <td className='OrdSostWOKNum'>
-                                <input type='number' className="OrdSostWOKInp" value={this.props.ordSWOk.podcat !== "Соус В Вок" ? this.props.ordSWOk.num : this.props.ordPos.num} id={"ordSostWOKNum" + this.props.ordSWOk.idSost} 
+                                <input 
+                                type='number' 
+                                className="OrdSostWOKInp" value={this.props.ordSWOk.podcat !== "Соус В Вок" ? this.props.ordSWOk.num : this.props.orderPosition.num} 
+                                id={"ordSostWOKNum" + this.props.ordSWOk.idSost} 
                                 onChange={((e) => {
                                     if(this.props.ordSWOk.podcat !== "Соус В Вок")
                                     {
@@ -40,7 +43,7 @@ class AddSostWOK extends React.Component {
                                     {
                                         e.target.value = 1
                                     }
-                                    this.props.EISW(this.props.ordSWOk.idSost, e.target.value)
+                                    this.props.EditInputSostWOK(this.props.ordSWOk.idSost, e.target.value)
                                     }
                                     else
                                     {
@@ -52,7 +55,7 @@ class AddSostWOK extends React.Component {
                             </td>
                             <td className="OrdSostWOKEdit"><button className='OrdSostWOKButtonEditPlus' id={"buttonSostWOKPlus" + this.props.ordSWOk.idSost} onClick={(() => {
                                 if (this.props.ordSWOk.num !== 99)
-                                this.props.BPSW(this.props.ordSWOk.idSost)
+                                this.props.BPlusSostWOK(this.props.ordSWOk.idSost)
                             }
                             )}
                                 /* кнопка "+" прибаляет 1  к num */

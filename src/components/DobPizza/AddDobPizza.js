@@ -18,7 +18,7 @@ class AddDobPizza extends React.Component {
                       id={"buttonDobMinus" + this.props.ordDobP.idDob} onClick={() => {
                         if (this.props.ordDobP.num !== 1) 
                         {
-                          this.props.BMD(this.props.ordDobP.idDob);
+                          this.props.BMinusDob(this.props.ordDobP.idDob);
                         } 
                         else 
                         {
@@ -40,7 +40,7 @@ class AddDobPizza extends React.Component {
                           {
                             e.target.value = 1;
                           }
-                          this.props.EID(this.props.ordDobP.idDob, e.target.value)
+                          this.props.EditInputDob(this.props.ordDobP.idDob, e.target.value)
                         } /*это изменение значения при изменении инпута ручками */
                       }
                     ></input>
@@ -51,7 +51,7 @@ class AddDobPizza extends React.Component {
                       id={"buttonDobPlus" + this.props.ordDobP.idDob}
                       onClick={() => {
                         if (this.props.ordDobP.num !== 99)
-                          this.props.BPD(this.props.ordDobP.idDob);
+                          this.props.BPlusDob(this.props.ordDobP.idDob);
                       }}
                       /* кнопка "+" прибаляет 1  к num */>+</button>
                   </td>

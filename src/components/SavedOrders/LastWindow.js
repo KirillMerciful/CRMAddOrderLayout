@@ -6,14 +6,21 @@ class LastWindow extends React.Component {
         return(
         <div className='LastWindowMainDiv'>
             <div className='LastWindowContent'>
-                <button onClick={(() => {
+                <div className='LastWindowButtonsDiv'>
+                <button 
+                className='LastWindowButtonSave'
+                onClick={(() => {
                     this.props.SaveFunction()
                 })}>Сохранить</button>
-                <button onClick={(() => {
+
+                <button 
+                className='LastWindowButtonCancel'
+                onClick={(() => {
                     this.props.CloseLastWindow()
                 })}>
                     Отмена
                 </button>
+                </div>
             </div>
                
         </div>

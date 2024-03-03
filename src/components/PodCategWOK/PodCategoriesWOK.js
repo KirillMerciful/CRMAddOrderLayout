@@ -13,7 +13,7 @@ class PodCategoriesWOK extends React.Component {
         <div className='DobavkiWOKMain'>
             <div className='DobavkiWOKTitle'>Лапша:</div>
             <div className='DobavkiWokButtons'>            
-                {this.props.position.map((el) => (<PodCategWOKNoodles  AlertAdd={this.props.AlertAdd} EWN={this.props.EWN} idOrd={this.props.idOrd} podcat={el} key={el.id}/>))}
+                {this.props.position.map((el) => (<PodCategWOKNoodles  AlertAdd={this.props.AlertAdd} EditWOKNoodles={this.props.EditWOKNoodles} idOrd={this.props.idOrd} podcat={el} key={el.id}/>))}
             </div> 
 
             <div className='DobavkiWOKTitle'>Мясо:</div>

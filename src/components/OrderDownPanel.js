@@ -2,7 +2,6 @@ import React from 'react';
 import { IoMdRestaurant } from "react-icons/io";
 import { IoTrashSharp } from "react-icons/io5"
 import TotalSumDownPanel from './TotalSumDownPanel';
-import Popup from "reactjs-popup"
 import Tablewares from './Tablewares/Tablewares';
 import OrderDownPanelSale from './OrderDownPanelSale';
 
@@ -22,7 +21,7 @@ class OrderDownPanel extends React.Component {
 
         <div className='DownPanelButtons'>
 
-          <div>
+          <div className='DownPanelButtonsLeft'>
           <OrderDownPanelSale 
             SaleWindowEditActive = {this.props.SaleWindowEditActive} 
             SaleFunction = {this.props.SaleFunction} 
@@ -30,17 +29,25 @@ class OrderDownPanel extends React.Component {
             totalSumSale={this.props.totalSumSale}
             SaleInpEdit0={this.props.SaleInpEdit0}
             SaleInp={this.props.SaleInp}
-            
+            ClickOpenDropDownSale={this.props.ClickOpenDropDownSale}
+            OpenDropDownSale={this.props.OpenDropDownSale}
           />
+         
           
-          
-          <Popup
-                        trigger={<button className='DownPanelButtonLeft'><IoMdRestaurant className='IconPrib' /></button>}
-                        position="top center">
-                        <div className="PopupTableware">
+                        <button 
+                        className='DownPanelButtonLeft'
+                        onClick={(() => {
+                          this.props.ClickOpenDropDownTablewares()
+                          
+                        })}
+                        >
+                          <IoMdRestaurant className='IconPrib' />
+                        </button>
+                        
+                        {this.props.OpenDropDownTablewares === true && <div className="PopupTableware">
                         <Tablewares addTW={this.props.addTW}/>
-                        </div>
-                      </Popup>
+                        </div>}
+                      
           </div>
 
           <div className='DownPanelButtonRight'>

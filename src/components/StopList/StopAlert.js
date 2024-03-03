@@ -6,30 +6,27 @@ class StopAlert extends React.Component {
 
 
   
-    render() {
+  render() {
 
    if(this.props.AlertCheck.Check > 0)
-    if(this.props.AlertCheck.Alert === "Stop")
-    {
+   switch(this.props.AlertCheck.Alert) {
+    default:{
       return(
-      <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
-        this.props.AllertClick(this.props.AlertCheck.Check)
-      })}>
-        <div className='StopPositionContent'>
-          <div>
-        <IoCloseCircleSharp className="IconStopPosition"/>  
-        </div>
-        <div>
-        Данная позиция находится в стоп листе 
-        </div>
-        </div>
-      </div>    
-      )
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='StopPositionContent'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Данная позиция находится в стоп листе 
+          </div>
+          </div>
+        </div>   
+        )
     }
-    else
-    {
-      if(this.props.AlertCheck.Alert === "Cat")
-      {
+    case 'Cat':{
       return(
         <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
@@ -38,17 +35,15 @@ class StopAlert extends React.Component {
             <div>
           <IoAlertCircle className="IconStopCat"/>  
           </div>
-          <div>
+          <div className='StopAlertText'>
           Данная категория находится в стоп листе 
           </div>
           </div>
         </div>    
         )
-      }
-      
-        if(this.props.AlertCheck.Alert === "SauceLimit")
-        {
-        return(
+    }
+    case 'SauceLimit':{
+      return(
         <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
@@ -56,17 +51,15 @@ class StopAlert extends React.Component {
             <div>
           <IoCloseCircleSharp className="IconStopPosition"/>  
           </div>
-          <div>
+          <div className='StopAlertText'>
           Максимальное кол-во соусов в лапше - 2
           </div>
           </div>
         </div>   
         ) 
-      }
-      
-        if(this.props.AlertCheck.Alert === "SauceSumLimit")
-        {
-        return(
+    }
+    case 'SauceSumLimit':{
+      return(
         <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
@@ -74,52 +67,78 @@ class StopAlert extends React.Component {
             <div>
             <IoAlertCircle className="IconStopCat"/> 
           </div>
-          <div>
+          <div className='StopAlertText'>
           Кол-во соусов одного вида всегда равно кол-ву порций лапши
           </div>
           </div>
         </div>   
         ) 
-      }
-      
-        if(this.props.AlertCheck.Alert === "UnderCity")
-        {
-          return(
-            <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
-              this.props.AllertClick(this.props.AlertCheck.Check)
-            })}>
-              <div className='StopSauceLimitContent'>
-                <div>
-              <IoCloseCircleSharp className="IconStopPosition"/>  
-              </div>
-              <div>
-              Не выбран филиал
-              </div>
-              </div>
-            </div>    
-            ) 
-        }
-      
-        if(this.props.AlertCheck.Alert === "StopOnSave")
-        {
-          return(
-            <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
-              this.props.AllertClick(this.props.AlertCheck.Check)
-            })}>
-              <div className='AlertLastWindowStopPos'>
-                <div>
-              <IoCloseCircleSharp className="IconStopPosition"/>  
-              </div>
-              <div>
-              Одна из выбранных позиций находится в стоп листе
-              </div>
-              </div>
-            </div>    
-            ) 
-        }
-      
-      
     }
+    case 'UnderCity':{
+      return(
+      <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        this.props.AllertClick(this.props.AlertCheck.Check)
+      })}>
+        <div className='StopSauceLimitContent'>
+          <div>
+        <IoCloseCircleSharp className="IconStopPosition"/>  
+        </div>
+        <div className='StopAlertText'>
+        Не выбран филиал
+        </div>
+        </div>
+      </div>    
+      )
+    }
+    case 'StopOnSave':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Одна из выбранных позиций находится в стоп листе
+          </div>
+          </div>
+        </div>    
+        ) 
+    }
+    case 'NotFilled':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Не заполнены обязательные поля
+          </div>
+          </div>
+        </div>    
+        ) 
+    }
+    case 'UnderCityOnPosition':{
+      return(
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='StopSauceSumLimitContent'>
+            <div>
+            <IoAlertCircle className="IconStopCat"/> 
+          </div>
+          <div className='StopAlertText'>
+          Не выбран город. Стоп лист не актуален.
+          </div>
+          </div>
+        </div>   
+        ) 
+    }
+  }
       
     } 
   

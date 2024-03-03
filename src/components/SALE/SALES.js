@@ -55,7 +55,8 @@ class SALES extends React.Component {
     render() { 
       return(
         <div>
-            {this.state.salemass.map((el) => (<ButtonSale 
+            {this.state.salemass.map((el) => (
+            <ButtonSale 
             SaleWindowEditActive = {this.props.SaleWindowEditActive} 
             salemass={el} 
             key={el.id} 

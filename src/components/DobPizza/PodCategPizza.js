@@ -12,7 +12,7 @@ class PodCategPizza extends React.Component {
             <div className='PodCatButtons'>
                 <button className='PodCatButton' id={"PodCatBut" + this.podcat.id}
                 onClick={(() => {
-                    this.props.AddD(this.podcat, this.props.idOrd)
+                    this.props.AddDob(this.podcat, this.props.idOrd)
                     
                 })}                
                 >

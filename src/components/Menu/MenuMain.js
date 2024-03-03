@@ -206,6 +206,22 @@ class MenuMain extends React.Component {
       document.documentElement.style.setProperty('--ScrollBarThumb', '#a3a3a3')         
       document.documentElement.style.setProperty('--ScrollBarThumbHover', '#b3b3b3')   
       document.documentElement.style.setProperty('--ColorHoverDeleteAndCancel', '#612bc583')   
+      document.documentElement.style.setProperty('--HeadOrderColor', '#666')   
+      
+      
+      document.documentElement.style.setProperty('--ColorMarkYa', '#c466ff')  
+      document.documentElement.style.setProperty('--ColorStatusNewOrderSaved', '#ff00007f')
+      document.documentElement.style.setProperty('--ColorStatusProcessingOrderSaved', '#f098')
+      document.documentElement.style.setProperty('--ColorStatusNotProcessingOrderSaved', '#94949484')
+      document.documentElement.style.setProperty('--ColorStatusTimeoutOrderSaved', '#6038ff84')
+      document.documentElement.style.setProperty('--ColorStatusCookingOrderSaved', '#38f2ff84')       
+      document.documentElement.style.setProperty('--ColorStatusCookedOrderSaved', '#3bff3884')         
+      document.documentElement.style.setProperty('--ColorStatusDeliveryOrderSaved', '#fcff3884')         
+      document.documentElement.style.setProperty('--ColorStatusCompletedOrderSaved', '#80fc6d62')    
+      document.documentElement.style.setProperty('--ColorStatusCancelledOrderSaved', '#0a0a0a95')   
+      document.documentElement.style.setProperty('--ColorStatusCancelledOrderSavedText', '#f3f7fa')  
+      document.documentElement.style.setProperty('--SavedOrdDeletedWindowButtonCancelColorHover', '#595959') 
+      document.documentElement.style.setProperty('--SavedOrdDeletedWindowButtonDeleteColorHover', '#ff00009f') 
     }
     else
     {//изменение темы на светлую
@@ -227,6 +243,21 @@ class MenuMain extends React.Component {
       document.documentElement.style.setProperty('--ScrollBarThumbHover', '#7e7e7e')
       document.documentElement.style.setProperty('--ColorHoverDeleteAndCancel', '#ffd2d21f')     
       document.documentElement.style.setProperty('--mainCHover-color', '#d6dbdd')          
+      document.documentElement.style.setProperty('--HeadOrderColor', '#e0e7eb')   
+      
+      document.documentElement.style.setProperty('--ColorMarkYa', '#03a8f5')  
+      document.documentElement.style.setProperty('--ColorStatusNewOrderSaved', '#ff00004f') 
+      document.documentElement.style.setProperty('--ColorStatusProcessingOrderSaved', '#ff00994f')
+      document.documentElement.style.setProperty('--ColorStatusNotProcessingOrderSaved', '#4545454f')
+      document.documentElement.style.setProperty('--ColorStatusTimeoutOrderSaved', '#6038ff4f')
+      document.documentElement.style.setProperty('--ColorStatusCookingOrderSaved', '#38f2ff4f')       
+      document.documentElement.style.setProperty('--ColorStatusCookedOrderSaved', '#3bff384f')         
+      document.documentElement.style.setProperty('--ColorStatusDeliveryOrderSaved', '#fcff384f')         
+      document.documentElement.style.setProperty('--ColorStatusCompletedOrderSaved', '#53ff3817')   
+      document.documentElement.style.setProperty('--ColorStatusCancelledOrderSaved', '#21212188')   
+      document.documentElement.style.setProperty('--ColorStatusCancelledOrderSavedText', '#f3f7fa')  
+      document.documentElement.style.setProperty('--SavedOrdDeletedWindowButtonCancelColorHover', '#cbd2d6')   
+      document.documentElement.style.setProperty('--SavedOrdDeletedWindowButtonDeleteColorHover', '#ff000073') 
     }
     this.setState({
       changeColor: !this.state.changeColor

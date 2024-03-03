@@ -3,30 +3,16 @@ import React from 'react';
 
 class ButtonTableWares extends React.Component {    
     render() {
-      if (this.props.tablewaresmass.num > 0)
-      {
+      
         return(
         <div>
-            <button className="TablewaresButton" onClick={(() => {
+            <div className="TablewaresButton" onClick={(() => {
                 this.props.addTW(this.props.tablewaresmass)
             }
             )}
-            >{this.props.tablewaresmass.num}</button>
+            >{this.props.tablewaresmass.num > 0 ? this.props.tablewaresmass.num : "Персон"}</div>
         </div>    
         )   
-      }   
-      else
-      {
-        return(
-        <div>
-            <button className="TablewaresButton" onClick={(() => {
-                this.props.addTW(this.props.tablewaresmass)
-            }
-            )}
-            >Персон</button>
-        </div>    
-        )  
-      }
       
     }  
   }

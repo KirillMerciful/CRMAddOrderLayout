@@ -12,7 +12,7 @@ class PodCategWOKNoodles extends React.Component {
             className="PodCatButtonWOK"
             id={"PodCatButWOK" + this.podcat.id}
             onClick={() => {
-              this.props.EWN(this.podcat, this.props.idOrd);
+              this.props.EditWOKNoodles(this.podcat, this.props.idOrd);
             }}>
             {this.podcat.name}
             <div>{this.podcat.price + "руб."}</div>

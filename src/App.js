@@ -2,8 +2,6 @@ import React from 'react';
 import { IoChevronDown } from "react-icons/io5";
 
 import OrderTitle from './components/OrderTitle';
-import Categories from './components/Categories';
-import Positions from './components/Positions';
 import PositionsTitle from './components/PositionsTitle';
 import AddOrder from './components/AddOrder'; 
 import OrderDownPanel from './components/OrderDownPanel';
@@ -16,6 +14,8 @@ import Cities from './components/StopList/Cities';
 import CityList from './components/CityList';
 import SavedOrdersMain from './components/SavedOrders/SavedOrdersMain';
 import LastWindow from './components/SavedOrders/LastWindow';
+import Position from './components/Position';
+import Categ from './components/Categ';
 
 
 
@@ -27,6 +27,7 @@ class App extends React.Component {
             ActiveComponent: 0,//выбранный активный компонент
             SSumWindowActive: false,//активность окна для ввода скидки суммой
             LastWindowSaved: false, //активность окна для сохранения заказа
+            DeleteSavedOrdDropDown: false, //активность окна для удаления заказа
             totalSoy: 0, //счетчик соевых
             foridSost: 1, //счетчик для присваивания айди добавкам в ВОК
             foridDob: 1, //счетчик для присваивания айди добавкам в пиццу
@@ -40,6 +41,8 @@ class App extends React.Component {
             TotalSale: 0,//стейт для вывода скидки в виде "-ХХ%"/"-ХХХХ руб."
             pdkon: 0, //счетчик для проверки активен ли переключатель цен на дк, логичнее было бы true/false использовать, но я уже сделал так, так что будет так
             onCat: 0, //хранение какая категория выбрана, изначально никакая. Вводятся не айди а названия, мне так удобнее
+            OpenDropDownSale: false,//активность окна выбора скидки
+            OpenDropDownTablewares: false,//активность окна выбора приборов
             cat: [ //массив для категорий
                 {
                     id:1, //айди категории
@@ -184,13 +187,14 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Соус, сыр Моццарелла, курица, бекон, помидор.",
                     num: 1,
-                    kombocheck: false,
+                    dobcheck: false,
                     salecheck: true,
                     totalprice: 399,
                     totalprice36: 569,
                     totaldkprice: 499,
                     totaldkprice36: 739,
                     CheckStopList: false,
+                    Proverka36: false,
                 },                
                 {
                     id: 6,
@@ -202,13 +206,14 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Соус, сыр Моцарелла, сыр Гауда, сыр Пармезан, сыр Фета.",
                     num: 1,
-                    kombocheck: false,
+                    dobcheck: false,
                     salecheck: false,
                     totalprice: 399,
                     totalprice36: 549,
                     totaldkprice: 499,
                     totaldkprice36: 699,
                     CheckStopList: false,
+                    Proverka36: false,
                 },
                 {
                     id: 7,
@@ -220,13 +225,14 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Маргарита+Пепперони и Ассорти+Сушибокс",
                     num: 1,
-                    kombocheck: true,
+                    dobcheck: true,
                     salecheck: true,
                     totalprice: 859,
                     totalprice36: 1139,
                     totaldkprice: 1119,
                     totaldkprice36: 1479,
                     CheckStopList: false,
+                    Proverka36: false,
                 },
                 {
                     id: 8,
@@ -511,7 +517,7 @@ class App extends React.Component {
                 {
                     idCity: 1,
                     city: "Шахты",
-                    street: "пр. Победа Революции",
+                    street: "пр. Победы Революции",
                     house: "83Б",
                     delivery: 60,
                     takeaway: 20,
@@ -613,14 +619,24 @@ class App extends React.Component {
                 
             ],
             TimeSave: "",
-            
+            address: [
+                {
+                    street: "",
+                    house: "",
+                    entrance: "",
+                    floor: "",
+                    flat: "",
+                    comment: "",
+                    PhoneNum: ""
+                }
+            ],
+            TypeOrder: "delivery"
         }
-
+        this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
+        this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
         this.PriceCheck = this.PriceCheck.bind(this)
         this.EditCat = this.EditCat.bind(this)
-        this.addOrder = this.addOrder.bind(this) 
-        this.addOrder2 = this.addOrder2.bind(this)        
-        this.EditProverka = this.EditProverka.bind(this)    
+        this.addOrder = this.addOrder.bind(this)      
         this.BPlusOrd = this.BPlusOrd.bind(this)   
         this.BMinusOrd = this.BMinusOrd.bind(this)
         this.AddDob = this.AddDob.bind(this) 
@@ -630,6 +646,10 @@ class App extends React.Component {
         this.SaveFunction = this.SaveFunction.bind(this) 
         this.SavedButtonClick = this.SavedButtonClick.bind(this) 
         this.CloseLastWindow = this.CloseLastWindow.bind(this) 
+        this.ChangeStatusSavedOrd = this.ChangeStatusSavedOrd.bind(this)  
+        this.DeleteSavedOrd = this.DeleteSavedOrd.bind(this)
+        this.DeleteSavedOrdClickButton = this.DeleteSavedOrdClickButton.bind(this)
+        this.CloseDeleteSavedOrdDropDown = this.CloseDeleteSavedOrdDropDown.bind(this)
         
 
         this.BPlusDob = this.BPlusDob.bind(this) 
@@ -686,10 +706,17 @@ class App extends React.Component {
         this.ClearTimeOneCity = this.ClearTimeOneCity.bind(this)
         this.ChangeConditionCity = this.ChangeConditionCity.bind(this)
         
+        
         this.getTime = this.getTime.bind(this)
         
-
+        this.ClickOpenDropDownSale = this.ClickOpenDropDownSale.bind(this)
+        this.CloseOpenDropDownSale = this.CloseOpenDropDownSale.bind(this)
+        this.ClickOpenDropDownTablewares = this.ClickOpenDropDownTablewares.bind(this)
+        this.CloseOpenDropDownTablewares = this.CloseOpenDropDownTablewares.bind(this)
+        
     }
+
+    
 
     render() {
         
@@ -699,6 +726,10 @@ class App extends React.Component {
     <div className='GlobalDiv' onClick={(() => {
         if(this.state.OpenListCity === true)
         this.CloseCityist()
+        if(this.state.OpenDropDownSale === true)
+        this.CloseOpenDropDownSale()
+        if(this.state.OpenDropDownTablewares === true)
+        this.CloseOpenDropDownTablewares()
     })}> 
 
         <div className='MainMenu'>
@@ -738,25 +769,26 @@ class App extends React.Component {
                 <AddOrder 
                     AlertAdd={this.AlertAdd}
                     podcat={this.state.podcat}
-                    EWN={this.EditWOKNoodles} 
+                    EditWOKNoodles={this.EditWOKNoodles} 
                     ordSWOk={this.state.orderSostWOK} 
-                    EISW={this.EditInputSostWOK} 
-                    BMSW={this.BMinusSostWOK} 
-                    BPSW={this.BPlusSostWOK} 
+                    EditInputSostWOK={this.EditInputSostWOK} 
+                    BMinusSostWOK={this.BMinusSostWOK} 
+                    BPlusSostWOK={this.BPlusSostWOK} 
                     deleteSostWOK={this.deleteSostWOK} 
                     AddSostWOK={this.AddSostWOK} 
                     position={this.state.position} 
                     DelDob={this.deleteDob} DelOrd={this.deleteOrder} 
-                    BPD={this.BPlusDob} BMD={this.BMinusDob} 
-                    EID={this.EditInputDob} 
-                    EIO={this.EditInputOrd} 
-                    BMO={this.BMinusOrd} 
-                    BPO={this.BPlusOrd} 
-                    AddD={this.AddDob}  
+                    BPlusDob={this.BPlusDob} 
+                    BMinusDob={this.BMinusDob} 
+                    EditInputDob={this.EditInputDob} 
+                    EditInputOrd={this.EditInputOrd} 
+                    BMinusOrd={this.BMinusOrd} 
+                    BPlusOrd={this.BPlusOrd} 
+                    AddDob={this.AddDob}  
                     ordDobP={this.state.orderDobPizza} 
-                    EdP={this.EditProverka} 
-                    OrdPos={el} 
-                    PDK={this.state.pdkon} 
+                    ChangeDiamPizzaOnOrder={this.ChangeDiamPizzaOnOrder}
+                    orderPosition={el} 
+                    pdkon={this.state.pdkon} 
                     key={el.idOrd} 
                 />
             ))}
@@ -786,6 +818,10 @@ class App extends React.Component {
                     SaleInpEdit0={this.SaleInpEdit0}
                     SaleInp={this.state.SaleInp}
                     Ord={this.state.orderPosition.length}
+                    ClickOpenDropDownSale={this.ClickOpenDropDownSale}
+                    ClickOpenDropDownTablewares={this.ClickOpenDropDownTablewares}
+                    OpenDropDownTablewares={this.state.OpenDropDownTablewares}
+                    OpenDropDownSale={this.state.OpenDropDownSale}
                 />
             </div>
         </div>   
@@ -795,8 +831,11 @@ class App extends React.Component {
                 <div className='CityText'>
                     Филиал:
                 </div>
-                <div className={this.state.OpenListCity === true ? "CityName OpenCity" : "CityName"}>
+                <div 
+                id={'CityName' + this.state.SavedIdOrd}
+                className={this.state.OpenListCity === true ? "CityName OpenCity" : "CityName"}>
                     <label className='CityNameText' onClick={(() => {
+                        document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
                 this.setState({
                     OpenListCity: !this.state.OpenListCity
                 })
@@ -823,28 +862,270 @@ class App extends React.Component {
                 </div>
             </div>
             <div className='TimeCity'>
-                            <div className='TimeDeliveryMain'>
+                <table className='TimeCityTable'>
+                    <tbody>
+                        <tr>
+                            <td className='TimeCityText'>
                                 Время на доставку: 
-                                <div className='TimeDelivery'>
-                                    {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.delivery }
-                                </div>
-                            </div>
-                            <div className='TimeTakeAwayMain'>
+                            </td>
+                            <td className='TimeCityVal'>
+                                {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.delivery }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className='TimeCityText'>
                                 Время на вынос: 
-                                <div className='TimeTakeAway'>
-                                    {this.state.OnCity.condition === "Вынос остановлен" ? "СТОП" : this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.takeaway}
-                                </div>
-                            </div>
-                            
+                            </td>
+                            <td className='TimeCityVal'>
+                                {this.state.OnCity.condition === "Вынос остановлен" ? "СТОП" : this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.takeaway}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>    
             </div>
-            
+            <div className='ChangerOrderTypeMainDiv'>
+                <table className='ChangerOrderTypeTable'>
+                    <tbody>
+                        <tr>
+                            <td className='ChangerOrderTypeTdText'>
+                                Тип заказа:
+                            </td>
+                            <td  className='ChangerOrderTypeTdButtons'>
+                                <button
+                                className={this.state.TypeOrder === "delivery" ? "ChangerOrderTypeTdButtonDelivery Actived" : "ChangerOrderTypeTdButtonDelivery"}
+                                onClick={(() => {
+                                    this.setState({
+                                        TypeOrder: "delivery"
+                                    })
+                                })}
+                                >Доставка</button>
+                                <button
+                                className={this.state.TypeOrder === "takeaway" ? "ChangerOrderTypeTdButtonTakeaway Actived" : "ChangerOrderTypeTdButtonTakeaway"}
+                                onClick={(() => {
+                                    this.setState({
+                                        TypeOrder: "takeaway"
+                                    })
+                                })}
+                                >Вынос</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div className='AddressDetaMainDiv'>
+                <table>
+                    <tbody>
+                    <tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText PhoneNum'>
+                                Телефон
+                            </td>
+                            <td>
+                            <input
+                                id={'AddressDetalInpPhoneNum' + this.state.SavedIdOrd}
+                                
+                                value={this.state.address[0].PhoneNum}
+                                className='AddressDetalInp PhoneNum'
+                                type='number'
+                                onClick={(() => {
+                                    document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
+                                })}
+                                onChange={((e) => {
+                                    
+                                    if(e.target.value < 100000000000 && e.target.value > -1)
+                                    {
+                                    this.state.address.map((el) => 
+                                    {
+                                        
+                                        el.PhoneNum = e.target.value
+                                        return(el)
+                                    })
+                                    }
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                    console.log(e.target.value.slice(-1))
+                                    
+                                    
+                                })}
+
+                                onBlur={(() => {
+                                    if(this.state.address[0].PhoneNum.length !== 11)
+                                    {
+                                        document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).value = ""
+                                        this.state.address.map((el) => 
+                                        {
+                                            el.PhoneNum = ""
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                    }
+                                })}
+                                />
+                            </td>
+                        </tr>
+                        {this.state.TypeOrder === "delivery" && <tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText Street'>
+                                Улица
+                            </td>
+                            <td>
+                            <input
+                                type="text"
+                                id={'AddressDetalInpStreet' + this.state.SavedIdOrd}
+                                className='AddressDetalInp Street'
+                                onClick={(() => {
+                                    document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+                                })}
+                                onBlur={((e) => {
+                                    this.state.address.map((el) => 
+                                    {
+                                        el.street = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                    
+                                })}
+                                />
+                            </td>
+                        </tr>
+                        }
+                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText House'>
+                                Дом
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    id={'AddressDetalInpHouse' + this.state.SavedIdOrd}
+                                    className='AddressDetalInp House'
+                                    onClick={(() => {
+                                        document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    })}
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                    {
+                                        el.house = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                        
+                                    })}
+                                    />
+                            </td>
+                        </tr>
+                        }
+                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText Entrance'>
+                                Подъезд
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    maxLength={3}
+                                    className='AddressDetalInp Entrance'
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                    {
+                                        el.entrance = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                        
+                                    })}
+                                    />
+                            </td>
+                        </tr>
+                        }
+                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText Floor'>
+                                Этаж
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    maxLength={2}
+                                    className='AddressDetalInp Floor'
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                    {
+                                        el.floor = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+
+                                    })}
+                                    />
+                            </td>
+                        </tr>
+                        }
+                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText Flat'>
+                                Кв
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    maxLength={5}
+                                    className='AddressDetalInp Flat'
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                    {
+                                        el.flat = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                        
+                                    })}
+                                    />
+                            </td>
+                        </tr>
+                        }
+                        <tr className='TrTableAddressDetal'>
+                            <td className='AddressDetalText Comment'>
+                                Комментарий
+                            </td>
+                            <td>
+                                <textarea
+                                    type="text"
+                                    className='AddressDetalInp Comment'
+                                    maxLength={200}
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                    {
+                                        el.comment = e.target.value
+                                        return(el)
+                                    })
+                                    this.setState({
+                                        address: [...this.state.address]
+                                    })
+                                        
+                                    })}
+                                    />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+               
+            </div>
         </div> 
     
         <div className='MainCateg'>
-            <Categories  
-                EdC={this.EditCat} 
-                cat={this.state.cat}
-            />
+            {this.state.cat.map((el) => (<Categ 
+            EditCat={this.EditCat} 
+            cat={el} 
+            key={el.id}/>))}
+            
         </div> 
 
         <div className='MainPosition'>         
@@ -852,16 +1133,21 @@ class App extends React.Component {
                 pCheck={this.PriceCheck} 
             />
             <div className='BPos'>
-                <Positions 
-                    AlertAdd={this.AlertAdd}
-                    o36sm={this.sm36ON} 
-                    onAdd2={this.addOrder2} 
-                    onAdd={this.addOrder} 
-                    OK={this.state.onCat} 
-                    PDK={this.state.pdkon} 
-                    position={this.state.position} 
-                    cat={this.state.cat}
-                />
+                <div className='ButtonPositions'>
+                {this.state.position.map((el) => (
+                    <Position
+                        ChangeDiamPizzaOnPositionMenu={this.ChangeDiamPizzaOnPositionMenu}
+                        AlertAdd={this.AlertAdd}
+                        addOrder={this.addOrder} 
+                        onCat={this.state.onCat} 
+                        OnCity={this.state.OnCity}
+                        pdkon={this.state.pdkon} 
+                        cat={this.state.cat}
+                        position={el} 
+                        key={el.id}
+                    />
+                    ))}
+                </div>
             </div>
         </div> 
         </div>
@@ -917,6 +1203,11 @@ class App extends React.Component {
 
                     <div className='SavedOrdersMainDiv'>
                         <SavedOrdersMain 
+                        DeleteSavedOrdDropDown={this.state.DeleteSavedOrdDropDown}
+                        DeleteSavedOrd={this.DeleteSavedOrd}
+                        DeleteSavedOrdClickButton={this.DeleteSavedOrdClickButton}
+                        CloseDeleteSavedOrdDropDown={this.CloseDeleteSavedOrdDropDown}
+                        ChangeStatusSavedOrd={this.ChangeStatusSavedOrd}
                         Saved = {this.state.Saved}
                         />
                     </div>
@@ -1041,18 +1332,6 @@ class App extends React.Component {
         this.TotalSumSaleFunction()
         this.SumSoySause()
     }          
-            
-        
-    async addOrder2(pos) {  //добавление пиццы 36см в заказ          
-        const idOrd = this.state.foridOrd      
-        this.setState({ foridOrd: parseInt(this.state.foridOrd) + 1 })        
-        const Proverka36 = true;     
-        this.setState({ orderPosition: [...this.state.orderPosition, {idOrd, Proverka36, ...pos}]})
-        await this.setState
-        this.TotalSumFunction()
-        this.TotalSumSaleFunction()
-        this.SumSoySause()
-    }
 
     async deleteOrder(id) { //удаление позиции из заказа
         if(this.state.orderPosition.length === 1)
@@ -1092,14 +1371,31 @@ class App extends React.Component {
         this.SumSoySause()
         
     }
-            
-    async EditProverka (id) { //изменение диаметра пиццы
-        this.state.orderPosition.map((a) => {      
-            if (a.idOrd === id)             
-                a.Proverka36 = !a.Proverka36             
-                this.setState({orderPosition: [...this.state.orderPosition]})                 
-                return(a)        
-        })  
+
+    async ChangeDiamPizzaOnPositionMenu(val, id){
+        this.state.position.map((el) => {
+            if(el.id === id)
+            {
+                el.Proverka36 = val
+            }
+            this.setState({
+                position: [...this.state.position]
+            })
+            return(el)
+        })
+    }
+
+    async ChangeDiamPizzaOnOrder(val, id){
+        this.state.orderPosition.map((el) => {
+            if(el.idOrd === id)
+            {
+                el.Proverka36 = val
+            }
+            this.setState({
+                orderPosition: [...this.state.orderPosition]
+            })
+            return(el)
+        })
         await this.setState
         this.TotalSumFunction()
         await this.TotalSumFunction()
@@ -1107,7 +1403,8 @@ class App extends React.Component {
         await this.SaleInpEdit2()
         this.TotalSumSaleFunction()
     }
-
+            
+    
     async BPlusOrd(id) {//кнопка "+" в заказе прикрепленная к позиции, для добавления кол-ва
         this.state.orderPosition.map((a) => {
             if(a.idOrd === id)
@@ -1132,7 +1429,7 @@ class App extends React.Component {
     }
 
     async BMinusOrd(id) {//кнопка "-" в заказе прикрепленная к позиции, для уменьшения кол-ва
-this.state.orderPosition.map((a) => {
+        this.state.orderPosition.map((a) => {
             if(a.idOrd === id)
             {
                 a.num = parseInt(a.num) - 1
@@ -1443,11 +1740,23 @@ this.state.orderPosition.map((a) => {
             totalSoy: 0
         })
         this.setState({
-            OnCity: {idCity: 0, city: "— Выберите филиал —", street:"", house: "", delivery:"--", takeaway: "--", condition: "Активен"} 
+            OnCity: {
+                idCity: 0, 
+                city: "— Выберите филиал —", 
+                street:"", 
+                house: "", 
+                delivery:"--", 
+                takeaway: "--", 
+                condition: "Активен"
+            } 
+        })
+        this.setState({
+            pdkon: 0
         })
         
         this.state.position.map((el) => {
             el.CheckStopList = false
+            el.Proverka36 = false
             return(el)
         })
         this.setState({
@@ -1467,6 +1776,29 @@ this.state.orderPosition.map((a) => {
         this.setState({
             podcat: [...this.state.podcat]
         })
+        this.setState({
+            address: [
+            {
+            street: "",
+            house: "",
+            entrance: "",
+            floor: "",
+            flat: "",
+            comment: "",
+            PhoneNum: ""
+            }
+            ]
+        })
+        this.setState({
+            TypeOrder: "delivery"
+        })
+        document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
+        if(this.state.TypeOrder === "delivery")
+        {
+        document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+        document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+        }
+        document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
         await this.setState 
         this.TotalSumFunction() //пересчет итоговой суммы
@@ -2023,17 +2355,34 @@ this.state.orderPosition.map((a) => {
         {
             for(var j = 0; j < this.state.position.length; j++)
             {
-                StopPosArray.push({name: this.state.position[j].name, id: this.state.position[j].id, categ: this.state.position[j].categ, podcat: this.state.position[j].podcat, idCity: this.state.City[i].idCity, CheckStopList: false}) 
+                StopPosArray.push({
+                    name: this.state.position[j].name, 
+                    id: this.state.position[j].id, 
+                    categ: this.state.position[j].categ, 
+                    podcat: this.state.position[j].podcat, 
+                    idCity: this.state.City[i].idCity, 
+                    CheckStopList: false}) 
                 
             }
             for(var j1 = 0; j1 < this.state.cat.length; j1++)
             {
-                StopCatArray.push({name: this.state.cat[j1].name, id: this.state.cat[j1].id, idCity: this.state.City[i].idCity, CheckStopList: false, CheckIndeterminate: false}) 
+                StopCatArray.push({
+                    name: this.state.cat[j1].name, 
+                    id: this.state.cat[j1].id, 
+                    idCity: this.state.City[i].idCity, 
+                    CheckStopList: false, 
+                    CheckIndeterminate: false}) 
                 
             }
             for(var j2 = 0; j2 < this.state.podcat.length; j2++)
             {
-                StopPodCatArray.push({name: this.state.podcat[j2].name, id: this.state.podcat[j2].id, categ: this.state.podcat[j2].categ, idCity: this.state.City[i].idCity, CheckStopList: false, CheckIndeterminate: false}) 
+                StopPodCatArray.push({
+                    name: this.state.podcat[j2].name, 
+                    id: this.state.podcat[j2].id, 
+                    categ: this.state.podcat[j2].categ, 
+                    idCity: this.state.City[i].idCity, 
+                    CheckStopList: false, 
+                    CheckIndeterminate: false}) 
                 
             }
         }
@@ -2413,40 +2762,67 @@ this.state.orderPosition.map((a) => {
     async SavedButtonClick() {
         if(this.state.OnCity.idCity !== 0)
         {
-            this.setState({
-                LastWindowSaved: true
-        })
-        this.state.StopList.map((el) => {
-            if(el.idCity === this.state.OnCity.idCity)
+            if(this.state.TypeOrder === "takeaway" && this.state.address[0].PhoneNum.length !== 11 )
             {
-                this.state.orderPosition.map((a) => 
-                {
-                    if(a.id === el.id)
-                    {
-                        a.CheckStopList = el.CheckStopList
-                        this.setState({
-                            orderPosition: [...this.state.orderPosition]
-                        })
-                        
-                    }
-                    return(a)
-                })
+                document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
+                this.AlertAdd("NotFilled")
             }
-            return(el)})
-            this.getTime()
-            await this.setState
-            this.state.orderPosition.map((el) => {
-                if(el.CheckStopList === true)
+            else
+            {
+                if(this.state.TypeOrder === "delivery" && (this.state.address[0].PhoneNum.length !== 11 || this.state.address[0].street.length < 1 || this.state.address[0].house.length < 1 ))
                 {
-                    this.AlertAdd("StopOnSave")
+                    this.AlertAdd("NotFilled")
+                    if(this.state.address[0].PhoneNum.length !== 11)
+                    {
+                        document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
+                    }
+                    if(this.state.address[0].street.length < 1)
+                    {
+                        document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.add('Allert')
+                    }
+                    if(this.state.address[0].house.length < 1 )
+                    {
+                        document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.add('Allert')
+                    }
                 }
-                return(el)
-            })
-                
+                else
+                {
+                this.setState({
+                    LastWindowSaved: true
+                })
+                this.state.StopList.map((el) => {
+                    if(el.idCity === this.state.OnCity.idCity)
+                    {
+                        this.state.orderPosition.map((a) => 
+                        {
+                            if(a.id === el.id)
+                            {
+                                a.CheckStopList = el.CheckStopList
+                                this.setState({
+                                    orderPosition: [...this.state.orderPosition]
+                                })
+                                
+                            }
+                            return(a)
+                        })
+                    }
+                    return(el)})
+                    this.getTime()
+                    await this.setState
+                    this.state.orderPosition.map((el) => {
+                        if(el.CheckStopList === true)
+                        {
+                            this.AlertAdd("StopOnSave")
+                        }
+                        return(el)
+                    })
+            }
+        }
         }
         else
         {
             this.AlertAdd("UnderCity")
+            document.getElementById('CityName' + this.state.SavedIdOrd).classList.add('Allert')
         }
     }
 
@@ -2457,7 +2833,21 @@ this.state.orderPosition.map((a) => {
     }
 
     async SaveFunction() {
-        
+        this.state.orderSostWOK.map((el) => {
+            if(el.podcat === "Соус В Вок")
+            {
+                this.state.orderPosition.map((a) => {
+                    if(el.idOrd === a.idOrd)
+                    {
+                        el.num = a.num
+                        this.setState({
+                            orderSostWOK: [...this.state.orderSostWOK]
+                        })
+                    }
+                })
+            }
+        })
+        await this.setState
         this.setState({
             LastWindowSaved: false
         })
@@ -2470,6 +2860,7 @@ this.state.orderPosition.map((a) => {
         var orderSostWOKSaved = []
         var orderCity = []
         var orderDetal = []
+        var orderAddress = []
         this.state.orderPosition.map((el) => {
             
             orderPosSaved.push({id: el.id + " " + SavedIdOrd, 
@@ -2487,6 +2878,7 @@ this.state.orderPosition.map((a) => {
             CheckStopList: el.CheckStopList,
             soysause: el.soysause,
             sost: el.sost,
+            Proverka36: el.Proverka36
          })
          return(el)
         })
@@ -2519,6 +2911,19 @@ this.state.orderPosition.map((a) => {
                 podcat: el.podcat,
                 categ: el.categ,
                 CheckStopList: el.CheckStopList,
+                
+            })
+            return(el)
+        })
+        this.state.address.map((el) => {
+            orderAddress.push({
+                street: el.street,
+                house: el.house,
+                flat: el.flat,
+                florr: el.floor,
+                entrance: el.entrance,
+                comment: el.comment,
+                PhoneNum: el.PhoneNum
             })
             return(el)
         })
@@ -2537,10 +2942,12 @@ this.state.orderPosition.map((a) => {
             Sale: this.state.Sale,
             SaleInp: this.state.SaleInp,
             TotalSale: this.state.TotalSale,
-            TimeSave: this.state.TimeSave
+            TimeSave: this.state.TimeSave,
+            Status: "New",
+            TypeOrder: this.state.TypeOrder
         })
         this.setState({
-            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderDobPizzaSaved, orderSostWOKSaved}]
+            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderDobPizzaSaved, orderSostWOKSaved, orderAddress}]
         })
         await this.setState
         console.log(this.state.Saved)
@@ -2555,12 +2962,67 @@ this.state.orderPosition.map((a) => {
     getTime(){
         var today = new Date(),
 
-        TimeSave = today.getHours() + ':' + today.getMinutes();
+        TimeSave = String(today.getHours()).padStart(2, "0") + ':' + String(today.getMinutes()).padStart(2, "0");
         this.setState({
             TimeSave: TimeSave
         })
     }
+
+    ChangeStatusSavedOrd(val, SavedIdOrd){
+        this.state.Saved.map((el) => {
+            if(el.SavedIdOrd === SavedIdOrd)
+            {
+                el.orderDetal[0].Status = val
+                this.setState({
+                    Saved:  [...this.state.Saved]
+                })
+            }
+            return(el)
+        })
+    }
+
+    DeleteSavedOrdClickButton(){
+        this.setState({
+            DeleteSavedOrdDropDown: true
+        })
+    }
+
+    CloseDeleteSavedOrdDropDown(){
+        this.setState({
+            DeleteSavedOrdDropDown: false
+        })
+    }
+
+    DeleteSavedOrd(id){
+        this.setState({
+            Saved: this.state.Saved.filter((el) => el.SavedIdOrd !== id)
+        })
+        this.CloseDeleteSavedOrdDropDown()
+    }
     
     
+    ClickOpenDropDownSale(){
+        this.setState({
+            OpenDropDownSale: true
+        })
+    }
+
+    CloseOpenDropDownSale(){
+        this.setState({
+            OpenDropDownSale: false
+        })
+    }
+
+    ClickOpenDropDownTablewares(){
+        this.setState({
+            OpenDropDownTablewares: true
+        })
+    }
+
+    CloseOpenDropDownTablewares(){
+        this.setState({
+            OpenDropDownTablewares: false
+        })
+    }
 }
 export default App
