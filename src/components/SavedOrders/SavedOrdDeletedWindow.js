@@ -14,11 +14,12 @@ class SavedOrdDeletedWindow extends React.Component {
                 })}>
                     Отмена
                 </button>
-
+                
                 <button 
                 className='SavedOrdDeletedWindowButtonDelete'
                 onClick={(() => {
-                    this.props.DeleteSavedOrd(this.props.Saved.SavedIdOrd)
+                    this.props.DeleteSavedOrd(this.props.SavedIdOrd)
+                    this.props.CloseDeleteSavedOrdDropDown()
                 })}>Удалить</button>
             </div>
                

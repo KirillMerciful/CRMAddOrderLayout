@@ -10,10 +10,17 @@ class PositionsTitle extends React.Component {
         <table className="op2">
                   <tbody>                        
                       <tr>
-                      <td className="titleText">Цены ЯЕ:</td>                  
+                      <td className="titleText"
+                      onClick={(() => {
+                        this.props.PriceCheck()
+                    })}
+                      >Цены ЯЕ:</td>                  
                       <td className="op1"><label className="switch">
-                      <input type="checkbox" onChange={(() => {
-                          this.props.pCheck()
+                      <input 
+                      checked={this.props.pdkon === 1 ? true : false}
+                      type="checkbox" 
+                      onChange={(() => {
+                          this.props.PriceCheck()
                       })}/>
                       <span className="slider round"></span>
                       </label>

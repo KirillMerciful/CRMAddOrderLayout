@@ -43,35 +43,33 @@
 }
 
 body {
-    background-color: var(--backgrounBody-color, rgb(193, 222, 255));
-    overflow  : hidden;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-    
+  background-color: var(--backgrounBody-color, rgb(193, 222, 255));
+  overflow: hidden;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;    
 }
+
 .GlobalDiv{
   display: flex;
   width: 100%;
 }
 
 .MainDiv {
-    margin-left: 50px;
-    font-family: "Roboto";
-    font-size: 12pt;
-    display: flex;
-    width: 100%;    
-    gap: 10px;
-    
+  margin-left: 50px;
+  font-family: "Roboto";
+  font-size: 12pt;
+  display: flex;
+  width: 100%;    
+  gap: 10px;  
 }
 
 .MainDivStopList {
-    margin-left: 50px;
-    font-family: "Roboto";
-    font-size: 12pt;
-    display: flex;
-    width: 98vw;    
-    height: 100vh;
-    gap: 10px;
-
+  margin-left: 50px;
+  font-family: "Roboto";
+  font-size: 12pt;
+  display: flex;
+  width: 98vw;    
+  height: 100vh;
+  gap: 10px;
 }
 
 
@@ -86,6 +84,7 @@ body {
   height: 98vh;
   gap: 10px;
   background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
   
 }
 
@@ -95,34 +94,33 @@ body {
   height: 100%;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
-  
 }
 
 .MainOrder {
-    background-color: var(--mainB-color, rgb(243, 247, 250));
-    width: 30%;
-    min-height: 100vh;
-    max-height: 100vh;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;    
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  width: 30%;
+  min-height: 100vh;
+  max-height: 100vh;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;    
 }
 
 .OrderOrder{
-    color: var(--Text2-Color, black);
-    min-height: 85vh;
-    max-height: 85vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  color: var(--Text2-Color, black);
+  min-height: 85vh;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .OrderTit {
-    font-size: 10pt;
-    color: var(--mainText-color, rgb(243, 247, 250));
-    background-color: var(--LightA-color, rgb(3, 168, 245));
-    width: 100%;
-    height: 30px;
-    border-bottom: solid 2px rgb(92, 92, 92);
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  font-size: 10pt;
+  color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  width: 100%;
+  height: 30px;
+  border-bottom: solid 2px rgb(92, 92, 92);
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .OrderTitTable{
@@ -130,45 +128,45 @@ body {
 }
 
 .OrderTitName{
-    width: 50%;
+  width: 50%;
 }
 
 .OrderTitEditNum {
-    width: 5%;
+  width: 5%;
 }
 
 .OrderTitNum {
-    width: 15%;
+  width: 15%;
 }
 
 .OrderTitPrice {
-    width: 15%;
+  width: 15%;
 }
 
 .OrderTitSum {
-    width: 30%;
+  width: 30%;
 }
 
   
 .MainDetal {
-    background-color: var(--mainB-color, rgb(243, 247, 250));
-    color: var(--Text2-Color, black);
-    width: 20%;
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  color: var(--Text2-Color, black);
+  width: 20%;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 
 .MainCateg {
-    background-color:var(--mainB-color, rgb(243, 247, 250));
-    width: 10%;
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  background-color:var(--mainB-color, rgb(243, 247, 250));
+  width: 10%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .CatButton.active {
@@ -177,96 +175,95 @@ body {
 }
 
 .CatButton:hover{
-    background-color: var(--LightA-color, rgb(3, 168, 245));
-    color: var(--mainText-color, rgb(243, 247, 250));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
 }
 
 .CatButton {    
-    cursor: pointer;
-    background-color: var(--mainC-color, rgb(224, 231, 235));
-    color: var(--Text2-Color, black);
-    margin-left: 5%;
-    margin-top: 8px;
-    width: 90%;
-    height: 50px;
-    border-radius: 10px;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  cursor: pointer;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  margin-left: 5%;
+  margin-top: 8px;
+  width: 90%;
+  height: 50px;
+  border-radius: 10px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .MainPosition {
-    background-color: var(--mainB-color, rgb(243, 247, 250));
-    width: 40%;
-    height: 100vh;
-    transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  width: 40%;
+  height: 100vh;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 24px;
-  }
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
   
   
   
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--slayder-color, #ccc);
-    transition: var(--TimeChangeSlider, 0.4s);
-  }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--slayder-color, #ccc);
+  transition: var(--TimeChangeSlider, 0.4s);
+}
   
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 2px;
-    bottom: 3px;
-    background-color: var(--mainB-color, rgb(243, 247, 250));
-    transition: var(--TimeChangeSlider, 0.4s);
-  }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 3px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  transition: var(--TimeChangeSlider, 0.4s);
+}
   
-  input:checked + .slider {
-    background-color: var(--LightA-color, rgb(3, 168, 245));
-  }
-  
-  
-  input:checked + .slider:before {  
-    transform: translateX(18px);
-  }
+input:checked + .slider {
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+}
   
   
-  .slider.round {
-    border-radius: 22px;
-  }
+input:checked + .slider:before {  
+  transform: translateX(18px);
+}
   
-  .slider.round:before {
-    border-radius: 50%;
-  }
   
-  .PosTitle {
-    font-family: "Roboto";
-    border-bottom: 1px solid grey;
-  }
+.slider.round {
+  border-radius: 22px;
+}
+  
+.slider.round:before {
+  border-radius: 50%;
+}
+  
+.PosTitle {
+  font-family: "Roboto";
+  border-bottom: 1px solid grey;
+}
 
-  .BPos {
-    
-    font-family: "Roboto";
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    
-  }
+.BPos {
+  font-family: "Roboto";
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
-  .titleText{
-    color: var(--Text2-Color, black);
-    transition: color var(--TimeChange1, 0.2s) ease-in-out;
-  }
+.titleText{
+  cursor: pointer;
+  color: var(--Text2-Color, black);
+  transition: color var(--TimeChange1, 0.2s) ease-in-out;
+}
 
 .PosButtonsclass {
   cursor: pointer;
@@ -422,7 +419,7 @@ body {
   background-color: var(--LightA-color, rgb(3, 168, 245));
 }
 
-.PodCatButtonWOK.unactive {
+.ButtonAddition.unactive {
   background-color: var(--slayder-color, #ccc);
 }
 
@@ -432,7 +429,7 @@ body {
 
 .unactive:hover{
   background-color: var(--slayder-color, #ccc);
-}
+} 
 
 .ButtonPName {
   width: 100%;
@@ -461,25 +458,29 @@ body {
 }
 
 .OrdPosName{
-    width: 50%;
+  width: 50%;
+}
+
+.OrdPosName.Stoped{
+  color: red;
 }
 
 .OrdPosEdit {
-    width: 5%;
+  width: 5%;
 }
 
 .OrdPosNum {
-    width: 5%;
+  width: 5%;
 }
 
 .OrdPosPrice {
-    width: 15%;
-    text-align: end;
+  width: 15%;
+  text-align: end;
 }
 
 .OrdPosSum {
-    width: 30%;
-    text-align: end;
+  width: 30%;
+  text-align: end;
 }
 
 .OrdPosInp {
@@ -520,17 +521,14 @@ body {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .ButtonPositions {
   display: flex;
   flex-wrap: wrap;
 }
-
-
-
 
 .editdiam {
   position: relative;
@@ -539,8 +537,6 @@ input::-webkit-inner-spin-button {
   width: 38px; 
   height: 20px;
 }
-
-
 
 .editdiamslide {
   z-index: 1;
@@ -575,7 +571,6 @@ input:checked + .editdiamslide:before {
   transform: translateX(15px);
 }
 
-
 .editdiamslide.round {
   border-radius: 22px;
 }
@@ -584,7 +579,30 @@ input:checked + .editdiamslide:before {
   border-radius: 50%;
 }
 
-.OpenDobPizza {
+.OrdAdditionsTB {
+  font-size: 9pt;   
+}
+
+.AdditionMainDiv{
+  left: 7%;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+  margin-top: -170px;
+  max-width: 350px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--Text2-Color, black);
+  position: absolute;
+  box-shadow: 0px 0px 3px 0px black;
+  z-index: 2;
+  padding: 5px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.AdditionMainDiv.Downed{
+  margin-top: 0px;
+}
+
+.OpenAdditions {
   margin-left: 10px;
   color: var(--mainB-color, rgb(243, 247, 250));
   border: none;
@@ -596,28 +614,36 @@ input:checked + .editdiamslide:before {
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
-.OpenDobPizza:hover {
+.OpenAdditions:hover {
   color: var(--mainC-color, rgb(224, 231, 235));
   background-color: var(--mainA-color, rgb(3, 158, 245));
 }
 
+.ButtonsAdditionMain{
+  display:flex;
+  flex-wrap: wrap;
+}
 
-.DobPizzaMain {
-  position: relative;
-  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
-  border: solid 1px gray;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 8pt;
-  max-width: 100%;
+.ButtonAddition {
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  border-radius: 10px;
+  font-size: 7pt;
+  width: 80px;
+  height: 35px;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
+
 
 .OrdSost{
   position: relative;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
   border: solid 1px gray;
-  color: var(--ColorSostaAndSoy, #7f7f7f);
+  color: var(--Text2-Color, black);
   border-radius: 5px;
   padding: 5px;
   font-size: 8pt;
@@ -625,11 +651,7 @@ input:checked + .editdiamslide:before {
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
-.PositionsWOKDob{
-  margin-bottom: 10px;
-  margin-top: 5px;
-  display: flex;
-}
+
 
 .PodCatButtons{
   margin-left: 2.5px;
@@ -652,78 +674,9 @@ input:checked + .editdiamslide:before {
   background-color: var(--slayder-color, #ccc);
 }
 
-.DobPizza {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.OrdDobTB {
-  font-size: 9pt;
-  width: 100%;
-}
-
-
-.OrdDobName{
-  width: 50%;
-}
-
-.OrdDobEdit {
-  width: 5%;
-}
-
-.OrdDobNum {
-  width: 5%;
-}
-
-.OrdDobPrice {
-  width: 15%;
-  text-align: end;
-}
-
-.OrdDobSum {
-  width: 30%;
-  text-align: end;
-}
-
-.OrdDobInp {
-width: 60%;
-color: var(--Text2-Color, black);
-background-color: var(--mainB-color, rgb(243, 247, 250));
-border: solid 1px var(--LightA-color, rgb(3, 168, 245));
-outline: none;
-transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out, outline var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OrdDobButtonEditPlus {
-color: var(--mainB-color, rgb(243, 247, 250));
-border: none;
-background-color: var(--LightA-color, rgb(3, 168, 245));
-font-family: "Roboto";
-text-align: center;
-margin-top: 2px;
-width: 70%;
-height: 100%;
-font-size: 9pt;
-transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OrdDobButtonEditMinus {
-color: var(--mainB-color, rgb(243, 247, 250));
-border: none;
-background-color: var(--LightA-color, rgb(3, 168, 245));
-font-family: "Roboto";
-text-align: center;
-margin-top: 2px;
-width: 70%;
-height: 100%;
-font-size: 9pt;
-transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
 
 .SwitchPos {
-  display: flex;
-
-  
+  display: flex;  
 }
 
 .switchPosLabel {
@@ -733,117 +686,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   display: inline-block;
   width: 40px;
   height: 24px;
-}
-
-
-.DobWOKMain {
-  position: relative;
-  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
-  border: solid 1px black;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 8pt;
-  max-width: 100%;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OpenDobWOK {
-  margin-left: 10px;
-  color: var(--mainB-color, rgb(243, 247, 250));
-  border: none;
-  background-color: var(--LightA-color, rgb(3, 168, 245));
-  font-family: "Roboto";
-  text-align: center;
-  margin-top: 2px;
-  font-size: 9pt;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OpenDobWOK:hover {
-  color: var(--mainC-color, rgb(224, 231, 235));
-  background-color: var(--mainA-color, rgb(3, 158, 245));
-}
-
-.DobavkiWokButtons {
-  display: flex;
-}
-
-.DobavkiWOKTitle
-{
-  
-  font-family: "Roboto";
-  font-size: 9pt;
-}
-
-.PodCatButtonWOK {
-  background-color: var(--mainC-color, rgb(224, 231, 235));
-  color: var(--Text2-Color, black);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 2.5px;
-  margin-right: 2.5px;
-  border-radius: 10px;
-  font-size: 7pt;
-  width: 80px;
-  height: 35px;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OrdSostWOKName{
-  width: 50%;
-}
-
-.OrdSostWOKEdit {
-  width: 5%;
-}
-
-.OrdSostWOKNum {
-  width: 5%;
-}
-
-.OrdSostWOKPrice {
-  width: 15%;
-  text-align: end;
-}
-
-.OrdSostWOKSum {
-  width: 30%;
-  text-align: end;
-}
-
-.OrdSostWOKInp {
-width: 60%;
-color: var(--Text2-Color, black);
-background-color: var(--mainB-color, rgb(243, 247, 250));
-border: solid 1px var(--LightA-color, rgb(3, 168, 245));
-outline: none;
-transition: border var(--TimeChange1, 0.2s), background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out, outline var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OrdSostWOKButtonEditPlus {
-color: var(--mainB-color, rgb(243, 247, 250));
-border: none;
-background-color: var(--LightA-color, rgb(3, 168, 245));
-font-family: "Roboto";
-text-align: center;
-margin-top: 2px;
-width: 70%;
-height: 100%;
-font-size: 9pt;
-transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
-.OrddSostWOKButtonEditMinus {
-color: var(--mainB-color, rgb(243, 247, 250));
-border: none;
-background-color: var(--LightA-color, rgb(3, 168, 245));
-font-family: "Roboto";
-text-align: center;
-margin-top: 2px;
-width: 70%;
-height: 100%;
-font-size: 9pt;
-transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .OrdDownPanel{
@@ -872,7 +714,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 }
 
 .DownPanelButtonLeftSale{
-
   margin-left: 10px;
   width: 50px;
   height: 30px;
@@ -960,7 +801,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
-
 .TotalSumOrderDownPanel {
   color: var(--Text2-Color, black);
   display: flex;
@@ -974,8 +814,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 
 .TablewaresButton:hover{
   color: var(--mainText-color, rgb(243, 247, 250)); 
-  background-color: var(--LightA-color, rgb(3, 168, 245));
-  
+  background-color: var(--LightA-color, rgb(3, 168, 245));  
 }
 
 .TablewaresButton{
@@ -1045,7 +884,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   background-color: var(--LightA-color, rgb(3, 158, 245));
 }
 
-
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
   width: 0.7em;
@@ -1070,15 +908,10 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   height: 0;
 }
 
-
 ::-webkit-scrollbar-button:vertical:end {/*Нижняя кнопка*/
   width: 0;
   height: 0;
 }
-
-
-
-
 
 .OrdTablewaresTB {
   margin-top: 10px;
@@ -1089,7 +922,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .OrdTablewaresName{
   width: 33em;
 }
-
 
 .OrdTablewaresNum {
   width: 10%;
@@ -1173,10 +1005,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   background-color: var(--mainA-color, rgb(3, 158, 245));
 }
 
-
-
-
-
 .popup-arrow{
   color: rgb(205, 216, 223);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -1243,7 +1071,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .ContentNewOrderMenu:hover{
   background-color: rgb(17, 17, 17);
 }
-
 
 .TextNewOrderMenu {
   color: rgb(119, 119, 119);
@@ -1317,8 +1144,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .StopListCatName{
   font-size: 12pt;
   width: 100%;
-  border-bottom: 1px dashed gray;
-  
+  border-bottom: 1px dashed gray;  
   color: var(--Text2-Color, black);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -1363,6 +1189,11 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.StopListPositionNameText.Stoped{
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
 .StopListPositionNameText:hover{
   color: var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
@@ -1371,7 +1202,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .CheckBoxStopPosition{
   cursor: pointer;
 }
-
 
 .IconSun{
   margin-top: 10px;
@@ -1604,7 +1434,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
-.StopListOnCityUpdate.OpenStop{
+.StopListOnCityUpdate.OpenStop{  
   max-height: 300px;
   box-shadow: 0px 0px 3px 0px black;
 }
@@ -1654,7 +1484,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   align-items: center;
   font-size: 11pt;
 }
-
 
 .CityNameIconArrow{
   margin-right: 4px;
@@ -1720,7 +1549,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .ChangerOrderTypeTdButtonDelivery:hover{
   background-color: var(--SavedOrdDeletedWindowButtonCancelColorHover, #cbd2d6);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
-
 }
 
 .ChangerOrderTypeTdButtonDelivery.Actived{
@@ -1744,7 +1572,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .ChangerOrderTypeTdButtonTakeaway:hover{
   background-color: var(--SavedOrdDeletedWindowButtonCancelColorHover, #cbd2d6);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
-
 }
 
 .ChangerOrderTypeTdButtonTakeaway.Actived{
@@ -1752,11 +1579,16 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   background-color: var(--LightA-color, rgb(3, 168, 245));
 }
 
-
-.AddressDetaMainDiv{
+.AddressDetalMainDiv{
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.AddressDetalOb{
+  min-height: 31%;
+  max-height: 31%;
+  border-bottom: 1px dashed gray;
 }
 
 .TrTableAddressDetal{
@@ -1773,7 +1605,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   background-color: var(--mainB-color, rgb(243, 247, 250));
   border: solid 1px var(--LightA-color, rgb(3, 168, 245));
   outline: none;
-  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .AddressDetalInp:focus{
@@ -1784,7 +1616,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .AddressDetalInp.Allert{
   border: 1px solid var(--SavedOrdDeletedWindowButtonDeleteColorHover, #ff000073);
 }
-
 
 .AddressDetalInp.Entrance{
   width: 30px;
@@ -1802,10 +1633,9 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   margin-top: 5px;
   max-width: 170px;
   min-width: 170px;
-  min-height: 50px;
-  max-height: 100px;
+  min-height: 15px;
+  max-height: 100px;  
 }
-
 
 .TimeDeliveryStopListMain{
   cursor: pointer;
@@ -1822,7 +1652,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
-
 
 .TimeDeliveryStopList{
   margin-left: 3px;
@@ -1975,7 +1804,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   box-shadow: 0px 0px 3px 0px black;
 }
 
-
 .ConditionStopListCity{
   padding: 3px;
   color: var(--Text2-Color, black);
@@ -2022,6 +1850,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 }
 
 .InputStopListCityDiv{
+  width: 100%;
   display: flex;
   align-items: center;
 }
@@ -2030,6 +1859,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   cursor: pointer;
   position: relative;
   right: 20px;
+  top: 2.5px;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -2045,7 +1875,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   padding-left: 10px;
   width: 100%;
 }
-
 
 .ThCityName{
   width: 15%;
@@ -2082,6 +1911,17 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   text-align: start;
 }
 
+.TdCityStopList{
+  display: flex;
+  align-items: center;
+  width: 40%;
+  text-align: start;
+}
+
+.ClickedInputStopListCityDiv{
+  width: 330px;
+}
+
 .SavedOrdDiv{
   width: 100%;
   height: 100%;
@@ -2094,7 +1934,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;     
 }
-
 
 .LastWindowMainDiv{
   z-index: 1000;
@@ -2133,7 +1972,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   align-self: end;
   justify-content: space-between;
 }
-
 
 .LastWindowButtonCancel{
   cursor: pointer;
@@ -2202,7 +2040,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   padding: 5px;
   box-shadow: 0px 0px 2px 0px black;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
-
 }
 
 .SavedOrderBody{
@@ -2298,6 +2135,7 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   width: 70px;
   height: auto;
   border-right: 1px solid black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SavedOrdDivStatus.New{
@@ -2349,7 +2187,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SavedOrdStatusIcon{
@@ -2361,7 +2198,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
   padding-top: 5px;
   text-align: center;
   font-size: 8pt;
-  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ContainerStatusOrdMainDiv{
@@ -2461,7 +2297,6 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .ContainerStatusIcon.NotProcessing{
   transform: rotate(90deg);
 }
-
 
 .SavedOrderAddress{
   font-size: 10pt;
@@ -2569,4 +2404,13 @@ transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--T
 .SavedOrdDeletedWindowButtonDelete:hover{
   background-color: var(--SavedOrdDeletedWindowButtonDeleteColorHover, #ff000073);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CloserDropDown{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1000000px;
+  height: 100000px;
+  z-index: 1001;
 }

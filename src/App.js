@@ -27,10 +27,10 @@ class App extends React.Component {
             ActiveComponent: 0,//выбранный активный компонент
             SSumWindowActive: false,//активность окна для ввода скидки суммой
             LastWindowSaved: false, //активность окна для сохранения заказа
-            DeleteSavedOrdDropDown: false, //активность окна для удаления заказа
             totalSoy: 0, //счетчик соевых
             foridSost: 1, //счетчик для присваивания айди добавкам в ВОК
             foridDob: 1, //счетчик для присваивания айди добавкам в пиццу
+            foridAddition: 1,//счетчки добавок
             forIdAlert: 1,
             foridOrd: 1, //счетчик для присваивания айди позициям в заказе
             SavedIdOrd: 1,//счетчик для присваивания айди сохраненным заказам
@@ -43,12 +43,15 @@ class App extends React.Component {
             onCat: 0, //хранение какая категория выбрана, изначально никакая. Вводятся не айди а названия, мне так удобнее
             OpenDropDownSale: false,//активность окна выбора скидки
             OpenDropDownTablewares: false,//активность окна выбора приборов
+            
             cat: [ //массив для категорий
                 {
                     id:1, //айди категории
                     name: "ВОК", //название категории
+                    categories: "Добавка В ВОК",
                     CheckStopList: false,
-                    CheckIndeterminate: false
+                    CheckIndeterminate: false,
+                    ThisAddition: true
                 },
                 {
                     id: 2,
@@ -87,40 +90,37 @@ class App extends React.Component {
                     CheckIndeterminate: false
                 },
                 {
-                    id: 8,
-                    name: "Добавка К Пицце",
-                    CheckStopList: false,
-                    CheckIndeterminate: false
-                },
-                {
                     id: 9,
-                    name: "Добавка В Вок",
-                    CheckStopList: false,
-                    CheckIndeterminate: false
-                }
-            ],
-            podcat: [//массив подкатегорий
-                {
-                    id: 1,
                     name: "Мясо В Вок",
+                    categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
-                    categ: "Добавка В Вок",
+                    ThisAddition: true
                 },
                 {
-                    id: 2,
+                    id: 10,
                     name: "Доп В Вок",
+                    categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
-                    categ: "Добавка В Вок",
+                    ThisAddition: true
                 },
                 {
-                    id: 3,
+                    id: 11,
                     name: "Соус В Вок",
+                    categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
-                    categ: "Добавка В Вок",
-                }
+                    ThisAddition: true
+                },
+                {
+                    id: 12,
+                    name: "Добавка К Пицце",
+                    categories: "Добавка В Пицца",
+                    CheckStopList: false,
+                    CheckIndeterminate: false,
+                    ThisAddition: true
+                },
             ],
             position: [ //массив позиций
                 {
@@ -187,7 +187,7 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Соус, сыр Моццарелла, курица, бекон, помидор.",
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: true,
                     totalprice: 399,
                     totalprice36: 569,
@@ -206,7 +206,7 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Соус, сыр Моцарелла, сыр Гауда, сыр Пармезан, сыр Фета.",
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: false,
                     totalprice: 399,
                     totalprice36: 549,
@@ -225,7 +225,6 @@ class App extends React.Component {
                     categ: "Пицца",
                     sost: "Состав: Маргарита+Пепперони и Ассорти+Сушибокс",
                     num: 1,
-                    dobcheck: true,
                     salecheck: true,
                     totalprice: 859,
                     totalprice36: 1139,
@@ -241,7 +240,7 @@ class App extends React.Component {
                     dkprice: 149,
                     categ: "ВОК",
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: true,
                     totalprice: 149,
                     totaldkprice: 149,
@@ -254,7 +253,7 @@ class App extends React.Component {
                     dkprice: 159,
                     categ: "ВОК",
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: true,
                     totalprice: 159,
                     totaldkprice: 159,
@@ -267,7 +266,7 @@ class App extends React.Component {
                     dkprice: 169,
                     categ: "ВОК",                   
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: true,
                     totalprice: 169,
                     totaldkprice: 169,
@@ -280,7 +279,7 @@ class App extends React.Component {
                     dkprice: 179,
                     categ: "ВОК",
                     num: 1,
-                    dobcheck: false,
+                    haveAddition: true,
                     salecheck: true,
                     totalprice: 179,
                     totaldkprice: 179,
@@ -293,11 +292,11 @@ class App extends React.Component {
                     dkprice: 339,
                     categ: "ВОК",
                     num: 1,
-                    dobcheck: true,
                     salecheck: true,
                     totalprice: 259,
                     totaldkprice: 339,
                     CheckStopList: false,
+                    CanBeAddiion: false
                 },
                 {
                     id: 13,
@@ -306,11 +305,11 @@ class App extends React.Component {
                     dkprice: 439,
                     categ: "ВОК",
                     num: 1,
-                    dobcheck: true,
                     salecheck: true,
                     totalprice: 339,
                     totaldkprice: 439,
                     CheckStopList: false,
+                    CanBeAddiion: false
                 },
                 {
                     id: 14,
@@ -424,8 +423,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 59,
-                    podcat: "Мясо В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Мясо В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -436,8 +434,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 69,
-                    podcat: "Мясо В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Мясо В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -448,8 +445,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 120,
-                    podcat: "Мясо В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Мясо В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -460,8 +456,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 50,
-                    podcat: "Доп В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Доп В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -472,8 +467,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 50,
-                    podcat: "Доп В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Доп В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -484,8 +478,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 0,
-                    podcat: "Соус В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Соус В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -496,8 +489,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 0,
-                    podcat: "Соус В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Соус В Вок",
                     CheckStopList: false,
                 },
                 {
@@ -508,8 +500,7 @@ class App extends React.Component {
                     num: 1,
                     salecheck: true,
                     totalprice: 0,
-                    podcat: "Соус В Вок",
-                    categ: "Добавка В Вок",
+                    categ: "Соус В Вок",
                     CheckStopList: false,
                 },
             ],
@@ -581,11 +572,8 @@ class App extends React.Component {
             orderPosition: [//массив добавленных в заказ позиций 
             
             ],
-            orderDobPizza: [//масси добавленных в заказ добавко ТУТ МЕНЯТЬ КОЛВО 
-            
-            ],
-            orderSostWOK: [//массив добавленных в заказ составляющих вока
-            
+            orderAddition: [//массив  добавленных в заказ добавок
+
             ],
             orderTablewares: [//массив для приборов
             {num: 0}
@@ -600,9 +588,6 @@ class App extends React.Component {
                
             ],
             StopCat: [
-
-            ],
-            StopPodCat: [
 
             ],
             OnCity: 
@@ -630,7 +615,9 @@ class App extends React.Component {
                     PhoneNum: ""
                 }
             ],
-            TypeOrder: "delivery"
+            TypeOrder: "delivery",
+            MouseClickX: "",
+            MouseClickY: "",
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -639,7 +626,6 @@ class App extends React.Component {
         this.addOrder = this.addOrder.bind(this)      
         this.BPlusOrd = this.BPlusOrd.bind(this)   
         this.BMinusOrd = this.BMinusOrd.bind(this)
-        this.AddDob = this.AddDob.bind(this) 
         this.deleteOrder = this.deleteOrder.bind(this) 
         this.EditInputOrd = this.EditInputOrd.bind(this) 
         
@@ -648,21 +634,11 @@ class App extends React.Component {
         this.CloseLastWindow = this.CloseLastWindow.bind(this) 
         this.ChangeStatusSavedOrd = this.ChangeStatusSavedOrd.bind(this)  
         this.DeleteSavedOrd = this.DeleteSavedOrd.bind(this)
-        this.DeleteSavedOrdClickButton = this.DeleteSavedOrdClickButton.bind(this)
-        this.CloseDeleteSavedOrdDropDown = this.CloseDeleteSavedOrdDropDown.bind(this)
+
         
 
-        this.BPlusDob = this.BPlusDob.bind(this) 
-        this.BMinusDob = this.BMinusDob.bind(this) 
-        this.EditInputDob = this.EditInputDob.bind(this) 
-        this.deleteDob = this.deleteDob.bind(this)
         
-        this.AddSostWOK = this.AddSostWOK.bind(this)  
-        this.deleteSostWOK = this.deleteSostWOK.bind(this)  
-        this.BPlusSostWOK = this.BPlusSostWOK.bind(this)  
-        this.BMinusSostWOK = this.BMinusSostWOK.bind(this)  
-        this.EditInputSostWOK = this.EditInputSostWOK.bind(this)  
-        this.EditWOKNoodles = this.EditWOKNoodles.bind(this)
+        
 
         this.TotalSumFunction = this.TotalSumFunction.bind(this)
         this.TotalSumSaleFunction = this.TotalSumSaleFunction.bind(this)
@@ -673,6 +649,12 @@ class App extends React.Component {
         this.SaleInpEdit2 = this.SaleInpEdit2.bind(this)
         this.ButtonSaleColor = this.ButtonSaleColor.bind(this)
         
+
+        this.AddAdditionFunc = this.AddAdditionFunc.bind(this)
+        this.EditWOKNoodles = this.EditWOKNoodles.bind(this)
+        this.MinusAdditionFunc = this.MinusAdditionFunc.bind(this)
+        this.PlusAdditionFunc = this.PlusAdditionFunc.bind(this)
+        this.EditInputAddition = this.EditInputAddition.bind(this)
         
         
         this.cleanOrder = this.cleanOrder.bind(this)
@@ -685,7 +667,6 @@ class App extends React.Component {
         
         this.StopListChekFunction = this.StopListChekFunction.bind(this)    
         this.StopListChekFunctionCat = this.StopListChekFunctionCat.bind(this)    
-        this.StopListChekFunctionPodcat = this.StopListChekFunctionPodcat.bind(this)    
         this.StopListCityAdd = this.StopListCityAdd.bind(this)    
         
         
@@ -697,7 +678,6 @@ class App extends React.Component {
         this.StopListChekFunctionOnCity = this.StopListChekFunctionOnCity.bind(this)   
         this.StopListChekFunctionCatOnCity = this.StopListChekFunctionCatOnCity.bind(this) 
         this.StopListChecCatOnPositionOnCity = this.StopListChecCatOnPositionOnCity.bind(this)   
-        this.StopListChekFunctionPodcatOnCity = this.StopListChekFunctionPodcatOnCity.bind(this)   
         
         this.CityChange = this.CityChange.bind(this)   
         this.CloseCityist = this.CloseCityist.bind(this)   
@@ -723,14 +703,17 @@ class App extends React.Component {
     if (this.state.ActiveComponent === 0)
     {
     return (      
-    <div className='GlobalDiv' onClick={(() => {
+    <div className='GlobalDiv' onClick={((event) => {
         if(this.state.OpenListCity === true)
         this.CloseCityist()
         if(this.state.OpenDropDownSale === true)
         this.CloseOpenDropDownSale()
         if(this.state.OpenDropDownTablewares === true)
         this.CloseOpenDropDownTablewares()
-    })}> 
+        
+    })}
+    
+    > 
 
         <div className='MainMenu'>
             {this.state.LastWindowSaved === true && <LastWindow
@@ -767,34 +750,31 @@ class App extends React.Component {
             
             {this.state.orderPosition.map((el) => (
                 <AddOrder 
+                    deleteOrder={this.deleteOrder}
                     AlertAdd={this.AlertAdd}
-                    podcat={this.state.podcat}
+                    cat={this.state.cat}
                     EditWOKNoodles={this.EditWOKNoodles} 
-                    ordSWOk={this.state.orderSostWOK} 
-                    EditInputSostWOK={this.EditInputSostWOK} 
-                    BMinusSostWOK={this.BMinusSostWOK} 
-                    BPlusSostWOK={this.BPlusSostWOK} 
-                    deleteSostWOK={this.deleteSostWOK} 
-                    AddSostWOK={this.AddSostWOK} 
                     position={this.state.position} 
-                    DelDob={this.deleteDob} DelOrd={this.deleteOrder} 
-                    BPlusDob={this.BPlusDob} 
-                    BMinusDob={this.BMinusDob} 
-                    EditInputDob={this.EditInputDob} 
                     EditInputOrd={this.EditInputOrd} 
                     BMinusOrd={this.BMinusOrd} 
                     BPlusOrd={this.BPlusOrd} 
                     AddDob={this.AddDob}  
-                    ordDobP={this.state.orderDobPizza} 
                     ChangeDiamPizzaOnOrder={this.ChangeDiamPizzaOnOrder}
-                    orderPosition={el} 
+                    orderPosition={el}
+                    orderAddition={this.state.orderAddition}
+                    AddAdditionFunc={this.AddAdditionFunc}
+                    PlusAdditionFunc={this.PlusAdditionFunc}
+                    MinusAdditionFunc={this.MinusAdditionFunc}
+                    EditInputAddition={this.EditInputAddition}
                     pdkon={this.state.pdkon} 
                     key={el.idOrd} 
+                    
                 />
             ))}
         {this.state.orderTablewares.map((el) => (
             <TablewaresAdd 
                 orderTablewares={el}    
+                key={'Tablewares' + el.num}
             />
             ))}
 
@@ -856,7 +836,7 @@ class App extends React.Component {
                         CloseCityist={this.CloseCityist}
                         CityChange={this.CityChange}
                         City={el}
-                        key={el.id}
+                        key={el.idCity}
                         />))}
                     </div>
                 </div>
@@ -902,9 +882,14 @@ class App extends React.Component {
                                 <button
                                 className={this.state.TypeOrder === "takeaway" ? "ChangerOrderTypeTdButtonTakeaway Actived" : "ChangerOrderTypeTdButtonTakeaway"}
                                 onClick={(() => {
-                                    this.setState({
-                                        TypeOrder: "takeaway"
-                                    })
+                                    document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    setTimeout(() => {
+                                        this.setState({
+                                            TypeOrder: "takeaway"
+                                        })
+                                    }, 50)
+                                    
                                 })}
                                 >Вынос</button>
                             </td>
@@ -912,211 +897,214 @@ class App extends React.Component {
                     </tbody>
                 </table>
             </div>
-            <div className='AddressDetaMainDiv'>
-                <table>
-                    <tbody>
-                    <tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText PhoneNum'>
-                                Телефон
-                            </td>
-                            <td>
-                            <input
-                                id={'AddressDetalInpPhoneNum' + this.state.SavedIdOrd}
-                                
-                                value={this.state.address[0].PhoneNum}
-                                className='AddressDetalInp PhoneNum'
-                                type='number'
-                                onClick={(() => {
-                                    document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
-                                })}
-                                onChange={((e) => {
+            <div className='AddressDetalOb'>
+                <div className='AddressDetalMainDiv'>
+                    <table>
+                        <tbody>
+                        <tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText PhoneNum'>
+                                    Телефон
+                                </td>
+                                <td>
+                                <input
+                                    id={'AddressDetalInpPhoneNum' + this.state.SavedIdOrd}
                                     
-                                    if(e.target.value < 100000000000 && e.target.value > -1)
-                                    {
-                                    this.state.address.map((el) => 
-                                    {
+                                    value={this.state.address[0].PhoneNum}
+                                    className='AddressDetalInp PhoneNum'
+                                    type='number'
+                                    onClick={(() => {
+                                        document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    })}
+                                    onChange={((e) => {
                                         
-                                        el.PhoneNum = e.target.value
-                                        return(el)
-                                    })
-                                    }
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
-                                    console.log(e.target.value.slice(-1))
-                                    
-                                    
-                                })}
-
-                                onBlur={(() => {
-                                    if(this.state.address[0].PhoneNum.length !== 11)
-                                    {
-                                        document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).value = ""
+                                        if(e.target.value < 100000000000 && e.target.value > -1)
+                                        {
                                         this.state.address.map((el) => 
                                         {
-                                            el.PhoneNum = ""
+                                            
+                                            el.PhoneNum = e.target.value
+                                            return(el)
+                                        })
+                                        }
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                        
+                                        
+                                        
+                                    })}
+
+                                    onBlur={(() => {
+                                        if(this.state.address[0].PhoneNum.length !== 11)
+                                        {
+                                            document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).value = ""
+                                            this.state.address.map((el) => 
+                                            {
+                                                el.PhoneNum = ""
+                                                return(el)
+                                            })
+                                            this.setState({
+                                                address: [...this.state.address]
+                                            })
+                                        }
+                                    })}
+                                    />
+                                </td>
+                            </tr>
+                            {this.state.TypeOrder === "delivery" && <tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText Street'>
+                                    Улица
+                                </td>
+                                <td>
+                                <input
+                                    type="text"
+                                    id={'AddressDetalInpStreet' + this.state.SavedIdOrd}
+                                    className='AddressDetalInp Street'
+                                    onClick={(() => {
+                                        document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    })}
+                                    onBlur={((e) => {
+                                        this.state.address.map((el) => 
+                                        {
+                                            el.street = e.target.value
                                             return(el)
                                         })
                                         this.setState({
                                             address: [...this.state.address]
                                         })
-                                    }
-                                })}
-                                />
-                            </td>
-                        </tr>
-                        {this.state.TypeOrder === "delivery" && <tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText Street'>
-                                Улица
-                            </td>
-                            <td>
-                            <input
-                                type="text"
-                                id={'AddressDetalInpStreet' + this.state.SavedIdOrd}
-                                className='AddressDetalInp Street'
-                                onClick={(() => {
-                                    document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
-                                })}
-                                onBlur={((e) => {
-                                    this.state.address.map((el) => 
-                                    {
-                                        el.street = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
-                                    
-                                })}
-                                />
-                            </td>
-                        </tr>
-                        }
-                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText House'>
-                                Дом
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    id={'AddressDetalInpHouse' + this.state.SavedIdOrd}
-                                    className='AddressDetalInp House'
-                                    onClick={(() => {
-                                        document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
-                                    })}
-                                    onBlur={((e) => {
-                                        this.state.address.map((el) => 
-                                    {
-                                        el.house = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
                                         
                                     })}
                                     />
-                            </td>
-                        </tr>
-                        }
-                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText Entrance'>
-                                Подъезд
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    maxLength={3}
-                                    className='AddressDetalInp Entrance'
-                                    onBlur={((e) => {
-                                        this.state.address.map((el) => 
-                                    {
-                                        el.entrance = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
-                                        
-                                    })}
-                                    />
-                            </td>
-                        </tr>
-                        }
-                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText Floor'>
-                                Этаж
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    maxLength={2}
-                                    className='AddressDetalInp Floor'
-                                    onBlur={((e) => {
-                                        this.state.address.map((el) => 
-                                    {
-                                        el.floor = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
+                                </td>
+                            </tr>
+                            }
+                            {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText House'>
+                                    Дом
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        id={'AddressDetalInpHouse' + this.state.SavedIdOrd}
+                                        className='AddressDetalInp House'
+                                        onClick={(() => {
+                                            document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+                                        })}
+                                        onBlur={((e) => {
+                                            this.state.address.map((el) => 
+                                        {
+                                            el.house = e.target.value
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                            
+                                        })}
+                                        />
+                                </td>
+                            </tr>
+                            }
+                            {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText Entrance'>
+                                    Подъезд
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        maxLength={3}
+                                        className='AddressDetalInp Entrance'
+                                        onBlur={((e) => {
+                                            this.state.address.map((el) => 
+                                        {
+                                            el.entrance = e.target.value
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                            
+                                        })}
+                                        />
+                                </td>
+                            </tr>
+                            }
+                            {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText Floor'>
+                                    Этаж
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        maxLength={2}
+                                        className='AddressDetalInp Floor'
+                                        onBlur={((e) => {
+                                            this.state.address.map((el) => 
+                                        {
+                                            el.floor = e.target.value
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
 
-                                    })}
-                                    />
-                            </td>
-                        </tr>
-                        }
-                        {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText Flat'>
-                                Кв
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    maxLength={5}
-                                    className='AddressDetalInp Flat'
-                                    onBlur={((e) => {
-                                        this.state.address.map((el) => 
-                                    {
-                                        el.flat = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
-                                        
-                                    })}
-                                    />
-                            </td>
-                        </tr>
-                        }
-                        <tr className='TrTableAddressDetal'>
-                            <td className='AddressDetalText Comment'>
-                                Комментарий
-                            </td>
-                            <td>
-                                <textarea
-                                    type="text"
-                                    className='AddressDetalInp Comment'
-                                    maxLength={200}
-                                    onBlur={((e) => {
-                                        this.state.address.map((el) => 
-                                    {
-                                        el.comment = e.target.value
-                                        return(el)
-                                    })
-                                    this.setState({
-                                        address: [...this.state.address]
-                                    })
-                                        
-                                    })}
-                                    />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-               
+                                        })}
+                                        />
+                                </td>
+                            </tr>
+                            }
+                            {this.state.TypeOrder === "delivery" &&<tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText Flat'>
+                                    Кв
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        maxLength={5}
+                                        className='AddressDetalInp Flat'
+                                        onBlur={((e) => {
+                                            this.state.address.map((el) => 
+                                        {
+                                            el.flat = e.target.value
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                            
+                                        })}
+                                        />
+                                </td>
+                            </tr>
+                            }
+                            <tr className='TrTableAddressDetal'>
+                                <td className='AddressDetalText Comment'>
+                                    Комментарий
+                                </td>
+                                <td>
+                                    <textarea
+                                        type="text"
+                                        rows={1}
+                                        className='AddressDetalInp Comment'
+                                        maxLength={200}
+                                        onBlur={((e) => {
+                                            this.state.address.map((el) => 
+                                        {
+                                            el.comment = e.target.value
+                                            return(el)
+                                        })
+                                        this.setState({
+                                            address: [...this.state.address]
+                                        })
+                                            
+                                        })}
+                                        />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </div>
             </div>
         </div> 
     
@@ -1130,7 +1118,8 @@ class App extends React.Component {
 
         <div className='MainPosition'>         
             <PositionsTitle 
-                pCheck={this.PriceCheck} 
+                PriceCheck={this.PriceCheck} 
+                pdkon={this.state.pdkon}
             />
             <div className='BPos'>
                 <div className='ButtonPositions'>
@@ -1159,7 +1148,9 @@ class App extends React.Component {
         {
         return(
             
-            <div className='GlobalDiv'>
+            <div className='GlobalDiv' 
+           
+            >
                 <div  className='MainDivStopList'>
                 <Cities 
                         City={this.state.City}
@@ -1176,7 +1167,8 @@ class App extends React.Component {
                         podcat={this.state.podcat}
                         StopList={this.state.StopList}
                         StopCat={this.state.StopCat}
-                        StopPodCat={this.state.StopPodCat}
+                        MouseClickX={this.state.MouseClickX}
+                        MouseClickY={this.state.MouseClickY}
                     />                
                 </div>
 
@@ -1199,14 +1191,14 @@ class App extends React.Component {
         if(this.state.ActiveComponent === 2)
         {
             return(
-                <div className='GlobalDiv'>
+                <div className='GlobalDiv'
+                
+                >
 
                     <div className='SavedOrdersMainDiv'>
                         <SavedOrdersMain 
-                        DeleteSavedOrdDropDown={this.state.DeleteSavedOrdDropDown}
+                        
                         DeleteSavedOrd={this.DeleteSavedOrd}
-                        DeleteSavedOrdClickButton={this.DeleteSavedOrdClickButton}
-                        CloseDeleteSavedOrdDropDown={this.CloseDeleteSavedOrdDropDown}
                         ChangeStatusSavedOrd={this.ChangeStatusSavedOrd}
                         Saved = {this.state.Saved}
                         />
@@ -1270,7 +1262,7 @@ class App extends React.Component {
         if (this.state.onCat !== 0)
         {
         this.state.cat.map((a) => {
-            if(a.name !== "Добавка К Пицце" && a.name !== "Добавка В Вок")
+            if(a.ThisAddition !== true || a.name === "ВОК")
             if(a.name === this.state.onCat)
             {
                 document.getElementById('CatBut' + a.id).classList.add('active')
@@ -1285,7 +1277,7 @@ class App extends React.Component {
         else
         {
             this.state.cat.map((a) =>{
-                if(a.name !== "Добавка К Пицце" && a.name !== "Добавка В Вок")
+                if(a.ThisAddition !== true || a.name === "ВОК")
                 document.getElementById('CatBut' + a.id).classList.remove('active')
                 return(a)
         })    
@@ -1296,7 +1288,7 @@ class App extends React.Component {
         var ch = this.state.orderPosition.find(function (c) {            
             return(c.id === pos.id)
         })
-        if (ch !== undefined && ch.categ !== "Пицца" && ch.dobcheck !== false)
+        if (ch !== undefined && ch.categ !== "Пицца" && ch.haveAddition !== true)
         {
         this.state.orderPosition.map((a) => {
             if(a.idOrd === ch.idOrd)
@@ -1356,11 +1348,9 @@ class App extends React.Component {
         this.setState({
             orderPosition: this.state.orderPosition.filter((el) => el.idOrd !== id)
         })
-        this.setState({ //удаление добавок прикрепленных к этой же позиции
-            orderDobPizza: this.state.orderDobPizza.filter((el) => el.idOrd !== id)
-        })
+        
         this.setState({
-            orderSostWOK: this.state.orderSostWOK.filter((el) => el.idOrd !== id)
+            orderAddition: this.state.orderAddition.filter((el) => el.idOrd !== id)
         })
         await this.setState
         this.TotalSumFunction()
@@ -1417,9 +1407,23 @@ class App extends React.Component {
                     a.totalprice36 = a.price36 * a.num
                     a.totaldkprice36 = a.dkprice36 * a.num
                     }
-            this.setState({orderPosition: [...this.state.orderPosition]}) 
-            return(a)
-                }
+            this.setState({
+                orderPosition: [...this.state.orderPosition]
+            }) 
+            
+            }
+            if(a.categ === "ВОК")
+            {
+                this.state.orderAddition.map((el) => {
+                    if(el.idOrd === id && el.categ === "Соус В Вок")
+                    {
+                        el.num = a.num
+                        this.setState({
+                            orderAddition: [...this.state.orderAddition]
+                        }) 
+                    }
+                })
+            }
                 return(a)
         })
         await this.setState
@@ -1441,7 +1445,19 @@ class App extends React.Component {
                     a.totaldkprice36 = a.dkprice36 * a.num
                     }
                 this.setState({orderPosition: [...this.state.orderPosition]}) 
-                return(a)
+                
+            }
+            if(a.categ === "ВОК")
+            {
+                this.state.orderAddition.map((el) => {
+                    if(el.idOrd === id && el.categ === "Соус В Вок")
+                    {
+                        el.num = a.num
+                        this.setState({
+                            orderAddition: [...this.state.orderAddition]
+                        }) 
+                    }
+                })
             }
             return(a)
         })
@@ -1478,215 +1494,139 @@ class App extends React.Component {
         this.SumSoySause()
     }
 
-    async AddDob(dob, idOrd) {//добавление добавки к позиции 
-        var ch = this.state.orderDobPizza.find(function (c) {            
-            return(c.id === dob.id && c.idOrd === idOrd)
+
+    async AddAdditionFunc(pos, idOrd, WOKnum){
+        var ch = this.state.orderAddition.find(function (c) {            
+            return(c.id === pos.id && c.idOrd === idOrd)
         })
         if (ch !== undefined)
         {
-            this.state.orderDobPizza.map((a) => {
-                if(a.idDob === ch.idDob)
+            this.state.orderAddition.map((a) => {
+                if(a.idAddition === ch.idAddition)
                 {
+                    if(a.categ !== "Соус В Вок")
+                    {
                     if (a.num !== 99)
                         a.num = parseInt(a.num) + 1
                         a.totalprice = a.price * a.num
                         a.totaldkprice = a.dkprice * a.num
-                        this.setState({orderDobPizza: [...this.state.orderDobPizza]}) 
+                        this.setState({orderAddition: [...this.state.orderAddition]}) 
+                    }
+                    else
+                    {
+                        this.AlertAdd("SauceSumLimit")
+                    }
                 }
             return(a)})        
         }
         else
         {
-            const idDob = this.state.foridDob 
-            this.setState({ foridDob: parseInt(this.state.foridDob) + 1 })
-            this.setState({ orderDobPizza: [...this.state.orderDobPizza, {idOrd, idDob, ...dob}]})
-        }
-        await this.setState
-        this.TotalSumFunction()
-        this.TotalSumSaleFunction()
-    }
-
-    async deleteDob(id) {//удаление добавки из заказа
-        this.setState({
-            orderDobPizza: this.state.orderDobPizza.filter((el) => el.idDob !== id)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
-
-    async BPlusDob(id) {//кнопка "+" в заказе прикрепленная к добавке, для добавления кол-ва
-        this.state.orderDobPizza.map((a) => {
-            if(a.idDob === id)
-            a.num = parseInt(a.num) + 1
-            a.totalprice = a.price * a.num
-            a.totaldkprice = a.dkprice * a.num
-            this.setState({orderDobPizza: [...this.state.orderDobPizza]}) 
-            return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        this.TotalSumSaleFunction()
-    }
-
-    async BMinusDob(id) {//кнопка "-" в заказе прикрепленная к добавке, для уменьшения кол-ва
-        this.state.orderDobPizza.map((a) => {
-            if(a.idDob === id)
-            a.num = parseInt(a.num) - 1
-            a.totalprice = a.price * a.num
-            a.totaldkprice = a.dkprice * a.num
-            this.setState({orderDobPizza: [...this.state.orderDobPizza]}) 
-            return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
-
-    async EditInputDob(id, val) {//инпут в заказе прикрепленный к добавке, для изменения кол-ва ручками
-        this.state.orderDobPizza.map((a) => {
-            if(a.idDob === id)
-            a.num = parseInt(val)
-            a.totalprice = a.price * a.num
-            a.totaldkprice = a.dkprice * a.num
-            this.setState({orderDobPizza: [...this.state.orderDobPizza]}) 
-            return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
-
-    
-    async AddSostWOK(sost, idOrd) {//добавление добавки к позиции 
-        var ch = this.state.orderSostWOK.find(function (c) {            
-            return(c.id === sost.id && c.idOrd === idOrd)
-        })//проверка есть ли такая добавка к этой позиции уже в заказе
-        if (ch !== undefined) //если нашло такую позицию  
-        {
-            if(sost.podcat !== "Соус В Вок")
+            if(pos.categ === "Соус В Вок")
             {
-            this.state.orderSostWOK.map((a) => {
-                if(a.idSost === ch.idSost)
-                {
-                    if (a.num !== 99)
-                    a.num = parseInt(a.num) + 1
-                    a.totalprice = a.price * a.num
-                    a.totaldkprice = a.dkprice * a.num
-                    this.setState({orderSostWOK: [...this.state.orderSostWOK]}) 
-                }
-                return(a)})        
-            }
-            else
-            {
-                this.AlertAdd("SauceSumLimit")
-            }
-            }
-        else//если такой добавки еще нет
-        {
-            if(sost.podcat === "Соус В Вок")
-            {
-                if(this.state.orderSostWOK.filter((el) => el.podcat === "Соус В Вок").length >= 2)//проверка, чтобы больше 2ух соусов нельзя было добавить
+                if(this.state.orderAddition.filter((el) => el.categ === "Соус В Вок" && el.idOrd === idOrd).length >= 2)//проверка, чтобы больше 2ух соусов нельзя было добавить
                 {
                     this.AlertAdd("SauceLimit")
                 }
                 else
                 {
-                    
-                    const idSost = this.state.foridSost
-                    this.setState({ foridSost: parseInt(this.state.foridSost) + 1 })
-                    this.setState({ orderSostWOK: [...this.state.orderSostWOK, {idOrd, idSost, ...sost}]})
+                    pos.num = WOKnum
+                    const idAddition = this.state.foridAddition 
+                    this.setState({ foridAddition: parseInt(this.state.foridAddition) + 1 })
+                    this.setState({ orderAddition: [...this.state.orderAddition, {idOrd, idAddition, ...pos}]})
                 }
             }
             else
             {
-            const idSost = this.state.foridSost
-            this.setState({ foridSost: parseInt(this.state.foridSost) + 1 })
-            this.setState({ orderSostWOK: [...this.state.orderSostWOK, {idOrd, idSost, ...sost}]})
+                const idAddition = this.state.foridAddition 
+                this.setState({ foridAddition: parseInt(this.state.foridAddition) + 1 })
+                this.setState({ orderAddition: [...this.state.orderAddition, {idOrd, idAddition, ...pos}]})
             }
+        await this.setState
+        this.TotalSumFunction()
+        this.TotalSumSaleFunction()
         }
-        await this.setState
-        this.TotalSumFunction()
-        this.TotalSumSaleFunction()
     }
 
-    async deleteSostWOK(id) {//удаление составляющей ВОКа из заказа
-        this.setState({
-            orderSostWOK: this.state.orderSostWOK.filter((el) => el.idSost !== id)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
-
-
-    async BPlusSostWOK(id) {//кнопка "+" в заказе прикрепленная к составляющей ВОКа, для добавления кол-ва
-        this.state.orderSostWOK.map((a) => {
-            if(a.idSost === id)
-                if(a.podcat !== "Соус В Вок")
+        async PlusAdditionFunc(idAddition){
+            this.state.orderAddition.map((el) =>{
+                if(el.categ !== "Соус В Вок")
                 {
-                a.num = parseInt(a.num) + 1
-                a.totalprice = a.price * a.num
-                a.totaldkprice = a.dkprice * a.num
-                this.setState({orderSostWOK: [...this.state.orderSostWOK]}) 
-                return(a)
+                    if(el.idAddition === idAddition)
+                    {
+                        if(el.num < 99)
+                        {
+                        el.num = parseInt(el.num) + 1
+                        el.totalprice = el.price * el.num
+                        this.setState({
+                            orderAddition: [...this.state.orderAddition]
+                        })
+                        }
+                    }
                 }
                 else
                 {
-                    this.AlertAdd("SauceSumLimit")
+                    this.AlertAdd('SauceSumLimit')
                 }
-                return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        this.TotalSumSaleFunction()
-    }
+                return(el)
+            })
+            await this.setState
+            this.TotalSumFunction()
+            this.TotalSumSaleFunction()
+        }
 
-    async BMinusSostWOK(id) {//кнопка "-" в заказе прикрепленная к составляющей ВОКа, для уменьшения кол-ва
-        this.state.orderSostWOK.map((a) => {
-            if(a.idSost === id)
-                a.num = parseInt(a.num) - 1
-                a.totalprice = a.price * a.num
-                a.totaldkprice = a.dkprice * a.num
-                this.setState({orderSostWOK: [...this.state.orderSostWOK]}) 
-                return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
+        async MinusAdditionFunc(idAddition){
+            this.state.orderAddition.map((el) =>{
+                if(el.categ !== "Соус В Вок")
+                {
+                    if(el.idAddition === idAddition)
+                    {
+                        if(el.num > 1)
+                        {
+                        el.num = parseInt(el.num) - 1
+                        el.totalprice = el.price * el.num
+                        
+                        this.setState({
+                            orderAddition: [...this.state.orderAddition]
+                        })
+                        }
+                        else
+                        {
+                            this.setState({
+                                orderAddition: this.state.orderAddition.filter((a) => a.idAddition !== idAddition)
+                            })
+                        }
+                    }
+                }
+                else
+                {
+                    this.AlertAdd('SauceSumLimit')
+                }
+                return(el)
+            })
+            await this.setState
+            this.TotalSumFunction()
+            this.TotalSumSaleFunction()
+        }
 
-    async EditInputSostWOK(id, val) {//инпут в заказе прикрепленный к добавке, для изменения кол-ва ручками
-        this.state.orderSostWOK.map((a) => {
-            if(a.idSost === id)
+        async EditInputAddition(idAddition, val) {//инпут в заказе прикрепленный к позиции, для изменения кол-ва ручками
+            this.state.orderAddition.map((a) => {
+                if(a.idAddition === idAddition)
                 a.num = parseInt(val)
                 a.totalprice = a.price * a.num
                 a.totaldkprice = a.dkprice * a.num
-                this.setState({orderSostWOK: [...this.state.orderSostWOK]}) 
+                
+                this.setState({orderAddition: [...this.state.orderAddition]}) 
                 return(a)
-        })
-        await this.setState
-        this.TotalSumFunction()
-        await this.TotalSumFunction()
-        this.SaleInpEdit2()
-        await this.SaleInpEdit2()
-        this.TotalSumSaleFunction()
-    }
+            })
+            await this.setState
+            this.TotalSumFunction()
+            await this.TotalSumFunction()
+            this.SaleInpEdit2()
+            await this.SaleInpEdit2()
+            this.TotalSumSaleFunction()
+            this.SumSoySause()
+        }
+    
 
     async EditWOKNoodles(pos, id){//функция изменения уже добавленной лапши
         this.state.orderPosition.map((a) => 
@@ -1698,6 +1638,7 @@ class App extends React.Component {
                 a.name = pos.name
                 a.price = pos.price
                 a.totalprice = pos.totalprice
+                a.id = pos.id
                 this.setState({orderPosition: [...this.state.orderPosition]}) 
             }
                 return(a)
@@ -1715,11 +1656,9 @@ class App extends React.Component {
         this.setState({
             orderPosition: this.state.orderPosition.filter((el) => el.idOrd === id)
         })
-        this.setState({ //удаление всех добавок к пицце
-            orderDobPizza: this.state.orderDobPizza.filter((el) => el.idOrd === id)
-        })
+        
         this.setState({ //удаление всех добавок в вок
-            orderSostWOK: this.state.orderSostWOK.filter((el) => el.idOrd === id)
+            orderAddition: this.state.orderAddition.filter((el) => el.idOrd === id)
         }) 
         this.setState({ //очистка кол-ва приборов
             orderTablewares: this.state.orderTablewares.filter((el) => el.id === id)
@@ -1769,13 +1708,7 @@ class App extends React.Component {
         this.setState({
             cat: [...this.state.cat]
         })
-        this.state.podcat.map((el) => {
-            el.CheckStopList = false
-            return(el)
-        })
-        this.setState({
-            podcat: [...this.state.podcat]
-        })
+        
         this.setState({
             address: [
             {
@@ -1795,8 +1728,11 @@ class App extends React.Component {
         document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
         if(this.state.TypeOrder === "delivery")
         {
+        
+        
         document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
         document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+
         }
         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
@@ -1816,20 +1752,15 @@ class App extends React.Component {
             return(a)
         })
          
-        this.state.orderDobPizza.map((a) =>
+        this.state.orderAddition.map((a) =>
         {
-            if(a.idDob > 0)
-            res = res + parseInt(document.getElementById("OrdDobTotSum" + a.idDob).dataset.value)
+            if(a.idAddition > 0)
+            res = res + parseInt(document.getElementById("orderAdditionTotalSum" + a.idAddition).dataset.value)
 
             return(a)
         })
 
-        this.state.orderSostWOK.map((a) => {
-            if (a.idSost > 0)
-            res = res + parseInt(document.getElementById("OrdSostWOKTotSum" + a.idSost).dataset.value)
-
-            return(a)
-        })
+        
         
         this.setState({
             totalSum: res
@@ -1852,31 +1783,16 @@ class App extends React.Component {
 
             return(a)
         })
-         
-        this.state.orderDobPizza.map((a) =>
-        {
-            if(a.idDob > 0)
-            if(a.salecheck === true)
-            {
-                res = res + (parseFloat(document.getElementById("OrdDobTotSum" + a.idDob).dataset.value) * parseFloat(this.state.Sale))
-            }
-            else
-            {
-                res = res + parseInt(document.getElementById("OrdDobTotSum" + a.idDob).dataset.value)  
-            }
 
-            return(a)
-        })
-
-        this.state.orderSostWOK.map((a) => {
+       this.state.orderAddition.map((a) => {
             if (a.idSost > 0)
             if(a.salecheck === true)
             {
-                res = res + (parseInt(document.getElementById("OrdSostWOKTotSum" + a.idSost).dataset.value) * parseFloat(this.state.Sale))
+                res = res + (parseInt(document.getElementById("OrdSostWOKTotSum" + a.idAddition).dataset.value) * parseFloat(this.state.Sale))
             }
             else
             {
-                res = res + parseInt(document.getElementById("OrdSostWOKTotSum" + a.idSost).dataset.value)
+                res = res + parseInt(document.getElementById("OrdSostWOKTotSum" + a.idAddition).dataset.value)
             }
 
             return(a)
@@ -2088,7 +2004,7 @@ class App extends React.Component {
         }
       }
 
-    StopListChekFunction(pos)//добавление позиции в стоп лист
+    async StopListChekFunction(pos)//добавление позиции в стоп лист
     {
         this.state.position.map((a) =>
         {
@@ -2104,6 +2020,7 @@ class App extends React.Component {
             
             return(a)
         })
+        
         this.StopListChecCatOnPosition()//вызов функции для проверки стопов по категориям, для корректного отображения
         
     }
@@ -2156,58 +2073,6 @@ class App extends React.Component {
                     document.getElementById('StopListCatCheck' + el.id).indeterminate  = true
                 }
             }
-        }
-            return(el)
-            
-        })
-
-        this.state.podcat.map((el) => {
-            
-            var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
-            var CheckPos = 0//счетчик для общего кол-ва позиций из категории
-            this.state.position.map((a) => {
-                if(a.categ === "Добавка В Вок")
-                
-                if(a.podcat === el.name)
-                {
-                    CheckPos = CheckPos + 1
-                    if(a.CheckStopList === true)
-                    {
-                        CheckCat = CheckCat + 1
-                    }
-                }
-                return(a)
-            })
-            if(CheckCat === CheckPos)
-            {
-                el.CheckStopList = true
-                el.CheckIndeterminate = false
-                this.setState({
-                    podcat: [...this.state.podcat]
-                })
-                document.getElementById('StopListPodCatCheck' + el.id).indeterminate  = false
-            }
-            else
-            {
-                if(CheckCat === 0)
-                {
-                    el.CheckStopList = false
-                    el.CheckIndeterminate = false
-                    this.setState({
-                        podcat: [...this.state.podcat]
-                })
-                    document.getElementById('StopListPodCatCheck' + el.id).indeterminate  = false
-                }
-                else
-                {
-                    el.CheckStopList = false
-                    el.CheckIndeterminate = true
-                    this.setState({
-                        podcat: [...this.state.podcat]
-                    })
-                    document.getElementById('StopListPodCatCheck' + el.id).indeterminate  = true
-                }
-            
         }
             return(el)
             
@@ -2350,7 +2215,6 @@ class App extends React.Component {
     async StopListCityAdd() {
         var StopPosArray = []
         var StopCatArray = []
-        var StopPodCatArray = []
         for(var i = 0; i < this.state.City.length; i++)
         {
             for(var j = 0; j < this.state.position.length; j++)
@@ -2374,17 +2238,7 @@ class App extends React.Component {
                     CheckIndeterminate: false}) 
                 
             }
-            for(var j2 = 0; j2 < this.state.podcat.length; j2++)
-            {
-                StopPodCatArray.push({
-                    name: this.state.podcat[j2].name, 
-                    id: this.state.podcat[j2].id, 
-                    categ: this.state.podcat[j2].categ, 
-                    idCity: this.state.City[i].idCity, 
-                    CheckStopList: false, 
-                    CheckIndeterminate: false}) 
-                
-            }
+           
         }
 
 
@@ -2396,9 +2250,7 @@ class App extends React.Component {
             StopCat: StopCatArray
         })
 
-        this.setState({
-            StopPodCat: StopPodCatArray
-        })
+        
         
         await this.setState
 
@@ -2483,58 +2335,7 @@ class App extends React.Component {
             
         })
 
-        this.state.StopPodCat.map((el) => {
-            
-            if(el.idCity === idCity)
-            {
-            var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
-            var CheckPos = 0//счетчик для общего кол-ва позиций из категории
-            this.state.StopList.map((a) => {
-                if(a.categ === "Добавка В Вок")
-                if(a.podcat === el.name && a.idCity === el.idCity)
-                {
-                    CheckPos = CheckPos + 1
-                    if(a.CheckStopList === true)
-                    {
-                        CheckCat = CheckCat + 1
-                    }
-                }
-                return(a)
-            })
-            if(CheckCat === CheckPos)
-            {
-                el.CheckStopList = true
-                el.CheckIndeterminate = false
-                this.setState({
-                    StopPodCat: [...this.state.StopPodCat]
-                })
-                document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = false
-            }
-            else
-            {
-                if(CheckCat === 0)
-                {
-                    el.CheckStopList = false
-                    el.CheckIndeterminate = false
-                    this.setState({
-                        StopPodCat: [...this.state.StopPodCat]
-                })
-                    document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = false
-                }
-                else
-                {
-                    el.CheckStopList = false
-                    el.CheckIndeterminate = true
-                    this.setState({
-                        StopPodCat: [...this.state.StopPodCat]
-                    })
-                    document.getElementById('StopListPodCatCheck' + el.id + " " + el.idCity).indeterminate  = true
-                }
-            }
-        }
-            return(el)
-            
-        })
+       
     }
 
     StopListChekFunctionCatOnCity(id, idCity){
@@ -2589,59 +2390,8 @@ class App extends React.Component {
         })
     }
 
-    StopListChekFunctionPodcatOnCity(id, idCity){
-        this.state.StopPodCat.map((a) =>
-        {
-            if(a.id === id && a.idCity === idCity)
-            {
-                if(a.CheckStopList === true || a.CheckIndeterminate === true)
-                {
-                    a.CheckStopList = false
-                    if (a.CheckIndeterminate === true)
-                    {
-                        a.CheckIndeterminate = false
-                    }
-                    this.setState({
-                        StopPodCat: [...this.state.StopPodCat]
-                    })
-                }
-                else
-                {
-                    a.CheckStopList = true
-                   
-                    this.setState({
-                        StopPodCat: [...this.state.StopPodCat]
-                    })
-                }
-            
-                this.state.StopList.map((el) => {
-                    if(a.name === el.podcat && el.idCity === a.idCity)
-                    {
-                        if(a.CheckStopList === false)
-                        {
-                        el.CheckStopList = false
-                        this.setState({
-                            StopList: [...this.state.StopList]
-                        })
-                        }
-                        else
-                        {
-                            el.CheckStopList = true
-                            this.setState({
-                                StopList: [...this.state.StopList]
-                            })
-                        }
-                    
-                        
-                    }
-                    return(el)
-                })
-            }
-            return(a)
-        })
-    }
 
-    CityChange(city) {
+    async CityChange(city) {
         this.setState({
             OnCity: {idCity: city.idCity, city: city.city, street: city.street, house: city.house, delivery: city.delivery, takeaway: city.takeaway, condition: city.condition} 
         })
@@ -2663,42 +2413,97 @@ class App extends React.Component {
             return(el)
         })
 
-        this.state.StopCat.map((el) => {
+        this.state.StopList.map((el) => {
             if(el.idCity === city.idCity)
             {
-                this.state.cat.map((a) => 
-                {
-                    if(a.id === el.id && el.name !== "Добавка В Вок")
-                    {
-                        a.CheckStopList = el.CheckStopList
-                        this.setState({
-                            cat: [...this.state.cat]
-                        })
-                    }
-                    return(a)
-                })
-            }
-            return(el)
-        })
-
-        this.state.StopPodCat.map((el) => {
-            if(el.idCity === city.idCity)
-            {
-                this.state.podcat.map((a) => 
+                this.state.orderPosition.map((a) => 
                 {
                     if(a.id === el.id)
                     {
                         a.CheckStopList = el.CheckStopList
                         this.setState({
-                            podcat: [...this.state.podcat]
+                            orderPosition: [...this.state.orderPosition]
                         })
+                        
                     }
                     return(a)
                 })
+                this.state.orderAddition.map((a) => 
+                {
+                    if(a.id === el.id)
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            orderAddition: [...this.state.orderAddition]
+                        })
+                        
+                    }
+                    return(a)
+                })
+
+                this.state.position.map((a) => 
+                {
+                    if(a.id === el.id)
+                    {
+                        a.CheckStopList = el.CheckStopList
+                        this.setState({
+                            position: [...this.state.position]
+                        })
+                        
+                    }
+                    return(a)
+                })
+
+                
             }
-            return(el)
-        })
-    }
+            return(el)})
+             
+            this.state.StopCat.map((el) => {
+                if(el.idCity === city.idCity)
+                {
+                    this.state.cat.map((a) => 
+                    {
+                        if(a.id === el.id && el.name !== "Добавка В Вок")
+                        {
+                            a.CheckStopList = el.CheckStopList
+                            this.setState({
+                                cat: [...this.state.cat]
+                            })
+                        }
+                        return(a)
+                    })
+                }
+                return(el)
+            })
+             
+
+            this.getTime()
+            await this.setState
+            this.state.orderPosition.map((el) => {
+                if(el.CheckStopList === true)
+                {
+                    this.AlertAdd("StopOnSave")
+                    document.getElementById('OrdPosName' + el.idOrd).classList.add('Stoped')
+                    setTimeout(() => {
+                        document.getElementById('OrdPosName' + el.idOrd).classList.remove('Stoped')
+                    }, 4000)
+                }
+                return(el)
+            })
+
+            this.state.orderAddition.map((el) => {
+                if(el.CheckStopList === true)
+                {
+                    this.AlertAdd("StopOnSave")
+                    document.getElementById('OrdPosName' + el.idAddition).classList.add('Stoped')
+                    setTimeout(() => {
+                        document.getElementById('OrdPosName' + el.idAddition).classList.remove('Stoped')
+                    }, 4000)
+                }
+
+        
+    })
+}
 
     CloseCityist(){
         this.setState({
@@ -2764,7 +2569,11 @@ class App extends React.Component {
         {
             if(this.state.TypeOrder === "takeaway" && this.state.address[0].PhoneNum.length !== 11 )
             {
+                
                 document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
+                setTimeout(() => {
+                    document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
+                }, 4000)
                 this.AlertAdd("NotFilled")
             }
             else
@@ -2775,14 +2584,23 @@ class App extends React.Component {
                     if(this.state.address[0].PhoneNum.length !== 11)
                     {
                         document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
+                        setTimeout(() => {
+                            document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
+                        }, 4000)
                     }
                     if(this.state.address[0].street.length < 1)
                     {
                         document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.add('Allert')
+                        setTimeout(() => {
+                            document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+                        }, 4000)
                     }
                     if(this.state.address[0].house.length < 1 )
                     {
                         document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.add('Allert')
+                        setTimeout(() => {
+                            document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+                        }, 4000)
                     }
                 }
                 else
@@ -2805,24 +2623,126 @@ class App extends React.Component {
                             }
                             return(a)
                         })
+                        this.state.orderAddition.map((a) => 
+                        {
+                            if(a.id === el.id)
+                            {
+                                a.CheckStopList = el.CheckStopList
+                                this.setState({
+                                    orderAddition: [...this.state.orderAddition]
+                                })
+                                
+                            }
+                            return(a)
+                        })
+
+                        this.state.position.map((a) => 
+                        {
+                            if(a.id === el.id)
+                            {
+                                a.CheckStopList = el.CheckStopList
+                                this.setState({
+                                    position: [...this.state.position]
+                                })
+                                
+                            }
+                            return(a)
+                        })
+
+                        
                     }
                     return(el)})
+                    
+                    this.state.cat.map((el) => {
+                        if(el.name !== "Добавка В Вок")
+                        {
+                        var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
+                        var CheckPos = 0//счетчик для общего кол-ва позиций из категории
+                        this.state.position.map((a) => {
+                            if(a.categ === el.name)
+                            {
+                                CheckPos = CheckPos + 1
+                                if(a.CheckStopList === true)
+                                {
+                                    CheckCat = CheckCat + 1
+                                }
+                            }
+                            return(a)
+                        })
+                        if(CheckCat === CheckPos)
+                        {
+                            el.CheckStopList = true
+                            el.CheckIndeterminate = false
+                            this.setState({
+                                cat: [...this.state.cat]
+                            })
+                            
+                        }
+                        else
+                        {
+                            if(CheckCat === 0)
+                            {
+                                el.CheckStopList = false
+                                el.CheckIndeterminate = false
+                                this.setState({
+                                cat: [...this.state.cat]
+                            })
+                                
+                            }
+                            else
+                            {
+                                el.CheckStopList = false
+                                el.CheckIndeterminate = true
+                                this.setState({
+                                cat: [...this.state.cat]
+                                })
+                                
+                            }
+                        }
+                    }
+                        return(el)
+                        
+                    })    
+
                     this.getTime()
                     await this.setState
                     this.state.orderPosition.map((el) => {
                         if(el.CheckStopList === true)
                         {
                             this.AlertAdd("StopOnSave")
+                            document.getElementById('OrdPosName' + el.idOrd).classList.add('Stoped')
+                            setTimeout(() => {
+                                document.getElementById('OrdPosName' + el.idOrd).classList.remove('Stoped')
+                            }, 4000)
                         }
                         return(el)
                     })
+
+                    this.state.orderAddition.map((el) => {
+                        if(el.CheckStopList === true)
+                        {
+                            this.AlertAdd("StopOnSave")
+                            document.getElementById('OrdPosName' + el.idAddition).classList.add('Stoped')
+                            setTimeout(() => {
+                                document.getElementById('OrdPosName' + el.idAddition).classList.remove('Stoped')
+                            }, 4000)
+                        }
+                        
+                        return(el)
+                    })
+
+                    
             }
+
         }
         }
         else
         {
             this.AlertAdd("UnderCity")
             document.getElementById('CityName' + this.state.SavedIdOrd).classList.add('Allert')
+            setTimeout(() => {
+                document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
+            }, 4000)
         }
     }
 
@@ -2833,7 +2753,7 @@ class App extends React.Component {
     }
 
     async SaveFunction() {
-        this.state.orderSostWOK.map((el) => {
+        this.state.orderAddition.map((el) => {
             if(el.podcat === "Соус В Вок")
             {
                 this.state.orderPosition.map((a) => {
@@ -2841,7 +2761,7 @@ class App extends React.Component {
                     {
                         el.num = a.num
                         this.setState({
-                            orderSostWOK: [...this.state.orderSostWOK]
+                            orderAddition: [...this.state.orderAddition]
                         })
                     }
                 })
@@ -2856,8 +2776,7 @@ class App extends React.Component {
         const SavedIdOrd = this.state.SavedIdOrd
         this.setState({SavedIdOrd: parseInt(this.state.SavedIdOrd) + 1})
         var orderPosSaved = []
-        var orderDobPizzaSaved = []
-        var orderSostWOKSaved = []
+        var orderAdditionSaved = []
         var orderCity = []
         var orderDetal = []
         var orderAddress = []
@@ -2882,9 +2801,10 @@ class App extends React.Component {
          })
          return(el)
         })
-        this.state.orderDobPizza.map((el) => {
-            orderDobPizzaSaved.push({
-                id: el.id + " " + SavedIdOrd,
+        
+        this.state.orderAddition.map((el) => {
+            orderAdditionSaved.push({
+                id: el.idAddition + " " + SavedIdOrd,
                 idOrd: el.idOrd,
                 price: el.price,
                 dkprice: el.dkprice,
@@ -2892,23 +2812,6 @@ class App extends React.Component {
                 num: el.num, 
                 salecheck: el.salecheck,
                 totalprice: el.totalprice,
-                podcat: el.podcat,
-                categ: el.categ,
-                CheckStopList: el.CheckStopList,
-            })
-            return(el)
-        })
-        this.state.orderSostWOK.map((el) => {
-            orderSostWOKSaved.push({
-                id: el.id + " " + SavedIdOrd,
-                idOrd: el.idOrd,
-                price: el.price,
-                dkprice: el.dkprice,
-                name: el.name,
-                num: el.num, 
-                salecheck: el.salecheck,
-                totalprice: el.totalprice,
-                podcat: el.podcat,
                 categ: el.categ,
                 CheckStopList: el.CheckStopList,
                 
@@ -2947,7 +2850,7 @@ class App extends React.Component {
             TypeOrder: this.state.TypeOrder
         })
         this.setState({
-            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderDobPizzaSaved, orderSostWOKSaved, orderAddress}]
+            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderAdditionSaved, orderAddress}]
         })
         await this.setState
         console.log(this.state.Saved)
@@ -2981,23 +2884,11 @@ class App extends React.Component {
         })
     }
 
-    DeleteSavedOrdClickButton(){
-        this.setState({
-            DeleteSavedOrdDropDown: true
-        })
-    }
-
-    CloseDeleteSavedOrdDropDown(){
-        this.setState({
-            DeleteSavedOrdDropDown: false
-        })
-    }
 
     DeleteSavedOrd(id){
         this.setState({
             Saved: this.state.Saved.filter((el) => el.SavedIdOrd !== id)
         })
-        this.CloseDeleteSavedOrdDropDown()
     }
     
     

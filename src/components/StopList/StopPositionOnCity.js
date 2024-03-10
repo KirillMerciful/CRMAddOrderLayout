@@ -12,7 +12,7 @@ class StopPositionOnCity extends React.Component {
         this.props.StopListChekFunctionOnCity(this.props.StopList,  this.props.City.idCity)
       })}></input>
           <div
-          className='StopListPositionNameText'
+          className={this.props.StopList.CheckStopList === false ? 'StopListPositionNameText' : 'StopListPositionNameText Stoped'}
           onClick={(() => {
         this.props.StopListChekFunctionOnCity(this.props.StopList,  this.props.City.idCity)
       })}>{this.props.StopList.name}</div>

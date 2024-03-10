@@ -20,13 +20,10 @@ class SavedOrdersMain extends React.Component {
             <div className='SavedBodyDiv'>
                 {this.props.Saved.map((el) =>
                     <SavedOrd 
-                    DeleteSavedOrdDropDown={this.props.DeleteSavedOrdDropDown}
-                    DeleteSavedOrdClickButton={this.props.DeleteSavedOrdClickButton}
-                    CloseDeleteSavedOrdDropDown={this.props.CloseDeleteSavedOrdDropDown}
                     DeleteSavedOrd={this.props.DeleteSavedOrd}
                     ChangeStatusSavedOrd={this.props.ChangeStatusSavedOrd}
                     Saved={el}
-                    key={el.id}
+                    key={el.SavedIdOrd}
                     />
                     
                 )}

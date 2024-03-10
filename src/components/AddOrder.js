@@ -1,15 +1,19 @@
 import React from "react"
 
 import Popup from "reactjs-popup"
-import PodCategoriesPizza from "./DobPizza/PodCategoriesPizza"
-import AddDobPizza from "./DobPizza/AddDobPizza"
 import { MdOutlinePercent } from "react-icons/md";
-import AddSostWOK from "./PodCategWOK/AddSostWOK";
-import PodCategoriesWOK from "./PodCategWOK/PodCategoriesWOK";
+import CategoriesAddition from "./AddAddition/CategorisAddition";
+import OrderAddition from "./AddAddition/OrderAddition";
 
 
 class AddOrder extends React.Component {
- 
+  constructor(props) {
+    super(props)
+    this.state = {
+        OpenDropDownAddition: false,
+    }
+  }
+
   render() {
     
     if (this.props.orderPosition.id > 0 && this.props.orderPosition.categ !== "") 
@@ -19,44 +23,100 @@ class AddOrder extends React.Component {
           <table>
             <tbody>
               <tr>
-                <td className="OrdPosName">
+                <td 
+                className="OrdPosName"
+                id={'OrdPosName' + this.props.orderPosition.idOrd}
+                >
                   {this.props.orderPosition.name}
                   {this.props.orderPosition.salecheck === false && <MdOutlinePercent color="red"/>}
 
                   {this.props.orderPosition.categ !== "ВОК" && <Popup
-                    trigger={<button className="OpenDobPizza">i</button>}
+                    trigger={<button className="OpenAdditions">i</button>}
                     position={ "bottom left"}>
                     <div className="OrdSost">
                      {this.props.orderPosition.sost /*вывод состава позиции*/}
                     </div>
                   </Popup>}
 
-                  {this.props.orderPosition.categ ==="Пицца" && this.props.orderPosition.dobcheck === false &&  <Popup
-                    trigger={<button className="OpenDobPizza">+</button>}
-                    position="right top">
-                    <div className="DobPizzaMain">
-                      <PodCategoriesPizza
-                        position={this.props.position}
-                        AlertAdd={this.props.AlertAdd}
-                        AddDob={this.props.AddDob}
-                        idOrd={this.props.orderPosition.idOrd}
-                      />
-                    </div>
-                  </Popup>
-                }
-                {this.props.orderPosition.categ ==="ВОК" && this.props.orderPosition.dobcheck === false && <Popup
-                  trigger={<button className="OpenDobWOK">+</button>}
-                  position="right top">
-                  <div className="DobWOKMain">
-                    <PodCategoriesWOK
+                  
+                  {this.props.orderPosition.haveAddition === true && 
+                  <button 
+                  className="OpenAdditions"
+                  id={"OpenAdditionsButton" + this.props.orderPosition.idOrd}
+                  onClick={() => {
+                    if(this.state.OpenDropDownAddition === false)
+                    {
+                      this.setState({
+                        OpenDropDownAddition: true
+                      })
+                      setTimeout(() => {
+                        document.getElementById('AdditionMainDiv' + this.props.orderPosition.idOrd).focus()
+                      }, 100)
+                      
+                    }      
+                    var distance = document.getElementById("OpenAdditionsButton" + this.props.orderPosition.idOrd).getBoundingClientRect();
+                    if(distance.top < 600)
+                    {
+                      setTimeout(() => {
+                        if(this.state.OpenDropDownAddition === true)
+                        document.getElementById('AdditionMainDiv' + this.props.orderPosition.idOrd).classList.add("Downed")
+                      }, 1)
+                      
+                    }
+                    else
+                    {
+                      setTimeout(() => {
+                        if(this.state.OpenDropDownAddition === true)
+                        document.getElementById('AdditionMainDiv' + this.props.orderPosition.idOrd).classList.remove("Downed")
+                      }, 100)
+                    }    
+                  }}
+                  >
+                    +
+                    </button>}
+
+                  {this.state.OpenDropDownAddition === true && 
+                  <div 
+                  className='AdditionMainDiv'
+                  id={'AdditionMainDiv' + this.props.orderPosition.idOrd}
+                  tabIndex={1}
+                  onFocus={() => {
+                    setTimeout(() => {
+                      this.setState({
+                        OpenDropDownAddition: true
+                      })
+                    }, 100)
+                    
+                  }}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      this.setState({
+                        OpenDropDownAddition: false
+                      })
+                    }, 100)
+                    
+                  }}
+                  >
+                    {this.props.cat.map((el) => (
+                      
+                      <CategoriesAddition 
                       AlertAdd={this.props.AlertAdd}
                       EditWOKNoodles={this.props.EditWOKNoodles}
-                      AddSostWOK={this.props.AddSostWOK}
+                      AddAdditionFunc={this.props.AddAdditionFunc}
+                      orderPosition={this.props.orderPosition}
                       position={this.props.position}
-                      idOrd={this.props.orderPosition.idOrd}
-                    />
-                  </div>
-                </Popup>}
+                      cat={el}
+                      key={el.id}
+                      />
+                      
+                    ))}
+                  </div>}
+
+                  
+
+                  
+                
+                
                 </td>
                 <td className="OrdPosEdit">
                   <button
@@ -69,7 +129,7 @@ class AddOrder extends React.Component {
                         } 
                         else 
                         {
-                          this.props.DelOrd(this.props.orderPosition.idOrd)
+                          this.props.deleteOrder(this.props.orderPosition.idOrd)
                         }
                       } /* кнопка "-" отнимает 1 от num*/
                     }>-</button>
@@ -125,6 +185,19 @@ class AddOrder extends React.Component {
             </tbody>
           </table>
           <div>
+            {this.props.orderPosition.haveAddition === true && 
+            this.props.orderAddition.map((el) => (
+              <OrderAddition
+              
+              orderPosition={this.props.orderPosition}
+              PlusAdditionFunc={this.props.PlusAdditionFunc}
+              MinusAdditionFunc={this.props.MinusAdditionFunc}
+              EditInputAddition={this.props.EditInputAddition}
+              orderAddition={el}
+              key={el.id + el.idOrd}
+              />
+            ))
+            }
           {this.props.orderPosition.categ ==="Пицца" &&
             <div className="PizzaChangeDiamOnOrderTable">
               <table>
@@ -152,29 +225,7 @@ class AddOrder extends React.Component {
             }
            
           </div>
-          {this.props.orderPosition.categ ==="Пицца" && this.props.ordDobP.map((el) => (
-            <AddDobPizza
-              DelDob={this.props.DelDob}
-              BPlusDob={this.props.BPlusDob}
-              BMinusDob={this.props.BMinusDob}
-              EditInputDob={this.props.EditInputDob}
-              idOrd={this.props.orderPosition.idOrd}
-              ordDobP={el}
-              key={el.idDob}
-            />
-          ))}
-           {this.props.orderPosition.categ ==="ВОК" && this.props.ordSWOk.map((el) => (
-          <AddSostWOK
-            AlertAdd={this.props.AlertAdd}
-            EditInputSostWOK={this.props.EditInputSostWOK}
-            BMinusSostWOK={this.props.BMinusSostWOK}
-            BPlusSostWOK={this.props.BPlusSostWOK}
-            deleteSostWOK={this.props.deleteSostWOK}
-            ordSWOk={el}
-            key={el.idSost}
-            orderPosition={this.props.orderPosition}
-          />
-        ))}
+          
           <div className="OrdPosSouse" id={"OrdPosSouse" + this.props.orderPosition.idOrd} data-value={this.props.orderPosition.soysause > 0 && 
             this.props.orderPosition.soysause * this.props.orderPosition.num}>
                 {this.props.orderPosition.soysause > 0 && 

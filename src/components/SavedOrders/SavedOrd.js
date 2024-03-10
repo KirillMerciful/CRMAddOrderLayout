@@ -1,10 +1,9 @@
 import React from 'react';
 import { IoCloseOutline } from "react-icons/io5";
-import SavedOrdSostWOK from './SavedOrdSostWOK';
-import SavedOrdDobPizza from './SavedOrdDobPizza';
 import SavedOrdStatus from './SavedOrdStatus';
 import ContainerStatusOrd from './ContainerStatusOrd';
 import SavedOrdDeletedWindow from './SavedOrdDeletedWindow';
+import SavedAdditions from './SavedAdditions';
 
 
 class SavedOrd extends React.Component {   
@@ -15,6 +14,7 @@ class SavedOrd extends React.Component {
             OpenDropDownDelete: false
         }
         this.CloseDropDownStatus = this.CloseDropDownStatus.bind(this)
+        this.CloseDeleteSavedOrdDropDown = this.CloseDeleteSavedOrdDropDown.bind(this)
     } 
     render() {
         return(
@@ -36,6 +36,7 @@ class SavedOrd extends React.Component {
                 
             <div className='SavedOrderBody'>
             <div 
+                tabIndex={0}
                 className={this.props.Saved.orderDetal[0].Status === "New" ? 'SavedOrdDivStatus New' :
                 this.props.Saved.orderDetal[0].Status === "Processing" ? 'SavedOrdDivStatus Processing' :
                 this.props.Saved.orderDetal[0].Status === "NotProcessing" ? 'SavedOrdDivStatus NotProcessing' :
@@ -51,6 +52,12 @@ class SavedOrd extends React.Component {
                         OpenDropDownStatus: !this.state.OpenDropDownStatus
                     })
                 })}
+                onBlur={(() => {
+                    setTimeout(() => {
+                        this.CloseDropDownStatus()
+                    }, 100)
+                    
+                })}
                 >
                     <SavedOrdStatus 
                     Saved={this.props.Saved}
@@ -61,6 +68,7 @@ class SavedOrd extends React.Component {
                         Saved={this.props.Saved}
                         CloseDropDownStatus={this.CloseDropDownStatus}
                         ChangeStatusSavedOrd={this.props.ChangeStatusSavedOrd}
+                        
                         />
                     </div>}
                 <div className='SavedOrderPositions'>
@@ -85,20 +93,14 @@ class SavedOrd extends React.Component {
                         </table>
                         </div>
 
-                    {this.props.Saved.orderSostWOKSaved.map((a) => 
-                        <SavedOrdSostWOK 
+                    {this.props.Saved.orderAdditionSaved.map((a) => 
+                        <SavedAdditions 
                         pdkon={this.props.Saved.orderDetal[0].pdkon}
-                        orderSostWOKSaved={a}
+                        orderAdditionSaved={a}
                         key={a.id + " " + a.idOrd}
                         idOrd={el.idOrd}
                         />)}
-                    {this.props.Saved.orderDobPizzaSaved.map((a) => 
-                        <SavedOrdDobPizza 
-                        pdkon={this.props.Saved.orderDetal[0].pdkon}
-                        orderDobPizzaSaved={a}
-                        key={a.id + " " + a.idOrd}
-                        idOrd={el.idOrd}
-                        />)}
+                    
                         
                     </div>
                     
@@ -134,14 +136,14 @@ class SavedOrd extends React.Component {
                     <table>
                         <tbody>
                             <tr className="SavedOrderCityName">
-                                <tb >
+                                <td >
                                     {this.props.Saved.orderCity[0].city}
-                                </tb>
+                                </td>
                                 </tr>
                                 <tr className="SavedOrderCityStreet">
-                                <tb>
+                                <td>
                                     {this.props.Saved.orderCity[0].street + " " + this.props.Saved.orderCity[0].house}
-                                </tb>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -186,7 +188,9 @@ class SavedOrd extends React.Component {
                     <IoCloseOutline 
                     className='DelteSavedOrdIcon'
                     onClick={(() => {
-                        this.props.DeleteSavedOrdClickButton()
+                        this.setState({
+                            OpenDropDownDelete: true
+                        })
                     })}/>
                 </div>
                 
@@ -195,10 +199,11 @@ class SavedOrd extends React.Component {
             
             </div>    
 
-            {this.props.DeleteSavedOrdDropDown === true && 
+            {this.state.OpenDropDownDelete === true && 
             <SavedOrdDeletedWindow
+            SavedIdOrd={this.props.Saved.SavedIdOrd}
             Saved={this.props.Saved}
-            CloseDeleteSavedOrdDropDown={this.props.CloseDeleteSavedOrdDropDown}
+            CloseDeleteSavedOrdDropDown={this.CloseDeleteSavedOrdDropDown}
             DeleteSavedOrd={this.props.DeleteSavedOrd}
             />
             }
@@ -210,6 +215,12 @@ class SavedOrd extends React.Component {
     CloseDropDownStatus(){
         this.setState({
             OpenDropDownStatus: false
+        })
+    }
+
+    CloseDeleteSavedOrdDropDown(){
+        this.setState({
+            OpenDropDownDelete: false
         })
     }
   }

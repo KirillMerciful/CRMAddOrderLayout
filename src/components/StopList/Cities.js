@@ -41,14 +41,14 @@ class Cities extends React.Component {
           City={el}
           position={this.props.position} 
           cat={this.props.cat} 
-          StopListChekFunctionPodcatOnCity={this.props.StopListChekFunctionPodcatOnCity}
           StopListChekFunctionOnCity={this.props.StopListChekFunctionOnCity} 
           StopListChekFunctionCatOnCity={this.props.StopListChekFunctionCatOnCity} 
           StopListChecCatOnPositionOnCity={this.props.StopListChecCatOnPositionOnCity}
           key={el.idCity}
           StopList={this.props.StopList}
           StopCat={this.props.StopCat}
-          StopPodCat={this.props.StopPodCat}
+          MouseClickX={this.props.MouseClickX}
+          MouseClickY={this.props.MouseClickY}
           />))}
       </div>    
       )

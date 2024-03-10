@@ -15,8 +15,7 @@ class MenuMain extends React.Component {
 
 
   render() {
-    if(this.props.ActiveComponent === 0)
-    {
+    
     return (
       <div className="MenuLeftPanel">
         <div className="ButtonsMenu">
@@ -31,28 +30,28 @@ class MenuMain extends React.Component {
             <div className="ContentNewOrderMenu" onClick={(() => {
                   this.props.NewOrderON()
                 })}>
-              <div className="TextNewOrderMenu ActivateTabText">
+              <div className={this.props.ActiveComponent === 0 ? "TextNewOrderMenu ActivateTabText" : 'TextNewOrderMenu'}>
                 {this.props.openMenu === true && 'Новый заказ'}
               </div>
-                <IoDuplicate id="IconNewOrderID" className="IconNewOrder ActivateTab"/>
+                <IoDuplicate id="IconNewOrderID" className={this.props.ActiveComponent === 0 ? "IconNewOrder ActivateTab" : 'IconNewOrder'}/>
           </div>
 
           <div className="ContentSavedOrdersMenu" onClick={(() => {
                 this.props.SavedOrdersON()
               })}>
-            <div className="TextSavedOrdersMenu">
+            <div className={this.props.ActiveComponent === 2 ? "TextSavedOrdersMenu ActivateTabText" : 'TextSavedOrdersMenu'}>
                   {this.props.openMenu === true && 'Заказы'}
                 </div>
-              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders" />
+              <IoCartSharp id="IconSavedOrdersMenuID" className={this.props.ActiveComponent === 2 ? "IconSavedOrders ActivateTab" : 'IconSavedOrders'} />
           </div> 
           
           <div className="ContentStopListMenu" onClick={(() => {
                 this.props.StopListON()
               })}>
-            <div className="TextStopListMenu">
+            <div className={this.props.ActiveComponent === 1 ? "TextStopListMenu ActivateTabText" : 'TextStopListMenu'}>
                   {this.props.openMenu === true && 'Стоп лист'}
                 </div>
-              <IoDocumentLock id="IconStopListID" className="IconStopList" />
+              <IoDocumentLock id="IconStopListID" className={this.props.ActiveComponent === 1 ? "IconStopList ActivateTab" : 'IconStopList'} />
           </div>    
 
           <div className="ContentChangeThemeMenu" onClick={(() => {
@@ -67,120 +66,6 @@ class MenuMain extends React.Component {
         </div>
       </div>
     )
-    }
-    else
-    {
-      if(this.props.ActiveComponent === 1)
-      {
-      return (
-        <div className="MenuLeftPanel">
-          <div className="ButtonsMenu">
-            
-            <div className="ContentOpenMenu" onClick={(() => {
-                 this.props.openMenuFunction()
-              })}>
-            <div className="TextOpenMenuMenu">
-                {this.props.openMenu === true && 'Скрыть меню'}
-              </div>
-              <IoArrowForwardCircle className={this.props.openMenu === true ? "IconOpenMenu open" : "IconOpenMenu"} id="IconOM"/>
-
-            </div>
-            <div className="ContentNewOrderMenu" onClick={(() => {
-                  this.props.NewOrderON()
-                })}>
-              <div className="TextNewOrderMenu">
-                {this.props.openMenu === true && 'Новый заказ'}
-              </div>
-                <IoDuplicate id="IconNewOrderID" className="IconNewOrder"/>
-            </div>
-
-            <div className="ContentSavedOrdersMenu" onClick={(() => {
-                this.props.SavedOrdersON()
-              })}>
-            <div className="TextSavedOrdersMenu">
-                  {this.props.openMenu === true && 'Заказы'}
-                </div>
-              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders" />
-          </div> 
-            
-            <div className="ContentStopListMenu"  onClick={(() => {
-                this.props.StopListON()
-              })}>
-              <div className="TextStopListMenu ActivateTabText">
-                {this.props.openMenu === true && 'Стоп лист'}
-              </div>
-              <IoDocumentLock id="IconStopListID" className="IconStopList ActivateTab"/>
-            </div>    
-  
-            <div className="ContentChangeThemeMenu" onClick={(() => {
-                this.ChangeColorTheme() 
-              })}>      
-              <div className="TextChangeThemeMenu">
-                  {this.props.openMenu === true && 'Сменить тему'}
-                </div>        
-              <IoSunny className="IconSun" id='ISun' />
-            </div> 
-  
-          </div>
-        </div>
-      )
-      }
-      if(this.props.ActiveComponent === 2)
-      {
-        return(
-          <div className="MenuLeftPanel">
-          <div className="ButtonsMenu">
-            
-            <div className="ContentOpenMenu" onClick={(() => {
-                 this.props.openMenuFunction()
-              })}>
-            <div className="TextOpenMenuMenu">
-                {this.props.openMenu === true && 'Скрыть меню'}
-              </div>
-              <IoArrowForwardCircle className={this.props.openMenu === true ? "IconOpenMenu open" : "IconOpenMenu"} id="IconOM"/>
-
-            </div>
-            <div className="ContentNewOrderMenu" onClick={(() => {
-                  this.props.NewOrderON()
-                })}>
-              <div className="TextNewOrderMenu">
-                {this.props.openMenu === true && 'Новый заказ'}
-              </div>
-                <IoDuplicate id="IconNewOrderID" className="IconNewOrder"/>
-            </div>
-
-            <div className="ContentSavedOrdersMenu" onClick={(() => {
-                this.props.SavedOrdersON()
-              })}>
-            <div className="TextSavedOrdersMenu ActivateTabText">
-                  {this.props.openMenu === true && 'Заказы'}
-                </div>
-              <IoCartSharp id="IconSavedOrdersMenuID" className="IconSavedOrders ActivateTab" />
-          </div> 
-            
-            <div className="ContentStopListMenu"  onClick={(() => {
-                this.props.StopListON()
-              })}>
-              <div className="TextStopListMenu">
-                {this.props.openMenu === true && 'Стоп лист'}
-              </div>
-              <IoDocumentLock id="IconStopListID" className="IconStopList"/>
-            </div>    
-  
-            <div className="ContentChangeThemeMenu" onClick={(() => {
-                this.ChangeColorTheme() 
-              })}>      
-              <div className="TextChangeThemeMenu">
-                  {this.props.openMenu === true && 'Сменить тему'}
-                </div>        
-              <IoSunny className="IconSun" id='ISun' />
-            </div> 
-  
-          </div>
-        </div>
-        )
-      }
-    }
   }
 
 

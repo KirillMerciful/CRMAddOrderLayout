@@ -13,7 +13,6 @@ this.OpenOrCloseThisCat = this.OpenOrCloseThisCat.bind(this)
 }
 
     render() {
-      if(this.props.StopCat.name !== "Добавка В Вок")
       if(this.props.StopCat.idCity === this.props.City.idCity)
       return(
       <div className={this.state.CheckFind !== 0 ? 'StopListCatName' : 'StopListCatName Unfind'}>

@@ -3,7 +3,7 @@ import React from "react"
 class Categ extends React.Component {
   cat = this.props.cat
   render() {
-    if(this.cat.name !== "Добавка К Пицце" && this.cat.name !== "Добавка В Вок")
+    if(this.cat.ThisAddition !== true || this.cat.name === "ВОК")
     {
       return (
         <div className="CatButtons">
