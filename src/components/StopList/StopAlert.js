@@ -138,6 +138,23 @@ class StopAlert extends React.Component {
         </div>   
         ) 
     }
+    case 'InpLessSum':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Введенная сумма меньше суммы заказа
+          </div>
+          </div>
+        </div>    
+        ) 
+    }
+    
   }
       
     } 

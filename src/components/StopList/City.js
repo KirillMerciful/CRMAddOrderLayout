@@ -1,7 +1,6 @@
 import React from 'react';
 import { IoChevronDown, IoArrowUndo } from "react-icons/io5";
 import StopCategoriesOnCity from './StopCategoriesOnCity';
-import StopPodCatOnCity from './StopPodCatOnCity';
 import CityDeliveryTime from './CityDeliveryTime';
 import CityTakeawayTime from './CityTakeawayTime';
 import CityCondition from './CityCondition';

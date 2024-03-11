@@ -61,10 +61,7 @@ class OrderAddition extends React.Component {
                 </td>
                 <td className="OrdPosPrice" id="orderAdditionPrice">
                   {
-                    this.props.pdkon === 0 ? 
                     this.props.orderAddition.price + " руб."
-                    :this.props.orderAddition.dkprice + " руб."
-                    /*проверка активен ли переключатель цен на дк и вывод цены уже в зависимости от него */
                   }
                 </td>
                 <td className="OrdPosSum"  
@@ -73,9 +70,7 @@ class OrderAddition extends React.Component {
                   } 
                   id={"orderAdditionTotalSum" + this.props.orderAddition.idAddition}>
                   {
-                    
                     this.props.orderAddition.totalprice + " руб."
-                    /*также проверяет ктивен ли переключатель цен на дк и умножает уже цену исходя из активности на num */
                   }
                 </td>
               </tr>

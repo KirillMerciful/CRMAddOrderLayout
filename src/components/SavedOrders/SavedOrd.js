@@ -145,6 +145,8 @@ class SavedOrd extends React.Component {
                                     {this.props.Saved.orderCity[0].street + " " + this.props.Saved.orderCity[0].house}
                                 </td>
                             </tr>
+                            
+                            
                         </tbody>
                     </table>
                 </div>
@@ -175,8 +177,21 @@ class SavedOrd extends React.Component {
                                     </td>
                                 }
                             </tr>
+                           
                         </tbody>
                     </table>
+                            <div className='MarkButtonOnSaveOrderMainDiv'>
+                            <button className='MarkButtonOnSaveOrder'>
+                                                {this.props.Saved.orderDetal[0].Payment}
+                                            </button>
+                                {this.props.Saved.orderMarksSaved.map((el) => 
+                                    el.Active === true &&
+                                    (
+                                            <button className='MarkButtonOnSaveOrder'>
+                                                {el.name}
+                                            </button>
+                                    ))}
+                            </div>
                     </div>    
                 </div>
 

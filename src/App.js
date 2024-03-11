@@ -16,6 +16,7 @@ import SavedOrdersMain from './components/SavedOrders/SavedOrdersMain';
 import LastWindow from './components/SavedOrders/LastWindow';
 import Position from './components/Position';
 import Categ from './components/Categ';
+import AddMarksOnOrder from './components/AddMarksOnOrder';
 
 
 
@@ -399,20 +400,24 @@ class App extends React.Component {
                     id: 101,
                     name: "Халапенью",
                     price: 50,
+                    dkprice: 50,
                     categ: "Добавка К Пицце",
                     num: 1,
                     salecheck: true,
                     totalprice: 50,
+                    totaldkprice: 50,
                     CheckStopList: false,
                 },
                 {
                     id: 102,
                     name: "Ананас",
                     price: 60,
+                    dkprice: 60,
                     categ: "Добавка К Пицце",
                     num: 1,
                     salecheck: true,
                     totalprice: 50,
+                    totaldkprice: 50,
                     CheckStopList: false,
                 },
                 {
@@ -618,6 +623,39 @@ class App extends React.Component {
             TypeOrder: "delivery",
             MouseClickX: "",
             MouseClickY: "",
+            MarksOrder: [
+                {
+                    idMark: 1,
+                    name: "Автораспред",
+                    Active: false
+                },
+                {
+                    idMark: 2,
+                    name: "ЯЕ",
+                    Active: false
+                },
+                {
+                    idMark: 3,
+                    name: "ДК",
+                    Active: false
+                },
+                {
+                    idMark: 4,
+                    name: "ВК",
+                    Active: false
+                },
+                {
+                    idMark: 5,
+                    name: "К Порогу",
+                    Active: false
+                },
+                {
+                    idMark: 6,
+                    name: "ЮКасса",
+                    Active: false
+                },
+            ],
+            Payment: false
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -634,11 +672,8 @@ class App extends React.Component {
         this.CloseLastWindow = this.CloseLastWindow.bind(this) 
         this.ChangeStatusSavedOrd = this.ChangeStatusSavedOrd.bind(this)  
         this.DeleteSavedOrd = this.DeleteSavedOrd.bind(this)
+        this.PaymentMark = this.PaymentMark.bind(this)
 
-        
-
-        
-        
 
         this.TotalSumFunction = this.TotalSumFunction.bind(this)
         this.TotalSumSaleFunction = this.TotalSumSaleFunction.bind(this)
@@ -665,6 +700,7 @@ class App extends React.Component {
         this.SavedOrdersON = this.SavedOrdersON.bind(this)
         this.openMenuFunction = this.openMenuFunction.bind(this)     
         
+
         this.StopListChekFunction = this.StopListChekFunction.bind(this)    
         this.StopListChekFunctionCat = this.StopListChekFunctionCat.bind(this)    
         this.StopListCityAdd = this.StopListCityAdd.bind(this)    
@@ -694,6 +730,7 @@ class App extends React.Component {
         this.ClickOpenDropDownTablewares = this.ClickOpenDropDownTablewares.bind(this)
         this.CloseOpenDropDownTablewares = this.CloseOpenDropDownTablewares.bind(this)
         
+        this.ClickMarksButton = this.ClickMarksButton.bind(this)
     }
 
     
@@ -717,6 +754,9 @@ class App extends React.Component {
 
         <div className='MainMenu'>
             {this.state.LastWindowSaved === true && <LastWindow
+            AlertAdd={this.AlertAdd}
+            totalSumSale={this.state.totalSumSale}
+            PaymentMark={this.PaymentMark}
             SaveFunction={this.SaveFunction}
             CloseLastWindow={this.CloseLastWindow}
             />}
@@ -1106,6 +1146,16 @@ class App extends React.Component {
                 
                 </div>
             </div>
+            <div className='MarksOrderMainDiv'>
+                {this.state.MarksOrder.map((el) => (
+                    <AddMarksOnOrder
+                    ClickMarksButton={this.ClickMarksButton}
+                    MarksOrder={el}
+                    key={el.idMark}
+                    />
+                    
+                ))}
+            </div>
         </div> 
     
         <div className='MainCateg'>
@@ -1422,6 +1472,7 @@ class App extends React.Component {
                             orderAddition: [...this.state.orderAddition]
                         }) 
                     }
+                    return(el)
                 })
             }
                 return(a)
@@ -1457,6 +1508,7 @@ class App extends React.Component {
                             orderAddition: [...this.state.orderAddition]
                         }) 
                     }
+                    return(el)
                 })
             }
             return(a)
@@ -1722,17 +1774,21 @@ class App extends React.Component {
             }
             ]
         })
+        this.state.MarksOrder.map((el) => {
+            el.Active = false
+            this.setState({
+                MarksOrder: [...this.state.MarksOrder]
+            })
+            return(el)
+        })
         this.setState({
             TypeOrder: "delivery"
         })
         document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
         if(this.state.TypeOrder === "delivery")
         {
-        
-        
         document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
         document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
-
         }
         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
@@ -1785,14 +1841,14 @@ class App extends React.Component {
         })
 
        this.state.orderAddition.map((a) => {
-            if (a.idSost > 0)
+            if (a.idAddition > 0)
             if(a.salecheck === true)
             {
-                res = res + (parseInt(document.getElementById("OrdSostWOKTotSum" + a.idAddition).dataset.value) * parseFloat(this.state.Sale))
+                res = res + (parseInt(document.getElementById("orderAdditionTotalSum" + a.idAddition).dataset.value) * parseFloat(this.state.Sale))
             }
             else
             {
-                res = res + parseInt(document.getElementById("OrdSostWOKTotSum" + a.idAddition).dataset.value)
+                res = res + parseInt(document.getElementById("orderAdditionTotalSum" + a.idAddition).dataset.value)
             }
 
             return(a)
@@ -2500,8 +2556,7 @@ class App extends React.Component {
                         document.getElementById('OrdPosName' + el.idAddition).classList.remove('Stoped')
                     }, 4000)
                 }
-
-        
+                return(el)
     })
 }
 
@@ -2571,9 +2626,7 @@ class App extends React.Component {
             {
                 
                 document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
-                setTimeout(() => {
-                    document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
-                }, 4000)
+                
                 this.AlertAdd("NotFilled")
             }
             else
@@ -2584,23 +2637,17 @@ class App extends React.Component {
                     if(this.state.address[0].PhoneNum.length !== 11)
                     {
                         document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.add('Allert')
-                        setTimeout(() => {
-                            document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
-                        }, 4000)
+                        
                     }
                     if(this.state.address[0].street.length < 1)
                     {
                         document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.add('Allert')
-                        setTimeout(() => {
-                            document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
-                        }, 4000)
+                        
                     }
                     if(this.state.address[0].house.length < 1 )
                     {
                         document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.add('Allert')
-                        setTimeout(() => {
-                            document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
-                        }, 4000)
+                        
                     }
                 }
                 else
@@ -2753,21 +2800,6 @@ class App extends React.Component {
     }
 
     async SaveFunction() {
-        this.state.orderAddition.map((el) => {
-            if(el.podcat === "Соус В Вок")
-            {
-                this.state.orderPosition.map((a) => {
-                    if(el.idOrd === a.idOrd)
-                    {
-                        el.num = a.num
-                        this.setState({
-                            orderAddition: [...this.state.orderAddition]
-                        })
-                    }
-                })
-            }
-        })
-        await this.setState
         this.setState({
             LastWindowSaved: false
         })
@@ -2775,6 +2807,7 @@ class App extends React.Component {
         {
         const SavedIdOrd = this.state.SavedIdOrd
         this.setState({SavedIdOrd: parseInt(this.state.SavedIdOrd) + 1})
+        var orderMarksSaved = []
         var orderPosSaved = []
         var orderAdditionSaved = []
         var orderCity = []
@@ -2830,7 +2863,8 @@ class App extends React.Component {
             })
             return(el)
         })
-        orderCity.push({idCity: this.state.OnCity.idCity,
+        orderCity.push({
+            idCity: this.state.OnCity.idCity,
             city: this.state.OnCity.city, 
             street: this.state.OnCity.street, 
             house: this.state.OnCity.house, 
@@ -2847,10 +2881,20 @@ class App extends React.Component {
             TotalSale: this.state.TotalSale,
             TimeSave: this.state.TimeSave,
             Status: "New",
-            TypeOrder: this.state.TypeOrder
+            TypeOrder: this.state.TypeOrder,
+            Payment: this.state.Payment
+        })
+
+        this.state.MarksOrder.map((el) => {
+            orderMarksSaved.push({
+                idMark: el.idMark,
+                name: el.name,
+                Active: el.Active
+            })
+            return(el)
         })
         this.setState({
-            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderAdditionSaved, orderAddress}]
+            Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderAdditionSaved, orderAddress, orderMarksSaved}]
         })
         await this.setState
         console.log(this.state.Saved)
@@ -2869,6 +2913,38 @@ class App extends React.Component {
         this.setState({
             TimeSave: TimeSave
         })
+    }
+
+    async PaymentMark(val){
+        switch(val){
+            default:{
+                this.setState({
+                    Payment: "Наличными сдача с " + val + " руб."
+                })
+                break;
+            }
+            case("Картой"): {
+                this.setState({
+                    Payment: val
+                })
+                break;
+            }
+            case("Оплачено"): {
+                this.setState({
+                    Payment: val
+                })
+                break;
+            }
+            case("Б/С"): {
+                this.setState({
+                    Payment: "Наличными " + val 
+                })
+                break;
+            }
+        }
+        await this.setState
+        console.log(this.state.Payment)
+        this.SaveFunction()
     }
 
     ChangeStatusSavedOrd(val, SavedIdOrd){
@@ -2913,6 +2989,19 @@ class App extends React.Component {
     CloseOpenDropDownTablewares(){
         this.setState({
             OpenDropDownTablewares: false
+        })
+    }
+
+    ClickMarksButton(idMark){
+        this.state.MarksOrder.map((el) =>{
+            if(el.idMark === idMark)
+            {
+                el.Active = !el.Active
+                this.setState({
+                    MarksOrder: [...this.state.MarksOrder]
+                })
+            }
+            return(el)
         })
     }
 }

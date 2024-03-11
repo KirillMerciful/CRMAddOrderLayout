@@ -185,19 +185,6 @@ class AddOrder extends React.Component {
             </tbody>
           </table>
           <div>
-            {this.props.orderPosition.haveAddition === true && 
-            this.props.orderAddition.map((el) => (
-              <OrderAddition
-              
-              orderPosition={this.props.orderPosition}
-              PlusAdditionFunc={this.props.PlusAdditionFunc}
-              MinusAdditionFunc={this.props.MinusAdditionFunc}
-              EditInputAddition={this.props.EditInputAddition}
-              orderAddition={el}
-              key={el.id + el.idOrd}
-              />
-            ))
-            }
           {this.props.orderPosition.categ ==="Пицца" &&
             <div className="PizzaChangeDiamOnOrderTable">
               <table>
@@ -215,6 +202,7 @@ class AddOrder extends React.Component {
                       className={this.props.orderPosition.Proverka36 === false ? "PizzaChangeDiamOnOrderButton36" : "PizzaChangeDiamOnOrderButton36 Actived"} 
                       onClick={(() => {
                         this.props.ChangeDiamPizzaOnOrder(true, this.props.orderPosition.idOrd)
+                        console.log(this.props.orderAddition)
                       })}
                       >36см</button>
                     </td>
@@ -223,6 +211,20 @@ class AddOrder extends React.Component {
               </table>
             </div>
             }
+            {this.props.orderPosition.haveAddition === true && 
+            this.props.orderAddition.map((el) => (
+              <OrderAddition
+              
+              orderPosition={this.props.orderPosition}
+              PlusAdditionFunc={this.props.PlusAdditionFunc}
+              MinusAdditionFunc={this.props.MinusAdditionFunc}
+              EditInputAddition={this.props.EditInputAddition}
+              orderAddition={el}
+              key={el.id + el.idOrd}
+              />
+            ))
+            }
+          
            
           </div>
           
