@@ -13,7 +13,6 @@ class City extends React.Component {
         OpenDropDownDelivery: false,
         OpenDropDownTakeaway: false,
         OpenDropDownCondition: false,
-        SearchVal: "",
         ResSearch: [
 
         ],
@@ -157,24 +156,47 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                       OpenDropDown: false
                     })
                   }, 100)
+                  
                 })}
                 >
                   <div className='InputStopListCityDiv'>
                 <input
                 placeholder='Стоплист'
+                id={'InputStopListCity' + this.props.City.idCity}
                 className={this.state.OpenDropDown === true ? 'InputStopListCity OpenDrop' : 'InputStopListCity'}
                 onChange={((e) => {
-                  this.setState({
-                    SearchVal: e.target.value
-                  })
-                  this.SearchPos()
+                  if(e.target.value !== "")
+                  {
+                  var SearchingPos = this.props.StopList.filter(pos => { 
+                      return pos.name.toLowerCase().includes(e.target.value)
+                    })
+              
+                    this.setState({
+                      ResSearch: [...SearchingPos]
+                    })
+                    this.SearchStatusCat()
+                    
+                  }
+                  else
+                  {
+                    this.setState({
+                      ResSearch: [...this.props.StopList]
+                    })
+                    this.SearchStatusCat()
+                    
+                  }
+                  this.SearchStatusCat()
                 })}
                  >
                 </input>
                
                 </div>
                 <div className={this.state.OpenDropDown === true ? 'StopListOnCityUpdate OpenStop' : 'StopListOnCityUpdate'}>
-                {this.state.OpenDropDown === true && this.props.StopCat.map((el) => (<StopCategoriesOnCity
+                {this.state.OpenDropDown === true && this.props.StopCat.map((el) => 
+                
+                
+                
+                <StopCategoriesOnCity
                   StopListChekFunctionOnCity={this.props.StopListChekFunctionOnCity} 
                   StopListChekFunctionCatOnCity={this.props.StopListChekFunctionCatOnCity} 
                   StopCat={el}
@@ -182,11 +204,13 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                   City={this.props.City}
                   key={el.id + " " + el.idCity}
                   />
-                ))}
+                
+                
+                )}
                 
                   
                 </div>
-
+                
                 </div>
                 <div>
                 <IoChevronDown 
@@ -215,33 +239,43 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
     }  
 
    
-    
+    SearchStatusCat(){
+      
+      this.props.StopCat.map((el) => {
+        var check = 0
+          this.state.ResSearch.map((a) => {
+                    if(a.categ === el.name)
+                    {
+                      check = check + 1
+                    }
+                    if(check === 0)
+                    {
+                      setTimeout(() => {
+                        document.getElementById('StopListCatName' + this.props.City.idCity + el.name).classList.add('Unfind')
+                      }, 100)
+                    }
+                    else
+                    {
+                      
+                      setTimeout(() => {
+                        document.getElementById('StopListCatName' + this.props.City.idCity + el.name).classList.remove('Unfind')
+                      }, 100)
+                    }
+                    return(a)
+    })
+    return(el)
+  })
+}
     
     componentDidMount()
     {
-      this.SearchPos()
+      
+        this.setState({
+          ResSearch: [...this.props.StopList]
+        })
+      
       if(this.state.OpenDropDownDelivery === true)
       document.body.addEventListener('onClick', this.CloseTimeDeliverySelector());
-    }
-
-    
-    async SearchPos(){
-      var SearchingPos = this.props.StopList.filter(pos => {
-        return pos.name.toLowerCase().includes(this.state.SearchVal)
-      })
-      if(this.state.SearchVal)
-      {
-      this.setState({
-        ResSearch: [...SearchingPos]
-      })
-      }
-      else
-      {
-      this.setState({
-        ResSearch: [...this.props.StopList]
-      })
-     }
-      await this.setState
     }
 
     CloseTimeDeliverySelector(){

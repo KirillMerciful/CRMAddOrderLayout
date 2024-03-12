@@ -1,7 +1,15 @@
 import React from 'react';
+import { MdNoEncryption } from 'react-icons/md';
+import { PiMagnifyingGlass } from "react-icons/pi";
 
 class PositionsTitle extends React.Component {    
-
+  constructor(props) {
+    super(props)
+    this.state = {
+        OpenDropDown: false,
+        ResSearch: []
+    }
+  }
  
 
     render() {     
@@ -29,11 +37,72 @@ class PositionsTitle extends React.Component {
                       </tr>
               </tbody>
               </table>
-
+        <div 
+        className='SearchOnPositionMainDiv'
+        onClick={() => {
+          document.getElementById('SearchOnPositionInput').focus()
+        }}
+        >
+          <PiMagnifyingGlass className='SearchOnPositionIcon'/>
+          <input
+          className='SearchOnPositionInput'
+          id='SearchOnPositionInput'
+          onBlur={() => {
+            setTimeout(() => {
+              this.setState({
+                ResSearch: []
+              })
+              document.getElementById('SearchOnPositionInput').value = ""
+            }, 100)
+            
+          }}
+          onChange={(e) => {
+            if(e.target.value !== "")
+            {
+              var SearchingPos = this.props.position.filter(pos => {
+                if(pos.ThisAddition !== true)
+                return pos.name.toLowerCase().includes(e.target.value)
+              })
+              
+              this.setState({
+                ResSearch: [...SearchingPos]
+              })
+              
+            }
+            else
+            {
+              this.setState({
+                ResSearch: []
+              })
+              
+            }
+          }}
+          />
+        </div>
+        <div 
+        className='ResSearchOnPositionMainDiv'
+        >
+        {this.state.ResSearch.length > 0 && this.state.ResSearch.slice(0, 5).map((el) => 
+          <div
+          className={el.CheckStopList === false ? 'ResSearchOnPosition' : 'ResSearchOnPosition unactive'}
+          onClick={() => {
+            if(el.CheckStopList === false)
+            {
+              this.props.addOrder(el)
+            }
+            else
+            {
+              this.props.AlertAdd("Stop")
+            }
+          }}
+          >{el.name}</div>
+        )}
+        </div>
     </div>   
       )      
       
     }  
+
   }
 
   export default PositionsTitle

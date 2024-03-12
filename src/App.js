@@ -406,6 +406,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 50,
                     totaldkprice: 50,
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -418,6 +419,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 50,
                     totaldkprice: 50,
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -429,6 +431,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 59,
                     categ: "Мясо В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -440,6 +443,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 69,
                     categ: "Мясо В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -451,6 +455,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 120,
                     categ: "Мясо В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -462,6 +467,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 50,
                     categ: "Доп В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -473,6 +479,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 50,
                     categ: "Доп В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -484,6 +491,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 0,
                     categ: "Соус В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -495,6 +503,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 0,
                     categ: "Соус В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
                 {
@@ -506,6 +515,7 @@ class App extends React.Component {
                     salecheck: true,
                     totalprice: 0,
                     categ: "Соус В Вок",
+                    ThisAddition: true,
                     CheckStopList: false,
                 },
             ],
@@ -1168,8 +1178,11 @@ class App extends React.Component {
 
         <div className='MainPosition'>         
             <PositionsTitle 
+                position={this.state.position}
                 PriceCheck={this.PriceCheck} 
                 pdkon={this.state.pdkon}
+                addOrder={this.addOrder} 
+                AlertAdd={this.AlertAdd}
             />
             <div className='BPos'>
                 <div className='ButtonPositions'>

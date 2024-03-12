@@ -15,7 +15,9 @@ this.OpenOrCloseThisCat = this.OpenOrCloseThisCat.bind(this)
     render() {
       if(this.props.StopCat.idCity === this.props.City.idCity)
       return(
-      <div className={this.state.CheckFind !== 0 ? 'StopListCatName' : 'StopListCatName Unfind'}>
+      <div 
+      id={'StopListCatName' + this.props.City.idCity + this.props.StopCat.name} 
+      className={this.state.CheckFind !== 0 ? 'StopListCatName' : 'StopListCatName Unfind'}>
           <input type="checkbox" className='CheckBoxStopCat' id={'StopListCatCheck' + this.props.StopCat.id + " " +  this.props.City.idCity}  checked={this.props.StopCat.CheckStopList} onChange={(() => {
             this.props.StopListChekFunctionCatOnCity(this.props.StopCat.id, this.props.StopCat.idCity)
             })}></input>
