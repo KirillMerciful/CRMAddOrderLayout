@@ -154,6 +154,54 @@ class StopAlert extends React.Component {
         </div>    
         ) 
     }
+    case 'CertificateUnfien':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Сертификат не найден
+          </div>
+          </div>
+        </div>    
+      )
+    }
+    case 'CertificateUsed':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Сертификат израсходован
+          </div>
+          </div>
+        </div>    
+      )
+    }
+    case 'PreOrder':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Указано неверное время или дата, если сейчас повторно сохранить заказ, он будет отправлен по готовности
+          </div>
+          </div>
+        </div>    
+      )
+    }
     
   }
       

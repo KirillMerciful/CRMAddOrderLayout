@@ -1,5 +1,4 @@
 import React from 'react';
-import { MdNoEncryption } from 'react-icons/md';
 import { PiMagnifyingGlass } from "react-icons/pi";
 
 class PositionsTitle extends React.Component {    

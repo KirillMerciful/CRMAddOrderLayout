@@ -618,7 +618,19 @@ class App extends React.Component {
             Saved: [
                 
             ],
-            TimeSave: "",
+            TimeSave: [
+                {
+                    Hour: "",
+                    Minutes: ""
+                }
+            ],
+            DateSave: [
+                {
+                    Date: "",
+                    Mounth: "",
+                    Year: ""
+                }
+            ],
             address: [
                 {
                     street: "",
@@ -665,7 +677,56 @@ class App extends React.Component {
                     Active: false
                 },
             ],
-            Payment: false
+            CertificateContain: [
+                {
+                    idCertificate: 2,
+                    typeCertificate: "percent",
+                    name: "POL100LOL",
+                    usage: 1,
+                    val: 0.9
+                },
+                {
+                    idCertificate: 3,
+                    typeCertificate: "percent",
+                    name: "PRO100STAS",
+                    usage: 2,
+                    val: 0.7
+                },
+                {
+                    idCertificate: 1,
+                    typeCertificate: "sum",
+                    name: "SALE200RUB",
+                    usage: "infinity",
+                    val: 200
+                }
+            ],
+            Payment: false,
+            TodayDate: "",
+            MaxDateInp: "",
+            UsedCertificate: [],
+            MaxTimeDelivery: [
+                {
+                    Hour: "",
+                    Minutes: ""
+                }
+            ],
+            MaxTimeTakeaway: [
+                {
+                    Hour: "",
+                    Minutes: ""
+                }
+            ],
+            AddTimeDelivery: 0,
+            TimeInputContain: [
+                {
+                    Date: false,
+                    Mounth: false,
+                    Year: false,
+                    Hour: false,
+                    Minutes: false
+                }
+            ],
+            PreOrder: false,
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -731,8 +792,11 @@ class App extends React.Component {
         this.ChangeTimeTakeawayCity = this.ChangeTimeTakeawayCity.bind(this)
         this.ClearTimeOneCity = this.ClearTimeOneCity.bind(this)
         this.ChangeConditionCity = this.ChangeConditionCity.bind(this)
+        this.ClearTimeAndConditionAllCity = this.ClearTimeAndConditionAllCity.bind(this)
+        this.ClearTimeAllCity = this.ClearTimeAllCity.bind(this)
         
         
+        this.getTodayDay = this.getTodayDay.bind(this)
         this.getTime = this.getTime.bind(this)
         
         this.ClickOpenDropDownSale = this.ClickOpenDropDownSale.bind(this)
@@ -750,7 +814,7 @@ class App extends React.Component {
     if (this.state.ActiveComponent === 0)
     {
     return (      
-    <div className='GlobalDiv' onClick={((event) => {
+    <div className='GlobalDiv' onClick={(() => {
         if(this.state.OpenListCity === true)
         this.CloseCityist()
         if(this.state.OpenDropDownSale === true)
@@ -899,7 +963,51 @@ class App extends React.Component {
                                 Время на доставку: 
                             </td>
                             <td className='TimeCityVal'>
-                                {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.delivery }
+                                {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : 
+                                    <div
+                                    className='TimeDeliveryDiv'
+                                    >
+                                        {this.state.OnCity.delivery}
+                                        {this.state.OnCity.idCity !== 0 &&
+                                        <div className='TimeDeliveryDivButtons'>
+                                            <button
+                                            className={this.state.AddTimeDelivery === 30 ? 'ButtonAddTimeDelivery30 Actived' : 'ButtonAddTimeDelivery30'}
+                                            onClick={() => {
+                                                if(this.state.AddTimeDelivery !== 30)
+                                                {
+                                                    this.setState({
+                                                        AddTimeDelivery: 30
+                                                    })
+                                                }
+                                                else
+                                                {
+                                                    this.setState({
+                                                        AddTimeDelivery: 0
+                                                    })
+                                                }
+                                            }}
+                                            >+30</button>
+                                            <button
+                                            className={this.state.AddTimeDelivery === 60 ? 'ButtonAddTimeDelivery60 Actived' : 'ButtonAddTimeDelivery60'}
+                                            onClick={() => {
+                                                if(this.state.AddTimeDelivery !== 60)
+                                                {
+                                                    this.setState({
+                                                        AddTimeDelivery: 60
+                                                    })
+                                                }
+                                                else
+                                                {
+                                                    this.setState({
+                                                        AddTimeDelivery: 0
+                                                    })
+                                                }
+                                            }}
+                                            >+60</button>
+                                        </div>
+                                }
+                                </div>
+                                }
                             </td>
                         </tr>
                         <tr>
@@ -932,8 +1040,11 @@ class App extends React.Component {
                                 <button
                                 className={this.state.TypeOrder === "takeaway" ? "ChangerOrderTypeTdButtonTakeaway Actived" : "ChangerOrderTypeTdButtonTakeaway"}
                                 onClick={(() => {
+                                    if(this.state.TypeOrder === "delivery")
+                                    {
                                     document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
                                     document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+                                    }
                                     setTimeout(() => {
                                         this.setState({
                                             TypeOrder: "takeaway"
@@ -1156,7 +1267,106 @@ class App extends React.Component {
                 
                 </div>
             </div>
+            {this.state.orderPosition.length > 0 && 
+            this.state.OnCity.idCity !== 0 &&
             <div className='MarksOrderMainDiv'>
+                
+                <div
+                className='CertificateDiv'
+                >  
+                    <div
+                    className='CertificateText'
+                    >
+                    Сертификат
+                    </div>
+                    <div>
+                        <input
+                        className='CertificateInput'
+                        id='CertificateInput'
+                        type='text'
+                        maxLength={10}
+                        
+                        ></input>
+                        <button
+                        onClick={() => {
+                            var check = this.state.CertificateContain.find(function (c) {            
+                                return(c.name === document.querySelector('#CertificateInput').value)
+                            })
+                            
+                                if(check !== undefined)
+                                {
+                                    if(check.usage !== 0)
+                                    {
+                                        if(check.typeCertificate !== "sum")
+                                        {
+                                            this.SaleFunction(check.val, check.idCertificate)
+                                            this.setState({
+                                                UsedCertificate: check
+                                            })
+                                            
+                                        }
+                                        else
+                                        {
+                                            this.SaleInpEdit(check.val)
+                                            this.setState({
+                                                UsedCertificate: check
+                                            })
+                                            
+                                        }   
+                                    }
+                                    else
+                                    {
+                                        this.AlertAdd("CertificateUsed")
+                                    }
+                                }
+                                else
+                                {
+                                    
+                                    this.AlertAdd('CertificateUnfien')
+                                }
+                                document.getElementById('CertificateInput').value = ""
+                            
+                        }}
+                        className='CertificateButton'
+                        >Найти</button> 
+                    </div>
+                </div>
+    
+                <div
+                className='PreOrderDiv'
+                >
+                    Предзаказ
+                    <input
+                    id={'PreOrderInput'}
+                    className='PreOrderInput'
+                    min={this.state.TodayDate}//Минимальная дата предзаказа
+                    max={this.state.MaxDateInp}//Максимальная дата предзаказа
+                    type='datetime-local'
+                    onClick={() => {
+                        document.getElementById('PreOrderInput').classList.remove('False')
+                    }}
+                    onChange={(e) => {
+                        //нужно провести сравнение текущего времени с введенным, после сравнить время на доставку/вынос с введенным
+                        var ThisTime = new Date(e.target.value)
+                       
+                        this.setState({
+                            TimeInputContain:[
+                                {
+                                    Hour: String(ThisTime.getHours()).padStart(2, "0"),
+                                    Minutes: String(ThisTime.getMinutes()).padStart(2, "0"),
+                                    Date: String(ThisTime.getDate()).padStart(2, "0"),
+                                    Mounth: String(ThisTime.getMonth() + 1).padStart(2, "0"),
+                                    Year: String(ThisTime.getFullYear())
+                                }
+                            ]
+                        })
+                        this.setState({
+                            PreOrder: true
+                        })
+                        
+                    }}
+                    ></input>
+                </div>
                 {this.state.MarksOrder.map((el) => (
                     <AddMarksOnOrder
                     ClickMarksButton={this.ClickMarksButton}
@@ -1166,10 +1376,12 @@ class App extends React.Component {
                     
                 ))}
             </div>
+    }
         </div> 
     
         <div className='MainCateg'>
-            {this.state.cat.map((el) => (<Categ 
+            {this.state.cat.map((el) => (
+            <Categ 
             EditCat={this.EditCat} 
             cat={el} 
             key={el.id}/>))}
@@ -1216,22 +1428,25 @@ class App extends React.Component {
             >
                 <div  className='MainDivStopList'>
                 <Cities 
-                        City={this.state.City}
-                        ChangeTimeDeliveryCity={this.ChangeTimeDeliveryCity}
-                        ChangeTimeTakeawayCity={this.ChangeTimeTakeawayCity}
-                        ChangeConditionCity={this.ChangeConditionCity}
-                        ClearTimeOneCity={this.ClearTimeOneCity}
-                        StopListChecCatOnPositionOnCity={this.StopListChecCatOnPositionOnCity}
-                        StopListChekFunctionPodcatOnCity={this.StopListChekFunctionPodcatOnCity}
-                        StopListChekFunctionCatOnCity={this.StopListChekFunctionCatOnCity}
-                        StopListChekFunctionOnCity={this.StopListChekFunctionOnCity}
-                        cat={this.state.cat}
-                        position={this.state.position}
-                        podcat={this.state.podcat}
-                        StopList={this.state.StopList}
-                        StopCat={this.state.StopCat}
-                        MouseClickX={this.state.MouseClickX}
-                        MouseClickY={this.state.MouseClickY}
+                    
+                    City={this.state.City}
+                    ChangeTimeDeliveryCity={this.ChangeTimeDeliveryCity}
+                    ChangeTimeTakeawayCity={this.ChangeTimeTakeawayCity}
+                    ChangeConditionCity={this.ChangeConditionCity}
+                    ClearTimeOneCity={this.ClearTimeOneCity}
+                    ClearTimeAndConditionAllCity={this.ClearTimeAndConditionAllCity}
+                    ClearTimeAllCity={this.ClearTimeAllCity}
+                    StopListChecCatOnPositionOnCity={this.StopListChecCatOnPositionOnCity}
+                    StopListChekFunctionPodcatOnCity={this.StopListChekFunctionPodcatOnCity}
+                    StopListChekFunctionCatOnCity={this.StopListChekFunctionCatOnCity}
+                    StopListChekFunctionOnCity={this.StopListChekFunctionOnCity}
+                    cat={this.state.cat}
+                    position={this.state.position}
+                    podcat={this.state.podcat}
+                    StopList={this.state.StopList}
+                    StopCat={this.state.StopCat}
+                    MouseClickX={this.state.MouseClickX}
+                    MouseClickY={this.state.MouseClickY}
                     />                
                 </div>
 
@@ -1797,6 +2012,27 @@ class App extends React.Component {
         this.setState({
             TypeOrder: "delivery"
         })
+
+        this.setState({
+            AddTimeDelivery: 0
+        })
+
+        this.setState({
+            PreOrder: false
+        })
+
+        this.setState({
+            TimeInputContain: [
+                {
+                    Date: false,
+                    Mounth: false,
+                    Year: false,
+                    Hour: false,
+                    Minutes: false
+                }
+            ]
+        })
+
         document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).classList.remove('Allert')
         if(this.state.TypeOrder === "delivery")
         {
@@ -1805,6 +2041,12 @@ class App extends React.Component {
         }
         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
+        if(this.state.OnCity.idCity !== 0)
+        {
+        document.getElementById('CertificateInput').value = ""
+        document.getElementById('PreOrderInput').value = ""
+        }
+        
         await this.setState 
         this.TotalSumFunction() //пересчет итоговой суммы
         this.TotalSumSaleFunction() //пересчет итоговой суммы со скидкой
@@ -1913,7 +2155,13 @@ class App extends React.Component {
             this.ButtonSaleColor(1)
         }
         this.TotalSumSaleFunction() 
-        this.SaleWindowEditActive()
+        this.setState({
+            SSumWindowActive: false
+        })
+        this.setState({
+            Sale: 1
+        })
+        
     }
 
     async SaleInpEdit2() {
@@ -2045,15 +2293,25 @@ class App extends React.Component {
     }
     else
     {
+        
         this.cleanOrder()
     }
         
     }
 
     SavedOrdersON(){
-        this.setState({
-            ActiveComponent: 2
-        })
+        if(this.state.ActiveComponent === 2)
+        {
+            this.setState({
+                ActiveComponent: 0
+            })
+        }
+        setTimeout(() => {
+            this.setState({
+                ActiveComponent: 2
+            })
+        }, 1)
+        
     }
 
     openMenuFunction() {//функия раскрытия/скрытия меню
@@ -2327,6 +2585,7 @@ class App extends React.Component {
 
     componentDidMount(){
         this.StopListCityAdd()
+        this.getTodayDay()
     }
     
     StopListChekFunctionOnCity(pos, idCity)//добавление позиции в стоп лист
@@ -2461,6 +2720,9 @@ class App extends React.Component {
 
 
     async CityChange(city) {
+        this.setState({
+            AddTimeDelivery: 0
+        })
         this.setState({
             OnCity: {idCity: city.idCity, city: city.city, street: city.street, house: city.house, delivery: city.delivery, takeaway: city.takeaway, condition: city.condition} 
         })
@@ -2632,6 +2894,29 @@ class App extends React.Component {
         })
     }
 
+    ClearTimeAllCity(){
+        this.state.City.map((el) => {
+                el.delivery = 60
+                el.takeaway = 20
+                this.setState({
+                    City: [...this.state.City]
+                })
+            return(el)
+        })
+    }
+
+    ClearTimeAndConditionAllCity(){
+        this.state.City.map((el) => {
+                el.delivery = 60
+                el.takeaway = 20
+                el.condition = "Активен"
+                this.setState({
+                    City: [...this.state.City]
+                })
+            return(el)
+        })
+    }
+
     async SavedButtonClick() {
         if(this.state.OnCity.idCity !== 0)
         {
@@ -2791,9 +3076,189 @@ class App extends React.Component {
                         return(el)
                     })
 
-                    
-            }
+                    if(this.state.PreOrder === true)
+                    {
+                        var InpDate = this.state.TimeInputContain[0].Date
+                        var InpMounth = this.state.TimeInputContain[0].Mounth
+                        var InpYear = this.state.TimeInputContain[0].Year
+                        var InpHour = this.state.TimeInputContain[0].Hour
+                        var InpMinutes = this.state.TimeInputContain[0].Minutes
+                        var today = new Date()
+                        var MinDate = String(today.getDate()).padStart(2 , "0")
+                        var MinMounth = String(today.getMonth() + 1).padStart(2 , "0")
+                        var MinYear = String(today.getFullYear())
+                        
+                        if(this.state.TypeOrder === 'delivery')
+                        {
+                            var MinHour = String(today.getHours()).padStart(2 , "0")
+                            var MinMinutes = String(today.getMinutes() + this.state.OnCity.delivery + this.state.AddTimeDelivery).padStart(2 , "0")
+                            if(parseInt(MinMinutes) > 60)
+                            {
+                                if(parseInt(MinMinutes) > 120)
+                                {
+                                    MinMinutes = String(parseInt(MinMinutes) - 120).padStart(2 , "0")
+                                    MinHour = String(parseInt(MinHour) + 2).padStart(2 , "0")
+                                }
+                                else
+                                {
+                                    MinMinutes = String(parseInt(MinMinutes) - 60).padStart(2 , "0")
+                                    MinHour = String(parseInt(MinHour) + 1).padStart(2 , "0")
+                                }
+                            }
+                            
+                            if(parseInt(InpYear) > parseInt(MinYear) || parseInt(InpMounth) > parseInt(MinMounth) || parseInt(InpDate) > parseInt(MinDate))
+                            {
+                                if(parseInt(InpHour) > 11)
+                                {
+                                    this.setState({
+                                        PreOrder: true
+                                    })
+                                }
+                                else
+                                {
+                                    if(parseInt(InpHour) === 11)
+                                    {
+                                        if(parseInt(InpMinutes) >= 30)
+                                        {
+                                            this.setState({
+                                                PreOrder: true
+                                            })
+                                        }
+                                        else
+                                        {
+                                            
+                                            this.CloseLastWindow()
+                                            
+                                            this.setState({
+                                                PreOrder: false
+                                            })
+                                            document.getElementById('PreOrderInput').value = ""
+                                            document.getElementById('PreOrderInput').classList.add('False')
+                                            this.AlertAdd('PreOrder')
+                                        }
+                                    }
+                                    else
+                                    {
+                                        
+                                        this.CloseLastWindow()
+                                        
+                                        this.setState({
+                                            PreOrder: false
+                                        })
+                                        document.getElementById('PreOrderInput').value = ""
+                                        document.getElementById('PreOrderInput').classList.add('False')
+                                        this.AlertAdd('PreOrder')
+                                    }
+                                }
+                                
+                            }
+                            else
+                            {
+                                var MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
+                                var InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
+                                if((InpTime - MinTime) >= 30)
+                                {
+                                    this.setState({
+                                        PreOrder: true
+                                    })
+                                }
+                                else
+                                {
 
+                                    this.CloseLastWindow()
+                                            
+                                            this.setState({
+                                                PreOrder: false
+                                            })
+                                            
+                                            this.AlertAdd('PreOrder')
+                                }
+                            }
+                            
+                        }
+                        else
+                        {
+                            var MinHour = String(today.getHours()).padStart(2 , "0")
+                            var MinMinutes = String(today.getMinutes() + this.state.OnCity.takeaway).padStart(2 , "0")
+                            if(parseInt(MinMinutes) > 60)
+                            {
+                                MinMinutes = String(parseInt(MinMinutes) - 60).padStart(2 , "0")
+                                MinHour = String(parseInt(MinHour) + 1).padStart(2 , "0")
+                            }
+                            if(parseInt(InpYear) > parseInt(MinYear) || parseInt(InpMounth) > parseInt(MinMounth) || parseInt(InpDate) > parseInt(MinDate))
+                            {
+                                
+                                if(parseInt(InpHour) > 10)
+                                {
+                                    this.setState({
+                                        PreOrder: true
+                                    })
+                                }
+                                else
+                                {
+                                    if(parseInt(InpHour) === 10)
+                                    {
+                                        if(parseInt(InpMinutes) >= 30)
+                                        {
+                                            this.setState({
+                                                PreOrder: true
+                                            })
+                                        }
+                                        else
+                                        {
+
+                                            this.CloseLastWindow()
+                                            
+                                            this.setState({
+                                                PreOrder: false
+                                            })
+
+                                            document.getElementById('PreOrderInput').value = ""
+                                            document.getElementById('PreOrderInput').classList.add('False')
+                                            this.AlertAdd('PreOrder')
+                                        }
+                                    }
+                                    else
+                                    {
+                                        
+                                        this.CloseLastWindow()
+                                        
+                                        this.setState({
+                                            PreOrder: false
+                                        })
+
+                                        document.getElementById('PreOrderInput').value = ""
+                                        document.getElementById('PreOrderInput').classList.add('False')
+                                        this.AlertAdd('PreOrder')
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
+                                var InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
+                                if((InpTime - MinTime) >= 30)
+                                {
+                                    this.setState({
+                                        PreOrder: true
+                                    })
+                                }
+                                else
+                                {
+                                    this.CloseLastWindow()
+                                            
+                                    this.setState({
+                                        PreOrder: false
+                                    })
+
+                                    document.getElementById('PreOrderInput').value = ""
+                                    document.getElementById('PreOrderInput').classList.add('False')
+                                    this.AlertAdd('PreOrder')
+                                }
+                            }
+                        }
+                    }
+            }
         }
         }
         else
@@ -2804,6 +3269,7 @@ class App extends React.Component {
                 document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
             }, 4000)
         }
+        
     }
 
     CloseLastWindow(){
@@ -2813,6 +3279,17 @@ class App extends React.Component {
     }
 
     async SaveFunction() {
+        this.state.CertificateContain.map((el) => {
+            if(el.usage !== "infinity" && el.name === this.state.UsedCertificate.name)
+                {
+                    el.usage = el.usage - 1
+                        this.setState({
+                            CertificateContain: [...this.state.CertificateContain]
+                        })
+                }
+                return(el)
+        })
+
         this.setState({
             LastWindowSaved: false
         })
@@ -2884,6 +3361,50 @@ class App extends React.Component {
             delivery: this.state.OnCity.delivery,
             takeaway: this.state.OnCity.takeaway
         })
+        if(this.state.PreOrder === false)
+        {
+            if(this.state.TypeOrder === "delivery")
+            {
+                var MaxTime = this.state.MaxTimeDelivery
+            }
+            else
+            {
+                var MaxTime = this.state.MaxTimeTakeaway
+                
+            }
+        }
+        else
+        {
+            var MaxTimeHour = this.state.TimeInputContain[0].Hour
+            var MaxTimeMinutes = this.state.TimeInputContain[0].Minutes
+            var MaxTime = [{Hour: MaxTimeHour, Minutes: MaxTimeMinutes}]
+            this.setState({
+                TimeSave: [
+                    {
+                        Hour: MaxTimeHour,
+                        Minutes: MaxTimeMinutes
+                    }
+                ]
+            })
+            
+            var DateSaveYear = this.state.TimeInputContain[0].Year
+            var DateSaveMounth = this.state.TimeInputContain[0].Mounth
+            var DateSaveDate = this.state.TimeInputContain[0].Date
+            
+                this.setState({
+                    DateSave: [{
+                        Date: DateSaveDate,
+                        Mounth: DateSaveMounth,
+                        Year: DateSaveYear
+                    }]
+                })
+            await this.setState
+        }
+        var Status = "New"
+        if(this.state.PreOrder === true)
+        {
+            Status = "Timeout"
+        }
         orderDetal.push({
             pdkon: this.state.pdkon,
             Tablewares: this.state.orderTablewares[0].num !== undefined ? this.state.orderTablewares[0].num : 0,
@@ -2893,9 +3414,12 @@ class App extends React.Component {
             SaleInp: this.state.SaleInp,
             TotalSale: this.state.TotalSale,
             TimeSave: this.state.TimeSave,
-            Status: "New",
+            DateSave: this.state.DateSave,
+            Status: Status,
             TypeOrder: this.state.TypeOrder,
-            Payment: this.state.Payment
+            MaxTime: MaxTime,
+            Payment: this.state.Payment,
+            UsedCertificate: this.state.UsedCertificate
         })
 
         this.state.MarksOrder.map((el) => {
@@ -2920,12 +3444,83 @@ class App extends React.Component {
     }
 
     getTime(){
-        var today = new Date(),
+        var today = new Date()
 
-        TimeSave = String(today.getHours()).padStart(2, "0") + ':' + String(today.getMinutes()).padStart(2, "0");
+        var TimeSaveHour =  String(today.getHours()).padStart(2, "0")
+        var TimeSaveMinutes =  String(today.getMinutes()).padStart(2, "0")
         this.setState({
-            TimeSave: TimeSave
+            TimeSave: [
+                {
+                    Hour: TimeSaveHour,
+                    Minutes: TimeSaveMinutes
+                }
+            ]
         })
+
+        var DateSaveDate = String(today.getDate()).padStart(2, "0") 
+        var DateSaveMonth =  String(today.getMonth() + 1).padStart(2, "0")
+        var DateSaveYear = String(today.getFullYear());
+        this.setState({
+            DateSave: [
+                {
+                    Date: DateSaveDate,
+                    Mounth: DateSaveMonth,
+                    Year: DateSaveYear
+                }
+            ]
+        })
+        var MaxMinDelivery =  String(today.getMinutes()+parseInt(this.state.OnCity.delivery)+parseInt(this.state.AddTimeDelivery)+1).padStart(2, "0")
+        var MaxHourDelivery = String(today.getHours()).padStart(2, "0")
+
+        if(MaxMinDelivery > 60 || MaxMinDelivery === 60)
+        {
+            if(MaxMinDelivery > 120 || MaxMinDelivery === 120)
+            {
+                MaxMinDelivery = String(parseInt(MaxMinDelivery) - 120).padStart(2, "0")
+                MaxHourDelivery = String(parseInt(MaxHourDelivery) + 2).padStart(2, "0")
+            }
+            else
+            {
+                MaxMinDelivery = String(parseInt(MaxMinDelivery) - 60).padStart(2, "0")
+                MaxHourDelivery = String(parseInt(MaxHourDelivery) + 1).padStart(2, "0")
+            }
+        }
+        
+        this.setState({
+            MaxTimeDelivery: [
+                {
+                    Hour: MaxHourDelivery,
+                    Minutes: MaxMinDelivery
+                }
+            ]
+        })
+
+        var MaxMinTakeaway = String(today.getMinutes()+parseInt(this.state.OnCity.takeaway)+1).padStart(2, "0")
+        var MaxHourTakeaway = String(today.getHours()).padStart(2, "0")
+
+        if(MaxMinTakeaway > 60)
+        {
+            if(MaxMinTakeaway > 120)
+            {
+                MaxMinTakeaway = String(parseInt(MaxMinTakeaway) - 120).padStart(2, "0")
+                MaxHourTakeaway = String(parseInt(MaxHourTakeaway) + 2).padStart(2, "0")
+            }
+            else
+            {
+                MaxMinTakeaway = String(parseInt(MaxMinTakeaway) - 60).padStart(2, "0")
+                MaxHourTakeaway = String(parseInt(MaxHourTakeaway) + 1).padStart(2, "0")
+            }
+        }
+        
+        this.setState({
+            MaxTimeTakeaway: [
+                {
+                    Hour: MaxHourTakeaway,
+                    Minutes: MaxMinTakeaway
+                }
+            ]
+        })
+        
     }
 
     async PaymentMark(val){
@@ -2956,7 +3551,7 @@ class App extends React.Component {
             }
         }
         await this.setState
-        console.log(this.state.Payment)
+        
         this.SaveFunction()
     }
 
@@ -3017,5 +3612,57 @@ class App extends React.Component {
             return(el)
         })
     }
+
+    getTodayDay(){
+        var today = new Date()
+
+        var TodayDate = String(today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2 , "0") + "-" + String(today.getDate()).padStart(2, "0") + " 00:00" );
+        this.setState({
+            TodayDate: TodayDate
+        })
+        var MaxInpDay = String(today.getDate() + 7).padStart(2, "0")
+        var MaxInpMounth = String(today.getMonth() + 1).padStart(2 , "0")
+        var MaxInpYear = String(today.getFullYear())
+        if(MaxInpMounth === "01" || MaxInpMounth === "03" || MaxInpMounth === "05" || MaxInpMounth === "07" || MaxInpMounth === "08" || MaxInpMounth === "10" || MaxInpMounth === "12")
+        {
+            if(parseInt(MaxInpDay) > 31)
+            {
+                MaxInpDay = String(parseInt(MaxInpDay) - 31).padStart(2, "0")
+                MaxInpMounth = String(parseInt(MaxInpMounth) + 1).padStart(2, "0")
+                if(parseInt(MaxInpMounth) === 13)
+                {
+                    MaxInpMounth = String(parseInt(MaxInpMounth) - 12).padStart(2, "0")
+                    MaxInpYear = String(parseInt(MaxInpYear) + 1)
+                }
+            }
+        }
+        else
+        {
+            if(MaxInpMounth === "02")
+            {
+                if(parseInt(MaxInpDay) > 28)
+                {
+                    MaxInpDay = String(parseInt(MaxInpDay) - 28).padStart(2, "0")
+                    MaxInpMounth = String(parseInt(MaxInpMounth) + 1).padStart(2, "0")
+                }
+            }
+            else
+            {
+                if(parseInt(MaxInpDay) > 30)
+                {
+                MaxInpDay = String(parseInt(MaxInpDay) - 30).padStart(2, "0")
+                MaxInpMounth =String(parseInt(MaxInpMounth) + 1).padStart(2, "0")
+                }
+            }
+        }
+        var MaxDateInp = MaxInpYear + "-" + MaxInpMounth + "-" + MaxInpDay + " 00:00"
+        this.setState({
+            MaxDateInp: MaxDateInp
+        })
+       
+    }
+    
 }
+
+
 export default App

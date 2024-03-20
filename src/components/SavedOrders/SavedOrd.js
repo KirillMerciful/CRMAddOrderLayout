@@ -11,7 +11,14 @@ class SavedOrd extends React.Component {
         super(props)
         this.state = {
             OpenDropDownStatus: false,
-            OpenDropDownDelete: false
+            OpenDropDownDelete: false,
+            TimeMoment: 
+            [
+                {
+                    Hour: "",
+                    Minutes: ""
+                }
+            ]
         }
         this.CloseDropDownStatus = this.CloseDropDownStatus.bind(this)
         this.CloseDeleteSavedOrdDropDown = this.CloseDeleteSavedOrdDropDown.bind(this)
@@ -21,7 +28,8 @@ class SavedOrd extends React.Component {
         <div>
             <div className='SavedOrdDiv'>
                 <div className='SavedOrderHead'>
-                    {this.props.Saved.orderDetal[0].TimeSave + " (№ " + this.props.Saved.SavedIdOrd + ")"}
+                    <label className='TimeSaveTextOnSavedOrd'>{this.props.Saved.orderDetal[0].TimeSave[0].Hour + ":" + this.props.Saved.orderDetal[0].TimeSave[0].Minutes}</label>
+                    <label className='DateSaveAndNumberTextOnSavedOrd'>{' ' + this.props.Saved.orderDetal[0].DateSave[0].Date + "." + this.props.Saved.orderDetal[0].DateSave[0].Mounth + "." + this.props.Saved.orderDetal[0].DateSave[0].Year + " (№ " + this.props.Saved.SavedIdOrd + ")"}</label>
                     {this.props.Saved.orderDetal[0].TypeOrder === "delivery" ? 
                     <div  className='MarkDelivery'>
                         Доставка
@@ -158,17 +166,17 @@ class SavedOrd extends React.Component {
                             <tr>
                                 {this.props.Saved.orderAddress[0].street !== "" &&
                                     <td className='SavedOrderAddressStreet'>
-                                        {this.props.Saved.orderAddress[0].street + ", "}
+                                        {this.props.Saved.orderAddress[0].street}
                                     </td>
                                 }
                                 {this.props.Saved.orderAddress[0].house !== "" &&
                                     <td className='SavedOrderAddressHouse'>
-                                        {this.props.Saved.orderAddress[0].house + ", "}
+                                        {", " + this.props.Saved.orderAddress[0].house}
                                     </td>
                                 }
                                 {this.props.Saved.orderAddress[0].flat !== "" &&
                                     <td className='SavedOrderAddressFlat'>
-                                        {this.props.Saved.orderAddress[0].flat}
+                                        {", " + this.props.Saved.orderAddress[0].flat}
                                     </td>
                                 }
                                 {this.props.Saved.orderAddress[0].comment !== "" &&
@@ -193,6 +201,30 @@ class SavedOrd extends React.Component {
                                     ))}
                             </div>
                     </div>    
+                </div>
+                
+                <div 
+                className={this.props.Saved.orderDetal[0].Status !== "Completed" ?
+                    this.props.Saved.orderDetal[0].Status !== "Cancelled" ?
+                        this.props.Saved.orderDetal[0].Status !== "NotProcessing" ?
+                            (parseInt(this.state.TimeMoment[0].Hour)* 60 + parseInt(this.state.TimeMoment[0].Minutes)) > (parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Hour)*60 + parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Minutes)) ? 'MaxTimeOnSavedOrderDiv Alerted' 
+                            : "MaxTimeOnSavedOrderDiv"
+                        : "MaxTimeOnSavedOrderDiv"
+                    : "MaxTimeOnSavedOrderDiv"
+                : "MaxTimeOnSavedOrderDiv"
+                }
+                >
+                    
+                        <div 
+                        className='MaxTimeOnSavedOrderText'
+                        >
+                        Максимальное время: 
+                        </div>
+                        <div
+                        className='MaxTimeOnSavedOrderTime'
+                        >
+                        {this.props.Saved.orderDetal[0].MaxTime[0].Hour + ":" + this.props.Saved.orderDetal[0].MaxTime[0].Minutes}
+                        </div>
                 </div>
 
                 <div className='SavedOrderPhoneNum'>
@@ -227,6 +259,17 @@ class SavedOrd extends React.Component {
       
       
     }  
+    componentDidMount(){
+        var today = new Date()
+        this.setState({
+            TimeMoment: [
+                {
+                    Hour: String(today.getHours()).padStart(2 , "0"),
+                    Minutes: String(today.getMinutes()).padStart(2 , "0"),
+                }
+            ]
+        })
+    }
     CloseDropDownStatus(){
         this.setState({
             OpenDropDownStatus: false

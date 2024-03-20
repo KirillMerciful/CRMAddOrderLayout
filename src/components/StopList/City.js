@@ -1,5 +1,5 @@
 import React from 'react';
-import { IoChevronDown, IoArrowUndo } from "react-icons/io5";
+import { IoChevronDown, IoArrowUndo, IoCloseOutline } from "react-icons/io5";
 import StopCategoriesOnCity from './StopCategoriesOnCity';
 import CityDeliveryTime from './CityDeliveryTime';
 import CityTakeawayTime from './CityTakeawayTime';
@@ -20,15 +20,14 @@ class City extends React.Component {
 this.CloseTimeDeliverySelector = this.CloseTimeDeliverySelector.bind(this)
 this.CloseTimeTakeawaySelector = this.CloseTimeTakeawaySelector.bind(this)
 this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
+this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
 
 }
     render() {
       
       return(
       <div className='StopListCity'>
-        <div>
-          
-        </div>
+        
         <table className='StopListCityTableOneCity'>
           <tbody>
             <tr>
@@ -83,6 +82,7 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                 })}
                 >
                   <span className='TimeeTakeAwayStopList'>{this.props.City.takeaway}</span>
+                  
                   <IoChevronDown className={this.state.OpenDropDownTakeaway === true ? 'TimeeTakeAwayStopListIcon OpenDrop' : 'TimeeTakeAwayStopListIcon'}/>
                 </div>
                 <div className={this.state.OpenDropDownTakeaway === true ? 'TimeTakeawaySelector OpenDrop' : 'TimeTakeawaySelector'}>
@@ -137,27 +137,9 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                 className='ClickedInputStopListCityDiv'
                 tabIndex={0}
                 onFocus={(() => {
-                  setTimeout(() => {
-                    this.setState({
-                      OpenDropDown: true
-                    })
-                    setTimeout(() => {
-                      if(this.state.OpenDropDown === true)
-                      this.props.StopListChecCatOnPositionOnCity(this.props.City.idCity)
-                      
-                  }, 0.0001)
-                  }, 100)
-
-                  
+                  document.getElementById('InputStopListCity' + this.props.City.idCity).focus()                  
                 })}
-                onBlur={(() => {
-                  setTimeout(() => {
-                    this.setState({
-                      OpenDropDown: false
-                    })
-                  }, 100)
-                  
-                })}
+                
                 >
                   <div className='InputStopListCityDiv'>
                 <input
@@ -167,6 +149,7 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                 onChange={((e) => {
                   if(e.target.value !== "")
                   {
+                  
                   var SearchingPos = this.props.StopList.filter(pos => { 
                       return pos.name.toLowerCase().includes(e.target.value)
                     })
@@ -179,13 +162,30 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                   }
                   else
                   {
-                    this.setState({
-                      ResSearch: [...this.props.StopList]
-                    })
-                    this.SearchStatusCat()
-                    
+                    this.DefaultStatusCat()
                   }
-                  this.SearchStatusCat()
+                  
+                  
+                })}
+                onFocus={(() => {
+                  setTimeout(() => {
+                    this.setState({
+                      OpenDropDown: true
+                    })
+                    setTimeout(() => {
+                      if(this.state.OpenDropDown === true)
+                      this.props.StopListChecCatOnPositionOnCity(this.props.City.idCity)
+                      
+                  }, 0.0001)
+                  }, 100)
+                })}
+                onBlur={(() => {
+                  setTimeout(() => {
+                    this.setState({
+                      OpenDropDown: false
+                    })
+                  }, 100)
+                  
                 })}
                  >
                 </input>
@@ -212,7 +212,9 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
                 </div>
                 
                 </div>
+                
                 <div>
+                
                 <IoChevronDown 
                 className={this.state.OpenDropDown === true ? 'InputStopListCityIcon OpenDrop' : 'InputStopListCityIcon'}
                 onClick={(() => {
@@ -240,7 +242,6 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
 
    
     SearchStatusCat(){
-      
       this.props.StopCat.map((el) => {
         var check = 0
           this.state.ResSearch.map((a) => {
@@ -266,16 +267,21 @@ this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
     return(el)
   })
 }
+
+    async DefaultStatusCat() {
+      this.setState({
+        ResSearch: [...this.props.StopList]
+      })
+      await this.setState
+      this.SearchStatusCat()
+    }
     
     componentDidMount()
     {
-      
         this.setState({
           ResSearch: [...this.props.StopList]
         })
       
-      if(this.state.OpenDropDownDelivery === true)
-      document.body.addEventListener('onClick', this.CloseTimeDeliverySelector());
     }
 
     CloseTimeDeliverySelector(){

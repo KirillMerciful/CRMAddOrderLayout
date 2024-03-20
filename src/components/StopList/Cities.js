@@ -1,7 +1,13 @@
 import React from 'react';
 import City from './City';
 
-class Cities extends React.Component {    
+class Cities extends React.Component {  
+  constructor(props) {
+    super(props)
+    this.state = {
+        OpenDropDownClearTime: false
+    }
+  }  
     render() {
       return(
         
@@ -30,9 +36,53 @@ class Cities extends React.Component {
               <th className='ThCityStopList'>
                 Стоплист
               </th>
+              
             </tr>
           </thead>
         </table>
+        <div>
+        <button
+                className={this.state.OpenDropDownClearTime === false ? 'ButtonOpenClearTime' : 'ButtonOpenClearTime Active'}
+                tabIndex={1}
+                onClick={() =>
+                {
+                  this.setState({
+                    OpenDropDownClearTime: !this.state.OpenDropDownClearTime
+                  })
+                }}
+                onBlur={() => 
+                {
+                  setTimeout(() => {
+                    this.setState({
+                      OpenDropDownClearTime: false
+                    })
+                  }, 100)
+                }}
+                >
+                  Сброс
+                </button>
+        </div>
+        {this.state.OpenDropDownClearTime === true && 
+        <div 
+        className='ButtonsClearTimeMainDiv'>
+          <div>
+            <button
+            className='ButtonClearTime'
+              onClick={() => {
+                  this.props.ClearTimeAllCity()
+              }}
+            >Сброс времени</button>
+          </div>
+          <div>
+            <button
+            className='ButtonClearTime Down'
+              onClick={() => {
+                this.props.ClearTimeAndConditionAllCity()
+              }}
+            >Сброс полный</button>
+            </div>
+      </div>
+        }
           {this.props.City.map((el) => (<City 
           ChangeConditionCity={this.props.ChangeConditionCity}
           ClearTimeOneCity={this.props.ClearTimeOneCity}  
