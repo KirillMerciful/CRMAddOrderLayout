@@ -202,6 +202,38 @@ class StopAlert extends React.Component {
         </div>    
       )
     }
+    case 'FailSearch':{
+      return(
+      <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        this.props.AllertClick(this.props.AlertCheck.Check)
+      })}>
+        <div className='AlertLastWindowStopPos'>
+          <div>
+        <IoCloseCircleSharp className="IconStopPosition"/>  
+        </div>
+        <div className='StopAlertText'>
+        Заказ не найден
+        </div>
+        </div>
+      </div>  
+      )
+    }
+    case 'FailDatePeriod':{
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          Указан неккоректный период
+          </div>
+          </div>
+        </div>  
+        )
+    }
     
   }
       

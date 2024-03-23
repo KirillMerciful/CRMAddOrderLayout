@@ -35,7 +35,7 @@ this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
                 {this.props.City.city}
               </td>
               <td className='ThCityStreet'>
-                {this.props.City.street}
+                {this.props.City.streetType + this.props.City.street}
               </td>
               <td className='ThCityDelivery'>
                 <div 

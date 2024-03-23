@@ -105,6 +105,7 @@ class Cities extends React.Component {
       
       
     }  
+    
   }
 
   export default Cities

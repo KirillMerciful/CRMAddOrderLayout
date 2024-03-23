@@ -151,6 +151,9 @@ class LastWindow extends React.Component {
       
       
     }  
+    componentDidMount(){
+        document.getElementById('LastWindowInput').focus()
+    }
   }
 
   export default LastWindow

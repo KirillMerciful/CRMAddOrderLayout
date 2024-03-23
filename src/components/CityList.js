@@ -9,7 +9,7 @@ class CityList extends React.Component {
            
             
         })}>
-          {this.props.City.city + " " + this.props.City.street}
+          {this.props.City.city + " " + this.props.City.streetType + this.props.City.street}
         </div>
     )
     }

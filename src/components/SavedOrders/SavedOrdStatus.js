@@ -32,7 +32,6 @@ class SavedOrdStatus extends React.Component {
             <div className='SavedOrdStatusDiv NotProcessing'>
                 <div className='SavedOrdStatusIconDiv NotProcessing'>
                     <SlPhone className='SavedOrdStatusIcon NotProcessing'/>
-                    <div className='SavedOrdStatusIconLine NotProcessing'></div>
                 </div>
             <div  className='SavedOrdStatusText NotProcessing'>
                 Недозвон

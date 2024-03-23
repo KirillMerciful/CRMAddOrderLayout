@@ -523,7 +523,8 @@ class App extends React.Component {
                 {
                     idCity: 1,
                     city: "Шахты",
-                    street: "пр. Победы Революции",
+                    street: "Победы Революции",
+                    streetType: "пр. ",
                     house: "83Б",
                     delivery: 60,
                     takeaway: 20,
@@ -532,7 +533,8 @@ class App extends React.Component {
                 {
                     idCity: 2,
                     city: "Ессентуки",
-                    street: "ул. Октябрьская",
+                    street: "Октябрьская",
+                    streetType: "ул. ",
                     house: "369/1",
                     delivery: 60,
                     takeaway: 20,
@@ -541,7 +543,8 @@ class App extends React.Component {
                 {
                     idCity: 3,
                     city: "Азов",
-                    street: "ул. Московская",
+                    street: "Московская",
+                    streetType: "ул. ",
                     house: "62",
                     delivery: 60,
                     takeaway: 20,
@@ -550,7 +553,8 @@ class App extends React.Component {
                 {
                     idCity: 4,
                     city: "Ростов-на-Дону",
-                    street: "ул. Ерёменко",
+                    street: "Ерёменко",
+                    streetType: "ул. ",
                     house: "67/2",
                     delivery: 60,
                     takeaway: 20,
@@ -559,7 +563,8 @@ class App extends React.Component {
                 {
                     idCity: 5,
                     city: "Ростов-на-Дону",
-                    street: "пр. Коммунистический ",
+                    street: "Коммунистический ",
+                    streetType: "пр. ",
                     house: "32",
                     delivery: 60,
                     takeaway: 20,
@@ -568,7 +573,8 @@ class App extends React.Component {
                 {
                     idCity: 6,
                     city: "Новочеркасск",
-                    street: "ул. Калинина",
+                    street: "Калинина",
+                    streetType: "ул. ",
                     house: "55",
                     delivery: 60,
                     takeaway: 20,
@@ -577,7 +583,8 @@ class App extends React.Component {
                 {
                     idCity: 7,
                     city: "Каменск Шахтинский",
-                    street: "пр. Карла Маркса",
+                    street: "Карла Маркса",
+                    streetType: "пр. ",
                     house: "73А",
                     delivery: 60,
                     takeaway: 20 ,
@@ -609,6 +616,7 @@ class App extends React.Component {
                 {
                 idCity: 0,
                 city: "— Выберите филиал —",
+                streetType: "",
                 street: "",
                 house: "",
                 delivery: "--",
@@ -846,7 +854,7 @@ class App extends React.Component {
 
         <div className='MainDiv'>
             
-            <StopAlerts
+            <StopAlerts 
                 AlertCheck={this.state.AlertCheck}
                 AllertClick={this.AllertClick}
             />
@@ -885,6 +893,7 @@ class App extends React.Component {
                     
                 />
             ))}
+
         {this.state.orderTablewares.map((el) => (
             <TablewaresAdd 
                 orderTablewares={el}    
@@ -940,7 +949,7 @@ class App extends React.Component {
                     </span>
                     <br/>
                     <span className='CityNameTextStreet'>
-                    {this.state.OnCity.street + " " + this.state.OnCity.house}
+                    {this.state.OnCity.streetType + this.state.OnCity.street + " " + this.state.OnCity.house}
                     </span>
                 </div>
                         <IoChevronDown className={this.state.OpenListCity === true ? "CityNameIconArrow OpenCity" : "CityNameIconArrow"}/>
@@ -962,12 +971,21 @@ class App extends React.Component {
                             <td className='TimeCityText'>
                                 Время на доставку: 
                             </td>
-                            <td className='TimeCityVal'>
+                            <td 
+                            className='TimeCityVal'
+                            >
                                 {this.state.OnCity.condition === "Доставка остановлена" ? "СТОП" :  this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : 
                                     <div
                                     className='TimeDeliveryDiv'
                                     >
-                                        {this.state.OnCity.delivery}
+                                        <label
+                                        onClick={() => {
+                                            this.setState({
+                                                AddTimeDelivery: 0
+                                            })
+                                        }}
+                                        >{this.state.OnCity.delivery}
+                                        </label>
                                         {this.state.OnCity.idCity !== 0 &&
                                         <div className='TimeDeliveryDivButtons'>
                                             <button
@@ -1015,7 +1033,11 @@ class App extends React.Component {
                                 Время на вынос: 
                             </td>
                             <td className='TimeCityVal'>
-                                {this.state.OnCity.condition === "Вынос остановлен" ? "СТОП" : this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : this.state.OnCity.takeaway}
+                                {this.state.OnCity.condition === "Вынос остановлен" ? "СТОП" : this.state.OnCity.condition === "Полностью остановлен" ? "СТОП" : 
+                                <label>
+                                {this.state.OnCity.takeaway}
+                                </label>
+                                }
                             </td>
                         </tr>
                     </tbody>
@@ -1470,18 +1492,28 @@ class App extends React.Component {
         {
             return(
                 <div className='GlobalDiv'
-                
                 >
+                    
 
                     <div className='SavedOrdersMainDiv'>
+                    
+                        <StopAlerts
+                            AlertCheck={this.state.AlertCheck}
+                            AllertClick={this.AllertClick}
+                        />
+
                         <SavedOrdersMain 
-                        
+                        City={this.state.City}
                         DeleteSavedOrd={this.DeleteSavedOrd}
                         ChangeStatusSavedOrd={this.ChangeStatusSavedOrd}
                         Saved = {this.state.Saved}
+                        AlertAdd={this.AlertAdd}
+                        AlertCheck={this.state.AlertCheck}
+                        AllertClick={this.AllertClick}
                         />
                     </div>
 
+                    
                     <div className='MainMenu'>
                         <MenuMain 
                             openMenu={this.state.openMenu }
@@ -1962,7 +1994,8 @@ class App extends React.Component {
             OnCity: {
                 idCity: 0, 
                 city: "— Выберите филиал —", 
-                street:"", 
+                street :"", 
+                streetType: "",
                 house: "", 
                 delivery:"--", 
                 takeaway: "--", 
@@ -2037,7 +2070,9 @@ class App extends React.Component {
         if(this.state.TypeOrder === "delivery")
         {
         document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).classList.remove('Allert')
+        document.getElementById('AddressDetalInpStreet' + this.state.SavedIdOrd).value = ""
         document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).classList.remove('Allert')
+        document.getElementById('AddressDetalInpHouse' + this.state.SavedIdOrd).value = ""
         }
         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
@@ -2586,6 +2621,17 @@ class App extends React.Component {
     componentDidMount(){
         this.StopListCityAdd()
         this.getTodayDay()
+
+        this.state.position.sort((a, b) => 
+        a.name > b.name ? 1 : -1
+        )
+
+        this.state.City.sort((a, b) => 
+        a.city === b.city ? 
+            a.street > b.street ? 1 : -1
+            :
+        a.city > b.city ? 1 : -1
+        )
     }
     
     StopListChekFunctionOnCity(pos, idCity)//добавление позиции в стоп лист
@@ -2724,7 +2770,16 @@ class App extends React.Component {
             AddTimeDelivery: 0
         })
         this.setState({
-            OnCity: {idCity: city.idCity, city: city.city, street: city.street, house: city.house, delivery: city.delivery, takeaway: city.takeaway, condition: city.condition} 
+            OnCity: {
+                idCity: city.idCity, 
+                city: city.city, 
+                street: city.street, 
+                streetType: city.streetType,
+                house: city.house, 
+                delivery: city.delivery, 
+                takeaway: city.takeaway, 
+                condition: city.condition
+            } 
         })
         this.state.StopList.map((el) => {
             if(el.idCity === city.idCity)
@@ -3356,6 +3411,7 @@ class App extends React.Component {
         orderCity.push({
             idCity: this.state.OnCity.idCity,
             city: this.state.OnCity.city, 
+            streetType: this.state.OnCity.streetType,
             street: this.state.OnCity.street, 
             house: this.state.OnCity.house, 
             delivery: this.state.OnCity.delivery,
@@ -3370,7 +3426,6 @@ class App extends React.Component {
             else
             {
                 var MaxTime = this.state.MaxTimeTakeaway
-                
             }
         }
         else
@@ -3651,7 +3706,7 @@ class App extends React.Component {
                 if(parseInt(MaxInpDay) > 30)
                 {
                 MaxInpDay = String(parseInt(MaxInpDay) - 30).padStart(2, "0")
-                MaxInpMounth =String(parseInt(MaxInpMounth) + 1).padStart(2, "0")
+                MaxInpMounth = String(parseInt(MaxInpMounth) + 1).padStart(2, "0")
                 }
             }
         }

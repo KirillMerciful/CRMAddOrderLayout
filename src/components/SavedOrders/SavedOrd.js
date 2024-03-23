@@ -150,7 +150,7 @@ class SavedOrd extends React.Component {
                                 </tr>
                                 <tr className="SavedOrderCityStreet">
                                 <td>
-                                    {this.props.Saved.orderCity[0].street + " " + this.props.Saved.orderCity[0].house}
+                                    {this.props.Saved.orderCity[0].streetType + this.props.Saved.orderCity[0].street + " " + this.props.Saved.orderCity[0].house}
                                 </td>
                             </tr>
                             
@@ -204,10 +204,16 @@ class SavedOrd extends React.Component {
                 </div>
                 
                 <div 
-                className={this.props.Saved.orderDetal[0].Status !== "Completed" ?
-                    this.props.Saved.orderDetal[0].Status !== "Cancelled" ?
-                        this.props.Saved.orderDetal[0].Status !== "NotProcessing" ?
-                            (parseInt(this.state.TimeMoment[0].Hour)* 60 + parseInt(this.state.TimeMoment[0].Minutes)) > (parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Hour)*60 + parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Minutes)) ? 'MaxTimeOnSavedOrderDiv Alerted' 
+                className={this.props.Saved.orderDetal[0].DateSave[0].Date === this.props.TodayDate.Date ?
+                    this.props.Saved.orderDetal[0].DateSave[0].Mounth === this.props.TodayDate.Mounth ?
+                        this.props.Saved.orderDetal[0].DateSave[0].Year === this.props.TodayDate.Year ?
+                            this.props.Saved.orderDetal[0].Status !== "Completed" ?
+                                this.props.Saved.orderDetal[0].Status !== "Cancelled" ?
+                                    this.props.Saved.orderDetal[0].Status !== "NotProcessing" ?
+                                        (parseInt(this.state.TimeMoment[0].Hour)* 60 + parseInt(this.state.TimeMoment[0].Minutes)) > (parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Hour)*60 + parseInt(this.props.Saved.orderDetal[0].MaxTime[0].Minutes)) ? 'MaxTimeOnSavedOrderDiv Alerted' 
+                                        : "MaxTimeOnSavedOrderDiv"
+                                    : "MaxTimeOnSavedOrderDiv"
+                                : "MaxTimeOnSavedOrderDiv"
                             : "MaxTimeOnSavedOrderDiv"
                         : "MaxTimeOnSavedOrderDiv"
                     : "MaxTimeOnSavedOrderDiv"

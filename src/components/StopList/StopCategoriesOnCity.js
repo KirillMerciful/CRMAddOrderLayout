@@ -45,6 +45,9 @@ this.OpenOrCloseThisCat = this.OpenOrCloseThisCat.bind(this)
     }  
     componentDidMount(){
       var check = 0
+      this.props.StopList.sort((a, b) => 
+      a.name > b.name ? 1 : -1
+      )
       this.props.StopList.map((el) => {
         if(el.categ === this.props.StopCat.name)
         {

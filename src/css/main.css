@@ -301,9 +301,6 @@ input:checked + .slider:before {
   padding: 5px;
 }
 
-.ResSearchOnPosition.unactive{
-
-}
 
 .ResSearchOnPosition:hover{
   background-color: var(--LightA-color, rgb(3, 168, 245));
@@ -1246,6 +1243,7 @@ input:checked + .editdiamslide:before {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+
 .StopListPositionNameText{
   cursor: pointer;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
@@ -1264,6 +1262,7 @@ input:checked + .editdiamslide:before {
 .CheckBoxStopPosition{
   cursor: pointer;
 }
+
 
 .IconSun{
   margin-top: 10px;
@@ -2117,11 +2116,15 @@ input:checked + .editdiamslide:before {
   padding-left: 5px;
   padding-top: 1px;
   padding-bottom: 1px;
-  width: 80px;
+  width: 140px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
   color: var(--Text2-Color, black);
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
@@ -2133,7 +2136,7 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedHeadDiv.Sum {
-  margin-left: 180px;
+  margin-left: 120px;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -2157,6 +2160,8 @@ input:checked + .editdiamslide:before {
   color: var(--Text2-Color, black);
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  max-height: 20px;
+  overflow: hidden;
 }
 
 .SavedHeadDiv.Branch.OpenDropDown {
@@ -2174,6 +2179,12 @@ input:checked + .editdiamslide:before {
   height: 18px;
   width: 20px;
   color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SavedHeadDivSearchIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SavedBodyDiv{
@@ -2535,7 +2546,7 @@ input:checked + .editdiamslide:before {
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
   width: 630px;
   color: var(--Text2-Color, black);
-  z-index: 2;
+  z-index: 10000;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
   box-shadow: 0px 0px 3px 0px black;
 }
@@ -2545,6 +2556,7 @@ input:checked + .editdiamslide:before {
 }
 
 .ContainerStatusOneStatusDiv{
+  font-family: "Roboto";
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -2605,19 +2617,12 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedOrdStatusIcon.NotProcessing{
+  z-index: 0;
   transform: rotate(90deg);
 }
 
-.SavedOrdStatusIconLine.NotProcessing{
-  transform: rotate(45deg);
-  margin-right: 5px;
-  margin-bottom: 5px;
-  position: absolute;
-  width: 25px;
-  height: 2px;
-  background-color: var(--Text2-Color, black);
-  transition: all var(--TimeChange1, 0.2s) ease-in-out;
-}
+
+
 
 .ContainerStatusIconMainNotProcessing{
   display: flex;
@@ -2939,4 +2944,441 @@ input:checked + .editdiamslide:before {
 .ButtonAddTimeDelivery60.Actived{
   color: var(--ColorStatusCancelledOrderSavedText, #f3f7fa);
   background-color: var(--LightA-color, rgb(3, 168, 245));
+}
+
+.StatusOrdHeadGlobalDiv{
+  z-index: 20;
+  position: absolute;
+  top: 37px;
+  left: 64px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  box-shadow: 0px 0px 3px 0px black;
+  width: 115px;
+}
+
+.StatusOrdHeadMainDiv{
+  width: 100%;
+}
+
+.ContainerStatusOneStatusHeadDiv{
+  font-family: "Roboto";
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 115px;
+  height: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.ContainerStatusOneStatusHeadDiv.All:hover{
+  color: var(--ColorStatusCancelledOrderSavedText, #f3f7fa);
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+}
+
+.ContainerStatusOneStatusHeadDiv.New:hover{
+  background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Processing:hover{
+  background-color: var(--ColorStatusProcessingOrderSaved, #ff00994f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.NotProcessing:hover{
+  background-color: var(--ColorStatusNotProcessingOrderSaved, #4545454f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Timeout:hover{
+  background-color: var(--ColorStatusTimeoutOrderSaved, #6038ff4f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Cooking:hover{
+  background-color: var(--ColorStatusCookingOrderSaved, #38f2ff4f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Cooked:hover{
+  background-color: var(--ColorStatusCookedOrderSaved, #3bff384f);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Delivery:hover{
+  background-color: var(--ColorStatusDeliveryOrderSaved, #fcff384f);
+  color: black;
+}
+
+.ContainerStatusOneStatusHeadDiv.Completed:hover{
+  background-color: var(--ColorStatusCompletedOrderSaved, #53ff3817);
+  color: var(--Text2-Color, black);
+}
+
+.ContainerStatusOneStatusHeadDiv.Cancelled:hover{
+  background-color: var(--ColorStatusCancelledOrderSaved, #21212188);
+  color: var(--ColorStatusCancelledOrderSavedText, rgb(243, 247, 250));
+}
+
+.DateOrdHeadGlobalDiv{
+  position: absolute;
+  top: 37px;
+  left: 191px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  box-shadow: 0px 0px 3px 0px black;
+  width: 146px;
+}
+
+.ContainerDateName{
+  font-family: "Roboto";
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 136px;
+  height: 20px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+}
+
+.ContainerDateName:hover{
+  color: var(--ColorStatusCancelledOrderSavedText, #f3f7fa);
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+}
+
+.CityOrdHeadGlobalDiv{
+  position: absolute;
+  top: 37px;
+  left: 590px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  box-shadow: 0px 0px 3px 0px black;
+  width: 155px;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ContainerCityMainDiv{
+  width: 100%;
+}
+
+.ContainerCityName{
+  font-family: "Roboto";
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 30px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+}
+
+.ContainerCityName:hover{
+  color: var(--ColorStatusCancelledOrderSavedText, #f3f7fa);
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+}
+
+.BranchText{
+  font-size: 7pt;
+}
+
+.WindowSearchMainDiv{
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  font-family: "Roboto";
+}
+
+.WindowSearchContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 30%;
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 250px;
+  height: 130px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchMainText{
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.WindowSearchInputDiv{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.WindowSearchInputText{
+  font-size: 9pt;
+}
+
+.WindowSearchInput{
+  width: 150px;
+  border-radius: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchInput:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchInput.Fail{
+  border: 1px solid var(--SavedOrdDeletedWindowButtonDeleteColorHover, #ff000073);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchDateInputDiv{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.WindowSearchDateDivText{
+  font-family: "Roboto";
+  font-size: 11pt;
+  padding-left: 5px;
+}
+
+.WindowSearchDateDiv{
+  border-radius: 5px;
+  width: 153px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  color: var(--Text2-Color, black);
+  border: 1px solid var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchDateDiv.OpenDropDown {
+  border-radius: 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.WindowSearchDateDivIcon{
+  margin-right: 4px;
+  margin-top: 2px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchDateDivIcon.OpenDropDown{
+  transform: rotate(180deg);
+  margin-right: 4px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+
+.ContainerDateWindowSearchGlobalDiv{
+  position: absolute;
+  top: 89px;
+  left: 106px;
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  box-shadow: 0px 0px 3px 0px black;
+  width: 154px;
+}
+
+.WindowSearchButtonsDiv{
+  display: flex;
+  justify-content: space-between;
+}
+
+.WindowSearchButtonSearch{
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchButtonSearch:hover{
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchButtonCancel{
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none; 
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowSearchButtonCancel:hover{
+  background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodMainDiv{
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  font-family: "Roboto";
+}
+
+.WindowPeriodContent{
+  position: absolute;
+  top: 30%;
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 200px;
+  height: 100px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.WindowPeriodInputMin{
+  width: 100px;
+  border-radius: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodInputMin:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodInputMin.Fail{
+  border: 1px solid var(--SavedOrdDeletedWindowButtonDeleteColorHover, #ff000073);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodInputMax{
+  width: 100px;
+  border-radius: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodInputMax:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodInputMax.Fail{
+  border: 1px solid var(--SavedOrdDeletedWindowButtonDeleteColorHover, #ff000073);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodButtonsDiv{
+  display: flex;
+  justify-content: space-between;
+}
+
+.WindowPeriodInputMinDiv{
+  display: flex;
+  justify-content: space-between;
+}
+
+.WindowPeriodInputMaxDiv{
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.WindowPeriodButtonSave{
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodButtonSave:hover{
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodButtonCancel{
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none; 
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowPeriodButtonCancel:hover{
+  background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
