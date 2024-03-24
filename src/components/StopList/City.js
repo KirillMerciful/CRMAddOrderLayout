@@ -149,9 +149,9 @@ this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
                 onChange={((e) => {
                   if(e.target.value !== "")
                   {
-                  
+                  var Val = e.target.value.toLowerCase()
                   var SearchingPos = this.props.StopList.filter(pos => { 
-                      return pos.name.toLowerCase().includes(e.target.value)
+                      return pos.name.toLowerCase().includes(Val)
                     })
               
                     this.setState({
@@ -187,8 +187,7 @@ this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
                   }, 100)
                   
                 })}
-                 >
-                </input>
+                 />
                
                 </div>
                 <div className={this.state.OpenDropDown === true ? 'StopListOnCityUpdate OpenStop' : 'StopListOnCityUpdate'}>

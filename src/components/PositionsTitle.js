@@ -58,9 +58,10 @@ class PositionsTitle extends React.Component {
           onChange={(e) => {
             if(e.target.value !== "")
             {
+              var Val = e.target.value.toLowerCase()
               var SearchingPos = this.props.position.filter(pos => {
                 if(pos.ThisAddition !== true)
-                return pos.name.toLowerCase().includes(e.target.value)
+                return pos.name.toLowerCase().includes(Val)
               })
               
               this.setState({

@@ -1473,7 +1473,7 @@ input:checked + .editdiamslide:before {
   margin-top: 2px;
   cursor: pointer;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
-  width: 240px;
+  width: 243px;
   color: var(--Text2-Color, black);
   position: absolute;
   z-index: 2;
@@ -1514,6 +1514,7 @@ input:checked + .editdiamslide:before {
 }
 
 .CityName{
+  cursor: pointer;
   margin-right: 5px;
   width: 70%;
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
@@ -1524,11 +1525,13 @@ input:checked + .editdiamslide:before {
 }
 
 .CityName.OpenCity{
+  cursor: pointer;
   border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .CityNameText{
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1809,11 +1812,56 @@ input:checked + .editdiamslide:before {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.PreHeadMainDiv{
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.PreHeadSearchInputDiv{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.PreHeadSearchIconDiv{
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.PreHeadSearchIcon{
+  margin-left: 5px;
+  height: 18px;
+  width: 20px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PreHeadSearchIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PreHeadSearchInput{
+  margin-left: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  width: 150px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PreHeadSearchInput:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
 .StopListCityTable{
   font-weight: 300;
   padding-top: 5px;
-  color: var(--mainText-color, rgb(243, 247, 250));
-  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--Text2-Color, black);
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
   padding-left: 10px;
   width: 100%;
   border-bottom: 1px dashed gray;
@@ -3381,4 +3429,114 @@ input:checked + .editdiamslide:before {
 .WindowPeriodButtonCancel:hover{
   background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SearchingCityOnNewOrderIcon{
+  cursor: pointer;
+  height: 18px;
+  width: 20px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SearchingCityOnNewOrderIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SearchingCityOnNewOrderInput{
+  margin-left: 78px;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  width: 240px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SearchingCityOnNewOrderInput.OpenDrop{
+  border-radius: 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.SearchingCityOnNewOrderInput:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CitySelectorResSearch{
+  margin-top: 1px;
+  margin-left: 79px;
+  cursor: pointer;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  width: 244px;
+  color: var(--Text2-Color, black);
+  position: absolute;
+  z-index: 2;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  box-shadow: 0px 0px 3px 0px black;
+}
+
+.SavedHeadDiv.Search{
+  margin-left: 0px;
+  display: flex;
+}
+
+.SavedHeadDivSearchCityIcon{
+  margin-left: 5px;
+  height: 18px;
+  width: 20px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SavedHeadDivSearchCityIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SavedHeadDivSearchCityInput{
+  margin-left: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  border: solid 1px var(--LightA-color, rgb(3, 168, 245));
+  outline: none;
+  width: 150px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SavedHeadDivSearchCityInput:focus{
+  border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SavedHeadDivSearchCityContainer{
+  margin-left: 6px;
+  position: absolute;
+  width: 154px;
+  background-color: var(--mainB-color, rgb(243, 247, 250));
+  box-shadow: 0px 0px 3px 0px black;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.ResSearchCityStopListMainDiv{
+  top: 34px;
+  left: 89px;
+  cursor: pointer;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
+  width: 155px;
+  font-size: 10pt;
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--Text2-Color, black);
+  position: absolute;
+  z-index: 2;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  box-shadow: 0px 0px 3px 0px black;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoChevronDown } from "react-icons/io5";
+import { PiMagnifyingGlass } from "react-icons/pi";
 
 import OrderTitle from './components/OrderTitle';
 import PositionsTitle from './components/PositionsTitle';
@@ -735,6 +736,8 @@ class App extends React.Component {
                 }
             ],
             PreOrder: false,
+            OpenCitySearchInp: false,
+            ResSearchCity: [],
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -937,7 +940,9 @@ class App extends React.Component {
                 <div 
                 id={'CityName' + this.state.SavedIdOrd}
                 className={this.state.OpenListCity === true ? "CityName OpenCity" : "CityName"}>
-                    <label className='CityNameText' onClick={(() => {
+                    <label 
+                    className='CityNameText' 
+                    onClick={(() => {
                         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
                 this.setState({
                     OpenListCity: !this.state.OpenListCity
@@ -963,7 +968,76 @@ class App extends React.Component {
                         />))}
                     </div>
                 </div>
+                <PiMagnifyingGlass 
+                className='SearchingCityOnNewOrderIcon'
+                onClick={() => {
+                    this.setState({
+                        OpenCitySearchInp: true
+                    })
+                    setTimeout(() => {
+                        document.getElementById('SearchingCityOnNewOrderInput').focus()
+                    }, 50)
+                }}
+                />
             </div>
+            {this.state.OpenCitySearchInp === true && 
+            <div>
+                <div>
+                    <input
+                    className={this.state.ResSearchCity.length !== 0 ? 'SearchingCityOnNewOrderInput OpenDrop' : 'SearchingCityOnNewOrderInput'}
+                    id='SearchingCityOnNewOrderInput'
+                    placeholder='Поиск города'
+                    onBlur={() => {
+                        setTimeout(() => {
+                            
+                            this.setState({
+                                ResSearchCity: []
+                            })
+                        }, 100)
+                        setTimeout(() => {
+                            this.setState({
+                                OpenCitySearchInp: false
+                            })
+                        }, 100)
+                    }}
+                    onChange={(e) => {
+                        if(e.target.value !== "")
+                        {
+                            var Val = e.target.value.toLowerCase()
+                        var CitySearch = this.state.City.filter(el => {
+                            return (el.city + " " + el.street).toLowerCase().includes(Val)
+                        })
+                        
+                        this.setState({
+                            ResSearchCity: [...CitySearch]
+                        })
+                        
+                        
+                        }
+                        else
+                        {
+                        this.setState({
+                            ResSearchCity: []
+                        })
+                        
+                        }
+                    }}
+                    />
+                </div>
+                {this.state.ResSearchCity.length > 0 && 
+                <div
+                className='CitySelectorResSearch'
+                >
+                    {this.state.ResSearchCity.slice(0, 5).map((el) => (<CityList
+                        CloseCityist={this.CloseCityist}
+                        CityChange={this.CityChange}
+                        City={el}
+                        key={el.idCity}
+                        />))}
+                </div>
+                }
+            </div>
+            }
             <div className='TimeCity'>
                 <table className='TimeCityTable'>
                     <tbody>

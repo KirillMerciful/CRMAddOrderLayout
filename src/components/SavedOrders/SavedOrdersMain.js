@@ -62,7 +62,8 @@ class SavedOrdersMain extends React.Component {
                 house: ""
             },
             CheckSearchingDate: false,
-            
+            OpenSearchCity: false,
+            ResSearchCity: []
         }
 
         this.SortOrderByStatus = this.SortOrderByStatus.bind(this)
@@ -217,7 +218,77 @@ class SavedOrdersMain extends React.Component {
                                             />
                                         ))}
                                     </div>
+                                    
                                     }
+                                </div>
+                                <div
+                                className='SavedHeadDiv Search'
+                                >
+                                    {this.state.OpenSearchCity === true && 
+                                    <div>
+                                        <input
+                                        className='SavedHeadDivSearchCityInput'
+                                        id='SavedHeadDivSearchCityInput'
+                                        placeholder='Поиск города'
+                                        onBlur={() => {
+                                            setTimeout(() => {
+                                                this.setState({
+                                                    ResSearchCity: []
+                                                })
+                                                this.setState({
+                                                    OpenSearchCity: false
+                                                })
+                                            }, 100)
+                                        }}
+                                        onChange={(e) => {
+                                            if(e.target.value !== "")
+                                            {
+                                                var Val = e.target.value.toLowerCase()
+                                                var CitySearch = this.props.City.filter(el => {
+                                                return (el.city + " " + el.street).toLowerCase().includes(Val)
+                                            })
+                                            
+                                            this.setState({
+                                                ResSearchCity: [...CitySearch]
+                                            })
+                                            
+                                            }
+                                            else
+                                            {
+                                            this.setState({
+                                                ResSearchCity: []
+                                            })
+                                            
+                                            }
+                                        }}
+                                        />
+                                        {this.state.ResSearchCity.length > 0 && 
+                                        <div
+                                        className='SavedHeadDivSearchCityContainer'
+                                        >
+                                       {this.state.ResSearchCity.map((el) => (
+                                            <ContainerCityOrdHead 
+                                            ChangeCityCheck={this.ChangeCityCheck}
+                                            City={el}
+                                            key={el.idCity}
+                                            />
+                                            
+                                        ))}
+                                        </div>
+                                        }
+                                    </div>
+                                    }
+                                    <PiMagnifyingGlass
+                                    className='SavedHeadDivSearchCityIcon'
+                                    onClick={() => {
+                                        this.setState({
+                                            OpenSearchCity: true
+                                        })
+                                        setTimeout(() => {
+                                            document.getElementById('SavedHeadDivSearchCityInput').focus()
+                                        },10)
+                                    }}
+                                    />
                                 </div>
                     </div>
                                 <div
