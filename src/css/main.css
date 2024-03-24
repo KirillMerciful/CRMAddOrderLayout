@@ -262,8 +262,15 @@ input:checked + .slider:before {
 }
 
 .SearchOnPositionIcon{
+  cursor: pointer;
   margin-right: 5px;
   color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.SearchOnPositionIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SearchOnPositionInput{

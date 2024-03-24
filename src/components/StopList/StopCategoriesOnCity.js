@@ -21,9 +21,13 @@ this.OpenOrCloseThisCat = this.OpenOrCloseThisCat.bind(this)
           <input type="checkbox" className='CheckBoxStopCat' id={'StopListCatCheck' + this.props.StopCat.id + " " +  this.props.City.idCity}  checked={this.props.StopCat.CheckStopList} onChange={(() => {
             this.props.StopListChekFunctionCatOnCity(this.props.StopCat.id, this.props.StopCat.idCity)
             })}></input>
-          <button className={this.state.OpenStopCateg === false ? 'ButtonCatNameStop closed' : 'ButtonCatNameStop'} onClick={(() => {
-        this.OpenOrCloseThisCat()
-      })}>{this.props.StopCat.name}</button>
+          <button 
+          className={this.state.OpenStopCateg === false ? 'ButtonCatNameStop closed' : 'ButtonCatNameStop'} 
+          onClick={(() => {
+            this.OpenOrCloseThisCat()
+            document.getElementById('InputStopListCity' + this.props.City.idCity).focus()
+          })}
+          >{this.props.StopCat.name}</button>
             <div>
                 {
                 this.props.StopList.map((el) => (

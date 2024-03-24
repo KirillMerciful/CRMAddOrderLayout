@@ -21,6 +21,7 @@ this.CloseTimeDeliverySelector = this.CloseTimeDeliverySelector.bind(this)
 this.CloseTimeTakeawaySelector = this.CloseTimeTakeawaySelector.bind(this)
 this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
 this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
+this.BluringStopList = this.BluringStopList.bind(this)
 
 }
     render() {
@@ -180,10 +181,13 @@ this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
                   }, 100)
                 })}
                 onBlur={(() => {
+                
                   setTimeout(() => {
-                    this.setState({
-                      OpenDropDown: false
-                    })
+                    if(document.activeElement.id !== 'InputStopListCity' + this.props.City.idCity)
+                    {
+                      if(this.state.OpenDropDown === true)
+                      this.BluringStopList()
+                    }
                   }, 100)
                   
                 })}
@@ -273,6 +277,21 @@ this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
       })
       await this.setState
       this.SearchStatusCat()
+    }
+
+    async BluringStopList(){
+      this.setState({
+        ResSearch: [...this.props.StopList]
+      })
+
+      await this.setState
+
+      setTimeout(() => {
+        this.setState({
+            OpenDropDown: false
+        })
+        document.getElementById('InputStopListCity' + this.props.City.idCity).value = ""
+      })
     }
     
     componentDidMount()

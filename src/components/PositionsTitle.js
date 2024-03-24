@@ -42,7 +42,9 @@ class PositionsTitle extends React.Component {
           document.getElementById('SearchOnPositionInput').focus()
         }}
         >
-          <PiMagnifyingGlass className='SearchOnPositionIcon'/>
+          <PiMagnifyingGlass 
+          className='SearchOnPositionIcon'
+          />
           <input
           className='SearchOnPositionInput'
           id='SearchOnPositionInput'
