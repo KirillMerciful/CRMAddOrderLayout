@@ -14,7 +14,7 @@ class SaleSumWindow extends React.Component {
       <div className="SaleSumWindowMain">
         <div className="SaleSumWindowContent">
           <div>Введите сумму скидки:</div>
-          <div className="SaleWindowInp">
+          <div className="SaleWindowInpDiv">
           <input 
             className="SaleWindowInp"
             type="number"

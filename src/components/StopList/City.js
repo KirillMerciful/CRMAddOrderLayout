@@ -132,7 +132,7 @@ this.BluringStopList = this.BluringStopList.bind(this)
                   />}
                 </div>
               </td>
-              <td className='TdCityStopList'>
+              <td className='ThCityStopList'>
                 <div
                 id={'ClickedInputStopListCityDiv' + this.props.City.idCity}
                 className='ClickedInputStopListCityDiv'

@@ -46,7 +46,7 @@ class PositionsTitle extends React.Component {
           className='SearchOnPositionIcon'
           />
           <input
-          className='SearchOnPositionInput'
+          className={this.state.ResSearch.length === 0 ?'SearchOnPositionInput' : "SearchOnPositionInput OpenDrop"}
           id='SearchOnPositionInput'
           onBlur={() => {
             setTimeout(() => {

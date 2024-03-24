@@ -75,42 +75,7 @@ class AddOrder extends React.Component {
                     +
                     </button>}
 
-                  {this.state.OpenDropDownAddition === true && 
-                  <div 
-                  className='AdditionMainDiv'
-                  id={'AdditionMainDiv' + this.props.orderPosition.idOrd}
-                  tabIndex={1}
-                  onFocus={() => {
-                    setTimeout(() => {
-                      this.setState({
-                        OpenDropDownAddition: true
-                      })
-                    }, 100)
-                    
-                  }}
-                  onBlur={() => {
-                    setTimeout(() => {
-                      this.setState({
-                        OpenDropDownAddition: false
-                      })
-                    }, 100)
-                    
-                  }}
-                  >
-                    {this.props.cat.map((el) => (
-                      
-                      <CategoriesAddition 
-                      AlertAdd={this.props.AlertAdd}
-                      EditWOKNoodles={this.props.EditWOKNoodles}
-                      AddAdditionFunc={this.props.AddAdditionFunc}
-                      orderPosition={this.props.orderPosition}
-                      position={this.props.position}
-                      cat={el}
-                      key={el.id}
-                      />
-                      
-                    ))}
-                  </div>}
+                  
 
                   
 
@@ -182,8 +147,45 @@ class AddOrder extends React.Component {
                   }
                 </td>
               </tr>
+              
             </tbody>
           </table>
+          {this.state.OpenDropDownAddition === true && 
+                  <div 
+                  className='AdditionMainDiv'
+                  id={'AdditionMainDiv' + this.props.orderPosition.idOrd}
+                  tabIndex={1}
+                  onFocus={() => {
+                    setTimeout(() => {
+                      this.setState({
+                        OpenDropDownAddition: true
+                      })
+                    }, 100)
+                    
+                  }}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      this.setState({
+                        OpenDropDownAddition: false
+                      })
+                    }, 100)
+                    
+                  }}
+                  >
+                    {this.props.cat.map((el) => (
+                      
+                      <CategoriesAddition 
+                      AlertAdd={this.props.AlertAdd}
+                      EditWOKNoodles={this.props.EditWOKNoodles}
+                      AddAdditionFunc={this.props.AddAdditionFunc}
+                      orderPosition={this.props.orderPosition}
+                      position={this.props.position}
+                      cat={el}
+                      key={el.id}
+                      />
+                      
+                    ))}
+                  </div>}
           <div>
           {this.props.orderPosition.categ ==="Пицца" &&
             <div className="PizzaChangeDiamOnOrderTable">
