@@ -1,7 +1,6 @@
 import React from 'react';
-import { IoChevronDown } from "react-icons/io5";
+import { IoChevronDown, IoStatsChart } from "react-icons/io5";
 import { PiMagnifyingGlass } from "react-icons/pi";
-
 import OrderTitle from './components/OrderTitle';
 import PositionsTitle from './components/PositionsTitle';
 import AddOrder from './components/AddOrder'; 
@@ -591,6 +590,146 @@ class App extends React.Component {
                     takeaway: 20 ,
                     condition: "Активен"
                 },
+                {
+                    idCity: 8,
+                    city: "Ставрополь",
+                    street: "Тухачевского",
+                    streetType: "ул. ",
+                    house: "16/1",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 9,
+                    city: "Ставрополь",
+                    street: "Макарова",
+                    streetType: "пер. ",
+                    house: "2",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 10,
+                    city: "Ставрополь",
+                    street: "Серова",
+                    streetType: "ул. ",
+                    house: "486/1",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 11,
+                    city: "Волгодонск",
+                    street: "30 лет Победы",
+                    streetType: "ул. ",
+                    house: "33",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 12,
+                    city: "Донецк",
+                    street: "Ленина",
+                    streetType: "пр. ",
+                    house: "10",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 13,
+                    city: "Новочеркасск",
+                    street: "Ермака",
+                    streetType: "пр. ",
+                    house: "85/2",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 14,
+                    city: "Новочеркасск",
+                    street: "Калинина",
+                    streetType: "ул. ",
+                    house: "55",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 15,
+                    city: "Невинномыск",
+                    street: "Калинина",
+                    streetType: "ул. ",
+                    house: "53",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 16,
+                    city: "Невинномыск",
+                    street: "Гагарина",
+                    streetType: "ул. ",
+                    house: "18",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 17,
+                    city: "Ростов-на-Дону",
+                    street: "2-я Пролетарская",
+                    streetType: "ул. ",
+                    house: "69",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 18,
+                    city: "Прохладынй",
+                    street: "Свободы",
+                    streetType: "ул. ",
+                    house: "178",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 19,
+                    city: "Майкоп",
+                    street: "Пионерская",
+                    streetType: "ул. ",
+                    house: "403",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 20,
+                    city: "Ростов-на-Дону",
+                    street: "Обский",
+                    streetType: "пер. ",
+                    house: "4А",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
+                {
+                    idCity: 21,
+                    city: "Аксай",
+                    street: "Садовая",
+                    streetType: "ул. ",
+                    house: "8А",
+                    delivery: 60,
+                    takeaway: 20 ,
+                    condition: "Активен"
+                },
             ],
             orderPosition: [//массив добавленных в заказ позиций 
             
@@ -738,6 +877,9 @@ class App extends React.Component {
             PreOrder: false,
             OpenCitySearchInp: false,
             ResSearchCity: [],
+            StatisticsClient: [
+               
+            ],
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -796,6 +938,7 @@ class App extends React.Component {
         this.StopListChekFunctionOnCity = this.StopListChekFunctionOnCity.bind(this)   
         this.StopListChekFunctionCatOnCity = this.StopListChekFunctionCatOnCity.bind(this) 
         this.StopListChecCatOnPositionOnCity = this.StopListChecCatOnPositionOnCity.bind(this)   
+        this.ClearStopList = this.ClearStopList.bind(this)
         
         this.CityChange = this.CityChange.bind(this)   
         this.CloseCityist = this.CloseCityist.bind(this)   
@@ -1162,7 +1305,9 @@ class App extends React.Component {
                                 <td className='AddressDetalText PhoneNum'>
                                     Телефон
                                 </td>
-                                <td>
+                                <td
+                                className='TdAddressDetalInpPhoneNum'                                
+                                >
                                 <input
                                     id={'AddressDetalInpPhoneNum' + this.state.SavedIdOrd}
                                     
@@ -1192,6 +1337,11 @@ class App extends React.Component {
                                     })}
 
                                     onBlur={(() => {
+                                        
+                                            
+                                            this.setState({
+                                                StatisticsClient: this.state.Saved.filter((el) => el.orderAddress[0].PhoneNum === this.state.address[0].PhoneNum)
+                                            })
                                         if(this.state.address[0].PhoneNum.length !== 11)
                                         {
                                             document.getElementById('AddressDetalInpPhoneNum' + this.state.SavedIdOrd).value = ""
@@ -1203,9 +1353,21 @@ class App extends React.Component {
                                             this.setState({
                                                 address: [...this.state.address]
                                             })
+                                            
                                         }
                                     })}
                                     />
+                                    
+                                   {this.state.StatisticsClient.length > 0 &&
+                                        <IoStatsChart
+                                        className='StatisticsClientIcon'
+                                        onClick={() => {
+                                            console.log(this.state.StatisticsClient)
+                                        }}
+                                        />
+                                    }
+    
+                                    
                                 </td>
                             </tr>
                             {this.state.TypeOrder === "delivery" && <tr className='TrTableAddressDetal'>
@@ -1536,6 +1698,7 @@ class App extends React.Component {
                     StopListChekFunctionPodcatOnCity={this.StopListChekFunctionPodcatOnCity}
                     StopListChekFunctionCatOnCity={this.StopListChekFunctionCatOnCity}
                     StopListChekFunctionOnCity={this.StopListChekFunctionOnCity}
+                    ClearStopList={this.ClearStopList}
                     cat={this.state.cat}
                     position={this.state.position}
                     podcat={this.state.podcat}
@@ -2040,30 +2203,46 @@ class App extends React.Component {
 
     async cleanOrder(id) { //удаление всех позиций из заказа
         this.setState({
+            StatisticsClient: []
+        })
+        if(this.state.orderPosition.length > 0)
+        {
+        this.setState({
             orderPosition: this.state.orderPosition.filter((el) => el.idOrd === id)
         })
+        }
         
+        if(this.state.orderAddition.length > 0)
+        {
         this.setState({ //удаление всех добавок в вок
             orderAddition: this.state.orderAddition.filter((el) => el.idOrd === id)
         }) 
+        }
+
         this.setState({ //очистка кол-ва приборов
             orderTablewares: this.state.orderTablewares.filter((el) => el.id === id)
         })
+
         this.setState({
             orderTablewares: [{num: 0}]
         })
+
         this.setState({//очистка скидки
             Sale: 1
         })
+
         this.setState({//очистка скидки
             TotalSale: 0
         })
+
         this.setState({//очистка скидки суммой
             SaleInp: 0
         })
+
         this.setState({
             totalSoy: 0
         })
+
         this.setState({
             OnCity: {
                 idCity: 0, 
@@ -2088,6 +2267,7 @@ class App extends React.Component {
         this.setState({
             position: [...this.state.position]
         })
+
         this.state.cat.map((el) => {
             el.CheckStopList = false
             return(el)
@@ -2109,6 +2289,7 @@ class App extends React.Component {
             }
             ]
         })
+
         this.state.MarksOrder.map((el) => {
             el.Active = false
             this.setState({
@@ -2116,6 +2297,7 @@ class App extends React.Component {
             })
             return(el)
         })
+
         this.setState({
             TypeOrder: "delivery"
         })
@@ -2150,7 +2332,7 @@ class App extends React.Component {
         }
         document.getElementById('CityName' + this.state.SavedIdOrd).classList.remove('Allert')
 
-        if(this.state.OnCity.idCity !== 0)
+        if(this.state.OnCity.idCity !== 0 && this.state.orderPosition.length > 0)
         {
         document.getElementById('CertificateInput').value = ""
         document.getElementById('PreOrderInput').value = ""
@@ -2727,6 +2909,26 @@ class App extends React.Component {
         this.StopListChecCatOnPositionOnCity(idCity)//вызов функции для проверки стопов по категориям, для корректного отображения
        
         
+    }
+
+    ClearStopList(idCity){
+        this.state.StopList.map((a) =>
+        {
+            if(a.idCity === idCity)
+            {
+                    
+                    a.CheckStopList = false
+                    this.setState({
+                        StopList: [...this.state.StopList]
+                    })
+                
+            }
+            
+            return(a)
+        })
+
+        
+       
     }
 
    StopListChecCatOnPositionOnCity(idCity)//функция для проверки стопов по категориям, для корректного отображения

@@ -74,8 +74,7 @@ body {
 
 
 .SavedOrdersMainDiv {
-  overflow-y: auto;
-  overflow-x: hidden;
+  
   margin-left: 50px;
   font-family: "Roboto";
   font-size: 12pt;
@@ -91,9 +90,150 @@ body {
 
 .StopListDiv{
   width: 100%;    
-  height: 100%;
+  height: 98%;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
+}
+
+.TableCitiesStopList{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 82vh;
+  
+}
+
+.PageDiv{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 9.2vh;
+  box-shadow: 0px 0px 3px 0px black;
+  color: var(--Text2-Color, black);
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  display: flex;
+  justify-content: space-between;
+}
+
+.PageButtonMainDiv{
+  display: flex;
+}
+
+.PageButtonDiv{
+  margin-left: 10px;
+}
+
+.PageButtonDivText{
+  font-size: 10pt;
+  margin-right: 10px;
+  color: var(--DarkA-Color)
+}
+
+
+.PageButton{
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  border-radius: 5%;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PageButton:hover{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PageButton.Actived{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PageButton.Unactived{
+  cursor: auto;
+  background-color: var(--slayder-color, #ccc);
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.PageButton.Unactived:hover{
+  background-color: var(--slayder-color, #ccc);
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TextEndPageDiv{
+  display: flex;
+  font-size: 10pt;
+  margin-right: 10px;
+  color: var(--DarkA-Color);
+  align-items: center;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StepChangerDiv{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  outline: 1px solid;
+  width: 40px;
+  height: 100%;
+  color: var(--Text2-Color, black);
+  font-size: 12pt;
+  margin-right: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding: 2px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  outline: 1px solid var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StepChangerDiv.OpenDrop{
+  outline: 1px solid var(--DarkA-Color);
+}
+
+
+.StepChangerIcon{
+  transform: rotate(180deg);
+  margin-bottom: 2px;
+  color: var(--Text2-Color, black);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StepChangerIcon.OpenDrop{
+  transform: rotate(0deg);
+  margin-bottom: 0px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.DropDownStepChangerMainDiv{
+  position: absolute;
+  right: 8.35vw;
+  bottom: 7.3vh;
+  width: 45px;
+  max-height: 150px;
+  box-shadow: 0px 0px 3px 0px black;
+  background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
+}
+
+.ContainerStepsName{
+  cursor: pointer;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.ContainerStepsName:hover{
+  color: var(--ColorStatusCancelledOrderSavedText, #f3f7fa);
+  background-color: var(--LightA-color, rgb(3, 168, 245));
 }
 
 .MainOrder {
@@ -1708,8 +1848,14 @@ input:checked + .editdiamslide:before {
   height: 25px;
 }
 
+
 .AddressDetalText{
-  width: 150px;
+  width: 130px;
+}
+
+.TdAddressDetalInpPhoneNum{
+  display: flex;
+  align-items: end;
 }
 
 .AddressDetalInp{
@@ -1748,6 +1894,20 @@ input:checked + .editdiamslide:before {
   min-width: 170px;
   min-height: 15px;
   max-height: 100px;  
+}
+
+.StatisticsClientIcon{
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  margin-left: 5px;
+  color: var(--LightA-color, rgb(3, 168, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StatisticsClientIcon:hover{
+  color: var(--DarkA-Color, rgb(3, 100, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .TimeDeliveryStopListMain{
@@ -1863,6 +2023,7 @@ input:checked + .editdiamslide:before {
 
 .PreHeadMainDiv{
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 30px;
 }
@@ -1919,18 +2080,18 @@ input:checked + .editdiamslide:before {
 
 .ButtonResetTimeOneCity{
   cursor: pointer;
-  background-color: var(--mainC-color, rgb(224, 231, 235));
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
   box-shadow: 0px 0px 3px 0px black;
   border: none;
-  border-radius: 5px;
+  border-radius: 5%;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ButtonResetTimeOneCity:hover{
   background-color: var(--LightA-color, rgb(3, 168, 245));
   color: var(--mainText-color, rgb(243, 247, 250));
-  transition: all ease-in-out;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .CityConditionMainDiv{
@@ -2056,9 +2217,6 @@ input:checked + .editdiamslide:before {
 }
 
 .ButtonOpenClearTime{
-  position: fixed;
-  right: 10px;
-  top: 14px;
   border-radius: 5px;
   border: none;
   margin-right: 5px;
@@ -2079,6 +2237,8 @@ input:checked + .editdiamslide:before {
   border-radius: 0px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  position: relative;
+  top: 25px;
 }
 
 .ButtonOpenClearTime:hover{
@@ -2089,9 +2249,9 @@ input:checked + .editdiamslide:before {
 
 .ButtonsClearTimeMainDiv{
   box-shadow: 0px 0px 5px 0px black;
-  position: fixed;
-  right: 15px;
-  top: 35px;
+  position: relative;
+  width: 150px;
+  top: 25px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -2129,16 +2289,112 @@ input:checked + .editdiamslide:before {
 .ThCityStopList{
   max-width: 320px;
   text-align: start;
-}
-
-.ThCityStopList{
   display: flex;
   align-items: center;
-  width: 40%;
+  
+}
+
+.ThCityStopListClearButton{
   text-align: start;
+  width: 20.8vw;
+  height: 22px;
+}
+
+.StopListClearButton{
+  cursor: pointer;
+  height: 20px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  border-radius: 2px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StopListClearButton:hover{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowClearStopListMainDiv{
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  font-family: "Roboto";
+}
+
+.WindowClearStopListContent{
+  position: absolute;
+  top: 30%;
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 250px;
+  height: 100px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.WindowClearStopListButtonsDiv{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.WindowClearButtonOK{
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--mainText-color, rgb(224, 231, 235));
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowClearButtonOK:hover{
+  background-color: var(--mainA-color, rgb(3, 158, 245));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowClearButtonCancel{
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none; 
+  height: 25px;
+  width: 80px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowClearButtonCancel:hover{
+  background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ClickedInputStopListCityDiv{
+  margin-top: 1px;
   width: 330px;
 }
 
@@ -2285,10 +2541,37 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedBodyDiv{
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 1855px;    
   height: 95%;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;     
+}
+
+.ButtonAddOrdersNumbersDiv{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.ButtonAddOrdersNumbers{
+  cursor: pointer;
+  height: 20px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  border-radius: 2px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonAddOrdersNumbers:hover{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .LastWindowMainDiv{

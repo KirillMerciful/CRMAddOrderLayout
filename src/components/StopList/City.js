@@ -1,9 +1,10 @@
 import React from 'react';
-import { IoChevronDown, IoArrowUndo, IoCloseOutline } from "react-icons/io5";
+import { IoChevronDown, IoArrowUndo } from "react-icons/io5";
 import StopCategoriesOnCity from './StopCategoriesOnCity';
 import CityDeliveryTime from './CityDeliveryTime';
 import CityTakeawayTime from './CityTakeawayTime';
 import CityCondition from './CityCondition';
+import WindowClearStopListCity from './WindowClearStopListCity';
 
 class City extends React.Component {    
   constructor(props) {
@@ -13,15 +14,18 @@ class City extends React.Component {
         OpenDropDownDelivery: false,
         OpenDropDownTakeaway: false,
         OpenDropDownCondition: false,
+        OpenModalClearStopList: false,
         ResSearch: [
 
         ],
+        
 } 
 this.CloseTimeDeliverySelector = this.CloseTimeDeliverySelector.bind(this)
 this.CloseTimeTakeawaySelector = this.CloseTimeTakeawaySelector.bind(this)
 this.CloseConditionSelector = this.CloseConditionSelector.bind(this)
 this.DefaultStatusCat = this.DefaultStatusCat.bind(this)
 this.BluringStopList = this.BluringStopList.bind(this)
+this.CloseModalClearSropList = this.CloseModalClearSropList.bind(this)
 
 }
     render() {
@@ -232,10 +236,34 @@ this.BluringStopList = this.BluringStopList.bind(this)
                 
                 
               </td>
+              <td
+              className='ThCityStopListClearButton'
+              >
+                <div>
+                  <button
+                  className='StopListClearButton'
+                  onClick={() => {
+                    this.setState({
+                      OpenModalClearStopList: true
+                    })
+                    this.props.ClearStopList(this.props.City.idCity)
+                  }}
+                  >
+                    Очистить стоп лист
+                  </button>
+                </div>
+                
+              </td>
             </tr>
           </tbody>
         </table>
-        
+        {this.state.OpenModalClearStopList === true &&
+        <WindowClearStopListCity 
+        ClearStopList={this.props.ClearStopList}
+        City={this.props.City}
+        CloseModalClearSropList={this.CloseModalClearSropList}
+        />
+        }
       </div>    
       
       )
@@ -317,6 +345,12 @@ this.BluringStopList = this.BluringStopList.bind(this)
     CloseConditionSelector(){
       this.setState({
         OpenDropDownCondition: false
+      })
+    }
+
+    CloseModalClearSropList(){
+      this.setState({
+        OpenModalClearStopList: false
       })
     }
 

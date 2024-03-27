@@ -63,7 +63,9 @@ class SavedOrdersMain extends React.Component {
             },
             CheckSearchingDate: false,
             OpenSearchCity: false,
-            ResSearchCity: []
+            ResSearchCity: [],
+            OrdersNumbers: 20,
+            ButtonAddOrdersNumbers: false
         }
 
         this.SortOrderByStatus = this.SortOrderByStatus.bind(this)
@@ -79,7 +81,9 @@ class SavedOrdersMain extends React.Component {
         this.FunctionOpenModalPeriod = this.FunctionOpenModalPeriod.bind(this)
         this.CloseModalPeriod = this.CloseModalPeriod.bind(this)
         this.SearchingChangeDate = this.SearchingChangeDate.bind(this)
-        
+        this.DeleteSavedOrdForInp = this.DeleteSavedOrdForInp.bind(this)
+        this.ButtonAddOrdersNumbersCheck = this.ButtonAddOrdersNumbersCheck.bind(this)
+        this.DefaultOrdersNumber = this.DefaultOrdersNumber.bind(this)
     }
 
     render() {
@@ -91,6 +95,7 @@ class SavedOrdersMain extends React.Component {
             tabIndex={100}
             className='SavedHeadMainDiv'
             id="SavedHeadMainDiv"
+            
             >
                 <div className='SavedHeadOb'>
                                 <div 
@@ -308,18 +313,33 @@ class SavedOrdersMain extends React.Component {
             <div className='SavedBodyDiv'>
             
 
-                {this.state.SortOrder.map((el) =>
+                {this.state.SortOrder.slice(0, this.state.OrdersNumbers).map((el) =>
                     <SavedOrd 
+                    ButtonAddOrdersNumbers={this.state.ButtonAddOrdersNumbers}
+                    AddOrdersNumber={this.AddOrdersNumber}
                     TodayDate={this.state.TodayDate}
-                    DeleteSavedOrd={this.props.DeleteSavedOrd}
+                    DeleteSavedOrdForInp={this.DeleteSavedOrdForInp}
                     ChangeStatusSavedOrd={this.props.ChangeStatusSavedOrd}
                     Saved={el}
                     key={el.SavedIdOrd}
                     />
                     
                 )}
-                
-            
+
+                {this.state.ButtonAddOrdersNumbers === true && <div
+                className='ButtonAddOrdersNumbersDiv'
+                >
+                    <button
+                    className='ButtonAddOrdersNumbers'
+                    onClick={() => {
+                        this.AddOrdersNumber()
+                        console.log(this.state.OrdersNumbers)
+                    }}
+                    >
+                        Показать еще
+                    </button>
+                </div>}
+
             </div>  
 
             {this.state.OpenModalSearch === true &&
@@ -346,6 +366,7 @@ class SavedOrdersMain extends React.Component {
       
     }  
     async componentDidMount(){
+        
         //сортировка по времени
         this.props.Saved.sort((a, b) => b.orderDetal[0].TimeSave[0].Hour - a.orderDetal[0].TimeSave[0].Hour === 0 ? b.orderDetal[0].TimeSave[0].Minutes - a.orderDetal[0].TimeSave[0].Minutes : b.orderDetal[0].TimeSave[0].Hour - a.orderDetal[0].TimeSave[0].Hour)
         
@@ -397,6 +418,8 @@ class SavedOrdersMain extends React.Component {
             }
            })
 
+
+
            //обнуление выбранных статусов
            this.setState({
             StatusCheck: {
@@ -415,6 +438,9 @@ class SavedOrdersMain extends React.Component {
             )
        })
 
+       await this.setState
+
+        this.DefaultOrdersNumber()
        //Ниже проверка завтращней даты, чтобы не было 32.03.2024 например
        var TommorowDay = String(today.getDate() + 1).padStart(2, "0")
        var TommorowMounth = String(today.getMonth() + 1).padStart(2, "0")
@@ -457,7 +483,7 @@ class SavedOrdersMain extends React.Component {
             Date: TommorowDay,
             Mounth: TommorowMounth,
             Year: TommorowYear
-        }
+        }  
        })
 
        //Ниже проверка вчерашней даты, чтобы не было 00.03.2024/-01.03.2024 например
@@ -710,7 +736,7 @@ class SavedOrdersMain extends React.Component {
         }
 
         await this.setState
-        
+        this.DefaultOrdersNumber()
         document.getElementById('SavedHeadMainDiv').focus()
     }
 
@@ -814,6 +840,8 @@ class SavedOrdersMain extends React.Component {
                     parseInt(el.orderDetal[0].DateSave[0].Year) <= parseInt(this.state.CheckMaxDate.Year)
                     )
                 })
+
+                
             }
         }
         
@@ -828,6 +856,7 @@ class SavedOrdersMain extends React.Component {
         })
 
         await this.setState
+        this.DefaultOrdersNumber()
         if(this.state.SortOrder.length > 0)
         {
             this.CloseModalSearch()
@@ -840,6 +869,7 @@ class SavedOrdersMain extends React.Component {
             this.SortOrderByStatus()
             console.log(this.props.AlertCheck)
         }
+        
     }
 
     FunctionOpenModalPeriod(){
@@ -853,6 +883,47 @@ class SavedOrdersMain extends React.Component {
         OpenModalPeriod: false
         })
     }
+
+    
+    DeleteSavedOrdForInp(id){
+        this.setState({
+            SortOrder: this.state.SortOrder.filter((el) => el.SavedIdOrd !== id)
+        })
+        this.props.DeleteSavedOrd(id)
+    }
+
+    async ButtonAddOrdersNumbersCheck(){
+        if(this.state.OrdersNumbers < this.state.SortOrder.length)
+        {
+            this.setState({
+                ButtonAddOrdersNumbers: true
+            })
+        }
+        else
+        {
+            this.setState({
+                ButtonAddOrdersNumbers: false
+            })
+        }
+        await this.setState
+    }
+
+    async DefaultOrdersNumber(){
+        this.setState({
+            OrdersNumbers: 20
+        })
+        await this.setState
+        this.ButtonAddOrdersNumbersCheck()
+    }
+
+    async AddOrdersNumber() {
+        this.setState({
+            OrdersNumbers: this.state.OrdersNumbers + 20
+        })
+        await this.setState
+        this.ButtonAddOrdersNumbersCheck()
+    }
   }
+
 
   export default SavedOrdersMain

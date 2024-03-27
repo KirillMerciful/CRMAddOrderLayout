@@ -257,7 +257,7 @@ class SavedOrd extends React.Component {
             SavedIdOrd={this.props.Saved.SavedIdOrd}
             Saved={this.props.Saved}
             CloseDeleteSavedOrdDropDown={this.CloseDeleteSavedOrdDropDown}
-            DeleteSavedOrd={this.props.DeleteSavedOrd}
+            DeleteSavedOrdForInp={this.props.DeleteSavedOrdForInp}
             />
             }
         </div>

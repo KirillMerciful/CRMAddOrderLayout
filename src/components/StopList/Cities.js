@@ -1,7 +1,9 @@
 import React from 'react';
 import City from './City';
 import { PiMagnifyingGlass } from "react-icons/pi";
+import { IoChevronDown } from "react-icons/io5";
 import ContainerCityOrdHead from '../SavedOrders/ContainerCityOrdHead';
+import ContainerSteps from './ContainerSteps';
 
 class Cities extends React.Component {  
   constructor(props) {
@@ -11,14 +13,21 @@ class Cities extends React.Component {
         OpenSearchCity: false,
         ResSearchCity: [],
         inpSearchCity: [],
+        InpPage: 1,
+        Pages: [],
+        Step: 10,
+        OpenDropDownStepChanger: false,
     }
     this.ChangeCityCheck = this.ChangeCityCheck.bind(this)
     this.ClearChangeCityCheck = this.ClearChangeCityCheck.bind(this)
+    this.ChangeStepPages = this.ChangeStepPages.bind(this)
   }  
     render() {
       return(
         
-      <div className='StopListDiv'>
+      <div 
+      className='StopListDiv'
+      >
         <div
         className='PreHeadMainDiv'
         >
@@ -125,8 +134,7 @@ class Cities extends React.Component {
                     >
                       Сброс
                     </button>
-            </div>
-            {this.state.OpenDropDownClearTime === true && 
+                    {this.state.OpenDropDownClearTime === true && 
             <div 
             className='ButtonsClearTimeMainDiv'>
               <div>
@@ -153,6 +161,8 @@ class Cities extends React.Component {
             </div>
       </div>
         }
+            </div>
+            
         </div>
         <div>
         <table className='StopListCityTable'>
@@ -184,30 +194,136 @@ class Cities extends React.Component {
           </thead>
         </table>
         </div>
-        
-          {this.state.inpSearchCity.map((el) => (<City 
-          ChangeConditionCity={this.props.ChangeConditionCity}
-          ClearTimeOneCity={this.props.ClearTimeOneCity}  
-          ChangeTimeTakeawayCity={this.props.ChangeTimeTakeawayCity}
-          ChangeTimeDeliveryCity={this.props.ChangeTimeDeliveryCity}
-          City={el}
-          position={this.props.position} 
-          cat={this.props.cat} 
-          StopListChekFunctionOnCity={this.props.StopListChekFunctionOnCity} 
-          StopListChekFunctionCatOnCity={this.props.StopListChekFunctionCatOnCity} 
-          StopListChecCatOnPositionOnCity={this.props.StopListChecCatOnPositionOnCity}
-          key={el.idCity}
-          StopList={this.props.StopList}
-          StopCat={this.props.StopCat}
-          MouseClickX={this.props.MouseClickX}
-          MouseClickY={this.props.MouseClickY}
+        <div 
+        className='TableCitiesStopList'>
+          {this.state.inpSearchCity.slice(parseInt(this.state.Step) * (parseInt(this.state.InpPage) - 1), parseInt(this.state.Step) * parseInt(this.state.InpPage)).map((el) => (
+          <City 
+            ChangeConditionCity={this.props.ChangeConditionCity}
+            ClearTimeOneCity={this.props.ClearTimeOneCity}  
+            ChangeTimeTakeawayCity={this.props.ChangeTimeTakeawayCity}
+            ChangeTimeDeliveryCity={this.props.ChangeTimeDeliveryCity}
+            City={el}
+            position={this.props.position} 
+            cat={this.props.cat} 
+            ClearStopList={this.props.ClearStopList}
+            StopListChekFunctionOnCity={this.props.StopListChekFunctionOnCity} 
+            StopListChekFunctionCatOnCity={this.props.StopListChekFunctionCatOnCity} 
+            StopListChecCatOnPositionOnCity={this.props.StopListChecCatOnPositionOnCity}
+            key={el.idCity}
+            StopList={this.props.StopList}
+            StopCat={this.props.StopCat}
+            MouseClickX={this.props.MouseClickX}
+            MouseClickY={this.props.MouseClickY}
           />))}
+          </div>
+
+          <div 
+          className='PageDiv'
+          >
+            <div
+            className='PageButtonMainDiv'
+            >
+              <div
+              className='PageButtonDiv'
+              >
+                <span
+                className='PageButtonDivText'
+                >
+                  Страница: 
+                </span>
+                <button
+                className={this.state.InpPage !== 1 ? 'PageButton' : 'PageButton Unactived'}
+                onClick={() => {
+                  if(this.state.InpPage !== 1)
+                  this.setState({
+                    InpPage: parseInt(this.state.InpPage) - 1
+                  })
+                }}
+                >
+                  {"<"}
+                </button>
+              </div>
+            
+
+            {this.state.Pages.map((el) => (
+              <div
+              className='PageButtonDiv'
+              >
+              <button
+              className={this.state.InpPage === el.Page ? 'PageButton Actived' : 'PageButton'}
+              onClick={() => {
+                this.setState({
+                  InpPage: el.Page
+                })
+              }}
+              >
+                {el.Page}
+              </button>
+              </div>
+            ))}
+
+            
+              <div
+              className='PageButtonDiv'
+              >
+                <button
+                className={this.state.InpPage !== this.state.Pages.length ? 'PageButton' : 'PageButton Unactived'}
+                onClick={() => {
+                  if(this.state.InpPage !== this.state.Pages.length)
+                  this.setState({
+                    InpPage: parseInt(this.state.InpPage) + 1
+                  })
+                }}
+                >
+                  {">"}
+                </button>
+              </div>
+            </div>
+
+            <div
+            className='TextEndPageDiv'
+            >
+              <div
+              tabIndex={0}
+              className={this.state.OpenDropDownStepChanger === false ? 'StepChangerDiv' : "StepChangerDiv OpenDrop"}
+              onClick={() => {
+                this.setState({
+                  OpenDropDownStepChanger: !this.state.OpenDropDownStepChanger
+                })
+              }}
+              onBlur={() => {
+                setTimeout(() => {
+                  this.setState({
+                    OpenDropDownStepChanger: false
+                  })
+                }, 100)
+              }}
+              >
+                {this.state.Step}
+                <IoChevronDown 
+                className={this.state.OpenDropDownStepChanger === false ? 'StepChangerIcon' : "StepChangerIcon OpenDrop"}
+                
+                />
+              </div>
+              Показано {(10 * (parseInt(this.state.InpPage) - 1)) + 1} - {(parseInt(this.state.Step) * parseInt(this.state.InpPage)) >= this.state.inpSearchCity.length ? this.state.inpSearchCity.length  : parseInt(this.state.Step) * parseInt(this.state.InpPage)} из {this.state.inpSearchCity.length}
+            </div>
+              {this.state.OpenDropDownStepChanger === true &&
+              <div
+              className='DropDownStepChangerMainDiv'
+              >
+                <ContainerSteps 
+                ChangeStepPages={this.ChangeStepPages}
+                />
+              </div>
+              }
+          </div>
       </div>    
+      
       )
       
       
     }  
-    componentDidMount(){
+    async componentDidMount(){
      
         this.setState({
           ResSearchCity: [...this.props.City]
@@ -216,6 +332,19 @@ class Cities extends React.Component {
         this.setState({
           inpSearchCity: [...this.props.City]
         })
+
+        await this.setState
+
+        var PushedPage = []
+        for(var i = 1; (i-1) < (Math.ceil(this.state.inpSearchCity.length / parseInt(this.state.Step))); i++)
+        {
+          PushedPage.push({Page: i})
+          this.setState({
+            Pages: [...PushedPage]
+          })
+        }
+          
+        
     }
 
     async ChangeCityCheck(e){
@@ -228,6 +357,23 @@ class Cities extends React.Component {
       this.setState({
         inpSearchCity: this.state.inpSearchCity.filter((el) => el.idCity === e.idCity )
       })
+
+      await this.setState
+
+      var PushedPage = []
+        for(var i = 1; (i-1) < (Math.ceil(this.state.inpSearchCity.length / parseInt(this.state.Step))); i++)
+        {
+          PushedPage.push({Page: i})
+          this.setState({
+            Pages: [...PushedPage]
+          })
+        }
+      
+      this.setState({
+        InpPage: 1
+      })
+
+      await this.setState
     }
 
     async ClearChangeCityCheck(){
@@ -236,6 +382,39 @@ class Cities extends React.Component {
       })
 
       await this.setState
+
+      var PushedPage = []
+        for(var i = 1; (i-1) < (Math.ceil(this.state.inpSearchCity.length / parseInt(this.state.Step))); i++)
+        {
+          PushedPage.push({Page: i})
+          this.setState({
+            Pages: [...PushedPage]
+          })
+        }
+
+        this.setState({
+          InpPage: 1
+        })
+
+      await this.setState
+    }
+
+    async ChangeStepPages(val){
+      this.setState({
+        Step: val
+      })
+
+      await this.setState
+
+      var PushedPage = []
+        for(var i = 1; (i-1) < (Math.ceil(this.state.inpSearchCity.length / parseInt(this.state.Step))); i++)
+        {
+          PushedPage.push({Page: i})
+          this.setState({
+            Pages: [...PushedPage]
+          })
+        }
+
     }
   }
 

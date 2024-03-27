@@ -18,7 +18,7 @@ class SavedOrdDeletedWindow extends React.Component {
                 <button 
                 className='SavedOrdDeletedWindowButtonDelete'
                 onClick={(() => {
-                    this.props.DeleteSavedOrd(this.props.SavedIdOrd)
+                    this.props.DeleteSavedOrdForInp(this.props.SavedIdOrd)
                     this.props.CloseDeleteSavedOrdDropDown()
                 })}>Удалить</button>
             </div>
