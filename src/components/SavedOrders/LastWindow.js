@@ -94,7 +94,21 @@ class LastWindow extends React.Component {
                             <button 
                             className='LastWindowButtonPayment'
                             onClick={(() => {
-                                this.props.PaymentMark(el.val)
+                                if(parseInt(el.val) === parseInt(this.props.totalSumSale) && el.val !== "Картой" && el.val !== "Оплачено" && el.val !== "Б/С")
+                                {
+                                    this.props.PaymentMark("Б/С")
+                                }
+                                else
+                                {
+                                    if(el.val > this.props.totalSumSale || el.val === "Картой" || el.val === "Оплачено" || el.val === "Б/С")
+                                    {
+                                        this.props.PaymentMark(el.val)
+                                    }
+                                    else
+                                    {
+                                        this.props.AlertAdd("InpLessSum")
+                                    }
+                                }
                                 
                             })}>{el.name}</button>
                         </div>
@@ -129,7 +143,6 @@ class LastWindow extends React.Component {
                                         {
                                             this.props.AlertAdd("InpLessSum")
                                             document.getElementById('LastWindowInput').classList.add('Allert')
-                                            
                                         }
                                         
                                     }

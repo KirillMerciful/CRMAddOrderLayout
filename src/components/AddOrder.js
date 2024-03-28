@@ -26,6 +26,9 @@ class AddOrder extends React.Component {
                 <td 
                 className="OrdPosName"
                 id={'OrdPosName' + this.props.orderPosition.idOrd}
+                onClick={() => {
+                  document.getElementById('OrdPosName' + this.props.orderPosition.idOrd).classList.remove('Stoped')
+                }}
                 >
                   {this.props.orderPosition.name}
                   {this.props.orderPosition.salecheck === false && <MdOutlinePercent color="red"/>}
@@ -44,6 +47,7 @@ class AddOrder extends React.Component {
                   className="OpenAdditions"
                   id={"OpenAdditionsButton" + this.props.orderPosition.idOrd}
                   onClick={() => {
+                    document.getElementById('OrdPosName' + this.props.orderPosition.idOrd).classList.remove('Stoped')
                     if(this.state.OpenDropDownAddition === false)
                     {
                       this.setState({

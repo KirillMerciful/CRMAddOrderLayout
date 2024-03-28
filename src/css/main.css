@@ -3869,3 +3869,270 @@ input:checked + .editdiamslide:before {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
   box-shadow: 0px 0px 3px 0px black;
 }
+
+.WindowStatisticsClientMainDiv{
+  z-index: 1000;
+  height: 110vh;
+  width: 110vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  font-family: "Roboto";
+}
+
+.WindowStatisticsClientContent{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 17%;
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--Text2-Color, black);
+  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
+  width: 65vw;
+  height: 52vh;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  border: 1px solid;
+  border-color: black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowStatisticsClientContentUp{
+  display: flex;
+  width: 100%;
+  font-size: 14pt;
+  font-weight: 600;
+  justify-content: center;
+}
+
+.WindowStatisticsClientContainerOrdersDiv{
+  background-color: white;
+  height: 44vh;
+  padding: 5px;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.WindowStatisticsClientButtonDiv{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+
+.WindowStatisticsClientButton{
+  cursor: pointer;
+  height: 25px;
+  width: 70px;
+  border-radius: 5px;
+  color: var(--Text2-Color, black);
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.WindowStatisticsClientButton:hover{
+  background-color: var(--ColorHoverDeleteAndCancel, rgba(255, 210, 210, 0.123));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StatisticsClientOrderDiv{
+  width: 100%;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.StatisticsClientOrderHead{
+  display: flex;
+  color: var(--Text2-Color, black);
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  padding: 5px;
+  box-shadow: 0px 0px 2px 0px black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.TimeSaveTextOnStatisticsClient{
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+.DateSaveAndNumberTextOnStatisticsClient{
+  margin-left: 5px;
+  margin-top: 1px;
+  font-size: 11pt;
+}
+
+.StatisticsClientOrderBody{
+  display: flex;
+  align-items: stretch;
+  color: var(--Text2-Color, black);
+  border: 1px solid black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StatisticsClientStatus{
+  font-size: 10pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width:  4.2vw;
+  height: auto;
+  border-right: 1px solid black;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.StatisticsClientStatus.New{
+  background-color: var(--ColorStatusNewOrderSaved, #ff00004f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Processing{
+  background-color: var(--ColorStatusProcessingOrderSaved, #ff00994f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.NotProcessing{
+  background-color: var(--ColorStatusNotProcessingOrderSaved, #4545454f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Timeout{
+  background-color: var(--ColorStatusTimeoutOrderSaved, #6038ff4f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Cooking{
+  background-color: var(--ColorStatusCookingOrderSaved, #38f2ff4f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Cooked{
+  background-color: var(--ColorStatusCookedOrderSaved, #3bff384f);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Delivery{
+  background-color: var(--ColorStatusDeliveryOrderSaved, #fcff384f);
+  color: black;
+}
+
+.StatisticsClientStatus.Completed{
+  background-color: var(--ColorStatusCompletedOrderSaved, #53ff3817);
+  color: var(--Text2-Color, black);
+}
+
+.StatisticsClientStatus.Cancelled{
+  background-color: var(--ColorStatusCancelledOrderSaved, #21212188);
+  color: var(--ColorStatusCancelledOrderSavedText, rgb(243, 247, 250));
+}
+
+.StatisticsClientOrderPositions{
+  font-size: 8pt;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+}
+
+.StatisticsClientOrderPositionsTable{
+  height: 15px;
+}
+
+.StatisticsClientOrderPositionsTbName{
+  text-align: start;
+  width: 10.7vw;
+}
+
+.StatisticsClientOrderPositionsTbNum{
+  text-align: end;
+  width: 1.05vw;
+}
+
+.StatisticsClientOrderPositionsTbPrice{
+  text-align: end;
+  width: 3.67vw;
+}
+
+.StatisticsClientPosGroup{
+  margin-bottom: 3px;
+}
+
+.StatisticsClientOrderTotalSum{
+  font-size: 8pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 3.15vw;
+  height: auto;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.StatisticsClientOrderSale{
+  font-size: 8pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 3.15vw;
+  height: auto;
+  border-right: 1px solid black;
+}
+
+.StatisticsClientOrderCity{
+  font-size: 8pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 6.3vw;
+  height: auto;
+  border-right: 1px solid black;
+}
+
+.StatisticsClientOrderCityName{
+  font-weight: 600;
+  text-align: center;
+}
+
+.StatisticsClientOrderCityStreet{
+  text-align: center;
+
+}
+
+.StatisticsClientOrderAddress{
+  font-size: 8pt;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: auto;
+  width: 21.28vw;
+  border-right: 1px solid black;
+}
+
+.StatisticsClientOrderAddressTableDiv{
+  display: table;
+}
+
+.StatisticsClientOrderPhoneNum{
+  font-size: 10pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: 5.78vw;
+  height: auto;
+}

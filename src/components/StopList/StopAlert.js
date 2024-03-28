@@ -234,6 +234,22 @@ class StopAlert extends React.Component {
         </div>  
         )
     }
+    case 'UndefiendSousage': {
+      return(
+        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+          this.props.AllertClick(this.props.AlertCheck.Check)
+        })}>
+          <div className='AlertLastWindowStopPos'>
+            <div>
+          <IoCloseCircleSharp className="IconStopPosition"/>  
+          </div>
+          <div className='StopAlertText'>
+          В ВОК должен идти минимум 1 соус
+          </div>
+          </div>
+        </div>  
+        )
+    }
     
   }
       

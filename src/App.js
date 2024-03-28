@@ -17,6 +17,7 @@ import LastWindow from './components/SavedOrders/LastWindow';
 import Position from './components/Position';
 import Categ from './components/Categ';
 import AddMarksOnOrder from './components/AddMarksOnOrder';
+import WindowStatisticsClient from './components/StatisticsClient/WindowStatisticsClient';
 
 
 
@@ -29,6 +30,7 @@ class App extends React.Component {
             SSumWindowActive: false,//активность окна для ввода скидки суммой
             LastWindowSaved: false, //активность окна для сохранения заказа
             totalSoy: 0, //счетчик соевых
+            SushiSoy: 0, //счетчик соевых для суши
             foridSost: 1, //счетчик для присваивания айди добавкам в ВОК
             foridDob: 1, //счетчик для присваивания айди добавкам в пиццу
             foridAddition: 1,//счетчки добавок
@@ -122,6 +124,12 @@ class App extends React.Component {
                     CheckIndeterminate: false,
                     ThisAddition: true
                 },
+                {
+                    id: 12,
+                    name: "Суши",
+                    CheckStopList: false,
+                    CheckIndeterminate: false,
+                }
             ],
             position: [ //массив позиций
                 {
@@ -394,6 +402,146 @@ class App extends React.Component {
                     totaldkprice: 299,
                     soysause: 1,
                     sost: "Состав: снежный краб, сыр творожный Cremette, огурец, паприка, тортилья",
+                    CheckStopList: false,
+                },
+                {
+                    id: 20,
+                    name: "Суши креветка",
+                    price: 59,
+                    dkprice: 59,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 59,
+                    totaldkprice: 59,
+                    soysause: 0,
+                    sost: "Состав: креветка, рис",
+                    CheckStopList: false,
+                },
+                {
+                    id: 21,
+                    name: "Суши лосось",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: лосось, рис",
+                    CheckStopList: false,
+                },
+                {
+                    id: 22,
+                    name: "Суши угорь",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: угорь, рис, нори",
+                    CheckStopList: false,
+                },
+                {
+                    id: 23,
+                    name: "Суши тунец",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: тунец, рис",
+                    CheckStopList: false,
+                },
+                {
+                    id: 24,
+                    name: "Суши острые креветка",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, креветка, соус спайси (в составе репчатый лук)",
+                    CheckStopList: false,
+                },
+                {
+                    id: 25,
+                    name: "Суши острые лосось",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, лосось, соус спайси (в составе репчатый лук)",
+                    CheckStopList: false,
+                },
+                {
+                    id: 26,
+                    name: "Суши острые угорь",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, угорь, соус спайси (в составе репчатый лук)",
+                    CheckStopList: false,
+                },
+                {
+                    id: 27,
+                    name: "Суши запеченная креветка",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, креветка, соус сырный",
+                    CheckStopList: false,
+                },
+                {
+                    id: 28,
+                    name: "Суши запеченный лосось",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, лосось, соус сырный",
+                    CheckStopList: false,
+                },
+                {
+                    id: 29,
+                    name: "Суши запеченный угорь",
+                    price: 89,
+                    dkprice: 89,
+                    categ: "Суши",
+                    num: 1,
+                    salecheck: false,
+                    totalprice: 89,
+                    totaldkprice: 89,
+                    soysause: 0,
+                    sost: "Состав: рис, нори, угорь, соус сырный",
                     CheckStopList: false,
                 },
                 {  
@@ -746,12 +894,8 @@ class App extends React.Component {
                     Alert: ""
                 }
             ],
-            StopList: [
-               
-            ],
-            StopCat: [
-
-            ],
+            StopList: [],
+            StopCat: [],
             OnCity: 
                 {
                 idCity: 0,
@@ -877,9 +1021,8 @@ class App extends React.Component {
             PreOrder: false,
             OpenCitySearchInp: false,
             ResSearchCity: [],
-            StatisticsClient: [
-               
-            ],
+            StatisticsClient: [],
+            OpenModalStatisticsClient: false,
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -889,7 +1032,8 @@ class App extends React.Component {
         this.BPlusOrd = this.BPlusOrd.bind(this)   
         this.BMinusOrd = this.BMinusOrd.bind(this)
         this.deleteOrder = this.deleteOrder.bind(this) 
-        this.EditInputOrd = this.EditInputOrd.bind(this) 
+        this.EditInputOrd = this.EditInputOrd.bind(this)
+        this.SushiChecker = this.SushiChecker.bind(this) 
         
         this.SaveFunction = this.SaveFunction.bind(this) 
         this.SavedButtonClick = this.SavedButtonClick.bind(this) 
@@ -959,6 +1103,8 @@ class App extends React.Component {
         this.CloseOpenDropDownTablewares = this.CloseOpenDropDownTablewares.bind(this)
         
         this.ClickMarksButton = this.ClickMarksButton.bind(this)
+
+        this.CloseModalStatisticsClient = this.CloseModalStatisticsClient.bind(this)
     }
 
     
@@ -981,6 +1127,13 @@ class App extends React.Component {
     > 
 
         <div className='MainMenu'>
+            {this.state.OpenModalStatisticsClient === true &&
+            <WindowStatisticsClient 
+            CloseModalStatisticsClient={this.CloseModalStatisticsClient}
+            StatisticsClient={this.state.StatisticsClient}
+            />
+            }
+
             {this.state.LastWindowSaved === true && <LastWindow
             AlertAdd={this.AlertAdd}
             totalSumSale={this.state.totalSumSale}
@@ -988,6 +1141,7 @@ class App extends React.Component {
             SaveFunction={this.SaveFunction}
             CloseLastWindow={this.CloseLastWindow}
             />}
+
             <MenuMain 
                 openMenu={this.state.openMenu}
                 openMenuFunction={this.openMenuFunction}
@@ -1362,6 +1516,9 @@ class App extends React.Component {
                                         <IoStatsChart
                                         className='StatisticsClientIcon'
                                         onClick={() => {
+                                            this.setState({
+                                                OpenModalStatisticsClient: true
+                                            })
                                             console.log(this.state.StatisticsClient)
                                         }}
                                         />
@@ -1831,7 +1988,38 @@ class App extends React.Component {
         }
     }
 
+    async SushiChecker() {
+        var SushiCheck = 0
+            SushiCheck = this.state.orderPosition.filter((el) => el.categ === "Суши")
+            var SushiNum = 0
+            SushiCheck.map((el) => {
+                SushiNum = SushiNum + el.num
+                return(el)
+            })
+            
+            if(SushiNum > 0)
+            {
+            var SushiSoyVar = Math.ceil(SushiNum / 6)
+                        
+                this.setState({
+                    SushiSoy: SushiSoyVar 
+                })
+                await this.setState
+                this.SumSoySause()
+            }
+            else
+            {
+                this.setState({
+                    SushiSoy: 0
+                })
+                await this.setState
+                this.SumSoySause()
+            }
+    }
+
     async addOrder(pos) {  //добавление позиции в заказ
+        
+
         var ch = this.state.orderPosition.find(function (c) {            
             return(c.id === pos.id)
         })
@@ -1862,17 +2050,17 @@ class App extends React.Component {
             const idOrd = this.state.foridOrd      
             this.setState({ foridOrd: parseInt(this.state.foridOrd) + 1 })     
             this.setState({ orderPosition: [...this.state.orderPosition, {idOrd, ...pos}]})
-            
-            
-            
         }
         await this.setState
+        
         this.TotalSumFunction()
         this.TotalSumSaleFunction()
-        this.SumSoySause()
+        this.SushiChecker()
+        
     }          
 
     async deleteOrder(id) { //удаление позиции из заказа
+        
         if(this.state.orderPosition.length === 1)
         {
             this.setState({//очистка скидки
@@ -1885,7 +2073,8 @@ class App extends React.Component {
                 SaleInp: 0
             })
             this.setState({
-                totalSoy: 0
+                totalSoy: 0,
+                SushiSoy: 0
             })
             this.setState({ //очистка кол-ва приборов
                 orderTablewares: this.state.orderTablewares.filter((el) => el.id === id)
@@ -1905,7 +2094,8 @@ class App extends React.Component {
         this.SaleInpEdit2()
         await this.SaleInpEdit2()
         this.TotalSumSaleFunction()
-        this.SumSoySause()
+        this.SushiChecker()
+        
         
     }
 
@@ -1977,7 +2167,7 @@ class App extends React.Component {
         await this.setState
         this.TotalSumFunction()
         this.TotalSumSaleFunction()
-        this.SumSoySause()
+        this.SushiChecker()
     }
 
     async BMinusOrd(id) {//кнопка "-" в заказе прикрепленная к позиции, для уменьшения кол-ва
@@ -2016,7 +2206,7 @@ class App extends React.Component {
         this.SaleInpEdit2()
         await this.SaleInpEdit2()
         this.TotalSumSaleFunction()
-        this.SumSoySause()
+        this.SushiChecker()
     
     }
 
@@ -2201,6 +2391,12 @@ class App extends React.Component {
         this.TotalSumSaleFunction()
     }
 
+    CloseModalStatisticsClient(){
+        this.setState({
+            OpenModalStatisticsClient: false
+        })
+    }
+
     async cleanOrder(id) { //удаление всех позиций из заказа
         this.setState({
             StatisticsClient: []
@@ -2228,20 +2424,18 @@ class App extends React.Component {
         })
 
         this.setState({//очистка скидки
-            Sale: 1
+            Sale: 1,
+            TotalSale: 0,
+            SaleInp: 0//очистка скидки суммой
         })
 
-        this.setState({//очистка скидки
-            TotalSale: 0
+        
+
+        this.setState({//очистка соевых
+            totalSoy: 0,
+            SushiSoy: 0
         })
 
-        this.setState({//очистка скидки суммой
-            SaleInp: 0
-        })
-
-        this.setState({
-            totalSoy: 0
-        })
 
         this.setState({
             OnCity: {
@@ -2553,7 +2747,7 @@ class App extends React.Component {
     }
 
     SumSoySause(){
-            var res = 0
+            var res = this.state.SushiSoy
             this.state.orderPosition.map((a) => 
             {
                 if(a.idOrd > 0)
@@ -3249,6 +3443,31 @@ class App extends React.Component {
     }
 
     async SavedButtonClick() {
+        
+        this.state.orderPosition.map((el) => {
+            if(el.categ === "ВОК" && el.haveAddition === true)
+            {
+                if(this.state.orderAddition.filter((a) => a.categ === "Соус В Вок" && a.idOrd === el.idOrd).length > 0)
+                {
+                    console.log("ура")
+                }
+                else
+                {
+                    document.getElementById('OrdPosName' + el.idOrd).classList.add('Stoped')
+                    this.AlertAdd('UndefiendSousage')
+                    setTimeout(() => {
+                        this.setState({
+                            LastWindowSaved: false
+                        })
+                    }, 5)
+                    
+                }
+                
+                
+
+                
+            }
+        })
         if(this.state.OnCity.idCity !== 0)
         {
             if(this.state.TypeOrder === "takeaway" && this.state.address[0].PhoneNum.length !== 11 )
