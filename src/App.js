@@ -1023,6 +1023,7 @@ class App extends React.Component {
             ResSearchCity: [],
             StatisticsClient: [],
             OpenModalStatisticsClient: false,
+            UsedStatus: [],
         }
         this.ChangeDiamPizzaOnPositionMenu = this.ChangeDiamPizzaOnPositionMenu.bind(this)
         this.ChangeDiamPizzaOnOrder = this.ChangeDiamPizzaOnOrder.bind(this)
@@ -1904,6 +1905,7 @@ class App extends React.Component {
                         AlertAdd={this.AlertAdd}
                         AlertCheck={this.state.AlertCheck}
                         AllertClick={this.AllertClick}
+                        UsedStatus={this.state.UsedStatus}
                         />
                     </div>
 
@@ -3955,6 +3957,16 @@ class App extends React.Component {
         {
             Status = "Timeout"
         }
+        var today = new Date()
+        this.setState({
+            UsedStatus: [...this.state.UsedStatus, 
+        {
+        SavedIdOrd: SavedIdOrd,
+        Status: Status,
+        Hour: String(today.getHours()).padStart(2 , "0"),
+        Minutes: String(today.getMinutes()).padStart(2 , "0"),
+        }]       
+        })
         orderDetal.push({
             pdkon: this.state.pdkon,
             Tablewares: this.state.orderTablewares[0].num !== undefined ? this.state.orderTablewares[0].num : 0,
@@ -4113,6 +4125,20 @@ class App extends React.Component {
                 this.setState({
                     Saved:  [...this.state.Saved]
                 })
+                var today = new Date()
+                var CheckUsedStatus = this.state.UsedStatus.filter((el) => el.Status === val && el.SavedIdOrd === SavedIdOrd)
+                if(CheckUsedStatus.length === 0)
+                {
+                    this.setState({
+                        UsedStatus: [...this.state.UsedStatus, 
+                    {
+                    SavedIdOrd: SavedIdOrd,
+                    Status: val,
+                    Hour: String(today.getHours()).padStart(2 , "0"),
+                    Minutes: String(today.getMinutes()).padStart(2 , "0"),
+                    }]       
+                    })
+                }
             }
             return(el)
         })

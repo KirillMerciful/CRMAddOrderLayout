@@ -4,6 +4,7 @@ import SavedOrdStatus from './SavedOrdStatus';
 import ContainerStatusOrd from './ContainerStatusOrd';
 import SavedOrdDeletedWindow from './SavedOrdDeletedWindow';
 import SavedAdditions from './SavedAdditions';
+import UsedStatusContainer from './UsedStatusContainer';
 
 
 class SavedOrd extends React.Component {   
@@ -18,7 +19,7 @@ class SavedOrd extends React.Component {
                     Hour: "",
                     Minutes: ""
                 }
-            ]
+            ],
         }
         this.CloseDropDownStatus = this.CloseDropDownStatus.bind(this)
         this.CloseDeleteSavedOrdDropDown = this.CloseDeleteSavedOrdDropDown.bind(this)
@@ -39,7 +40,19 @@ class SavedOrd extends React.Component {
                     </div>
                     }
                     {this.props.Saved.orderDetal[0].pdkon === 1 && <div className='MarkYF'>{this.props.Saved.orderDetal[0].pdkon === 1 && "ЯЕ"}</div>}
+                 
                   
+                  {this.props.UsedStatus.map((el) => 
+                        el.SavedIdOrd === this.props.Saved.SavedIdOrd &&
+                        <div
+                        className='UsedStatusGlobalDiv'
+                        >
+                            <UsedStatusContainer 
+                            UsedStatus={el}
+                            />
+                        </div>
+                  )}
+                    
                 </div>
                 
             <div className='SavedOrderBody'>
@@ -276,6 +289,7 @@ class SavedOrd extends React.Component {
             ]
         })
     }
+
     CloseDropDownStatus(){
         this.setState({
             OpenDropDownStatus: false

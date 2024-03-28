@@ -2715,6 +2715,7 @@ input:checked + .editdiamslide:before {
 .MarkDelivery{
   width: 65px;
   margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
@@ -2725,6 +2726,7 @@ input:checked + .editdiamslide:before {
 .MarkTakeaway{
   width: 50px;
   margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
@@ -2734,7 +2736,7 @@ input:checked + .editdiamslide:before {
 
 .MarkYF{
   width: 20px;
-  margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
@@ -4135,4 +4137,52 @@ input:checked + .editdiamslide:before {
   padding: 5px;
   width: 5.78vw;
   height: auto;
+}
+
+.UsedStatusGlobalDiv{
+  padding-right: 5px;
+  display: flex;
+  align-items: end;
+}
+
+.UsedStatusMainDiv{
+  display: flex;
+  align-items: center;
+}
+
+.UsedStatusIconDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.UsedOrdStatusIcon{
+  cursor: pointer;
+  color: var(--ColorMarkYa, rgb(3, 168, 245));
+  width: 20px;
+  height: 20px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.UsedOrdStatusIcon.NotProcessing{
+  z-index: 0;
+  transform: rotate(90deg);
+}
+
+.UsedStatusDropDownMainDiv{
+  position: relative;
+  display: inline-block;
+}
+
+.UsedStatusDropDownMainContent{
+  z-index: 3;
+  box-shadow: 0px 0px 3px 0px black;
+  padding: 5px;
+  border-radius: 5px;
+  width: 9vw;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

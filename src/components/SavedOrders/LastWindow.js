@@ -80,6 +80,7 @@ class LastWindow extends React.Component {
                                     PaymentVar: [...this.state.PaymentVar]
                                 })
                             }
+                            return(el)
                         })
                     }}
                     /> 
