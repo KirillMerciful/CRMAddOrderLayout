@@ -47,9 +47,8 @@ class StatisticsClientContainerOrders extends React.Component {
                     
                     <div className='StatisticsClientPosGroup'>
                         <div className='StatisticsClientOrderPositionsTable'>
-                        <table >
+                        <table>
                             <tbody>
-                                <tr>
                                     <td className='StatisticsClientOrderPositionsTbName'>
                                         {el.categ === "Пицца" ? el.Proverka36 !== true ? el.name + " 30см" : el.name + " 36см" : el.name }
                                     </td>
@@ -59,7 +58,6 @@ class StatisticsClientContainerOrders extends React.Component {
                                     <td className='StatisticsClientOrderPositionsTbPrice'>
                                     {el.Proverka36 === true ? this.props.Saved.orderDetal[0].pdkon === 0 ? el.price36 + " руб. " : el.dkprice36 + " руб. " : this.props.Saved.orderDetal[0].pdkon === 0 ? el.price + " руб. " : el.dkprice + " руб. "}
                                     </td>
-                                </tr>
                             </tbody>
                         </table>
                         </div>
@@ -124,33 +122,30 @@ class StatisticsClientContainerOrders extends React.Component {
 
                 <div className='StatisticsClientOrderAddress'>
                     <div className='StatisticsClientOrderAddressTableDiv'>
-                    <table className='StatisticsClientOrderAddressTable'>
-                        <tbody>
-                            <tr>
+                    <div
+                    className='StatisticsClientOrderAddressTable'>
                                 {this.props.Saved.orderAddress[0].street !== "" &&
-                                    <td className='StatisticsClientOrderAddressStreet'>
+                                    <div className='StatisticsClientOrderAddressStreet'>
                                         {this.props.Saved.orderAddress[0].street}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].house !== "" &&
-                                    <td className='StatisticsClientOrderAddressHouse'>
+                                    <div className='StatisticsClientOrderAddressHouse'>
                                         {", " + this.props.Saved.orderAddress[0].house}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].flat !== "" &&
-                                    <td className='StatisticsClientOrderAddressFlat'>
+                                    <div className='StatisticsClientOrderAddressFlat'>
                                         {", " + this.props.Saved.orderAddress[0].flat}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].comment !== "" &&
-                                    <td className='StatisticsClientOrderAddressComment'>
+                                    <div className='StatisticsClientOrderAddressComment'>
                                         {" (" + this.props.Saved.orderAddress[0].comment + ") "}
-                                    </td>
+                                    </div>
                                 }
-                            </tr>
-                           
-                        </tbody>
-                    </table>
+
+                    </div>
                             <div className='MarkButtonOnSaveOrderMainDiv'>
                             <button className='MarkButtonOnSaveOrder'>
                                                 {this.props.Saved.orderDetal[0].Payment}

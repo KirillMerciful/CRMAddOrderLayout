@@ -33,7 +33,7 @@ class OrderDownPanel extends React.Component {
             OpenDropDownSale={this.props.OpenDropDownSale}
           />
          
-          
+                      <div>
                         <button 
                         className='DownPanelButtonLeft'
                         onClick={(() => {
@@ -44,24 +44,33 @@ class OrderDownPanel extends React.Component {
                           <IoMdRestaurant className='IconPrib' />
                         </button>
                         
-                        {this.props.OpenDropDownTablewares === true && <div className="PopupTableware">
-                        <Tablewares addTW={this.props.addTW}/>
-                        </div>}
+                        {this.props.OpenDropDownTablewares === true && 
+                        <div
+                        className="PopupTablewareContainer"
+                        >
+                          <div 
+                          className="PopupTableware"
+                          >
+                          <Tablewares addTW={this.props.addTW}/>
+                          </div>
+                        </div>
+                        }
+                      </div>
                       
           </div>
 
           <div className='DownPanelButtonRight'>
-          <div>
+          
             <button className='DownPanelButtonRightDelete' onClick={() => {
               this.props.clOrd(0)
             }}
             ><IoTrashSharp className='IconDelete' /></button>
-            </div>
-            <div>
+            
+            
             <button className='DownPanelButtonRightSave' onClick={(() => {
               this.props.SavedButtonClick()
             })}>Сохранить</button>
-            </div>
+            
           </div>
 
         </div> 

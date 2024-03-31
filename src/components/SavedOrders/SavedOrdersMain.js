@@ -98,6 +98,9 @@ class SavedOrdersMain extends React.Component {
             
             >
                 <div className='SavedHeadOb'>
+                    <div
+                    className='SavedHeadDivStatusAndDate'
+                    >            
                                 <div 
                                 className={this.state.OpenDropDownStatus === false ?'SavedHeadDiv Status' : "SavedHeadDiv Status OpenDropDown"}
                                 tabIndex={1}
@@ -167,6 +170,7 @@ class SavedOrdersMain extends React.Component {
                                         </div>
                                         }
                                 </div>
+                            </div>
                             
                                 <div
                                 className='SavedHeadDiv Sum'
@@ -199,32 +203,41 @@ class SavedOrdersMain extends React.Component {
                                     <span className={this.state.CheckCity.idCity !== 0 && "BranchText"}>
                                         {this.state.CheckCity.city + " " + this.state.CheckCity.street + " " + this.state.CheckCity.house}
                                     </span>
+                                    <div>
                                     <IoChevronDown 
                                     className={this.state.OpenDropDownBranch === false ? 'SavedHeadDivIcon' : 'SavedHeadDivIcon OpenDropDown'}
                                     />
                                     {this.state.OpenDropDownBranch === true && 
-                                    <div className='CityOrdHeadGlobalDiv'>
-                                        <div className='ContainerCityMainDiv'>
+                                    <div
+                                    className='CityOrdHeadContainer'
+                                    >
+                                        <div 
+                                        className='CityOrdHeadGlobalDiv'
+                                        >
                                             <div 
-                                            className={'ContainerCityName'}
-                                            onClick={(() => {
-                                                this.ClearCityCheck()
-                                            })}
+                                            className='ContainerCityMainDiv'
                                             >
-                                                Все филиалы
+                                                <div 
+                                                className={'ContainerCityName'}
+                                                onClick={(() => {
+                                                    this.ClearCityCheck()
+                                                })}
+                                                >
+                                                    Все филиалы
+                                                </div>
+                                                
                                             </div>
-                                            
+                                            {this.props.City.map((el) => (
+                                                <ContainerCityOrdHead 
+                                                ChangeCityCheck={this.ChangeCityCheck}
+                                                City={el}
+                                                key={el.idCity}
+                                                />
+                                            ))}
                                         </div>
-                                        {this.props.City.map((el) => (
-                                            <ContainerCityOrdHead 
-                                            ChangeCityCheck={this.ChangeCityCheck}
-                                            City={el}
-                                            key={el.idCity}
-                                            />
-                                        ))}
                                     </div>
-                                    
                                     }
+                                    </div>
                                 </div>
                                 <div
                                 className='SavedHeadDiv Search'
@@ -234,7 +247,7 @@ class SavedOrdersMain extends React.Component {
                                         <input
                                         className='SavedHeadDivSearchCityInput'
                                         id='SavedHeadDivSearchCityInput'
-                                        placeholder='Поиск города'
+                                        placeholder='Поиск филиала'
                                         onBlur={() => {
                                             setTimeout(() => {
                                                 this.setState({

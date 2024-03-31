@@ -84,14 +84,22 @@ class SavedOrd extends React.Component {
                     Saved={this.props.Saved}
                     />
                 </div>
-                {this.state.OpenDropDownStatus === true && <div className='ContainerStatusOrdMainDiv'>
+                {this.state.OpenDropDownStatus === true && 
+                <div
+                className='ContainerStatusOrdMainContainer'
+                >
+                    <div 
+                    className='ContainerStatusOrdMainDiv'
+                    >
                         <ContainerStatusOrd 
                         Saved={this.props.Saved}
                         CloseDropDownStatus={this.CloseDropDownStatus}
                         ChangeStatusSavedOrd={this.props.ChangeStatusSavedOrd}
                         
                         />
-                    </div>}
+                    </div>
+                </div>
+                    }
                 <div className='SavedOrderPositions'>
                     {this.props.Saved.orderPosSaved.map((el) => 
                     
@@ -174,33 +182,30 @@ class SavedOrd extends React.Component {
 
                 <div className='SavedOrderAddress'>
                     <div className='SavedOrderAddressTableDiv'>
-                    <table className='SavedOrderAddressTable'>
-                        <tbody>
-                            <tr>
+                    <div className='SavedOrderAddressTable'>
+                        
                                 {this.props.Saved.orderAddress[0].street !== "" &&
-                                    <td className='SavedOrderAddressStreet'>
+                                    <div className='SavedOrderAddressStreet'>
                                         {this.props.Saved.orderAddress[0].street}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].house !== "" &&
-                                    <td className='SavedOrderAddressHouse'>
+                                    <div className='SavedOrderAddressHouse'>
                                         {", " + this.props.Saved.orderAddress[0].house}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].flat !== "" &&
-                                    <td className='SavedOrderAddressFlat'>
+                                    <div className='SavedOrderAddressFlat'>
                                         {", " + this.props.Saved.orderAddress[0].flat}
-                                    </td>
+                                    </div>
                                 }
                                 {this.props.Saved.orderAddress[0].comment !== "" &&
-                                    <td className='SavedOrderAddressComment'>
+                                    <div className='SavedOrderAddressComment'>
                                         {" (" + this.props.Saved.orderAddress[0].comment + ") "}
-                                    </td>
+                                    </div>
                                 }
-                            </tr>
-                           
-                        </tbody>
-                    </table>
+                            
+                    </div>
                             <div className='MarkButtonOnSaveOrderMainDiv'>
                             <button className='MarkButtonOnSaveOrder'>
                                                 {this.props.Saved.orderDetal[0].Payment}

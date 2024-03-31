@@ -36,70 +36,82 @@ class PositionsTitle extends React.Component {
                       </tr>
               </tbody>
               </table>
-        <div 
-        className='SearchOnPositionMainDiv'
-        onClick={() => {
-          document.getElementById('SearchOnPositionInput').focus()
-        }}
+
+              
+        <div
+        className='SearchOnPositionContainer'
         >
-          <PiMagnifyingGlass 
-          className='SearchOnPositionIcon'
-          />
-          <input
-          className={this.state.ResSearch.length === 0 ?'SearchOnPositionInput' : "SearchOnPositionInput OpenDrop"}
-          id='SearchOnPositionInput'
-          onBlur={() => {
-            setTimeout(() => {
-              this.setState({
-                ResSearch: []
-              })
-              document.getElementById('SearchOnPositionInput').value = ""
-            }, 100)
-            
-          }}
-          onChange={(e) => {
-            if(e.target.value !== "")
-            {
-              var Val = e.target.value.toLowerCase()
-              var SearchingPos = this.props.position.filter(pos => {
-                if(pos.ThisAddition !== true)
-                return pos.name.toLowerCase().includes(Val)
-              })
-              
-              this.setState({
-                ResSearch: [...SearchingPos]
-              })
-              
-            }
-            else
-            {
-              this.setState({
-                ResSearch: []
-              })
-              
-            }
-          }}
-          />
-        </div>
-        <div 
-        className='ResSearchOnPositionMainDiv'
-        >
-        {this.state.ResSearch.length > 0 && this.state.ResSearch.slice(0, 5).map((el) => 
-          <div
-          className={el.CheckStopList === false ? 'ResSearchOnPosition' : 'ResSearchOnPosition unactive'}
+          
+          <div 
+          className='SearchOnPositionMainDiv'
           onClick={() => {
-            if(el.CheckStopList === false)
-            {
-              this.props.addOrder(el)
-            }
-            else
-            {
-              this.props.AlertAdd("Stop")
-            }
+            document.getElementById('SearchOnPositionInput').focus()
           }}
-          >{el.name}</div>
-        )}
+          >
+            <PiMagnifyingGlass 
+            className='SearchOnPositionIcon'
+            />
+            <input
+            className={this.state.ResSearch.length === 0 ?'SearchOnPositionInput' : "SearchOnPositionInput OpenDrop"}
+            id='SearchOnPositionInput'
+            onBlur={() => {
+              setTimeout(() => {
+                this.setState({
+                  ResSearch: []
+                })
+                document.getElementById('SearchOnPositionInput').value = ""
+              }, 100)
+              
+            }}
+            onChange={(e) => {
+              if(e.target.value !== "")
+              {
+                var Val = e.target.value.toLowerCase()
+                var SearchingPos = this.props.position.filter(pos => {
+                  if(pos.ThisAddition !== true)
+                  return pos.name.toLowerCase().includes(Val)
+                })
+                
+                this.setState({
+                  ResSearch: [...SearchingPos]
+                })
+                
+              }
+              else
+              {
+                this.setState({
+                  ResSearch: []
+                })
+                
+              }
+            }}
+            />
+          </div>
+          <div
+          className='ResSearchOnPositionContainer'
+          >
+              <div 
+              className='ResSearchOnPositionMainDiv'
+              >
+              {this.state.ResSearch.length > 0 && this.state.ResSearch.slice(0, 5).map((el) => 
+                <div
+                className={el.CheckStopList === false ? 'ResSearchOnPosition' : 'ResSearchOnPosition unactive'}
+                onClick={() => {
+                  if(el.CheckStopList === false)
+                  {
+                    this.props.addOrder(el)
+                  }
+                  else
+                  {
+                    this.props.AlertAdd("Stop")
+                  }
+                }}
+                >{el.name}</div>
+              )}
+            </div>
+          </div>
         </div>
+        
     </div>   
       )      
       

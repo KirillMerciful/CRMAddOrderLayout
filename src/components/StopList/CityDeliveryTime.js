@@ -34,7 +34,9 @@ class CityDeliveryTime extends React.Component {
       <div className="CityDeliveryTimeMain">
           {this.state.Time.map((el) => 
           
-        <div key={el.id} className="CityDeliveryTime" onClick={(() => {
+        <div 
+        className="CityDeliveryTime" 
+        onClick={(() => {
             this.props.ChangeTimeDeliveryCity(el.value, this.props.City.idCity)
             this.props.CloseTimeDeliverySelector()
         })}> {el.value} </div>

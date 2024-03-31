@@ -92,7 +92,7 @@ class StopAlert extends React.Component {
     }
     case 'StopOnSave':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -108,7 +108,7 @@ class StopAlert extends React.Component {
     }
     case 'NotFilled':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -140,7 +140,7 @@ class StopAlert extends React.Component {
     }
     case 'InpLessSum':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -156,7 +156,7 @@ class StopAlert extends React.Component {
     }
     case 'CertificateUnfien':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -172,7 +172,7 @@ class StopAlert extends React.Component {
     }
     case 'CertificateUsed':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -188,7 +188,7 @@ class StopAlert extends React.Component {
     }
     case 'PreOrder':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -204,7 +204,7 @@ class StopAlert extends React.Component {
     }
     case 'FailSearch':{
       return(
-      <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+      <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
         this.props.AllertClick(this.props.AlertCheck.Check)
       })}>
         <div className='AlertLastWindowStopPos'>
@@ -220,7 +220,7 @@ class StopAlert extends React.Component {
     }
     case 'FailDatePeriod':{
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>
@@ -236,7 +236,7 @@ class StopAlert extends React.Component {
     }
     case 'UndefiendSousage': {
       return(
-        <div className='StopAlertLastMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
+        <div className='StopAlertMainDiv active' id={'StopAlertDiv' + this.props.AlertCheck.Check} onClick={(() => {
           this.props.AllertClick(this.props.AlertCheck.Check)
         })}>
           <div className='AlertLastWindowStopPos'>

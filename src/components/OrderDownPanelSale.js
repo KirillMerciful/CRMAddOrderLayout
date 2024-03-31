@@ -9,6 +9,21 @@ class OrderDownPanelSale extends React.Component {
        
         return(
           <div>
+            {this.props.OpenDropDownSale === true && 
+            <div
+            className="PopupSALESContainer"
+            >              
+              <div 
+              className="PopupSALES"
+              >
+                <SALES 
+                  SaleInpEdit0={this.props.SaleInpEdit0}
+                  SaleWindowEditActive = {this.props.SaleWindowEditActive}
+                  SaleFunction = { this.props.SaleFunction}
+                />
+              </div>
+            </div>
+              }
             <button 
             id='ButtonSale' 
             className='DownPanelButtonLeftSale'
@@ -20,13 +35,7 @@ class OrderDownPanelSale extends React.Component {
                       :Math.round(this.props.TotalSale) + "%"
                       }</button>
                       
-              {this.props.OpenDropDownSale === true && <div className="PopupSALES">
-                <SALES 
-                  SaleInpEdit0={this.props.SaleInpEdit0}
-                  SaleWindowEditActive = {this.props.SaleWindowEditActive}
-                  SaleFunction = { this.props.SaleFunction}
-                />
-              </div>}
+              
           </div>
                     
         )

@@ -51,6 +51,7 @@ body {
 .GlobalDiv{
   display: flex;
   max-width: 100%;
+  margin-top: 5px;
 }
 
 .MainDiv {
@@ -59,6 +60,7 @@ body {
   font-size: 12pt;
   display: flex;
   width: 100%;    
+  height: 98vh;
   gap: 10px;  
 }
 
@@ -68,7 +70,7 @@ body {
   font-size: 12pt;
   display: flex;
   width: 98vw;    
-  height: 100vh;
+  height: 98vh;
   gap: 10px;
 }
 
@@ -79,7 +81,7 @@ body {
   font-family: "Roboto";
   font-size: 12pt;
   display: flex;
-  max-width: 98vw;    
+  width: 98vw;    
   height: 98vh;
   gap: 10px;
   background-color: var(--mainB-color, rgb(243, 247, 250));
@@ -90,7 +92,7 @@ body {
 
 .StopListDiv{
   width: 100%;    
-  height: 98%;
+  height: 98vh;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;      
 }
@@ -98,7 +100,7 @@ body {
 .TableCitiesStopList{
   overflow-y: auto;
   overflow-x: hidden;
-  height: 82vh;
+  height: calc(98vh - 130px);
   
 }
 
@@ -106,7 +108,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 9.2vh;
+  height: 70px;
   box-shadow: 0px 0px 3px 0px black;
   color: var(--Text2-Color, black);
   background-color: var(--HeadOrderColor, rgb(224, 231, 235));
@@ -214,10 +216,13 @@ body {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.DropDownStepChangerContainer{
+  position: relative;
+  left: 44px;
+  bottom: 70px;
+}
+
 .DropDownStepChangerMainDiv{
-  position: absolute;
-  right: 8.35vw;
-  bottom: 7.3vh;
   width: 45px;
   max-height: 150px;
   box-shadow: 0px 0px 3px 0px black;
@@ -237,16 +242,19 @@ body {
 }
 
 .MainOrder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--mainB-color, rgb(243, 247, 250));
-  width: 550px;
+  width: 28.9vw;
+  min-width: 290px;
   height: 100%;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;    
 }
 
 .OrderOrder{
   color: var(--Text2-Color, black);
-  min-height: 85vh;
-  max-height: 85vh;
+  height: calc(98vh - 105px);
   overflow-y: auto;
   overflow-x: hidden;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -256,7 +264,7 @@ body {
   font-size: 10pt;
   color: var(--mainText-color, rgb(243, 247, 250));
   background-color: var(--LightA-color, rgb(3, 168, 245));
-  width: 550px;
+  width: 100%;
   height: 30px;
   border-bottom: solid 2px rgb(92, 92, 92);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -267,22 +275,26 @@ body {
 }
 
 .OrderTitName{
-  width: 255px;
+  width: 13.39vw;
+  min-width: 113px;
 }
 
 
 .OrderTitNum {
-  width: 65px;
-  text-align: end;
+  width: 4.5vw;
+  min-width: 47px;
+  text-align: center;
 }
 
 .OrderTitPrice {
-  width: 90px;
+  width: 3.94vw;
+  min-width: 40px;
   text-align: end;
 }
 
 .OrderTitSum {
-  width: 110px;
+  width: 5.8vw;
+  min-width: 65px;
   text-align: end;
 }
 
@@ -290,27 +302,45 @@ body {
 .MainDetal {
   background-color: var(--mainB-color, rgb(243, 247, 250));
   color: var(--Text2-Color, black);
-  width: 365px;
-  min-height: 100vh;
-  max-height: 100vh;
+  width: 19.18vw;
+  min-width: 230px;
+  height: 98vh;
   overflow-y: auto;
   overflow-x: hidden;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.MainCategAndPosition{
+  display: flex;
+  gap: 10px;
+}
+
 
 .MainCateg {
   background-color:var(--mainB-color, rgb(243, 247, 250));
-  width: 185px;
-  height: 100vh;
-  padding-top: 5px;
+  width: 9.72vw;
+  min-width: 100px;
+  height: 98vh;
+  padding-left: 10px;
+  padding-right: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.CatButton {    
+  cursor: pointer;
+  background-color: var(--mainC-color, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  margin-top: 5px;
+  width: 100%;
+  min-width: 90px;
+  height: 50px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  
+  justify-content: center;
+  border-radius: 10px;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .CatButton.active {
@@ -323,38 +353,25 @@ body {
   color: var(--mainText-color, rgb(243, 247, 250));
 }
 
-.CatButton {    
-  cursor: pointer;
-  background-color: var(--mainC-color, rgb(224, 231, 235));
-  color: var(--Text2-Color, black);
-  margin-bottom: 5px;
-  width: 160px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-}
-
 .MainPosition {
   background-color: var(--mainB-color, rgb(243, 247, 250));
-  width: 725px;
-  height: 100vh;
+  width: 36vw;
+  min-width: 260px;
+  height: 98vh;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .switch {
   position: relative;
   display: inline-block;
+  z-index: 1;
   width: 40px;
   height: 24px;
 }
   
-  
-  
 .slider {
   position: absolute;
+  z-index: 1;
   cursor: pointer;
   top: 0;
   left: 0;
@@ -366,6 +383,7 @@ body {
   
 .slider:before {
   position: absolute;
+  z-index: 1;
   content: "";
   height: 18px;
   width: 18px;
@@ -397,9 +415,14 @@ input:checked + .slider:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 10px;
+  padding-right: 0.525vw;
   font-family: "Roboto";
   border-bottom: 1px solid grey;
+}
+
+.SearchOnPositionContainer{
+  display: flex;
+  flex-direction: column;
 }
 
 .SearchOnPositionMainDiv{
@@ -425,7 +448,7 @@ input:checked + .slider:before {
   background-color: var(--mainB-color, rgb(243, 247, 250));
   border: solid 1px var(--LightA-color, rgb(3, 168, 245));
   outline: none;
-  width: 200px;
+  width: 10.41vw;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -441,13 +464,17 @@ input:checked + .slider:before {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.ResSearchOnPositionContainer{
+  left: 22px;
+  position: relative;
+}
+
 .ResSearchOnPositionMainDiv{
   background-color: var( --HeadOrderColor, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
-  width: 204px;
+  width: 10.6vw;
   position: absolute;
-  right: 18px;
-  top: 33px;
+  z-index: 4;
   border: none;
   box-shadow: 0px 0px 3px 0px black;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
@@ -469,7 +496,7 @@ input:checked + .slider:before {
 
 .BPos {
   font-family: "Roboto";
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -635,10 +662,12 @@ input:checked + .slider:before {
 }
 
 .ButtonAddition.unactive {
+  cursor: auto;
   background-color: var(--slayder-color, #ccc);
 }
 
 .unactive {
+    cursor: auto;
     background-color: var(--slayder-color, #ccc);
   }
 
@@ -661,7 +690,8 @@ input:checked + .slider:before {
 .OrdPosSouse {
   color: var(--ColorSostaAndSoy, #7f7f7f);
   font-size: 7pt;
-  max-width: 150px;
+  max-width: 7.88vw;
+  min-width: 80px;
   margin-left: 5px;
   transition: color var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -673,7 +703,8 @@ input:checked + .slider:before {
 }
 
 .OrdPosName{
-  width: 255px;
+  width: 13.39vw;
+  min-width: 113px;
 }
 
 .OrdPosName.Stoped{
@@ -683,21 +714,32 @@ input:checked + .slider:before {
 .OrdPosEdit {
   display: flex;
   align-items: center;
-  width: 26px;
+  width: 1.36vw;
+  min-width: 15px;
+  height: 21px;
+}
+
+.OrdPosEdit.Minus {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 1.36vw;
   height: 21px;
 }
 
 .OrdPosNum {
-  width: 27px;
+  width: 1.4vw; 
 }
 
 .OrdPosPrice {
-  width: 75px;
+  width: 3.94vw;
+  min-width: 45px;
   text-align: end;
 }
 
 .OrdPosSum {
-  width: 95px;
+  width: 4.99vw;
+  min-width: 45px;
   text-align: end;
 }
 
@@ -713,6 +755,9 @@ input:checked + .slider:before {
 
 .OrdButtonEditPlus {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--mainB-color, rgb(243, 247, 250));
   border: none;
   background-color: var(--LightA-color, rgb(3, 168, 245));
@@ -726,6 +771,10 @@ input:checked + .slider:before {
 }
 
 .OrdButtonEditMinus {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--mainB-color, rgb(243, 247, 250));
   border: none;
   background-color: var(--LightA-color, rgb(3, 168, 245));
@@ -802,12 +851,17 @@ input:checked + .editdiamslide:before {
   font-size: 9pt;   
 }
 
+.AdditionContainer{
+  position: relative;
+}
+
 .AdditionMainDiv{
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
   margin-left: 5px;
-  max-width: 530px;
+  max-width: 27.85vw;
   overflow-x: hidden;
   overflow-y: auto;
+  position: absolute;
   color: var(--Text2-Color, black);
   box-shadow: 0px 0px 3px 0px black;
   z-index: 2;
@@ -820,12 +874,18 @@ input:checked + .editdiamslide:before {
 }
 
 .OpenAdditions {
+  width: 15px;
+  height: 14px;
+  line-height: 14px;
+  display: inline-block;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
   margin-left: 10px;
   color: var(--mainB-color, rgb(243, 247, 250));
   border: none;
   background-color: var(--LightA-color, rgb(3, 168, 245));
   font-family: "Roboto";
-  text-align: center;
   margin-top: 2px;
   font-size: 9pt;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -842,6 +902,7 @@ input:checked + .editdiamslide:before {
 }
 
 .ButtonAddition {
+  cursor: pointer;
   background-color: var(--mainC-color, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
   margin-top: 5px;
@@ -888,6 +949,7 @@ input:checked + .editdiamslide:before {
 }
 
 .PodCatButton.unactive {
+  cursor: auto;
   background-color: var(--slayder-color, #ccc);
 }
 
@@ -914,6 +976,7 @@ input:checked + .editdiamslide:before {
 .DownPanelButtons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .DownPanelButtonsLeft{
@@ -971,12 +1034,12 @@ input:checked + .editdiamslide:before {
 }
 
 .DownPanelButtonRight {
+  margin-top: 10px;
   display: flex;
 }
 
 .DownPanelButtonRightDelete {
   cursor: pointer;
-  margin-top: 10px;
   margin-right: 10px;
   width: 50px;
   height: 30px;
@@ -991,7 +1054,6 @@ input:checked + .editdiamslide:before {
 
 .DownPanelButtonRightSave {
   cursor: pointer;
-  margin-top: 10px;
   margin-right: 10px;
   width: 110px;
   height: 30px;
@@ -1008,7 +1070,8 @@ input:checked + .editdiamslide:before {
 
 .TotalSumOrder {
   display: flex;
-  width: 540px;
+  width: 28.37vw;
+  min-width: 284px;
   justify-content: space-between;
   align-content: end;
   margin-top: 10px;
@@ -1026,7 +1089,8 @@ input:checked + .editdiamslide:before {
 .TotalSumOrderDownPanel {
   color: var(--Text2-Color, black);
   display: flex;
-  width: 540px;
+  width: 28.37vw;
+  min-width: 284px;
   justify-content: end;
   margin-top: 10px;
   font-family: "Roboto";
@@ -1053,10 +1117,16 @@ input:checked + .editdiamslide:before {
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.PopupTablewareContainer{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 425px;
+  
+}
+
 .PopupTableware {
   position: fixed;
-  bottom: 58px;
-  left: 120px;
   background-color: var( --HeadOrderColor, rgb(224, 231, 235));
   box-shadow: 0px 0px 3px 0px black;
   border: none;
@@ -1069,10 +1139,16 @@ input:checked + .editdiamslide:before {
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.PopupSALESContainer{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 212px;
+  left: 13px;
+}
+
 .PopupSALES{
   position: fixed;
-  bottom: 58px;
-  left: 70px;
   background-color: var( --HeadOrderColor, rgb(224, 231, 235));
   box-shadow: 0px 0px 3px 0px black;
   border: none;
@@ -1384,7 +1460,8 @@ input:checked + .editdiamslide:before {
 
 .StopListCatName{
   font-size: 12pt;
-  width: 305px;
+  width: 16.02vw;
+  min-width: 175px;
   border-bottom: 1px dashed gray;  
   color: var(--Text2-Color, black);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -1427,8 +1504,11 @@ input:checked + .editdiamslide:before {
 
 
 .StopListPositionNameText{
+  padding-right: 10px;
   cursor: pointer;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .StopListPositionNameText.Stoped{
@@ -1478,6 +1558,7 @@ input:checked + .editdiamslide:before {
 }
 
 .StopAlertMainDiv{
+  z-index: 1001;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -1569,6 +1650,7 @@ input:checked + .editdiamslide:before {
   display: flex;
   align-items: center;
   font-size: 8pt;
+  z-index: 1001;
 }
 
 .AlertLastWindowStopPos{
@@ -1576,37 +1658,7 @@ input:checked + .editdiamslide:before {
   display: flex;
   align-items: center;
   font-size: 9pt;
-}
-
-.StopAlertLastMainDiv{
   z-index: 1001;
-  cursor: pointer;
-  margin-bottom: 10px;
-  position: relative;
-  padding: 10px;
-  border-radius: 10px;
-  color: var(--Text2-Color, black);
-  background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
-  width: 300px;
-  height: 20px;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
-  border: 1px solid;
-  border-color: black;
-}
-
-.StopAlertLastMainDiv.active{ 
-  animation-name: Alert;
-  animation-duration: 4s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
-
-.StopAlertLastMainDiv.deleted{ 
-  right: -400px;
-  animation-name: ClickedAlert;
-  animation-duration: 0.4s;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
 }
 
 .IconStopCat{
@@ -1655,12 +1707,13 @@ input:checked + .editdiamslide:before {
   margin-top: 2px;
   cursor: pointer;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
-  width: 242px;
+  width: 12.34vw;
+  min-width: 140px;
   color: var(--Text2-Color, black);
   position: absolute;
   z-index: 2;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
-  max-height: 210px;
+  max-height: 23.1vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -1671,7 +1724,9 @@ input:checked + .editdiamslide:before {
 
 .StopListOnCityUpdate {
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
-  width: 305px;
+  width: calc(15.76vw - 5px);
+  margin-left: 1px;
+  min-width: 176px;
   overflow-x: hidden;
   overflow-y: auto;
   color: var(--Text2-Color, black);
@@ -1705,7 +1760,8 @@ input:checked + .editdiamslide:before {
 .CityName{
   cursor: pointer;
   margin-right: 5px;
-  width: 235px;
+  width: 12.34vw;
+  min-width: 140px;
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
 }
 
@@ -1757,11 +1813,13 @@ input:checked + .editdiamslide:before {
 }
 
 .TimeCityTable{
-  width: 350px;
+  width: 18.39vw;
+  min-width: 200px;
 }
 
 .TimeCityText{
-  width: 230px;
+  width: 12.08vw;
+  min-width: 125px;
 }
 
 .ChangerOrderTypeMainDiv{
@@ -1770,19 +1828,20 @@ input:checked + .editdiamslide:before {
 }
 
 .ChangerOrderTypeTable{
-  width: 350px;
+  width: 18.39vw;
   height: 40px;
 }
 
 .ChangerOrderTypeTdText{
-  width: 155px;
+  width: 8.14vw;
+  min-width: 90px;
 }
 
 .ChangerOrderTypeTdButtons{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 187px;
+  width: 9.82vw;
   height: 35px;
 }
 
@@ -1833,9 +1892,9 @@ input:checked + .editdiamslide:before {
 }
 
 .AddressDetalMainDiv{
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .AddressDetalOb{
@@ -1850,8 +1909,9 @@ input:checked + .editdiamslide:before {
 
 
 .AddressDetalText{
-  width: 130px;
+  width: 6.83vw;
 }
+
 
 .TdAddressDetalInpPhoneNum{
   display: flex;
@@ -1859,6 +1919,8 @@ input:checked + .editdiamslide:before {
 }
 
 .AddressDetalInp{
+  width: 8.8vw;
+  min-width: 100px;
   border-radius: 5px;
   color: var(--Text2-Color, black);
   background-color: var(--mainB-color, rgb(243, 247, 250));
@@ -1869,7 +1931,7 @@ input:checked + .editdiamslide:before {
 
 .AddressDetalInp:focus{
   border: 1px solid var(--DarkA-Color, rgb(3, 100, 245));
-  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .AddressDetalInp.Allert{
@@ -1878,22 +1940,25 @@ input:checked + .editdiamslide:before {
 
 .AddressDetalInp.Entrance{
   width: 30px;
+  min-width: 30px;
 }
 
 .AddressDetalInp.Floor{
   width: 30px;
+  min-width: 30px;
 }
 
 .AddressDetalInp.Flat{
   width: 30px;
+  min-width: 30px;
 }
 
 .AddressDetalInp.Comment{
   margin-top: 5px;
-  max-width: 170px;
-  min-width: 170px;
+  max-width: 8.93vw;
+  min-width: 8.93vw;
   min-height: 15px;
-  max-height: 100px;  
+  max-height: 90px;  
 }
 
 .StatisticsClientIcon{
@@ -1912,7 +1977,8 @@ input:checked + .editdiamslide:before {
 
 .TimeDeliveryStopListMain{
   cursor: pointer;
-  width: 60px;
+  width: 3.15vw;
+  min-width: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1957,7 +2023,8 @@ input:checked + .editdiamslide:before {
 
 .TimeTakeAwayStopListMain{
   cursor: pointer;
-  width: 60px;
+  width: 3.15vw;
+  min-width: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1991,7 +2058,8 @@ input:checked + .editdiamslide:before {
 .TimeDeliverySelector{
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
   color: var(--Text2-Color, black);
-  width: 62px;
+  width: calc(3.15vw + 2px);
+  min-width: 33px;
   position: absolute;
 }
 
@@ -2002,7 +2070,8 @@ input:checked + .editdiamslide:before {
 .TimeTakeawaySelector{
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
   color: var(--Text2-Color, black);
-  width: 62px;
+  width: calc(3.15vw + 2px);
+  min-width: 33px;
   position: absolute;
 }
 
@@ -2067,18 +2136,26 @@ input:checked + .editdiamslide:before {
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
+.StopListCityTableDiv{
+  width: 100%;
+  height: 30px;
+}
+
 .StopListCityTable{
-  font-weight: 300;
+  padding-left: 10px;
+  font-weight: 600;
   padding-top: 5px;
   color: var(--Text2-Color, black);
   background-color: var(--HeadOrderColor, rgb(224, 231, 235));
-  padding-left: 10px;
   width: 100%;
   border-bottom: 1px dashed gray;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .ButtonResetTimeOneCity{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background-color: var(--HeadOrderColor, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
@@ -2086,6 +2163,8 @@ input:checked + .editdiamslide:before {
   border: none;
   border-radius: 5%;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  width: 25px;
+  height: 18px;
 }
 
 .ButtonResetTimeOneCity:hover{
@@ -2097,13 +2176,16 @@ input:checked + .editdiamslide:before {
 .CityConditionMainDiv{
   font-size: 12pt;
   cursor: pointer;
-  width: 250px;
+  width: 13.13vw;
+  min-width: 99px;
+  max-height: 19px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--Text2-Color, black);
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  overflow: hidden;
 }
 
 .CityConditionMainDiv.OpenDrop{
@@ -2113,7 +2195,9 @@ input:checked + .editdiamslide:before {
 
 .ConditionSelector{
   cursor: pointer;
-  width: 252px;
+  width: 13.13vw;
+  margin-left: 1px;
+  min-width: 100px;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
   color: var(--Text2-Color, black);
   position: absolute;
@@ -2136,7 +2220,12 @@ input:checked + .editdiamslide:before {
 }
 
 .ConditionStopListText{
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   margin-left: 5px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .CityConditionIcon{
@@ -2155,7 +2244,8 @@ input:checked + .editdiamslide:before {
 .InputStopListCity{
   cursor: pointer;
   height: 17px;
-  width: 300px;
+  width: 15.76vw;
+  min-width: 172px;
   color: var(--Text2-Color, black);
   background-color: var(--mainB-color, rgb(243, 247, 250));
   border: solid 1px var(--LightA-color, rgb(3, 168, 245));
@@ -2197,22 +2287,26 @@ input:checked + .editdiamslide:before {
 }
 
 .ThCityName{
-  width: 275px;
+  width: 14.3vw;
+  min-width: 140px;
   text-align: start;
 }
 
 .ThCityStreet{
-  width: 270px;
+  width: 14.08vw;
+  min-width: 147px;
   text-align: start;
 }
 
 .ThCityDelivery{
-  width: 90px;
+  width: 4.7vw;
+  min-width: 52px;
   text-align: start;
 }
 
 .ThCityTakeaway{
-  width: 90px;
+  width: 4.7vw;
+  min-width: 52px;
   text-align: start;
 }
 
@@ -2227,7 +2321,6 @@ input:checked + .editdiamslide:before {
   background-color: var( --HeadOrderColor, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
-
 }
 
 .ButtonOpenClearTime.Active{
@@ -2277,27 +2370,31 @@ input:checked + .editdiamslide:before {
 }
 
 .ThButtonReset{
-  width: 50px;
+  width: 2.62vw;
+  min-width: 25px;
   text-align: start;
 }
 
 .ThCityCondition{
-  width: 310px;
+  width: 16.29vw;
+  min-width: 110px;
   text-align: start;
 }
 
 .ThCityStopList{
-  max-width: 320px;
+  width: 16.81vw;
+  min-width: 177px;
   text-align: start;
   display: flex;
   align-items: center;
+  justify-content: start;
   
 }
 
 .ThCityStopListClearButton{
   text-align: start;
-  width: 20.8vw;
   height: 22px;
+  overflow: hidden;
 }
 
 .StopListClearButton{
@@ -2395,7 +2492,8 @@ input:checked + .editdiamslide:before {
 
 .ClickedInputStopListCityDiv{
   margin-top: 1px;
-  width: 330px;
+  width: 17.34vw;
+  min-width: 188px;
 }
 
 .SavedOrdDiv{
@@ -2408,7 +2506,7 @@ input:checked + .editdiamslide:before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 96.5vw; 
+  width: 100%; 
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
   font-family: "Roboto";
@@ -2428,7 +2526,6 @@ input:checked + .editdiamslide:before {
   font-family: "Roboto";
   color: var(--Text2-Color, black);
   margin-top: 5px;
-  margin-left: 5px;
 }
 
 .SavedHeadDivIcon{
@@ -2489,23 +2586,29 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedHeadDiv.Sum {
-  margin-left: 120px;
+  width: 3.67vw;
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SavedHeadDiv.Sale{
-  margin-left: 45px;
+  width: 3.67vw;
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
 .SavedHeadDiv.Branch {
-  margin-left: 35px;
-  padding-left: 5px;
   padding-top: 1px;
+  padding-left: 5px;
   padding-bottom: 1px;
-  width: 150px;
+  width: calc(9vw - 5px);
+  min-width: 100px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -2514,7 +2617,6 @@ input:checked + .editdiamslide:before {
   border: 1px solid var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
   max-height: 20px;
-  overflow: hidden;
 }
 
 .SavedHeadDiv.Branch.OpenDropDown {
@@ -2543,7 +2645,7 @@ input:checked + .editdiamslide:before {
 .SavedBodyDiv{
   overflow-y: auto;
   overflow-x: hidden;
-  width: 1855px;    
+  width: 97vw;    
   height: 95%;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;     
@@ -2578,6 +2680,8 @@ input:checked + .editdiamslide:before {
   z-index: 1000;
   height: 100vh;
   width: 100vw;
+  min-width: 775px;
+  min-height: 750px;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -2778,12 +2882,15 @@ input:checked + .editdiamslide:before {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  width: 150px;
+  width: 7.88vw;
+  min-width: 100px;
   height: auto;
   border-right: 1px solid black;
 }
 
 .SavedOrderPositions{
+  min-width: 260px;
+  width: 17.13vw;
   font-size: 10pt;
   padding: 10px;
   display: flex;
@@ -2793,22 +2900,25 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedOrderPositionsTable{
-  height: 15px;
+  max-height: 35px;
 }
 
 .SavedOrderPositionsTbName{
   text-align: start;
-  width: 200px;
+  width: 13.13vw;
+  min-width: 155px;
 }
 
 .SavedOrderPositionsTbNum{
   text-align: end;
   width: 30px;
+  min-width: 25px;
 }
 
 .SavedOrderPositionsTbPrice{
   text-align: end;
   width: 70px;
+  min-width: 70px;
 }
 
 .SavedPosGroup{
@@ -2821,7 +2931,8 @@ input:checked + .editdiamslide:before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 70px;
+  width: 3.67vw;
+  min-width: 50px;
   height: auto;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -2833,7 +2944,8 @@ input:checked + .editdiamslide:before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 70px;
+  width: 3.67vw;
+  min-width: 50px;
   height: auto;
   border-right: 1px solid black;
 }
@@ -2847,6 +2959,13 @@ input:checked + .editdiamslide:before {
   font-size: 8pt;
 }
 
+.SavedHeadDivStatusAndDate{
+  display: flex;
+  padding-left: 10px;
+  width: 21.38vw;
+  min-width: 330px;
+}
+
 .SavedOrdDivStatus{
   cursor: pointer;
   font-size: 12pt;
@@ -2855,6 +2974,7 @@ input:checked + .editdiamslide:before {
   align-items: center;
   padding: 5px;
   width: 70px;
+  min-width: 50px;
   height: auto;
   border-right: 1px solid black;
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
@@ -2906,6 +3026,8 @@ input:checked + .editdiamslide:before {
 }
 
 .SavedOrdStatusIconDiv{
+  width: 4.25vw;
+  min-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2922,9 +3044,12 @@ input:checked + .editdiamslide:before {
   font-size: 8pt;
 }
 
+.ContainerStatusOrdMainContainer{
+  position: relative;
+}
+
 .ContainerStatusOrdMainDiv{
   position: absolute;
-  left: 135px;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
   width: 630px;
   color: var(--Text2-Color, black);
@@ -3015,15 +3140,29 @@ input:checked + .editdiamslide:before {
   font-size: 10pt;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 5px;
-  width: 950px;
+  width: 46.03vw;
+  min-width: 335px;
   height: auto;
   border-right: 1px solid black;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
-.SavedOrderAddressTableDiv{
-  display: table;
+.SavedOrderAddressTable{
+  display: flex;
+  max-width: 890px;
+  flex-wrap: wrap;
+  word-wrap: break-word;
 }
+
+.SavedOrderAddressComment{
+  max-width: 890px;
+  word-wrap: break-word;
+}
+
+
 
 .SavedOrderPhoneNum{
   font-size: 10pt;
@@ -3131,10 +3270,10 @@ input:checked + .editdiamslide:before {
 .MarksOrderMainDiv{
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  height: 450px;
+  max-height: 48.9vh;
   padding-top: 10px;
   padding-left: 5px;
+  padding-bottom: 10px;
 }
 
 .MarkButton{
@@ -3148,6 +3287,7 @@ input:checked + .editdiamslide:before {
   cursor: pointer;
   background-color: var( --HeadOrderColor, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
+  overflow: hidden; 
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -3184,12 +3324,14 @@ input:checked + .editdiamslide:before {
   margin-right: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: "Roboto";
 }
 
 .CertificateInput{
   font-family: "Roboto";
-  width: 170px;
+  width: 8.93vw;
+  min-width: 70px;
   border-radius: 5px;
   color: var(--Text2-Color, black);
   background-color: var(--mainB-color, rgb(243, 247, 250));
@@ -3224,12 +3366,14 @@ input:checked + .editdiamslide:before {
   margin-left: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: "Roboto";
 }
 
 .PreOrderInput{
   font-family: "Roboto";
-  width: 150px;
+  width: 7.88vw;
+  min-width: 100px;
   text-align: center;
   border-radius: 5px;
   color: var(--Text2-Color, black);
@@ -3429,14 +3573,19 @@ input:checked + .editdiamslide:before {
   background-color: var(--LightA-color, rgb(3, 168, 245));
 }
 
+.CityOrdHeadContainer{
+  position: relative;
+  top: 3px;
+  right: calc(8.19vw - 1px);
+}
+
 .CityOrdHeadGlobalDiv{
   position: absolute;
-  top: 37px;
-  left: 590px;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   box-shadow: 0px 0px 3px 0px black;
-  width: 155px;
-  max-height: 300px;
+  width: 9vw;
+  min-width: 100px;
+  max-height: 32.64vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -3766,6 +3915,8 @@ input:checked + .editdiamslide:before {
   cursor: pointer;
   height: 18px;
   width: 20px;
+  min-width: 15px;
+  min-height: 15px;
   color: var(--LightA-color, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -3776,14 +3927,14 @@ input:checked + .editdiamslide:before {
 }
 
 .SearchingCityOnNewOrderInput{
-  margin-left: 78px;
+  margin-left: 4.09vw;
   margin-top: 10px;
   border-radius: 5px;
   color: var(--Text2-Color, black);
   background-color: var(--mainB-color, rgb(243, 247, 250));
   border: solid 1px var(--LightA-color, rgb(3, 168, 245));
   outline: none;
-  width: 240px;
+  width: 12.61vw;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -3800,10 +3951,10 @@ input:checked + .editdiamslide:before {
 
 .CitySelectorResSearch{
   margin-top: 1px;
-  margin-left: 79px;
+  margin-left: calc(4.09vw + 1px);
   cursor: pointer;
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235)); 
-  width: 244px;
+  width: 12.82vw;
   color: var(--Text2-Color, black);
   position: absolute;
   z-index: 2;
@@ -3874,8 +4025,10 @@ input:checked + .editdiamslide:before {
 
 .WindowStatisticsClientMainDiv{
   z-index: 1000;
-  height: 110vh;
-  width: 110vw;
+  height: 100vh;
+  width: 100vw;
+  min-width: 775px;
+  min-height: 750px;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -3898,6 +4051,7 @@ input:checked + .editdiamslide:before {
   color: var(--Text2-Color, black);
   background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
   width: 65vw;
+  min-width: 705px;
   height: 52vh;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
   border: 1px solid;
@@ -4045,7 +4199,8 @@ input:checked + .editdiamslide:before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 15.76vw;
+  min-width: 150px;
 }
 
 .StatisticsClientOrderPositionsTable{
@@ -4055,16 +4210,19 @@ input:checked + .editdiamslide:before {
 .StatisticsClientOrderPositionsTbName{
   text-align: start;
   width: 10.7vw;
+  min-width: 101px;
 }
 
 .StatisticsClientOrderPositionsTbNum{
   text-align: end;
   width: 1.05vw;
+  min-width: 13px;
 }
 
 .StatisticsClientOrderPositionsTbPrice{
   text-align: end;
   width: 3.67vw;
+  min-width: 43px;
 }
 
 .StatisticsClientPosGroup{
@@ -4078,6 +4236,7 @@ input:checked + .editdiamslide:before {
   align-items: center;
   text-align: center;
   width: 3.15vw;
+  min-width: 43px;
   height: auto;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -4090,6 +4249,7 @@ input:checked + .editdiamslide:before {
   align-items: center;
   text-align: center;
   width: 3.15vw;
+  min-width: 43px;
   height: auto;
   border-right: 1px solid black;
 }
@@ -4101,6 +4261,7 @@ input:checked + .editdiamslide:before {
   align-items: center;
   padding: 5px;
   width: 6.3vw;
+  min-width: 75px;
   height: auto;
   border-right: 1px solid black;
 }
@@ -4122,12 +4283,24 @@ input:checked + .editdiamslide:before {
   padding: 5px;
   height: auto;
   width: 21.28vw;
+  min-width: 210px;
   border-right: 1px solid black;
+  
 }
 
-.StatisticsClientOrderAddressTableDiv{
-  display: table;
+.StatisticsClientOrderAddressTable{
+  display: flex;
+  align-items: center;
+  max-width: 21.28vw;
+  flex-wrap: wrap;
+  word-wrap: break-word;
 }
+
+.StatisticsClientOrderAddressComment{
+  max-width: 21.28vw;
+  word-wrap: break-word;
+}
+
 
 .StatisticsClientOrderPhoneNum{
   font-size: 10pt;
@@ -4136,6 +4309,7 @@ input:checked + .editdiamslide:before {
   justify-content: center;
   padding: 5px;
   width: 5.78vw;
+  min-width: 60px;
   height: auto;
 }
 

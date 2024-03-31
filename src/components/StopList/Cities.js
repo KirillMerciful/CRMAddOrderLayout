@@ -45,7 +45,7 @@ class Cities extends React.Component {
             <input
             className='PreHeadSearchInput'
             id='PreHeadSearchInput'
-            placeholder='Поиск города'
+            placeholder='Поиск филиала'
             onFocus={() => {
               this.setState({
                 OpenSearchCity: true
@@ -164,35 +164,36 @@ class Cities extends React.Component {
             </div>
             
         </div>
-        <div>
-        <table className='StopListCityTable'>
-          <thead>
-            <tr>
-              <th className='ThCityName'>
-                Город
-              </th>
-              <th className='ThCityStreet'>
-                Улица
-              </th>
-              <th className='ThCityDelivery'>
-                Доставка
-              </th>
-              <th className='ThCityTakeaway'>
-                Вынос
-              </th>
-              <th className='ThButtonReset'>
-                
-              </th>
-              <th className='ThCityCondition'>
-                Состояние
-              </th>
-              <th className='ThCityStopList'>
-                Стоплист
-              </th>
-              
-            </tr>
-          </thead>
-        </table>
+        <div
+        className='StopListCityTableDiv'
+        >
+          <table className='StopListCityTable'>
+            <tbody>
+              <tr>
+                <td className='ThCityName'>
+                    Город
+                  </td>
+                  <td className='ThCityStreet'>
+                    Улица
+                  </td>
+                  <td className='ThCityDelivery'>
+                    Доставка
+                  </td>
+                  <td className='ThCityTakeaway'>
+                    Вынос
+                  </td>
+                  <td className='ThButtonReset'>
+                    
+                  </td>
+                  <td className='ThCityCondition'>
+                    Состояние
+                  </td>
+                  <td className='ThCityStopList'>
+                    Стоплист
+                  </td>
+              </tr>
+            </tbody>  
+          </table>
         </div>
         <div 
         className='TableCitiesStopList'>
@@ -283,6 +284,20 @@ class Cities extends React.Component {
             <div
             className='TextEndPageDiv'
             >
+              {this.state.OpenDropDownStepChanger === true &&
+                <div
+                className='DropDownStepChangerContainer'
+                >
+                  <div
+                  className='DropDownStepChangerMainDiv'
+                  >
+                  <ContainerSteps 
+                  ChangeStepPages={this.ChangeStepPages}
+                  />
+                </div>
+              </div>
+              
+              }
               <div
               tabIndex={0}
               className={this.state.OpenDropDownStepChanger === false ? 'StepChangerDiv' : "StepChangerDiv OpenDrop"}
@@ -307,15 +322,7 @@ class Cities extends React.Component {
               </div>
               Показано {(10 * (parseInt(this.state.InpPage) - 1)) + 1} - {(parseInt(this.state.Step) * parseInt(this.state.InpPage)) >= this.state.inpSearchCity.length ? this.state.inpSearchCity.length  : parseInt(this.state.Step) * parseInt(this.state.InpPage)} из {this.state.inpSearchCity.length}
             </div>
-              {this.state.OpenDropDownStepChanger === true &&
-              <div
-              className='DropDownStepChangerMainDiv'
-              >
-                <ContainerSteps 
-                ChangeStepPages={this.ChangeStepPages}
-                />
-              </div>
-              }
+              
           </div>
       </div>    
       

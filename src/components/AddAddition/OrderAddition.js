@@ -22,7 +22,7 @@ class OrderAddition extends React.Component {
                   {this.props.orderAddition.salecheck === false && <MdOutlinePercent color="red"/>}
                 
                 </td>
-                <td className="OrdPosEdit">
+                <td className="OrdPosEdit Minus">
                   <button
                     className="OrdButtonEditMinus"
                     id={"buttonMinus" + this.props.orderAddition.idOrd}

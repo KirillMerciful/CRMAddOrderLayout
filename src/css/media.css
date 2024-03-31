@@ -1,0 +1,1128 @@
+@media (max-width: 1875px) {
+    .CertificateButton{
+        font-size: 8pt;
+    }
+
+    .CertificateInput{
+        margin-right: 5px;
+    }
+
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 2px);
+    }
+}
+
+
+@media (max-width: 1680px) {
+    .CertificateInput{
+        width: 8vw;
+    }
+
+    .MainPosition {
+        width: 35.5vw;
+    }
+
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 4px);
+    }
+}
+
+@media (max-width: 1605px) {
+    .CertificateInput{
+        width: 7vw;
+    }
+
+    .MainDiv{
+        gap: 5px
+    }
+
+    .MainCategAndPosition{
+        gap: 5px
+    }
+
+    .ButtonAddTimeDelivery30{
+        font-size: 6pt;
+    }
+
+    .ButtonAddTimeDelivery60{
+        font-size: 6pt;
+    }
+}
+
+
+@media (max-width: 1475px) {
+    .CertificateInput{
+        width: 6vw;
+    }
+
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 5px);
+    }
+}
+
+@media (max-width: 1440px){
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 6px);
+    }
+
+    .StopListOnCityUpdate{
+        width: calc(15.76vw - 6px);
+    }
+
+    .MainDivStopList{
+        font-size: 10pt;
+    }
+
+    .ButtonCatNameStop{
+        font-size: 10pt;
+    }
+
+    .StopListPositionName{
+        font-size: 9pt;
+    }
+
+    .StopListCity{
+        height: 40px;
+    }
+
+    .ThCityName{
+        font-size: 10pt;
+    }
+
+    .ThCityStreet{
+        font-size: 10pt;
+    }
+
+    .TimeDeliveryStopListMain{
+        width: 2.8vw;
+    }
+
+    .TimeDeliverySelector{
+        width: calc(2.8vw + 1px);
+        margin-left: 1px;
+        font-size: 10pt;
+    }
+
+    .TimeTakeawaySelector{
+        width: calc(2.8vw + 1px);
+        margin-left: 1px;
+        font-size: 10pt;
+    }
+
+    .TimeTakeAwayStopListMain{
+        width: 2.8vw;
+    }
+
+    .TimeDeliveryStopList{
+        font-size: 10pt;
+    }
+
+    .TimeDeliveryStopListIcon{
+        width: 13px;
+        height: 13px;
+    }
+
+    .TimeeTakeAwayStopList{
+        font-size: 10pt;
+    }
+
+    .TimeeTakeAwayStopListIcon{
+        width: 13px;
+        height: 13px;
+    }
+
+    .ConditionStopListText{
+        font-size: 10pt;
+    }
+
+    .ConditionStopListCity{
+        font-size: 10pt;
+    }
+
+    .InputStopListCity{
+        font-size: 10pt;
+        height: 14px;
+    }
+
+    .ButtonResetTimeOneCity{
+        width: 20px;
+        height: 15px;
+    }
+
+    .MainCateg {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .TimeDeliveryDivButtons{
+        margin-left: 5px;
+    }
+    
+    .ButtonAddTimeDelivery30{
+        font-size: 5pt;
+    }
+
+    .ButtonAddTimeDelivery60{
+        font-size: 5pt;
+    }
+
+    .City{
+        font-size: 8pt;
+    }
+
+    .CityNameTextStreet{
+        font-size: 8pt;
+      }
+      
+    .CityNameTextMain{
+        font-size: 8pt;
+      }
+
+    .SearchingCityOnNewOrderIcon{
+        height: 15px;
+        width: 17px;
+    }
+
+    .TimeCityText{
+        font-size: 9pt;
+    }
+      
+    .TimeCityVal{
+        font-size: 9pt;
+    }
+
+    .ChangerOrderTypeTdText{
+        font-size: 9pt;
+    }
+
+    .ChangerOrderTypeTdButtonDelivery{
+        font-size: 8pt;
+        height: 25px;
+        width: 55px;
+    }
+
+    .ChangerOrderTypeTdButtonTakeaway{
+        font-size: 8pt;
+        height: 25px;
+        width: 55px;
+    }
+
+    .AddressDetalText {
+        font-size: 9pt;
+    }
+
+    .AddressDetalInp{
+        font-size: 9pt;
+    }
+
+    .CertificateText{
+        font-size: 9pt;
+    }
+
+    .CertificateButton{
+        font-size: 8pt;
+    }
+
+    .CertificateInput{
+        font-size: 8pt;
+    }
+
+    .PreOrderDiv{
+        font-size: 9pt;
+    }
+
+    .PreOrderInput{
+        font-size: 8pt;
+    }
+
+    .MarkButton{
+        font-size: 9pt;
+        height: 15px;
+        width: 80px;
+    }
+
+    .SearchingCityOnNewOrderInput{
+        font-size: 9pt;
+    }
+
+    .CitySelectorResSearch{
+        font-size: 9pt;
+    }
+
+    .StatisticsClientOrderPositions{
+        width: 13vw;
+      }
+
+    .StatisticsClientOrderPositionsTbName{
+        width: 8vw;
+      }
+    
+    .StatisticsClientOrderPhoneNum{
+        font-size: 9pt;
+    }
+
+    .CityConditionMainDiv{
+        max-height: 16px;
+    }
+
+    .SavedOrderPositions{
+        padding: 5px;
+    }
+
+    .SavedHeadDivStatusAndDate{
+        padding-left: 5px;
+    }
+}
+
+@media(max-width: 1380px){
+    .SearchingCityOnNewOrderIcon{
+        height: 15px;
+        width: 15px;
+    }
+
+    .CityName{
+        margin-right: 3px;
+        width: 11vw;
+    }
+
+    .CitySelector{
+        width: 11vw;
+    }
+
+    .TimeCityText{
+        width: 11vw;
+    }
+
+}
+
+@media(max-width: 1290px){
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 7px);
+    }
+
+    .ConditionStopListText{
+        font-size: 8pt;
+    }
+}
+
+@media (max-width: 1280px){
+    .StopListOnCityUpdate{
+        width: calc(15.76vw - 7px);
+    }
+
+    .MainDivStopList{
+        font-size: 9pt;
+    }
+
+    .AdditionMainDiv{
+        max-width: 25vw;
+    }
+      
+
+    .ChangerOrderTypeTdButtonDelivery{
+        font-size: 6pt;
+        height: 25px;
+        width: 45px;
+    }
+
+    .ChangerOrderTypeTdButtonTakeaway{
+        font-size: 6pt;
+        height: 25px;
+        width: 45px;
+    }
+
+    .StatisticsClientStatus{
+        font-size: 8pt;
+    }
+
+    .StatisticsClientOrderPositions{
+        padding: 5px;
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderTotalSum{
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderSale{
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderCity{
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderAddress{
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderPhoneNum{
+        font-size: 8pt;
+    }
+    
+    .StatisticsClientOrderPositionsTbName{
+        min-width: 88px;
+    }
+
+    .PopupTablewareContainer{
+        bottom: 325px;
+    }
+      
+    .PopupTableware {
+        font-size: 7pt;
+        max-width: 75px;
+        max-height: 290px;
+    }
+
+    .TablewaresButton{
+        font-size: 10pt;
+        height: 20px;
+    }
+
+    .ButtonOpenClearTime{
+        height: 20px;
+        font-size: 10pt;
+        width: 100px;
+      }
+
+    .ButtonsClearTimeMainDiv{
+        font-size: 10pt;
+        width: 100px;
+    }
+
+    .ButtonClearTime{
+        font-size: 8pt;
+        width: 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .MaxTimeOnSavedOrderText{
+        font-size: 6pt;
+    }
+      
+      .MaxTimeOnSavedOrderTime{
+        font-size: 8pt;
+        margin-top: 2.5px;
+    }
+
+    .DelteSavedOrdIconDiv{
+        width: 30px;
+    }
+      
+      .DelteSavedOrdIcon{
+        width: 20px;
+        height: 20px;
+    }
+
+    .SavedOrderPhoneNum{
+        font-size: 8pt;
+        padding: 2.5px;
+        width: 70px;
+    }
+
+    .SavedOrderAddress{
+        font-size: 8pt;
+    }
+
+    .SavedHeadDiv.Branch{
+        font-size: 8pt;
+    }
+
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 8px);
+    }
+
+    .WindowStatisticsClientContentUp{
+        font-size: 12pt;
+    }
+
+    .StopListOnCityUpdate{
+        width: calc(15.76vw - 1px);
+    }
+
+    ::-webkit-scrollbar {
+        width: 0.4em;
+    }
+
+
+    .ButtonCatNameStop{
+        font-size: 9pt;
+    }
+
+    .StopListPositionNameText{
+        padding-right: 5px;
+        font-size: 8pt;
+    }
+
+    .CheckBoxStopCat{
+        width: 10px;
+        height: 10px;
+    }
+
+    .CheckBoxStopPosition{
+        width: 10px;
+        height: 10px;
+    }
+
+    .titleText{
+        font-size: 8pt;
+    }
+
+    .switch {
+        width: 30px;
+        height: 18px;
+      }
+        
+    .slider:before {
+        height: 18px;
+        width: 18px;
+        left: 2px;
+        bottom: 3px;    
+    }
+        
+    input:checked + .slider:before {  
+        transform: translateX(12px);
+    }
+        
+        
+    .slider.round {
+        border-radius: 10px;
+    }
+        
+    .slider.round:before {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+    }
+
+    .OrderTit{
+        height: 20px;
+    }
+
+    .OrderTitTable{
+        height: 20px;
+      }
+
+    .OrderOrder{
+        height: calc(98vh - 70px);
+    }
+
+
+    .MainPosition {
+        width: 32.5vw;
+    }
+
+    .OrdTB{
+        font-size: 8pt;
+    }
+
+    .OrdPosName{
+        font-size: 8pt;
+    }
+
+    .OrdPosPrice{
+        font-size: 8pt;
+    }
+
+    .OrdPosSum{
+        font-size: 8pt;
+    }
+
+    .OrdButtonEditMinus{
+        width: 12px;
+        height: 12px;
+    }
+
+    .OrdButtonEditPlus{
+        width: 12px;
+        height: 12px;
+    }
+
+    .OrdPosInp{
+        width: 12px;
+        font-size: 8pt;
+    }
+
+    .TotalSumOrder {
+        margin-top: 5px;
+        font-size: 8pt;
+    }
+
+    .TotalSoyOrder{
+        font-size: 7pt;
+        margin-left: 5px;
+    }
+    
+    .OrdDownPanel{
+        height: 50px;
+    }
+
+
+    .TotalSumOrderDownPanel{
+        margin-top: 5px;
+        font-size: 8pt;
+    }
+
+    .DownPanelButtonsLeft{
+        margin-top: 5px;
+    }
+
+    .DownPanelButtonRight{
+        margin-top: 5px;
+    }
+
+      
+    .DownPanelButtonLeftSale{
+        margin-left: 5px;
+        width: 35px;
+        height: 20px;
+        border-radius: 5px;
+        font-size: 8pt;
+    }
+
+    .DownPanelButtonLeft {
+        margin-left: 5px;
+        width: 35px;
+        height: 20px;
+        border-radius: 5px;
+        font-size: 8pt;
+    }
+
+    .DownPanelButtonRightDelete {
+        margin-right: 5px;
+        width: 35px;
+        height: 20px;
+        border-radius: 5px;
+        font-size: 8pt;
+    }
+      
+    .DownPanelButtonRightSave {
+        margin-right: 5px;
+        width: 75px;
+        height: 20px;
+        border-radius: 5px;
+        font-size: 8pt;
+    }
+
+    .AdditionMainDiv{
+        font-size: 8pt;
+    }
+
+    .ButtonAddition {
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+        margin-left: 2.5px;
+        margin-right: 2.5px;
+        border-radius: 5px;
+        font-size: 6pt;
+        width: 60px;
+        height: 25px;
+      }
+
+    .CatButton{
+        height: 35px;
+        font-size: 9pt;
+    }
+
+    .PosButtonsclass{
+        width: 100px;
+        margin-top: 5px;
+        margin-left: 5px;
+        font-size: 8pt;
+        height: 40px;
+    }
+
+    .PosButtonsclassPizza{
+        width: 100px;
+        margin-top: 5px;
+        margin-left: 5px;
+        font-size: 8pt;
+        height: 40px;
+    }
+
+    .PosButtonsclassPizzaChangeDiamDiv{
+        position: relative;
+        bottom: 4px;
+        margin-left: 2px;
+        width: 100px;
+        height: 20px;
+      }
+
+    .PosButtonsclassPizzaChangeDiam30{
+        width: 50px;
+        font-size: 8pt;
+    }
+
+    .PosButtonsclassPizzaChangeDiam36{
+        width: 50px;
+        font-size: 8pt;
+    }
+
+    .PizzaChangeDiamOnOrderTd{
+        height: 20px;
+        width: 50px;
+    }
+
+    .PizzaChangeDiamOnOrderButton36{
+        width: 25px;
+        font-size: 6pt;
+    }
+
+    .PizzaChangeDiamOnOrderButton30{
+        width: 25px;
+        font-size: 6pt;
+    }
+
+    .OrderTitName{
+        font-size: 8pt;
+    }
+
+    .OrderTitNum{
+        font-size: 8pt;
+    }
+
+    .OrderTitPrice{
+        font-size: 8pt;
+    }
+
+    .OrderTitSum{
+        font-size: 8pt;
+    }
+
+    .OpenAdditions {
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        margin-left: 5px;
+        font-size: 6pt;
+        margin-top: 0px;
+    }
+
+    .MarkButton{
+        margin-top: 8px;
+    }
+
+    .MarkButtonOnSaveOrder{
+        font-size: 7pt;
+        margin-top: 5px;
+        margin-right: 5px;
+        height: 15px;
+        min-width: 50px;
+    }
+      
+    .PopupTablewareContainer{
+        bottom: 225px;
+    }
+      
+    .PopupTableware {
+        font-size: 7pt;
+        max-width: 55px;
+        max-height: 200px;
+    }
+
+    .TablewaresButton{
+        font-size: 8pt;
+        height: 15px;
+        width: 30px;
+    }
+
+    .PopupSALESContainer{
+        bottom: 178px;
+        left: 0px;
+      }
+      
+      .PopupSALES{
+        font-size: 6pt;
+        max-width: 50px;
+        max-height: 200px;
+      }
+
+      .SaleButton{
+        font-size: 8pt;
+        width: 45px;
+        height: 25px;
+      }
+
+      .StopListClearButton{
+        height: 17px;
+        font-size: 10pt;
+      }
+}
+
+@media(max-width: 1130px){
+    .SavedOrderAddress{
+        font-size: 6pt;
+        min-width: 230px;
+    }
+    .StopListOnCityUpdate{
+        width: 15.76vw;
+    }
+
+    .MainPosition {
+        width: 31vw;
+    }
+
+    .StopAlertMainDiv{
+        margin-bottom: 5px;
+        padding: 5px;
+        border-radius: 5px;
+        width: 200px;
+        height: 15px;
+    }
+
+    .StopSauceSumLimitContent{
+        font-size: 6pt;
+    }
+      
+    .AlertLastWindowStopPos{
+        font-size: 7pt;
+    }
+
+    .IconStopCat{
+        height: 15px;
+        width: 15px;
+    }
+      
+    .IconStopPosition{
+        height: 15px;
+        width: 15px;
+    }
+
+    .InputStopListCityIcon{
+        right: 30px;
+    }
+}
+
+@media (max-width: 1050px){
+    .SavedOrderPositionsTbName{
+        font-size: 8pt;
+        min-width: 100px;
+    }
+
+    .SavedOrderPositionsTbNum{
+        font-size: 8pt;
+        width: 20px;
+        min-width: 15px;
+    }
+
+    .SavedOrderPositionsTbPrice{
+        font-size: 8pt;
+        width: 50px;
+        min-width: 50px;
+    }
+
+    .SavedOrderPositions{
+        min-width: 170px;
+        width: 17.13vw;
+        font-size: 8pt;
+        padding: 5px;
+    }
+
+    .CityOrdHeadContainer{
+        right: calc(8.19vw - 1px);
+    }
+
+    .StopListClearButton{
+        height: 13px;
+        font-size: 8pt;
+    }
+
+    .CatButton{
+        font-size: 7pt;
+        min-width: 55px;
+    }
+
+    .MainCateg{
+        min-width: 60px;
+    }
+    
+    .MainPosition {
+        width: 29.5vw;
+    }
+
+
+    .OrdPosName{
+        width: 12vw;
+        font-size: 7pt;
+    }
+
+    .OrdPosPrice{
+        font-size: 7pt;
+    }
+
+    .OrdPosSum{
+        font-size: 7pt;
+    }
+
+    .OrderTitName{
+        width: 12vw;
+        font-size: 7pt;
+    }
+
+    .OrderTitNum{
+        font-size: 7pt;
+    }
+
+    .OrderTitPrice{
+        font-size: 7pt;
+    }
+
+    .OrderTitSum{
+        font-size: 7pt;
+    }
+
+    .AddressDetalInp.Comment{
+        min-width: 100px;
+      }
+
+    .PosButtonsclass{
+        width: 80px;
+        font-size: 7pt;
+    }
+
+    .PosButtonsclassPizza{
+        width: 80px;
+        font-size: 7pt;
+    }
+
+    .PosButtonsclassPizzaChangeDiamDiv{
+        width: 80px;
+        height: 20px;
+      }
+
+    .PosButtonsclassPizzaChangeDiam30{
+        width: 40px;
+        font-size: 6pt;
+    }
+
+    .PosButtonsclassPizzaChangeDiam36{
+        width: 40px;
+        font-size: 6pt;
+    }
+
+    .PizzaChangeDiamOnOrderTd{
+        height: 20px;
+        width: 40px;
+    }
+    
+    .StatisticsClientOrderPhoneNum{
+        font-size: 7pt;
+    }
+
+    .StatisticsClientOrderAddress{
+        min-width: 215px;
+    }
+
+    .ThCityStreet{
+        font-size: 8pt;
+    }
+
+    .TextOpenMenuMenu{
+        font-size: 11pt;
+    }
+
+    .IconOpenMenu{
+        width: 30px;
+        height: 30px;
+    }
+
+    .TextNewOrderMenu{
+        font-size: 11pt;
+    }
+
+    .IconNewOrder{
+        width: 30px;
+        height: 30px;
+    }
+
+    .TextSavedOrdersMenu{
+        font-size: 11pt;
+    }
+
+    .IconSavedOrders{
+        width: 30px;
+        height: 30px;
+    }
+
+    .TextStopListMenu{
+        font-size: 11pt;
+    }
+
+    .IconStopList{
+        width: 30px;
+        height: 30px;
+    }
+
+    .TextChangeThemeMenu{
+        font-size: 11pt;
+    }
+
+    .IconSun{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 995px){
+    
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 4px);
+    }
+
+    .MainCateg{
+        width: 70px;
+    }
+}
+
+@media(max-width: 955px){
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 7px);
+    }
+
+    @keyframes Alert {
+        from {
+          top: 60px;
+          right: -400px;
+        }
+        7%{
+          top: 60px;
+          right: 20px;
+        }
+        10% {
+          top: 60px;
+          right: 0px;
+        }
+        90% {
+          top: 60px;
+          right: 0px;
+        }
+        91% {
+          top: 60px;
+          right: 5px;
+        }
+        to {
+          top: 60px;
+          right: -400px
+        }
+      }
+
+    .MainCategAndPosition{
+        flex-direction: column;
+    }
+
+    .MainPosition {
+        width: 35vw;
+        min-width: 175px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0.4em;
+        height: 0.9em;
+      }
+
+
+    .MainCateg {
+        display: flex;
+        width: calc(35vw - 5px);
+        font-size: 6pt;
+        min-width: 170px;
+        height: 45px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 0px;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+      
+    .CatButton {   
+        margin-left: 5px; 
+        width: 60px;
+        height: 100%;
+    }
+
+    .MainPosition {
+        width: 32vw;
+    }
+
+    .MainCateg {
+        width: calc(32vw - 5px);
+    }
+}
+
+@media(max-width: 915px){
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 12px);
+    }
+}
+
+@media(max-width: 855px){ 
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 15px);
+    }
+
+    .ThCityTakeaway{
+        width: 40px;
+        min-width: 40px;
+    }
+
+    .MainDivStopList{
+        font-size: 8pt;
+    }
+
+    .ThCityName{
+        font-size: 8pt;
+        width: 120px;
+        min-width: 120px;
+    }
+
+    .ThCityStreet{
+        font-size: 8pt;
+        width: 120px;
+        min-width: 120px;
+    }
+
+    .MainPosition {
+        width: 28vw;
+    }
+
+    .MainCateg {
+        width: calc(28vw - 5px);
+    }
+
+    .WindowStatisticsClientContent{
+        padding: 5px;
+    }
+
+    .WindowStatisticsClientContentUp{
+        font-size: 10pt;
+    }
+}
+
+@media(max-width: 805px){ 
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 20px);
+    }
+
+    .MainPosition {
+        width: 25vw;
+    }
+
+    .MainCateg {
+        width: calc(25vw - 5px);
+    }
+}
+
+@media(max-width: 775px){ 
+    .CityOrdHeadContainer{
+        right: calc(8.19vw + 23px);
+    }
+
+    .MainPosition {
+        width: 23vw;
+    }
+
+    .MainCateg {
+        width: calc(23vw - 5px);
+    }
+}

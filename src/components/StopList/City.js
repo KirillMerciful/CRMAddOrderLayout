@@ -129,7 +129,8 @@ this.CloseModalClearSropList = this.CloseModalClearSropList.bind(this)
 
                 </div>
                 <div className={this.state.OpenDropDownCondition === true ? "ConditionSelector OpenDrop" : "ConditionSelector"}>
-                {this.state.OpenDropDownCondition === true && <CityCondition 
+                {this.state.OpenDropDownCondition === true && 
+                <CityCondition 
                   CloseConditionSelector={this.CloseConditionSelector}
                   City={this.props.City}
                   ChangeConditionCity={this.props.ChangeConditionCity}

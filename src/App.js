@@ -411,7 +411,7 @@ class App extends React.Component {
                     dkprice: 59,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 59,
                     totaldkprice: 59,
                     soysause: 0,
@@ -425,7 +425,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -439,7 +439,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -453,7 +453,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -467,7 +467,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -481,7 +481,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -495,7 +495,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -509,7 +509,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -523,7 +523,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -537,7 +537,7 @@ class App extends React.Component {
                     dkprice: 89,
                     categ: "Суши",
                     num: 1,
-                    salecheck: false,
+                    salecheck: true,
                     totalprice: 89,
                     totaldkprice: 89,
                     soysause: 0,
@@ -1161,6 +1161,8 @@ class App extends React.Component {
             />
         <div className='MainOrder'>
             
+            
+            <div>
             <SaleSumWindow 
                 SaleInpEdit={this.SaleInpEdit}
                 SSumWindowActive={this.state.SSumWindowActive}
@@ -1169,46 +1171,47 @@ class App extends React.Component {
                 Sale={this.state.Sale}
             />
             <OrderTitle />
-            <div className='OrderOrder'>
             
-            {this.state.orderPosition.map((el) => (
-                <AddOrder 
-                    deleteOrder={this.deleteOrder}
-                    AlertAdd={this.AlertAdd}
-                    cat={this.state.cat}
-                    EditWOKNoodles={this.EditWOKNoodles} 
-                    position={this.state.position} 
-                    EditInputOrd={this.EditInputOrd} 
-                    BMinusOrd={this.BMinusOrd} 
-                    BPlusOrd={this.BPlusOrd} 
-                    AddDob={this.AddDob}  
-                    ChangeDiamPizzaOnOrder={this.ChangeDiamPizzaOnOrder}
-                    orderPosition={el}
-                    orderAddition={this.state.orderAddition}
-                    AddAdditionFunc={this.AddAdditionFunc}
-                    PlusAdditionFunc={this.PlusAdditionFunc}
-                    MinusAdditionFunc={this.MinusAdditionFunc}
-                    EditInputAddition={this.EditInputAddition}
-                    pdkon={this.state.pdkon} 
-                    key={el.idOrd} 
-                    
+                <div className='OrderOrder'>
+                
+                {this.state.orderPosition.map((el) => (
+                    <AddOrder 
+                        deleteOrder={this.deleteOrder}
+                        AlertAdd={this.AlertAdd}
+                        cat={this.state.cat}
+                        EditWOKNoodles={this.EditWOKNoodles} 
+                        position={this.state.position} 
+                        EditInputOrd={this.EditInputOrd} 
+                        BMinusOrd={this.BMinusOrd} 
+                        BPlusOrd={this.BPlusOrd} 
+                        AddDob={this.AddDob}  
+                        ChangeDiamPizzaOnOrder={this.ChangeDiamPizzaOnOrder}
+                        orderPosition={el}
+                        orderAddition={this.state.orderAddition}
+                        AddAdditionFunc={this.AddAdditionFunc}
+                        PlusAdditionFunc={this.PlusAdditionFunc}
+                        MinusAdditionFunc={this.MinusAdditionFunc}
+                        EditInputAddition={this.EditInputAddition}
+                        pdkon={this.state.pdkon} 
+                        key={el.idOrd} 
+                        
+                    />
+                ))}
+
+            {this.state.orderTablewares.map((el) => (
+                <TablewaresAdd 
+                    orderTablewares={el}    
+                    key={'Tablewares' + el.num}
                 />
-            ))}
+                ))}
 
-        {this.state.orderTablewares.map((el) => (
-            <TablewaresAdd 
-                orderTablewares={el}    
-                key={'Tablewares' + el.num}
-            />
-            ))}
-
-             <TotalSum 
-                totalSoy={this.state.totalSoy}
-                totalSum={this.state.totalSum}
-             />
-             
+                <TotalSum 
+                    totalSoy={this.state.totalSoy}
+                    totalSum={this.state.totalSum}
+                />
+                
+                </div>
             </div>
-            
             <div className='OrdDownPanel'>
                 < OrderDownPanel
                     SavedButtonClick={this.SavedButtonClick}
@@ -1279,12 +1282,14 @@ class App extends React.Component {
                 />
             </div>
             {this.state.OpenCitySearchInp === true && 
-            <div>
+            <div
+            className='SearchingCityOnNewOrderDiv'
+            >
                 <div>
                     <input
                     className={this.state.ResSearchCity.length !== 0 ? 'SearchingCityOnNewOrderInput OpenDrop' : 'SearchingCityOnNewOrderInput'}
                     id='SearchingCityOnNewOrderInput'
-                    placeholder='Поиск города'
+                    placeholder='Поиск филиала'
                     onBlur={() => {
                         setTimeout(() => {
                             
@@ -1454,7 +1459,9 @@ class App extends React.Component {
             </div>
             <div className='AddressDetalOb'>
                 <div className='AddressDetalMainDiv'>
-                    <table>
+                    <table
+                    className='TableAddressDetal'
+                    >
                         <tbody>
                         <tr className='TrTableAddressDetal'>
                                 <td className='AddressDetalText PhoneNum'>
@@ -1535,6 +1542,7 @@ class App extends React.Component {
                                 <td>
                                 <input
                                     type="text"
+                                    maxLength={32}
                                     id={'AddressDetalInpStreet' + this.state.SavedIdOrd}
                                     className='AddressDetalInp Street'
                                     onClick={(() => {
@@ -1562,6 +1570,7 @@ class App extends React.Component {
                                 <td>
                                     <input
                                         type="text"
+                                        maxLength={10}
                                         id={'AddressDetalInpHouse' + this.state.SavedIdOrd}
                                         className='AddressDetalInp House'
                                         onClick={(() => {
@@ -1663,7 +1672,7 @@ class App extends React.Component {
                                         type="text"
                                         rows={1}
                                         className='AddressDetalInp Comment'
-                                        maxLength={200}
+                                        maxLength={100}
                                         onBlur={((e) => {
                                             this.state.address.map((el) => 
                                         {
@@ -1794,42 +1803,45 @@ class App extends React.Component {
             </div>
     }
         </div> 
-    
-        <div className='MainCateg'>
-            {this.state.cat.map((el) => (
-            <Categ 
-            EditCat={this.EditCat} 
-            cat={el} 
-            key={el.id}/>))}
-            
-        </div> 
+            <div
+            className='MainCategAndPosition'
+            >
+                <div className='MainCateg'>
+                    {this.state.cat.map((el) => (
+                    <Categ 
+                    EditCat={this.EditCat} 
+                    cat={el} 
+                    key={el.id}/>))}
+                    
+                </div> 
 
-        <div className='MainPosition'>         
-            <PositionsTitle 
-                position={this.state.position}
-                PriceCheck={this.PriceCheck} 
-                pdkon={this.state.pdkon}
-                addOrder={this.addOrder} 
-                AlertAdd={this.AlertAdd}
-            />
-            <div className='BPos'>
-                <div className='ButtonPositions'>
-                {this.state.position.map((el) => (
-                    <Position
-                        ChangeDiamPizzaOnPositionMenu={this.ChangeDiamPizzaOnPositionMenu}
-                        AlertAdd={this.AlertAdd}
+                <div className='MainPosition'>         
+                    <PositionsTitle 
+                        position={this.state.position}
+                        PriceCheck={this.PriceCheck} 
+                        pdkon={this.state.pdkon}
                         addOrder={this.addOrder} 
-                        onCat={this.state.onCat} 
-                        OnCity={this.state.OnCity}
-                        pdkon={this.state.pdkon} 
-                        cat={this.state.cat}
-                        position={el} 
-                        key={el.id}
+                        AlertAdd={this.AlertAdd}
                     />
-                    ))}
-                </div>
+                    <div className='BPos'>
+                        <div className='ButtonPositions'>
+                        {this.state.position.map((el) => (
+                            <Position
+                                ChangeDiamPizzaOnPositionMenu={this.ChangeDiamPizzaOnPositionMenu}
+                                AlertAdd={this.AlertAdd}
+                                addOrder={this.addOrder} 
+                                onCat={this.state.onCat} 
+                                OnCity={this.state.OnCity}
+                                pdkon={this.state.pdkon} 
+                                cat={this.state.cat}
+                                position={el} 
+                                key={el.id}
+                            />
+                            ))}
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div> 
         </div>
     </div>)
     }
