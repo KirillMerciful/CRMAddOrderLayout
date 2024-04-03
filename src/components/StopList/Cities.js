@@ -57,10 +57,10 @@ class Cities extends React.Component {
                   OpenSearchCity: false
                 })
                 this.setState({
-                  ResSearchCity: [...this.props.City]
+                  ResSearchCity: [...this.props.City] 
                 })
                 document.getElementById('PreHeadSearchInput').value = ""
-              },100)
+              }, 50)
             }}
             onChange={(e) => {
               if(e.target.value !== "")

@@ -240,7 +240,9 @@ this.CloseModalClearSropList = this.CloseModalClearSropList.bind(this)
               <td
               className='ThCityStopListClearButton'
               >
-                <div>
+                <div
+                className='StopListClearButtonDiv'
+                >
                   <button
                   className='StopListClearButton'
                   onClick={() => {

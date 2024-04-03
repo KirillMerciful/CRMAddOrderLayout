@@ -184,6 +184,10 @@ class SavedOrdersMain extends React.Component {
                                     %
                                 </div>
                             
+                            
+                                <div
+                                className='GlobalBranch'
+                                >
                                 <div
                                 className={this.state.OpenDropDownBranch === false ? 'SavedHeadDiv Branch' : 'SavedHeadDiv Branch OpenDropDown'}
                                 tabIndex={1}
@@ -203,10 +207,14 @@ class SavedOrdersMain extends React.Component {
                                     <span className={this.state.CheckCity.idCity !== 0 && "BranchText"}>
                                         {this.state.CheckCity.city + " " + this.state.CheckCity.street + " " + this.state.CheckCity.house}
                                     </span>
+
                                     <div>
                                     <IoChevronDown 
                                     className={this.state.OpenDropDownBranch === false ? 'SavedHeadDivIcon' : 'SavedHeadDivIcon OpenDropDown'}
                                     />
+                                    </div>
+                                </div>
+
                                     {this.state.OpenDropDownBranch === true && 
                                     <div
                                     className='CityOrdHeadContainer'
@@ -237,8 +245,8 @@ class SavedOrdersMain extends React.Component {
                                         </div>
                                     </div>
                                     }
-                                    </div>
                                 </div>
+                                
                                 <div
                                 className='SavedHeadDiv Search'
                                 >

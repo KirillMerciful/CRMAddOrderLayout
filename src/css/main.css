@@ -76,7 +76,6 @@ body {
 
 
 .SavedOrdersMainDiv {
-  
   margin-left: 50px;
   font-family: "Roboto";
   font-size: 12pt;
@@ -101,7 +100,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(98vh - 130px);
-  
 }
 
 .PageDiv{
@@ -123,6 +121,8 @@ body {
 
 .PageButtonDiv{
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .PageButtonDivText{
@@ -281,8 +281,9 @@ body {
 
 
 .OrderTitNum {
-  width: 4.5vw;
+  width: 4.3vw;
   min-width: 47px;
+  max-width: 85px;
   text-align: center;
 }
 
@@ -711,12 +712,14 @@ input:checked + .slider:before {
   color: red;
 }
 
-.OrdPosEdit {
+.OrdPosEdit{
   display: flex;
   align-items: center;
+  justify-content: start;
   width: 1.36vw;
   min-width: 15px;
-  height: 21px;
+  max-width: 29px;
+  height: 21px; 
 }
 
 .OrdPosEdit.Minus {
@@ -728,7 +731,8 @@ input:checked + .slider:before {
 }
 
 .OrdPosNum {
-  width: 1.4vw; 
+  width: 1.2vw; 
+  max-width: 25px;
 }
 
 .OrdPosPrice {
@@ -738,7 +742,7 @@ input:checked + .slider:before {
 }
 
 .OrdPosSum {
-  width: 4.99vw;
+  width: 6.15vw;
   min-width: 45px;
   text-align: end;
 }
@@ -874,7 +878,7 @@ input:checked + .editdiamslide:before {
 }
 
 .OpenAdditions {
-  width: 15px;
+  width: 14px;
   height: 14px;
   line-height: 14px;
   display: inline-block;
@@ -886,8 +890,8 @@ input:checked + .editdiamslide:before {
   border: none;
   background-color: var(--LightA-color, rgb(3, 168, 245));
   font-family: "Roboto";
-  margin-top: 2px;
   font-size: 9pt;
+  margin-bottom: 1px;
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -903,6 +907,7 @@ input:checked + .editdiamslide:before {
 
 .ButtonAddition {
   cursor: pointer;
+  overflow: hidden;
   background-color: var(--mainC-color, rgb(224, 231, 235));
   color: var(--Text2-Color, black);
   margin-top: 5px;
@@ -1122,7 +1127,6 @@ input:checked + .editdiamslide:before {
   flex-direction: column;
   position: relative;
   bottom: 425px;
-  
 }
 
 .PopupTableware {
@@ -1219,21 +1223,26 @@ input:checked + .editdiamslide:before {
 }
 
 .OrdTablewaresName{
-  width: 255px;
+  width: 13.39vw;
+  min-width: 113px;
 }
 
 .OrdTablewaresNum {
-  width: 45px;
-  text-align: end;
+  width: 4.3vw;
+  min-width: 47px;
+  max-width: 85px;
+  text-align: center;
 }
 
 .OrdTablewaresPrice {
-  width: 115px;
+  width: 3.94vw;
+  min-width: 40px;
   text-align: end;
 }
 
 .OrdTablewaresSum {
-  width: 95px;
+  width: 5.8vw;
+  min-width: 65px;
   text-align: end;
 }
 
@@ -1342,8 +1351,8 @@ input:checked + .editdiamslide:before {
 
 .ButtonsMenu{
   margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   width: 100%;
   z-index: 2;
 }
@@ -1462,6 +1471,7 @@ input:checked + .editdiamslide:before {
   font-size: 12pt;
   width: 16.02vw;
   min-width: 175px;
+  max-width: 308px;
   border-bottom: 1px dashed gray;  
   color: var(--Text2-Color, black);
   transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
@@ -1496,6 +1506,7 @@ input:checked + .editdiamslide:before {
 
 .StopListPositionName{
   display: flex;
+  align-items: center;
   margin-left: 15px;
   font-size: 10pt;
   color: var(--Text2-Color, black);
@@ -1727,6 +1738,7 @@ input:checked + .editdiamslide:before {
   width: calc(15.76vw - 5px);
   margin-left: 1px;
   min-width: 176px;
+  max-width: 308px;
   overflow-x: hidden;
   overflow-y: auto;
   color: var(--Text2-Color, black);
@@ -2388,7 +2400,12 @@ input:checked + .editdiamslide:before {
   display: flex;
   align-items: center;
   justify-content: start;
-  
+}
+
+.StopListClearButtonDiv{
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 .ThCityStopListClearButton{
@@ -2494,6 +2511,7 @@ input:checked + .editdiamslide:before {
   margin-top: 1px;
   width: 17.34vw;
   min-width: 188px;
+  max-width: 310px;
 }
 
 .SavedOrdDiv{
@@ -2590,6 +2608,7 @@ input:checked + .editdiamslide:before {
   min-width: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -2599,6 +2618,7 @@ input:checked + .editdiamslide:before {
   min-width: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
   color: var(--Text2-Color, black);
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
@@ -2678,10 +2698,8 @@ input:checked + .editdiamslide:before {
 
 .LastWindowMainDiv{
   z-index: 1000;
-  height: 100vh;
-  width: 100vw;
-  min-width: 775px;
-  min-height: 750px;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -2717,7 +2735,6 @@ input:checked + .editdiamslide:before {
   color: red;
 }
 
-
 .LastWindowInput{
   width: 226px;
   margin-left: 5px;
@@ -2749,7 +2766,6 @@ input:checked + .editdiamslide:before {
 
 .LastWindowButtonsDiv{
   width: 100%;
-  
 }
 
 .LastWindowPaymentButtonsMainDiv{
@@ -2806,7 +2822,6 @@ input:checked + .editdiamslide:before {
   box-shadow: 0px 0px 3px 0px black;
   border: none; 
   height: 25px;
-
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
 }
 
@@ -2817,35 +2832,47 @@ input:checked + .editdiamslide:before {
 }
 
 .MarkDelivery{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 65px;
   margin-left: 10px;
   margin-right: 10px;
-  text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
   border: 1px solid var(--ColorMarkYa, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .MarkTakeaway{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   margin-left: 10px;
   margin-right: 10px;
-  text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
   border: 1px solid var(--ColorMarkYa, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .MarkYF{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   margin-right: 10px;
-  text-align: center;
   font-size: 10pt;
   color: var(--ColorMarkYa, rgb(3, 168, 245));
   border: 1px solid var(--ColorMarkYa, rgb(3, 168, 245));
   transition: all var(--TimeChange1, 0.2s) ease-in-out;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .SavedOrderHead{
@@ -2962,7 +2989,7 @@ input:checked + .editdiamslide:before {
 .SavedHeadDivStatusAndDate{
   display: flex;
   padding-left: 10px;
-  width: 21.38vw;
+  width: 21.6vw;
   min-width: 330px;
 }
 
@@ -3142,7 +3169,7 @@ input:checked + .editdiamslide:before {
   align-items: center;
   flex-wrap: wrap;
   padding: 5px;
-  width: 46.03vw;
+  width: 43vw;
   min-width: 335px;
   height: auto;
   border-right: 1px solid black;
@@ -3177,8 +3204,8 @@ input:checked + .editdiamslide:before {
 
 .SavedOrdDeletedWindowMainDiv{
   z-index: 1000;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
@@ -3303,6 +3330,7 @@ input:checked + .editdiamslide:before {
 
 .MarkButtonOnSaveOrderMainDiv{
   display: flex;
+  flex-wrap: wrap;
   padding-left: 5px;
 }
 
@@ -3473,7 +3501,7 @@ input:checked + .editdiamslide:before {
   z-index: 20;
   position: absolute;
   top: 37px;
-  left: 64px;
+  left: 69px;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   box-shadow: 0px 0px 3px 0px black;
   width: 115px;
@@ -3549,7 +3577,7 @@ input:checked + .editdiamslide:before {
 .DateOrdHeadGlobalDiv{
   position: absolute;
   top: 37px;
-  left: 191px;
+  left: 195px;
   background-color: var(--mainB-color, rgb(243, 247, 250));
   box-shadow: 0px 0px 3px 0px black;
   width: 146px;
@@ -3573,10 +3601,14 @@ input:checked + .editdiamslide:before {
   background-color: var(--LightA-color, rgb(3, 168, 245));
 }
 
+.GlobalBranch{
+  display: flex;
+  flex-direction: column;
+}
+
 .CityOrdHeadContainer{
   position: relative;
-  top: 3px;
-  right: calc(8.19vw - 1px);
+  left: 1px;
 }
 
 .CityOrdHeadGlobalDiv{
@@ -3584,7 +3616,7 @@ input:checked + .editdiamslide:before {
   background-color: var(--mainB-color, rgb(243, 247, 250));
   box-shadow: 0px 0px 3px 0px black;
   width: 9vw;
-  min-width: 100px;
+  min-width: 107px;
   max-height: 32.64vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -3617,8 +3649,8 @@ input:checked + .editdiamslide:before {
 
 .WindowSearchMainDiv{
   z-index: 1000;
-  height: 100vh;
-  width: 100vw;
+  height: 110%;
+  width: 110%;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -3701,7 +3733,7 @@ input:checked + .editdiamslide:before {
 
 .WindowSearchDateDiv{
   border-radius: 5px;
-  width: 153px;
+  width: 144px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -3742,10 +3774,10 @@ input:checked + .editdiamslide:before {
 .ContainerDateWindowSearchGlobalDiv{
   position: absolute;
   top: 89px;
-  left: 106px;
+  left: 115px;
   background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
   box-shadow: 0px 0px 3px 0px black;
-  width: 154px;
+  width: 144px;
 }
 
 .WindowSearchButtonsDiv{
@@ -3789,8 +3821,8 @@ input:checked + .editdiamslide:before {
 
 .WindowPeriodMainDiv{
   z-index: 1000;
-  height: 100vh;
-  width: 100vw;
+  height: 110%;
+  width: 110%;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;

@@ -2235,6 +2235,19 @@ class App extends React.Component {
                 a.totalprice36 = a.price36 * a.num
                 a.totaldkprice36 = a.dkprice36 * a.num
                 }
+            if(a.categ === "ВОК")
+                {
+                    this.state.orderAddition.map((el) => {
+                        if(el.idOrd === id && el.categ === "Соус В Вок")
+                        {
+                            el.num = a.num
+                            this.setState({
+                                orderAddition: [...this.state.orderAddition]
+                            }) 
+                        }
+                        return(el)
+                    })
+                }
             this.setState({orderPosition: [...this.state.orderPosition]}) 
             return(a)
         })
@@ -2814,9 +2827,25 @@ class App extends React.Component {
     }
 
     openMenuFunction() {//функия раскрытия/скрытия меню
+        const mediaQuery1 = window.matchMedia('(max-width: 1050px)')
+        const mediaQuery2 = window.matchMedia('(min-width: 2200px)')
         if(this.state.openMenu === false)
         {
-          document.documentElement.style.setProperty('--WidhtMainMenu', '175px')
+            if(mediaQuery1.matches)
+            {
+                document.documentElement.style.setProperty('--WidhtMainMenu', '150px')
+            }
+            else
+            {
+                if(mediaQuery2.matches)
+                {
+                    document.documentElement.style.setProperty('--WidhtMainMenu', '200px')
+                }
+                else
+                {
+                    document.documentElement.style.setProperty('--WidhtMainMenu', '175px')
+                }
+            }
           setTimeout(() => {this.setState({
             openMenu: true
           })}, 150)

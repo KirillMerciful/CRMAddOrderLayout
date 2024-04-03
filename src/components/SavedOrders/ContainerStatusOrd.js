@@ -72,15 +72,15 @@ class ContainerStatusOrd extends React.Component {
             })}
             >
                 <div className='ContainerStatusAllIcons'>
-                    {el.value === "New" ? <IoAlertCircleOutline /> : 
-                    el.value === "Processing" ? <SlPhone/> :
+                    {el.value === "New" ? <IoAlertCircleOutline className='ContainerStatusIcon'/> : 
+                    el.value === "Processing" ? <SlPhone className='ContainerStatusIcon'/> :
                     el.value === "NotProcessing" ? <SlPhone className='ContainerStatusIcon NotProcessing'/>:
-                    el.value === "Cancelled" ? <IoCloseCircleOutline/> :
-                    el.value === "Timeout" ? <IoTimeOutline/> :
-                    el.value === "Cooking" ? <LuChefHat/> :
-                    el.value === "Cooked" ? <IoRestaurantOutline/> :
-                    el.value === "Delivery" ? <BsRocketTakeoff/> :
-                    <IoCheckmarkCircleOutline/> 
+                    el.value === "Cancelled" ? <IoCloseCircleOutline className='ContainerStatusIcon'/> :
+                    el.value === "Timeout" ? <IoTimeOutline className='ContainerStatusIcon'/> :
+                    el.value === "Cooking" ? <LuChefHat className='ContainerStatusIcon'/> :
+                    el.value === "Cooked" ? <IoRestaurantOutline className='ContainerStatusIcon'/> :
+                    el.value === "Delivery" ? <BsRocketTakeoff className='ContainerStatusIcon'/> :
+                    <IoCheckmarkCircleOutline className='ContainerStatusIcon'/> 
                     }
                 </div>
                 <div className='ContainerStatusName'>

@@ -28,7 +28,10 @@ class MenuMain extends React.Component {
               <IoArrowForwardCircle className={this.props.openMenu === true ? "IconOpenMenu open" : "IconOpenMenu"} id="IconOM"/>
             </div>
             <div className="ContentNewOrderMenu" onClick={(() => {
-                  this.props.NewOrderON()
+                  setTimeout(() => {
+                    this.props.NewOrderON()
+                  }, 50)
+                  
                 })}>
               <div className={this.props.ActiveComponent === 0 ? "TextNewOrderMenu ActivateTabText" : 'TextNewOrderMenu'}>
                 {this.props.openMenu === true && 'Новый заказ'}
@@ -37,7 +40,10 @@ class MenuMain extends React.Component {
           </div>
 
           <div className="ContentSavedOrdersMenu" onClick={(() => {
+            setTimeout(() => {
                 this.props.SavedOrdersON()
+            }, 50)
+                
               })}>
             <div className={this.props.ActiveComponent === 2 ? "TextSavedOrdersMenu ActivateTabText" : 'TextSavedOrdersMenu'}>
                   {this.props.openMenu === true && 'Заказы'}
@@ -46,7 +52,10 @@ class MenuMain extends React.Component {
           </div> 
           
           <div className="ContentStopListMenu" onClick={(() => {
-                this.props.StopListON()
+            setTimeout(() => {
+              this.props.StopListON()
+            }, 50)
+                
               })}>
             <div className={this.props.ActiveComponent === 1 ? "TextStopListMenu ActivateTabText" : 'TextStopListMenu'}>
                   {this.props.openMenu === true && 'Стоп лист'}

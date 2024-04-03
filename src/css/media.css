@@ -1,3 +1,1074 @@
+@media (min-width: 2200px){
+    .StatisticsClientIcon{
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+    .TimeSaveTextOnStatisticsClient{
+        font-size: 16pt;
+    }
+
+    .DateSaveAndNumberTextOnStatisticsClient{
+        margin-left: 10px;
+        margin-top: 3px;
+        font-size: 14pt;
+    }
+
+    .MarkDelivery{
+        font-size: 11pt;
+    }
+
+    .MarkTakeaway{
+        font-size: 11pt;
+    }
+
+    .MarkYF{
+        font-size: 11pt;
+    }
+
+    .StatisticsClientOrderPositionsTable{
+        height: 25px;
+    }
+
+    .StatisticsClientOrderPositionsTbName{
+        font-size: 12pt;
+    }
+
+    .StatisticsClientOrderPositionsTbNum{
+        font-size: 12pt;
+    }
+
+    .StatisticsClientOrderPositionsTbPrice{
+        font-size: 12pt;
+    }
+
+    .StatisticsClientOrderTotalSum{
+        font-size: 11pt;
+    }
+
+    .StatisticsClientOrderSale{
+        font-size: 11pt;
+    }
+
+    .StatisticsClientOrderCity{
+        font-size: 11pt;
+    }
+
+    .StatisticsClientOrderAddress{
+        font-size: 11pt;
+    }
+
+    .StatisticsClientOrderPhoneNum{
+        font-size: 12pt;
+    }
+
+    .SavedOrdStatusText{
+        font-size: 11pt;
+    }
+
+    .SavedOrdStatusIcon{
+        width: 35px;
+        height: 35px;
+    }
+
+    .SavedOrdDivStatus{
+        font-size: 14pt;
+        width: 90px;
+        min-width: 90px;
+    }
+
+    .MarkButtonOnSaveOrder{
+        font-size: 10pt;
+        margin-top: 10px;
+        margin-right: 15px;
+        height: 30px;
+    }
+      
+
+    .StopAlertMainDiv{
+        margin-bottom: 15px;
+        padding: 15px;
+        width: 300px;
+        height: 30px;
+    }
+
+    .StopSauceSumLimitContent{
+        font-size: 12pt;
+    }
+      
+    .AlertLastWindowStopPos{
+        font-size: 13pt;
+    }
+
+    .IconStopCat{
+        height: 25px;
+        width: 25px;
+    }
+      
+    .IconStopPosition{
+        height: 25px;
+        width: 25px;
+    }
+
+    .MainDiv{
+        margin-left: 70px;
+    }
+
+    .MainDivStopList{
+        margin-left: 70px;
+    }
+
+    .MainPosition {
+        width: 36vw;
+    }
+
+    .SavedOrdersMainDiv{
+        margin-left: 70px;
+        width: 96vw;  
+    }
+
+    .SavedHeadDivSearchIcon{
+        height: 23px;
+        width: 23px;
+      }
+
+    .SavedBodyDiv{
+        width: 96vw;    
+      }
+
+    .OrderTitName{
+        font-size: 14pt;
+    }
+
+    .OrderTitNum{
+        font-size: 14pt;
+    }
+
+    .OrderTitPrice{
+        font-size: 14pt;
+    }
+
+    .OrderTitSum{
+        font-size: 14pt;
+    }
+    
+    .OrdPosName{
+        font-size: 14pt;
+    }
+
+    .OrdPosInp{
+        font-size: 11pt;
+    }
+
+    .OrdPosPrice{
+        font-size: 14pt;
+    }
+
+    .OrdPosSum{
+        font-size: 14pt;
+    }
+
+    .OrdButtonEditMinus{
+        width: 23px;
+        height: 20px;
+        font-size: 12pt;
+    }
+
+    .OrdButtonEditPlus{
+        width: 23px;
+        height: 20px;
+        font-size: 12pt;
+    }
+
+    .OrdPosSouse{
+        font-size: 10pt;
+    }
+
+    .OpenAdditions{
+        width: 18px;
+        height: 18px;
+        font-size: 12pt;
+    }
+
+    .OrdTablewaresName{
+        font-size: 14pt;
+    }
+
+    .OrdTablewaresNum{
+        font-size: 14pt;
+    }
+
+    .OrdTablewaresPrice {
+        font-size: 14pt;
+    }
+      
+    .OrdTablewaresSum {
+        font-size: 14pt;
+    }
+
+    .TotalSumOrder{
+        font-size: 14pt;
+    }
+
+    .TotalSoyOrder{
+        font-size: 12pt;
+    }
+
+    .OrdDownPanel{
+        height: 100px;
+    }
+
+    .OrderOrder{
+        height: calc(98vh - 130px);
+    }
+
+    .TotalSumOrderDownPanel{
+        font-size: 14pt;
+    }
+
+    .DownPanelButtonLeftSale{
+        width: 60px;
+        height: 40px;
+    }
+    
+    .DownPanelButtonLeft{
+        width: 60px;
+        height: 40px;
+    }
+
+    .DownPanelButtonRightDelete{
+        width: 60px;
+        height: 40px;
+    }
+
+    .DownPanelButtonRightSave{
+        font-size: 14pt;
+        width: 150px;
+        height: 40px;
+    }
+
+    .CityText{
+        font-size: 14pt;
+    }
+
+    .CityNameTextMain{
+        font-size: 14pt;
+    }
+
+    .CityNameTextStreet{
+        font-size: 13pt;
+    }
+    
+    .CitySelector{
+        font-size: 13pt;
+    }
+
+    .SearchingCityOnNewOrderIcon{
+        height: 25px;
+        width: 25px;
+    }
+
+    .SearchingCityOnNewOrderInput{
+        font-size: 13pt;
+    }
+
+    .CitySelectorResSearch{
+        font-size: 13pt;
+    }
+
+    .TimeCityText{
+        font-size: 13pt;
+    }
+
+    .TimeCityVal{
+        font-size: 13pt;
+    }
+
+    .ButtonAddTimeDelivery30{
+        font-size: 10pt;
+    }
+
+    .ButtonAddTimeDelivery60{
+        font-size: 10pt;
+    }
+
+    .PizzaChangeDiamOnOrderButton30{
+        width: 45px;
+        font-size: 11pt;
+    }
+
+    .PizzaChangeDiamOnOrderButton36{
+        width: 45px;
+        font-size: 11pt;
+    }
+
+    .ChangerOrderTypeTdText{
+        font-size: 13pt;
+    }
+
+    .ChangerOrderTypeTdButtonDelivery{
+        height: 40px;
+        width: 90px;
+        font-size: 12pt;
+    }
+
+    .ChangerOrderTypeTdButtonTakeaway{
+        height: 40px;
+        width: 90px;
+        font-size: 12pt;
+    }
+
+    .AddressDetalText{
+        font-size: 13pt;
+    }
+
+    .AddressDetalInp{
+        font-size: 13pt;
+    }
+
+    .AddressDetalInp.Comment{
+        font-size: 13pt;
+    }
+
+    .AddressDetalOb{
+        min-height: 295px;
+        max-height: 295px;
+    }
+
+    .CertificateText{
+        font-size: 13pt;
+    }
+
+    .CertificateInput{
+        font-size: 13pt;
+    }
+
+    .CertificateButton{
+        font-size: 13pt;
+    }
+
+    .PreOrderDiv{
+        font-size: 13pt;
+    }
+
+    .PreOrderInput{
+        font-size: 13pt;
+    }
+
+    .MarkButton{
+        margin-top: 15px;
+        font-size: 13pt;
+        height: 30px;
+        width: 120px;
+    }
+
+    .CatButton {    
+        margin-top: 10px;
+        width: 100%;
+        min-width: 90px;
+        height: 60px;
+        font-size: 13pt;
+    }
+
+    .titleText{
+        font-size: 14pt;
+    }
+
+    .SearchOnPositionInput{
+        font-size: 12pt;
+    }
+
+    .SearchOnPositionIcon{
+        width: 21px;
+        height: 21px;
+    }
+
+    .PosButtonsclass {
+        margin-top: 15px;
+        margin-left: 15px;
+        width: 160px;
+        height: 60px;
+        font-size: 12pt;  
+    }
+
+    .PosButtonsclassPizza{
+        margin-top: 15px;
+        margin-left: 15px;
+        width: 160px;
+        height: 60px;
+        font-size: 12pt;  
+    }
+
+    .PosButtonsclassPizzaChangeDiamDiv{
+        bottom: 4px;
+        margin-left: 12px;
+        width: 160px;
+        height: 30px;
+    }
+
+    .PosButtonsclassPizzaChangeDiam36{
+        width: 80px;
+        height: 30px;
+        font-size: 12pt;
+    }
+
+    .PosButtonsclassPizzaChangeDiam30{
+        width: 80px;
+        height: 30px;
+        font-size: 12pt;
+    }
+
+    .ResSearchOnPositionContainer{
+        left: 27px;
+    }
+
+    .ResSearchOnPosition{
+        font-size: 12pt;
+    }
+     
+    .PopupTablewareContainer{
+        bottom: 435px;
+        left: 5px;
+    }
+
+    .PopupSALESContainer{
+        bottom: 282px;
+    }
+
+    .PopupSALES{
+        max-width: 60px;
+    }
+
+    .SaleButton{
+        width: 55px;
+        height: 40px;
+        font-size: 11pt;
+    }
+
+    .LastWindowContent{
+        padding: 15px;
+        width: 500px;
+        height: 500px;
+        top: 20%;
+    }
+
+    .LastWindowSumText{
+        font-size: 14pt;
+    }
+
+    .LastWindowChangeText{
+        font-size: 14pt;
+    }
+
+    .LastWindowInput{
+        font-size: 13pt;
+        width: 400px;
+        margin-left: 10px; 
+    }
+
+    .LastWindowPaymentButtonsMainDiv{
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        column-gap: 90px;
+        max-height: 250px;
+    }
+
+    .LastWindowButtonPayment{
+        margin-top: 15px;
+        width: 200px;
+        font-size: 13pt;    
+        height: 45px;
+    }
+
+    .ButtonsCancelAndSaveDiv{
+        height: 190px;
+    }
+
+    .LastWindowButtonCancel{
+        width: 200px;
+        font-size: 13pt;    
+        height: 45px;
+    }
+
+    .LastWindowButtonSave{
+        width: 200px;
+        font-size: 13pt;    
+        height: 45px;
+    }
+
+    .MenuLeftPanel{
+        width: calc(var(--WidhtMainMenu, 50px) + 20px) ;
+    }
+      
+    .TextOpenMenuMenu{
+        font-size: 16pt;
+    }
+
+    .IconOpenMenu{
+        width: 50px;
+        height: 50px;
+    }
+
+    .TextNewOrderMenu{
+        font-size: 16pt;
+    }
+
+    .IconNewOrder{
+        width: 50px;
+        height: 50px;
+    }
+
+    .TextSavedOrdersMenu{
+        font-size: 16pt;
+    }
+
+    .IconSavedOrders{
+        width: 50px;
+        height: 50px;
+    }
+
+    .TextStopListMenu{
+        font-size: 16pt;
+    }
+
+    .IconStopList{
+        width: 50px;
+        height: 50px;
+    }
+
+    .TextChangeThemeMenu{
+        font-size: 16pt;
+    }
+
+    .IconSun{
+        width: 50px;
+        height: 50px;
+    }
+
+    .ButtonsMenu{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .TimeSaveTextOnSavedOrd{
+        font-size: 16pt;
+    }
+
+    .DateSaveAndNumberTextOnSavedOrd{
+        font-size: 14pt;
+        margin-top: 2px;
+    }
+
+    .SavedOrderPositions{
+        min-width: 260px;
+        width: 18vw;
+        font-size: 13pt;
+    }
+
+    .SavedOrderPositionsTbName{
+        font-size: 13pt;
+    }
+
+    .SavedOrderPositionsTbNum{
+        font-size: 13pt;
+    }
+
+    .SavedOrderPositionsTbPrice{
+        width: 100px;
+        min-width: 100px;
+        font-size: 13pt;
+    }
+
+    .SavedOrderTotalSum{
+        font-size: 13pt;
+        width: 4.5vw;
+    }
+
+    .SaveOrderSale{
+        font-size: 13pt;
+        width: 4.5vw;
+    }
+
+    
+    .SavedOrderCity{
+        font-size: 13pt;
+        width: 8.8vw;
+        min-width: 100px;
+    }
+
+    .SavedOrderCityStreet{
+        font-size: 11pt;
+    }
+
+    .SavedOrderAddress{
+        font-size: 12pt;
+    }
+
+    .MaxTimeOnSavedOrderText{
+        font-size: 11pt;
+    }
+
+    .MaxTimeOnSavedOrderTime{
+        font-size: 13pt;
+    }
+
+    .SavedOrderPhoneNum{
+        font-size: 12pt;
+    }
+
+    .UsedOrdStatusIcon{
+        width: 25px;
+        height: 25px;
+      }
+
+    .ContainerStatusOrdMainDiv{
+        width: 850px;
+    }
+
+    .ContainerStatusOneStatusDiv{
+        width: 120px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .ContainerStatusIcon{
+        width: 30px;
+        height: 30px;
+    }
+
+    .ContainerStatusName{
+        font-size: 12pt;
+    }
+
+    .SavedHeadDiv{
+        margin-top: 10px;
+    }
+
+    .SavedHeadDiv.Status{
+        font-size: 13pt;
+        width: 140px;
+    }
+
+    .SavedHeadDiv.Date{
+        font-size: 13pt;
+        width: 180px;
+    }
+
+    .ContainerDateWindowSearchGlobalDiv{
+        top: 119px;
+        left: 166px;
+        width: 184px;
+    }
+
+    .SavedHeadDivStatusAndDate{
+        width: calc(18vw + 90px);
+    }
+
+    .SavedHeadDiv.Sum{
+        font-size: 13pt;
+        width: 4.35vw;
+    }
+
+    .SavedHeadDiv.Sale{
+        font-size: 13pt;
+        width: 4.35vw;
+    }
+
+    .SavedHeadDiv.Branch{
+        font-size: 13pt;
+        width: calc(11vw - 5px);
+        max-height: 40px;
+    }
+
+    .CityOrdHeadGlobalDiv{
+        width: 11vw;
+    }
+
+    .ContainerCityName{
+        font-size: 12pt;
+        height: 35px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .BranchText{
+        font-size: 10pt;
+    }
+
+    .SavedHeadDivIcon{
+        margin-top: 5px;
+    }
+
+    .SavedHeadDivSearchCityIcon{
+        width: 25px;
+        height: 25px;
+    }
+
+    .SavedHeadDivSearchIcon{
+        width: 25px;
+        height: 25px;
+    }
+
+    .StatusOrdHeadGlobalDiv{ 
+        top: 50px;
+        left: 89px;
+        width: 146px;
+    }
+
+    .ContainerStatusOneStatusHeadDiv{
+        width: 146px;
+        height: 35px;
+    }
+
+    .DateOrdHeadGlobalDiv{
+        top: 50px;
+        left: 246px;
+        width: 185px;
+    }
+
+    .ContainerDateName{
+        width: 175px;
+        height: 35px;
+    }
+
+    .SavedHeadDivSearchCityInput{
+        font-size: 14pt;
+        width: 200px;
+    }
+
+    .WindowPeriodContent{
+        top: 25%;
+        padding: 20px;
+        width: 350px;
+        height: 150px;
+    }
+
+    .WindowPeriodInputMinDiv{
+        font-size: 16pt;
+    }
+
+    .WindowPeriodInputMin{
+        width: 200px;
+        font-size: 15pt;
+    }
+      
+    .WindowPeriodInputMaxDiv{
+        font-size: 16pt;
+    }
+
+    .WindowPeriodInputMax{
+        width: 200px;
+        font-size: 15pt;
+    }
+
+    .WindowPeriodButtonCancel{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+
+    .WindowPeriodButtonSave{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+      
+    .WindowSearchContent{
+        top: 25%;
+        padding: 20px;
+        width: 350px;
+        height: 200px;
+    }
+
+    .WindowSearchMainText{
+        font-size: 16pt;
+    }
+
+    .WindowSearchInputText{
+        font-size: 16pt;
+    }
+
+    .WindowSearchInput {
+        font-size: 15pt;
+        width: 200px;
+    }
+
+    .WindowSearchDateDiv{
+        font-size: 15pt;
+        width: 202px;
+    }
+
+    .WindowSearchDateDivText{
+        font-size: 15pt;
+    }
+
+    .WindowSearchButtonCancel{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+
+    .WindowSearchButtonSearch{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+
+    .SavedOrdDeletedWindowContent{
+        top: 35%;
+        padding: 15px; 
+        width: 350px;
+        height: 50px;
+    }
+
+    .SavedOrdDeletedWindowButtonCancel{
+        font-size: 15pt;
+        width: 120px;
+    }
+
+    .SavedOrdDeletedWindowButtonDelete{
+        font-size: 15pt;
+        width: 120px;
+    }
+
+    .ThCityName{
+        font-size: 15pt;
+    }
+
+    .ThCityStreet{
+        font-size: 15pt;
+    }
+
+    .ThCityDelivery{
+        font-size: 15pt;
+    }
+
+    .ThCityTakeaway{
+        font-size: 15pt;
+    }
+
+    .ButtonResetTimeOneCity{
+        width: 39px;
+        height: 25px;
+    }
+
+    .ThCityCondition{
+        font-size: 15pt;
+    }
+
+    .CityConditionMainDiv{
+        font-size: 15pt;
+    }
+
+    .ThCityStopList{
+        font-size: 15pt;
+    }
+    
+    .InputStopListCity{
+        font-size: 15pt;
+    }
+
+    .InputStopListCityIcon{
+        right: 23px;
+        top: 4px;
+    }
+
+    .ButtonCatNameStop{
+        font-size: 15pt;
+    }
+
+    .StopListPositionNameText{
+        font-size: 14pt;
+    }
+    
+    .StopListCityTableDiv{
+        height: 40px;
+    }
+
+    .CheckBoxStopCat{
+        width: 16px;
+        height: 16px;
+    }
+
+    .ThCityStopListClearButton{
+        width: 20vw;
+    }
+
+    .StopListClearButton{
+        height: 28px;
+    }
+
+    .StopListClearButton{
+        font-size: 15pt;
+    }
+
+    .PreHeadMainDiv{
+        height: 40px;
+    }
+
+    .PreHeadSearchInput{
+        margin-left: 10px;
+        font-size: 15pt;
+        width: 250px;
+    }
+    
+    .PreHeadSearchIcon{
+        width: 25px;
+        height: 25px;
+    }
+
+    .ButtonOpenClearTime{
+        margin-right: 15px;
+        font-size: 15pt;
+        height: 30px;
+        width: 250px;
+    }
+
+    .ButtonOpenClearTime.Active{
+        background-color: var(--ColorMarkYa, #03a8f5);
+        color: var(--mainText-color, rgb(243, 247, 250));
+        box-shadow: 0px 0px 5px 0px black;
+        border-radius: 0px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        top: 35px;
+    }
+
+    .ButtonsClearTimeMainDiv{
+        top: 35px;
+        width: 250px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .ButtonClearTime{
+        font-size: 15pt;
+        height: 35px;
+        width: 250px;
+    }
+
+    
+    .ResSearchCityStopListMainDiv{
+        top: 42px;
+        left: 118px;
+        width: 255px;
+        font-size: 15pt;
+        max-height: 360px;
+    }
+
+    .PageDiv{
+        height: 100px;
+    }
+
+    .TableCitiesStopList{
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: calc(98vh - 176px);
+    }
+
+    .PageButtonDivText{
+        font-size: 14pt;
+    }
+
+    .TextEndPageDiv{
+        font-size: 14pt;
+    }
+
+    .PageButtonDiv{
+        margin-left: 15px;
+    }
+      
+    .PageButton{
+        font-size: 15pt;
+        height: 30px;
+        width: 30px;
+    }
+
+    .StepChangerDiv{
+        width: 60px;
+        height: 100%;
+        font-size: 15pt;
+        margin-right: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding: 5px;
+    }
+
+    .DropDownStepChangerMainDiv{
+        width: 71px;
+        max-height: 250px;
+    }
+
+    .DropDownStepChangerContainer{
+        left: 71px;
+        bottom: 128px;
+    }
+
+        
+    .ContainerStepsName{
+        font-size: 15pt;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .WindowClearStopListContent{
+        top: 30%;
+        padding: 10px;
+        width: 350px;
+        height: 150px;
+        font-size: 16pt;
+    }
+
+    .WindowClearButtonCancel{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+
+    .WindowClearButtonOK{
+        font-size: 15pt;
+        height: 35px;
+        width: 140px;
+    }
+
+    .AdditionMainDiv{
+        margin-left: 10px;
+        max-width: 26vw;
+        padding: 15px;
+    }
+
+    .ButtonsAdditionGlobalDiv{
+        font-size: 15pt;
+    }
+
+    .ButtonAddition {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        font-size: 13pt;
+        width: 130px;
+        height: 40px;
+    }
+
+    .OrdSost{
+        padding: 10px;
+        font-size: 11pt;
+    }
+      
+      
+}
+
+@media(min-width: 2400px){
+    .SavedHeadDivStatusAndDate{
+        width: calc(18vw + 95px);
+    }
+}
+
 @media (max-width: 1875px) {
     .CertificateButton{
         font-size: 8pt;
@@ -7,9 +1078,6 @@
         margin-right: 5px;
     }
 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 2px);
-    }
 }
 
 
@@ -22,9 +1090,6 @@
         width: 35.5vw;
     }
 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 4px);
-    }
 }
 
 @media (max-width: 1605px) {
@@ -47,6 +1112,10 @@
     .ButtonAddTimeDelivery60{
         font-size: 6pt;
     }
+
+    .UsedStatusDropDownMainContent{
+        width: 10vw;
+    }
 }
 
 
@@ -55,14 +1124,16 @@
         width: 6vw;
     }
 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 5px);
-    }
 }
 
 @media (max-width: 1440px){
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 6px);
+    .DateOrdHeadGlobalDiv{
+        top: 37px;
+        left: 191px;
+    }
+
+    .StatusOrdHeadGlobalDiv{
+        left: 64px;
     }
 
     .StopListOnCityUpdate{
@@ -272,6 +1343,13 @@
     .SavedHeadDivStatusAndDate{
         padding-left: 5px;
     }
+
+    .SavedHeadDiv.Search{
+        margin-right: 10px;
+    }
+    .UsedStatusDropDownMainContent{
+        width: 10vw;
+    }
 }
 
 @media(max-width: 1380px){
@@ -296,16 +1374,16 @@
 }
 
 @media(max-width: 1290px){
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 7px);
-    }
-
     .ConditionStopListText{
+        font-size: 8pt;
+    }
+    .UsedStatusDropDownMainContent{
         font-size: 8pt;
     }
 }
 
 @media (max-width: 1280px){
+    
     .StopListOnCityUpdate{
         width: calc(15.76vw - 7px);
     }
@@ -398,7 +1476,7 @@
 
 @media (max-width: 1200px) {
     .MaxTimeOnSavedOrderText{
-        font-size: 6pt;
+        font-size: 7pt;
     }
       
       .MaxTimeOnSavedOrderTime{
@@ -427,10 +1505,6 @@
 
     .SavedHeadDiv.Branch{
         font-size: 8pt;
-    }
-
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 8px);
     }
 
     .WindowStatisticsClientContentUp{
@@ -752,8 +1826,8 @@
 
 @media(max-width: 1130px){
     .SavedOrderAddress{
-        font-size: 6pt;
-        min-width: 230px;
+        font-size: 8pt;
+        min-width: 125px;
     }
     .StopListOnCityUpdate{
         width: 15.76vw;
@@ -795,6 +1869,31 @@
 }
 
 @media (max-width: 1050px){
+    .ContainerDateWindowSearchGlobalDiv{
+        top: 89px;
+        left: 115px;
+        width: 114px;
+    }
+
+    .MenuLeftPanel{
+        width: calc(var(--WidhtMainMenu, 50px) - 15px) ;
+    }
+
+    .ButtonsMenu{
+        margin-right: 2.5px;
+    }
+
+    .SavedOrdersMainDiv{
+        margin-left: 35px;
+    }
+
+    .MainDivStopList{
+        margin-left: 35px;
+        width: 99vw;   
+    }
+
+    
+
     .SavedOrderPositionsTbName{
         font-size: 8pt;
         min-width: 100px;
@@ -819,8 +1918,45 @@
         padding: 5px;
     }
 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw - 1px);
+    .SavedHeadDivStatusAndDate{
+        width: calc(17.13vw + 70px);
+        min-width: 235px;
+    }
+
+    .SavedHeadDiv.Status {
+        font-size: 8pt;
+        padding-left: 2.5px;
+        width: 80px;
+    }
+
+    
+    .StatusOrdHeadGlobalDiv{
+        width: 82px;
+        top: 35px;
+        left: 49px;
+    }
+
+    .ContainerStatusOneStatusHeadDiv{
+        font-size: 8pt;
+        width: 82px;
+    }
+
+    .SavedHeadDiv.Date {
+        margin-left: 5px;
+        padding-left: 2.5px;
+        font-size: 8pt;
+        width: 110px;
+    }
+
+    .DateOrdHeadGlobalDiv{
+        font-size: 8pt;
+        top: 35px;
+        left: 139px;
+        width: 113px;
+    }
+
+    .ContainerDateName{
+        width: 104px;
     }
 
     .StopListClearButton{
@@ -838,7 +1974,7 @@
     }
     
     .MainPosition {
-        width: 29.5vw;
+        width: 32vw;
     }
 
 
@@ -874,7 +2010,7 @@
 
     .AddressDetalInp.Comment{
         min-width: 100px;
-      }
+    }
 
     .PosButtonsclass{
         width: 80px;
@@ -962,23 +2098,27 @@
         width: 30px;
         height: 30px;
     }
+
+    .SavedHeadDiv.Search{
+        margin-right: 5px;
+    }
+
+    .MainDiv{
+        margin-left: 35px;
+    }
 }
 
 @media (max-width: 995px){
-    
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 4px);
-    }
-
     .MainCateg{
         width: 70px;
+    }
+
+    .StopListClearButton{
+        line-height: 14px;
     }
 }
 
 @media(max-width: 955px){
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 7px);
-    }
 
     @keyframes Alert {
         from {
@@ -1011,10 +2151,6 @@
         flex-direction: column;
     }
 
-    .MainPosition {
-        width: 35vw;
-        min-width: 175px;
-    }
 
     ::-webkit-scrollbar {
         width: 0.4em;
@@ -1024,7 +2160,7 @@
 
     .MainCateg {
         display: flex;
-        width: calc(35vw - 5px);
+        width: calc(38vw - 5px);
         font-size: 6pt;
         min-width: 170px;
         height: 45px;
@@ -1042,26 +2178,26 @@
     }
 
     .MainPosition {
-        width: 32vw;
+        width: 38vw;
+        min-width: 175px;
     }
-
-    .MainCateg {
-        width: calc(32vw - 5px);
-    }
-}
-
-@media(max-width: 915px){
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 12px);
+    .UsedStatusDropDownMainContent{
+        width: 11vw;
     }
 }
 
 @media(max-width: 855px){ 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 15px);
+    .UsedStatusDropDownMainContent{
+        width: 13vw;
     }
 
     .ThCityTakeaway{
+        width: 40px;
+        min-width: 40px;
+    }
+
+    .ThCityDelivery{
+        font-size: 7pt;
         width: 40px;
         min-width: 40px;
     }
@@ -1083,11 +2219,11 @@
     }
 
     .MainPosition {
-        width: 28vw;
+        width: 31vw;
     }
 
     .MainCateg {
-        width: calc(28vw - 5px);
+        width: calc(31vw - 5px);
     }
 
     .WindowStatisticsClientContent{
@@ -1099,9 +2235,96 @@
     }
 }
 
-@media(max-width: 805px){ 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 20px);
+@media(max-width: 810px){
+    .MarkButtonOnSaveOrder{
+        font-size: 5pt;
+        margin-top: 2.5px;
+        margin-right: 2.5px;
+        height: 10px;
+        min-width: 30px;
+    }
+}
+
+@media(max-width: 805px){
+    .MainPosition {
+        width: 28vw;
+    }
+
+    .MainCateg {
+        width: calc(28vw - 5px);
+    }
+
+    .InputStopListCity{
+        min-width: 130px;
+        width: 130px;
+    }
+
+    .StopListOnCityUpdate {
+        min-width: 134px;
+        width: 134px;
+      }
+
+    .ThCityCondition{
+        width: 110px;
+        min-width: 110px;
+      }
+
+    .ThCityStopList{
+        width: 140px;
+        min-width: 135px;
+      }
+
+    .ClickedInputStopListCityDiv{
+        width: 146px;
+        min-width: 146px;
+      }
+      
+    .StopListCatName{
+        min-width: 134px;
+        width: 134px;
+    }
+
+    .ButtonCatNameStop {
+        font-size: 8pt;
+    }
+
+    .StopListPositionNameText{
+        font-size: 7pt;
+    }
+
+    .ThCityDelivery{
+        font-size: 7pt;
+    }
+
+    .ThCityTakeaway{
+        font-size: 7pt;
+    }
+      
+}
+
+@media(max-width: 785px){
+    .SavedOrderCity{
+        padding: 5px;
+        min-width: 75px;
+    }
+
+    .SavedOrderCityName{
+        font-size: 8pt;
+    }
+
+    .SavedOrderCityStreet{
+        font-size: 6pt;
+    }
+
+    .MaxTimeOnSavedOrderText{
+        font-size: 6pt;
+    }
+}
+
+
+@media(max-width: 775px){ 
+    .UsedStatusDropDownMainContent{
+        width: 14vw;
     }
 
     .MainPosition {
@@ -1113,16 +2336,49 @@
     }
 }
 
-@media(max-width: 775px){ 
-    .CityOrdHeadContainer{
-        right: calc(8.19vw + 23px);
+
+@media(max-width: 750px){
+    .UsedStatusDropDownMainContent{
+        width: 15vw;
+    }
+
+    .MainCateg{
+        width: 195px;
+        min-width: 195px;
     }
 
     .MainPosition {
-        width: 23vw;
+        width: 200px;
+        min-width: 200px;
     }
 
-    .MainCateg {
-        width: calc(23vw - 5px);
+    .MainDetal {
+        width: 200px;
+        min-width: 200px;
+    }
+    
+    .AddressDetalText {
+        font-size: 8pt;
+    }
+
+    .AddressDetalInp{
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .AddressDetalInp.Comment{
+        min-width: 100px;
+    }
+
+    .ThCityName{
+        font-size: 7pt;
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .StopListClearButton{
+        font-size: 6pt;
+        line-height: 13px;
     }
 }
+

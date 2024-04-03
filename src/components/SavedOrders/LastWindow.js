@@ -56,7 +56,9 @@ class LastWindow extends React.Component {
                     Сумма заказа: {" " + this.props.totalSumSale + " руб."} 
                 </div>
                 <div>
-                    Сдача с {" "}
+                   <span
+                   className='LastWindowChangeText'
+                   >Сдача с {" "}</span> 
                     <input
                     className='LastWindowInput'
                     type='number'
