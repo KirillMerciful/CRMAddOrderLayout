@@ -23,6 +23,11 @@
         font-size: 11pt;
     }
 
+    .ButtonEditOrder{
+        font-size: 13pt;
+        height: 25px;
+    }
+
     .MarkYF{
         font-size: 11pt;
     }
@@ -247,6 +252,11 @@
         width: 150px;
         height: 40px;
     }
+
+    .DownPanelButtonRightDelete.Cancel{
+        width: 150px;
+        font-size: 14pt;
+      }
 
     .CityText{
         font-size: 14pt;
@@ -1060,6 +1070,49 @@
         font-size: 11pt;
     }
       
+    .SaleSumWindowContent{
+        padding: 15px;
+        width: 400px;
+        height: 150px;
+    }
+
+    .SaleSumWindowText{
+        font-size: 16pt;
+    }
+      
+    .SaleWindowInp{
+        margin-top: 10px; 
+        width: 390px;
+        font-size: 16pt;
+    }
+
+    .SaleWindowButtons{
+        display: flex;
+        height: 95px;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+      
+    .ButtonSaleWindowCancel{
+        height: 40px;
+        width: 110px;
+        font-size: 16pt;
+    }
+      
+    .ButtonSaleWindowOK{
+        height: 40px;
+        width: 160px;
+        font-size: 16pt;
+    }
+
+    .EditUsedStatusGlobalDiv{
+        font-size: 14pt;
+    }
+
+    .EditUsedOrdStatusIcon{
+        width: 25px;
+        height: 25px;
+    }
       
 }
 
@@ -1114,7 +1167,7 @@
     }
 
     .UsedStatusDropDownMainContent{
-        width: 10vw;
+        width: 14vw;
     }
 }
 
@@ -1346,9 +1399,6 @@
 
     .SavedHeadDiv.Search{
         margin-right: 10px;
-    }
-    .UsedStatusDropDownMainContent{
-        width: 10vw;
     }
 }
 
@@ -2106,6 +2156,19 @@
     .MainDiv{
         margin-left: 35px;
     }
+
+    .DropDownEditMainDiv{
+        width: 22vw;
+    }
+
+    .EditUsedStatusGlobalDiv{
+        font-size: 10pt;
+    }
+
+    .EditUsedOrdStatusIcon{
+        width: 17px;
+        height: 17px;
+    }
 }
 
 @media (max-width: 995px){
@@ -2116,6 +2179,8 @@
     .StopListClearButton{
         line-height: 14px;
     }
+
+    
 }
 
 @media(max-width: 955px){
@@ -2182,13 +2247,13 @@
         min-width: 175px;
     }
     .UsedStatusDropDownMainContent{
-        width: 11vw;
+        width: 13vw;
     }
 }
 
 @media(max-width: 855px){ 
     .UsedStatusDropDownMainContent{
-        width: 13vw;
+        width: 15vw;
     }
 
     .ThCityTakeaway{
@@ -2233,6 +2298,11 @@
     .WindowStatisticsClientContentUp{
         font-size: 10pt;
     }
+
+    .DropDownEditMainDiv{
+        width: 26vw;
+    }
+
 }
 
 @media(max-width: 810px){
@@ -2324,7 +2394,7 @@
 
 @media(max-width: 775px){ 
     .UsedStatusDropDownMainContent{
-        width: 14vw;
+        width: 16vw;
     }
 
     .MainPosition {
@@ -2339,7 +2409,7 @@
 
 @media(max-width: 750px){
     .UsedStatusDropDownMainContent{
-        width: 15vw;
+        width: 17vw;
     }
 
     .MainCateg{

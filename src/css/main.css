@@ -1057,6 +1057,10 @@ input:checked + .editdiamslide:before {
   background-color: var(--ColorHoverDeleteAndCancel, rgba(255, 210, 210, 0.123));
 }
 
+.DownPanelButtonRightDelete.Cancel{
+  width: 70px;
+}
+
 .DownPanelButtonRightSave {
   cursor: pointer;
   margin-right: 10px;
@@ -1261,6 +1265,8 @@ input:checked + .editdiamslide:before {
 }
 
 .SaleSumWindowContent{
+  position: relative;
+  top: -10%;
   box-shadow: 0px 0px 5px 0px black;
   padding: 10px;
   border-radius: 10px;
@@ -1581,7 +1587,7 @@ input:checked + .editdiamslide:before {
   background-color: var(--ColorWindowSaleSum, rgb(243, 247, 250)); 
   width: 300px;
   height: 20px;
-  transition: background-color var(--TimeChange1, 0.2s) ease-in-out, color var(--TimeChange1, 0.2s) ease-in-out;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
   border: 1px solid;
   border-color: black;
 }
@@ -2885,15 +2891,41 @@ input:checked + .editdiamslide:before {
 }
 
 .TimeSaveTextOnSavedOrd{
+  cursor: pointer;
   font-size: 12pt;
   font-weight: 600;
 }
 
 .DateSaveAndNumberTextOnSavedOrd{
+  cursor: pointer;
   margin-left: 5px;
   margin-top: 1px;
   font-size: 11pt;
 }
+
+.OpenDropDownEditLabel{
+  border-bottom: 1px dashed black;
+  cursor: pointer;
+}
+
+.DropDownEditGlobalDiv{
+  position: relative;
+  top: 1px
+}
+
+.DropDownEditMainDiv{
+  z-index: 3;
+  box-shadow: 0px 0px 3px 0px black;
+  padding: 5px;
+  border-radius: 5px;
+  width: 18vw;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 
 .SavedOrderBody{
   display: flex;
@@ -4385,10 +4417,73 @@ input:checked + .editdiamslide:before {
   box-shadow: 0px 0px 3px 0px black;
   padding: 5px;
   border-radius: 5px;
-  width: 9vw;
+  width: 11vw;
   background-color: var(--HeadOrderColor, rgb(224, 231, 235));
   position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.UsedStatusDropDownDate{
+  font-weight: 600;
+}
+
+.ButtonEditOrder{
+  margin-left: 10px;
+  cursor: pointer;
+  height: 20px;
+  background-color: var(--HeadOrderColor, rgb(224, 231, 235));
+  color: var(--Text2-Color, black);
+  box-shadow: 0px 0px 3px 0px black;
+  border: none;
+  border-radius: 2px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.ButtonEditOrder:hover{
+  background-color: var(--LightA-color, rgb(3, 168, 245));
+  color: var(--mainText-color, rgb(243, 247, 250));
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.EditUsedStatusIconDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EditUsedOrdStatusIcon{
+  cursor: pointer;
+  color: var(--ColorMarkYa, rgb(3, 168, 245));
+  width: 20px;
+  height: 20px;
+  transition: all var(--TimeChange1, 0.2s) ease-in-out;
+}
+
+.EditUsedOrdStatusIcon.NotProcessing{
+  z-index: 0;
+  transform: rotate(90deg);
+}
+
+.EditUsedStatusGlobalDiv{
+  padding-top: 10px;
+  padding-right: 5px;
+  display: flex;
+  align-items: end;
+}
+
+.EditUsedStatusMainDiv{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.EditUsedStatusLeftDiv{
+  display: flex;
+  align-items: center;
+}
+
+.EditUsedStatusDropDownText{
+  margin-left: 10px;
 }

@@ -8,15 +8,16 @@ class SaleSumWindow extends React.Component {
     }
   }
   render() {
-    if (this.props.SSumWindowActive === true)
-    {
     return (
       <div className="SaleSumWindowMain">
         <div className="SaleSumWindowContent">
-          <div>Введите сумму скидки:</div>
+          <div
+          className="SaleSumWindowText"
+          >Введите сумму скидки:</div>
           <div className="SaleWindowInpDiv">
           <input 
             className="SaleWindowInp"
+            id='SaleWindowInp'
             type="number"
             onChange={((e) =>
               {
@@ -61,16 +62,12 @@ class SaleSumWindow extends React.Component {
       </div>
       </div>
     )
-  }
-  else
-  {
-    return(
-        <div>
-
-        </div>
-    )
-  }
+  
+  
 }
+  componentDidMount(){
+    document.getElementById('SaleWindowInp').focus()
+  }
 }
 
 export default SaleSumWindow

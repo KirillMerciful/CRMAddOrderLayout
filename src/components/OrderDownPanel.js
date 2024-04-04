@@ -61,11 +61,16 @@ class OrderDownPanel extends React.Component {
 
           <div className='DownPanelButtonRight'>
           
-            <button className='DownPanelButtonRightDelete' onClick={() => {
+            {this.props.EditOrderCheck === false ? <button className='DownPanelButtonRightDelete' onClick={() => {
               this.props.clOrd(0)
             }}
             ><IoTrashSharp className='IconDelete' /></button>
-            
+            :
+            <button className='DownPanelButtonRightDelete Cancel' onClick={() => {
+              this.props.clOrd(0)
+            }}
+            >Отмена</button>
+            }
             
             <button className='DownPanelButtonRightSave' onClick={(() => {
               this.props.SavedButtonClick()

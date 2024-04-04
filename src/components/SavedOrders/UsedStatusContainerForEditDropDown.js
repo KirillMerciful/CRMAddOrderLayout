@@ -5,7 +5,7 @@ import { BsRocketTakeoff } from "react-icons/bs";
 import { LuChefHat } from "react-icons/lu";
 
 
-class UsedStatusContainer extends React.Component {    
+class UsedStatusContainerForEditDropDown extends React.Component {    
     constructor(props) {
         super(props)
         this.state = {
@@ -16,86 +16,72 @@ class UsedStatusContainer extends React.Component {
         
         return(
         <div 
-        className='UsedStatusMainDiv'
-        tabIndex={0}
-        onClick={() => {
-            this.setState({
-                OpenDropDownStatus: !this.state.OpenDropDownStatus
-            })
-        }}
-        onBlur={() => {
-            this.setState({
-                OpenDropDownStatus: false
-            })
-        }}
+        className='EditUsedStatusMainDiv'
         >
+            <div
+            className='EditUsedStatusLeftDiv'
+            >
             {this.props.UsedStatus.Status === "New" ?
             
-                <div className='UsedStatusIconDiv'>
-                    <IoAlertCircleOutline className='UsedOrdStatusIcon'/>
+                <div className='EditUsedStatusIconDiv'>
+                    <IoAlertCircleOutline className='EditUsedOrdStatusIcon'/>
                 </div>
             
             
             :this.props.UsedStatus.Status === "Processing" ? 
             
-                <div className='UsedStatusIconDiv'>
-                    <SlPhone className='UsedOrdStatusIcon'/>
+                <div className='EditUsedStatusIconDiv'>
+                    <SlPhone className='EditUsedOrdStatusIcon'/>
                 </div>
             
             
             :this.props.UsedStatus.Status === "NotProcessing" ? 
             
-                <div className='UsedStatusIconDiv'>
-                    <SlPhone className='UsedOrdStatusIcon NotProcessing'/>
+                <div className='EditUsedStatusIconDiv'>
+                    <SlPhone className='EditUsedOrdStatusIcon NotProcessing'/>
                 </div>
             
             
             :this.props.UsedStatus.Status === "Cancelled" ? 
                 
-                    <div className='UsedStatusIconDiv'>
-                        <IoCloseCircleOutline className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <IoCloseCircleOutline className='EditUsedOrdStatusIcon'/>
                     </div>
                     
                 
                 :this.props.UsedStatus.Status === "Timeout" ? 
                
-                    <div className='UsedStatusIconDiv'>
-                        <IoTimeOutline className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <IoTimeOutline className='EditUsedOrdStatusIcon'/>
                     </div>
                     
                 :this.props.UsedStatus.Status === "Cooking" ? 
                
-                    <div className='UsedStatusIconDiv'>
-                        <LuChefHat className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <LuChefHat className='EditUsedOrdStatusIcon'/>
                     </div>
                     
                 :this.props.UsedStatus.Status === "Cooked" ?
                 
-                    <div className='UsedStatusIconDiv'>
-                        <IoRestaurantOutline className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <IoRestaurantOutline className='EditUsedOrdStatusIcon'/>
                     </div>
                     
                 :this.props.UsedStatus.Status === "Delivery" ? 
                 
-                    <div className='UsedStatusIconDiv'>
-                        <BsRocketTakeoff className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <BsRocketTakeoff className='EditUsedOrdStatusIcon'/>
                     </div>
                     
                 :
-                    <div className='UsedStatusIconDiv'>
-                        <IoCheckmarkCircleOutline className='UsedOrdStatusIcon'/>
+                    <div className='EditUsedStatusIconDiv'>
+                        <IoCheckmarkCircleOutline className='EditUsedOrdStatusIcon'/>
                     </div>
                 }
 
-                {this.state.OpenDropDownStatus === true &&
-                <div
-                className='UsedStatusDropDownMainDiv'
-                >
-                    <div
-                    className='UsedStatusDropDownMainContent'
-                    >
+                    
                         <div
-                        className='UsedStatusDropDownText'
+                        className='EditUsedStatusDropDownText'
                         >
                             {this.props.UsedStatus.Status === "New" && "Новый:"}
                             {this.props.UsedStatus.Status === "Processing" && "В обработке:"}
@@ -107,6 +93,7 @@ class UsedStatusContainer extends React.Component {
                             {this.props.UsedStatus.Status === "Delivery" && "В пути:"}
                             {this.props.UsedStatus.Status === "Completed" && "Выполнен:"}
                         </div>
+                </div>
 
                         <div
                         className='UsedStatusDropDownTime'
@@ -118,9 +105,9 @@ class UsedStatusContainer extends React.Component {
                                 {this.props.UsedStatus.Date + "." + this.props.UsedStatus.Month + "." + this.props.UsedStatus.Year}
                             </div>
                         </div>
-                    </div>
-                </div>
-                }
+                    
+                
+                
         </div>
         )  
         
@@ -129,4 +116,4 @@ class UsedStatusContainer extends React.Component {
     }  
   }
 
-  export default UsedStatusContainer
+  export default UsedStatusContainerForEditDropDown

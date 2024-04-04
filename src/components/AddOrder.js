@@ -143,7 +143,8 @@ class AddOrder extends React.Component {
                 <td className="OrdPosSum"  
                 data-value={this.props.pdkon === 0 ? 
                   this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totalprice : this.props.orderPosition.totalprice36
-                  :this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totaldkprice : this.props.orderPosition.totaldkprice36} id={"OrdPosTotSum" + this.props.orderPosition.idOrd}>
+                  :this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totaldkprice : this.props.orderPosition.totaldkprice36} 
+                  id={"OrdPosTotSum" + this.props.orderPosition.idOrd}>
                   {
                     this.props.pdkon === 0 ? 
                     this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totalprice + " руб."  : this.props.orderPosition.totalprice36 + " руб."

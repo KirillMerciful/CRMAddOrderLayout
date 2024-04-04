@@ -5,6 +5,7 @@ import ContainerStatusOrd from './ContainerStatusOrd';
 import SavedOrdDeletedWindow from './SavedOrdDeletedWindow';
 import SavedAdditions from './SavedAdditions';
 import UsedStatusContainer from './UsedStatusContainer';
+import UsedStatusContainerForEditDropDown from './UsedStatusContainerForEditDropDown';
 
 
 class SavedOrd extends React.Component {   
@@ -13,6 +14,7 @@ class SavedOrd extends React.Component {
         this.state = {
             OpenDropDownStatus: false,
             OpenDropDownDelete: false,
+            OpenDropDownEdit: false,
             TimeMoment: 
             [
                 {
@@ -29,8 +31,85 @@ class SavedOrd extends React.Component {
         <div>
             <div className='SavedOrdDiv'>
                 <div className='SavedOrderHead'>
-                    <label className='TimeSaveTextOnSavedOrd'>{this.props.Saved.orderDetal[0].TimeSave[0].Hour + ":" + this.props.Saved.orderDetal[0].TimeSave[0].Minutes}</label>
-                    <label className='DateSaveAndNumberTextOnSavedOrd'>{' ' + this.props.Saved.orderDetal[0].DateSave[0].Date + "." + this.props.Saved.orderDetal[0].DateSave[0].Mounth + "." + this.props.Saved.orderDetal[0].DateSave[0].Year + " (№ " + this.props.Saved.SavedIdOrd + ")"}</label>
+                    <div
+                    className='OpenDropDownEditLabel'
+                    tabIndex={0}
+                    onClick={() => {
+                        this.setState({
+                            OpenDropDownEdit: !this.state.OpenDropDownEdit
+                        })
+                    }}
+                    onBlur={() => {
+                        this.setState({
+                            OpenDropDownEdit: false
+                        })
+                    }}
+                    >
+                        <label 
+                        className='TimeSaveTextOnSavedOrd'
+                        >{this.props.Saved.orderDetal[0].TimeSave[0].Hour + ":" + this.props.Saved.orderDetal[0].TimeSave[0].Minutes}</label>
+                        <label 
+                        className='DateSaveAndNumberTextOnSavedOrd'
+                        >{' ' + this.props.Saved.orderDetal[0].DateSave[0].Date + "." + this.props.Saved.orderDetal[0].DateSave[0].Mounth + "." + this.props.Saved.orderDetal[0].DateSave[0].Year + " (№ " + this.props.Saved.SavedIdOrd + ")"}</label>
+                        {this.state.OpenDropDownEdit === true && <div
+                        className='DropDownEditGlobalDiv'
+                        >
+                            <div
+                            className='DropDownEditMainDiv'
+                            >
+                                {this.props.UsedStatus.map((el) => 
+                                el.SavedIdOrd === this.props.Saved.SavedIdOrd &&
+                                <div
+                                className='EditUsedStatusGlobalDiv'
+                                >
+                                    <UsedStatusContainerForEditDropDown 
+                                    UsedStatus={el}
+                                    />
+                                </div>
+                            )}
+
+
+                            <div
+                            className='EditUsedStatusGlobalDiv'
+                            >
+                                <div 
+                                className='EditUsedStatusMainDiv'
+                                >
+                                    <div
+                                    className='EditUsedStatusLeftDiv'
+                                    >
+                        
+                                        <div
+                                        className='EditUsedStatusDropDownText'
+                                        >
+                                            {"Последнее изменение:"}
+                                        </div>
+                                    </div>
+
+                                    <div
+                                    className='UsedStatusDropDownTime'
+                                    >
+                                        {this.props.Saved.orderDetal[0].EditTimeAndDate.EditTimeHour + ":" + this.props.Saved.orderDetal[0].EditTimeAndDate.EditTimeMinutes}
+
+                                        <div
+                                        className='UsedStatusDropDownDate'
+                                            >
+                                                {this.props.Saved.orderDetal[0].EditTimeAndDate.EditDateDate + "." + this.props.Saved.orderDetal[0].EditTimeAndDate.EditDateMonth + "." + this.props.Saved.orderDetal[0].EditTimeAndDate.EditDateYear}
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>}
+                    </div>
+                    <button
+                    className='ButtonEditOrder'
+                    onClick={() => {
+                        this.props.EditOrder(this.props.Saved)
+                    }}
+                    >Изменить</button>
                     {this.props.Saved.orderDetal[0].TypeOrder === "delivery" ? 
                     <div  className='MarkDelivery'>
                         Доставка

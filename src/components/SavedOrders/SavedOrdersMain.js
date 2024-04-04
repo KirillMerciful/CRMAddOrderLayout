@@ -336,6 +336,7 @@ class SavedOrdersMain extends React.Component {
 
                 {this.state.SortOrder.slice(0, this.state.OrdersNumbers).map((el) =>
                     <SavedOrd 
+                    EditOrder={this.props.EditOrder}
                     UsedStatus={this.props.UsedStatus}
                     ButtonAddOrdersNumbers={this.state.ButtonAddOrdersNumbers}
                     AddOrdersNumber={this.AddOrdersNumber}

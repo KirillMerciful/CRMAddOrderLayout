@@ -27,7 +27,7 @@ class MenuMain extends React.Component {
               </div>
               <IoArrowForwardCircle className={this.props.openMenu === true ? "IconOpenMenu open" : "IconOpenMenu"} id="IconOM"/>
             </div>
-            <div className="ContentNewOrderMenu" onClick={(() => {
+           {this.props.EditOrderCheck === false && <div className="ContentNewOrderMenu" onClick={(() => {
                   setTimeout(() => {
                     this.props.NewOrderON()
                   }, 50)
@@ -38,17 +38,17 @@ class MenuMain extends React.Component {
               </div>
                 <IoDuplicate id="IconNewOrderID" className={this.props.ActiveComponent === 0 ? "IconNewOrder ActivateTab" : 'IconNewOrder'}/>
           </div>
-
+          }
           <div className="ContentSavedOrdersMenu" onClick={(() => {
             setTimeout(() => {
                 this.props.SavedOrdersON()
             }, 50)
                 
               })}>
-            <div className={this.props.ActiveComponent === 2 ? "TextSavedOrdersMenu ActivateTabText" : 'TextSavedOrdersMenu'}>
+            <div className={this.props.ActiveComponent === 2 || this.props.EditOrderCheck === true ? "TextSavedOrdersMenu ActivateTabText" : 'TextSavedOrdersMenu'}>
                   {this.props.openMenu === true && 'Заказы'}
                 </div>
-              <IoCartSharp id="IconSavedOrdersMenuID" className={this.props.ActiveComponent === 2 ? "IconSavedOrders ActivateTab" : 'IconSavedOrders'} />
+              <IoCartSharp id="IconSavedOrdersMenuID" className={this.props.ActiveComponent === 2 || this.props.EditOrderCheck === true ? "IconSavedOrders ActivateTab" : 'IconSavedOrders'} />
           </div> 
           
           <div className="ContentStopListMenu" onClick={(() => {
