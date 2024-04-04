@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/KirillMerciful.github.io/static/css/main.22fd11e8.css",
-    "main.js": "/KirillMerciful.github.io/static/js/main.4dd73611.js",
-    "index.html": "/KirillMerciful.github.io/index.html",
-    "main.22fd11e8.css.map": "/KirillMerciful.github.io/static/css/main.22fd11e8.css.map",
-    "main.4dd73611.js.map": "/KirillMerciful.github.io/static/js/main.4dd73611.js.map"
+    "main.css": "/KirillMerciful/CRMAddOrderLayout/static/css/main.622544b9.css",
+    "main.js": "/KirillMerciful/CRMAddOrderLayout/static/js/main.6bffe9f4.js",
+    "index.html": "/KirillMerciful/CRMAddOrderLayout/index.html",
+    "main.622544b9.css.map": "/KirillMerciful/CRMAddOrderLayout/static/css/main.622544b9.css.map",
+    "main.6bffe9f4.js.map": "/KirillMerciful/CRMAddOrderLayout/static/js/main.6bffe9f4.js.map"
   },
   "entrypoints": [
-    "static/css/main.22fd11e8.css",
-    "static/js/main.4dd73611.js"
+    "static/css/main.622544b9.css",
+    "static/js/main.6bffe9f4.js"
   ]
 }
