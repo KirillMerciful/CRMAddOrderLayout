@@ -1,5 +1,4 @@
 import React from 'react';
-import City from './City';
 
 class StopPositionOnCity extends React.Component {    
     render() {

@@ -50,6 +50,7 @@ class StopPodCatOnCity extends React.Component {
         {
           check = check + 1
         }
+        return(el)
       })
       this.setState({
         CheckFind: check

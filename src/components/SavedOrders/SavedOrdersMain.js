@@ -356,7 +356,6 @@ class SavedOrdersMain extends React.Component {
                     className='ButtonAddOrdersNumbers'
                     onClick={() => {
                         this.AddOrdersNumber()
-                        console.log(this.state.OrdersNumbers)
                     }}
                     >
                         Показать еще
@@ -815,43 +814,91 @@ class SavedOrdersMain extends React.Component {
                break
             }
             case("Week"):{
-                
+
                 var today = new Date()
-                var MinDay = String(today.getDate() - 7).padStart(2, "0")
+                        
+                var MinMounth = String(today.getMonth() + 1).padStart(2, "0")
+                var MinYear = String(today.getFullYear())
+                var MinWeekDay = String(today.getDay())
+                var MaxWeekDay = 7 - parseInt(MinWeekDay)
+                var MinDay = String(today.getDate() + 1 - MinWeekDay).padStart(2, "0")
                 if(parseInt(MinDay) <= 0)
                 {
-                    MinDay = "01"
+                    MinMounth = String(today.getMonth()).padStart(2, "0")
+                    if(MinMounth === 0)
+                    {
+                        MinYear = String(today.getFullYear() - 1)
+                        MinMounth = '12'
+                    }
+                    if(parseInt(MinMounth) === 1 || parseInt(MinMounth) === 3 || parseInt(MinMounth) === 5 || parseInt(MinMounth) === 7 || parseInt(MinMounth) === 8 || parseInt(MinMounth) === 10 || parseInt(MinMounth) === 12)
+                    {
+                        MinDay = String(parseInt(MinDay) + 31).padStart(2, "0")
+                    }
+                    else
+                    {
+                        if(parseInt(MinMounth) === 2)
+                        {
+                            MinDay = String(parseInt(MinDay) + 28).padStart(2, "0")
+                        }
+                        else
+                        {
+                            MinDay = String(parseInt(MinDay) + 30).padStart(2, "0")
+                        }
+                    }
                 }
-                
+                var MaxDay = String(today.getDate() + MaxWeekDay).padStart(2, "0")
+                var MaxMounth = String(today.getMonth() + 1).padStart(2, "0")
+                var MaxYear = String(today.getFullYear())
+
+                if(parseInt(MaxMounth) === 1 || parseInt(MaxMounth) === 3 || parseInt(MaxMounth) === 5 || parseInt(MaxMounth) === 7 || parseInt(MaxMounth) === 8 || parseInt(MaxMounth) === 10 || parseInt(MaxMounth) === 12)
+                    {
+                        if(parseInt(MaxDay) > 31)
+                        {
+                            MaxMounth = String(today.getMonth() + 2).padStart(2, "0")
+                            if(parseInt(MaxMounth) === 13)
+                            {
+                                MaxYear = String(today.getFullYear() + 1)
+                                MaxMounth = "01"
+                            }
+                            MaxDay = String(parseInt(MaxDay) - 31).padStart(2, "0")
+                        }
+                    }
+                    else
+                    {
+                        if(parseInt(MaxMounth) === 2)
+                        {
+                            if(parseInt(MaxDay) > 28)
+                            {
+                                MaxMounth = String(today.getMonth() + 2).padStart(2, "0")
+                                MaxDay = String(parseInt(MaxDay) - 28).padStart(2, "0")
+                            }
+                        }
+                        else
+                        {
+                            if(parseInt(MaxDay) > 30)
+                            {
+                                MaxMounth = String(today.getMonth() + 2).padStart(2, "0")
+                                MaxDay = String(parseInt(MaxDay) - 30).padStart(2, "0")
+                            }
+                        }
+                    }
+
                 
                 this.setState({
                     CheckMinDate:{
-                        Date: String(today.getDate() - 7).padStart(2, "0"),
-                        Mounth: this.state.TodayDate.Mounth,
-                        Year: this.state.TodayDate.Year
+                        Date: MinDay,
+                        Mounth: MinMounth,
+                        Year: MinYear
                     }
                 })
 
                 this.setState({
                     CheckMaxDate:{
-                        Date: this.state.TodayDate.Date,
-                        Mounth: this.state.TodayDate.Mounth,
-                        Year: this.state.TodayDate.Year
+                        Date: MaxDay,
+                        Mounth: MaxMounth,
+                        Year: MaxYear
                     }
                 })
-
-                await this.setState
-
-                if(this.state.CheckMinDate.Date <= 0)
-                {
-                    this.setState({
-                        Date: "01",
-                        Mounth: this.state.TodayDate.Mounth,
-                        Year: this.state.TodayDate.Year
-                    })
-                }
-
-                await this.setState
 
                 this.setState({//сортировка по периоду
                     SortOrder: this.state.SortOrder.filter((el) => 
@@ -890,7 +937,6 @@ class SavedOrdersMain extends React.Component {
             document.getElementById('WindowSearchInput').classList.add('Fail')
             document.getElementById('WindowSearchInput').value = ""
             this.SortOrderByStatus()
-            console.log(this.props.AlertCheck)
         }
         
     }

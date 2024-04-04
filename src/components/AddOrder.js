@@ -214,7 +214,6 @@ class AddOrder extends React.Component {
                       className={this.props.orderPosition.Proverka36 === false ? "PizzaChangeDiamOnOrderButton36" : "PizzaChangeDiamOnOrderButton36 Actived"} 
                       onClick={(() => {
                         this.props.ChangeDiamPizzaOnOrder(true, this.props.orderPosition.idOrd)
-                        console.log(this.props.orderAddition)
                       })}
                       >36см</button>
                     </td>

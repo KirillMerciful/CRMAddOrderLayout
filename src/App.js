@@ -1534,7 +1534,6 @@ class App extends React.Component {
                                             this.setState({
                                                 OpenModalStatisticsClient: true
                                             })
-                                            console.log(this.state.StatisticsClient)
                                         }}
                                         />
                                     }
@@ -1866,6 +1865,11 @@ class App extends React.Component {
            
             >
                 <div  className='MainDivStopList'>
+                <StopAlerts
+                            AlertCheck={this.state.AlertCheck}
+                            AllertClick={this.AllertClick}
+                />
+
                 <Cities 
                     City={this.state.City}
                     ChangeTimeDeliveryCity={this.ChangeTimeDeliveryCity}
@@ -3439,9 +3443,6 @@ class App extends React.Component {
                 {
                     this.AlertAdd("StopOnSave")
                     document.getElementById('OrdPosName' + el.idOrd).classList.add('Stoped')
-                    setTimeout(() => {
-                        document.getElementById('OrdPosName' + el.idOrd).classList.remove('Stoped')
-                    }, 4000)
                 }
                 return(el)
             })
@@ -3451,9 +3452,6 @@ class App extends React.Component {
                 {
                     this.AlertAdd("StopOnSave")
                     document.getElementById('OrdPosName' + el.idAddition).classList.add('Stoped')
-                    setTimeout(() => {
-                        document.getElementById('OrdPosName' + el.idAddition).classList.remove('Stoped')
-                    }, 4000)
                 }
                 return(el)
     })
@@ -3566,6 +3564,7 @@ class App extends React.Component {
 
                 
             }
+            return(el)
         })
         if(this.state.OnCity.idCity !== 0)
         {
@@ -3705,9 +3704,6 @@ class App extends React.Component {
                         {
                             this.AlertAdd("StopOnSave")
                             document.getElementById('OrdPosName' + el.idOrd).classList.add('Stoped')
-                            setTimeout(() => {
-                                document.getElementById('OrdPosName' + el.idOrd).classList.remove('Stoped')
-                            }, 4000)
                         }
                         return(el)
                     })
@@ -3717,9 +3713,6 @@ class App extends React.Component {
                         {
                             this.AlertAdd("StopOnSave")
                             document.getElementById('OrdPosName' + el.idAddition).classList.add('Stoped')
-                            setTimeout(() => {
-                                document.getElementById('OrdPosName' + el.idAddition).classList.remove('Stoped')
-                            }, 4000)
                         }
                         
                         return(el)
@@ -3736,11 +3729,15 @@ class App extends React.Component {
                         var MinDate = String(today.getDate()).padStart(2 , "0")
                         var MinMounth = String(today.getMonth() + 1).padStart(2 , "0")
                         var MinYear = String(today.getFullYear())
+                        var MinHour = 0
+                        var MinMinutes = 0
+                        var MinTime = 0
+                        var InpTime = 0
                         
                         if(this.state.TypeOrder === 'delivery')
                         {
-                            var MinHour = String(today.getHours()).padStart(2 , "0")
-                            var MinMinutes = String(today.getMinutes() + this.state.OnCity.delivery + this.state.AddTimeDelivery).padStart(2 , "0")
+                            MinHour = String(today.getHours()).padStart(2 , "0")
+                            MinMinutes = String(today.getMinutes() + this.state.OnCity.delivery + this.state.AddTimeDelivery).padStart(2 , "0")
                             if(parseInt(MinMinutes) > 60)
                             {
                                 if(parseInt(MinMinutes) > 120)
@@ -3803,8 +3800,8 @@ class App extends React.Component {
                             }
                             else
                             {
-                                var MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
-                                var InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
+                                MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
+                                InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
                                 if((InpTime - MinTime) >= 30)
                                 {
                                     this.setState({
@@ -3827,8 +3824,8 @@ class App extends React.Component {
                         }
                         else
                         {
-                            var MinHour = String(today.getHours()).padStart(2 , "0")
-                            var MinMinutes = String(today.getMinutes() + this.state.OnCity.takeaway).padStart(2 , "0")
+                            MinHour = String(today.getHours()).padStart(2 , "0")
+                            MinMinutes = String(today.getMinutes() + this.state.OnCity.takeaway).padStart(2 , "0")
                             if(parseInt(MinMinutes) > 60)
                             {
                                 MinMinutes = String(parseInt(MinMinutes) - 60).padStart(2 , "0")
@@ -3884,8 +3881,8 @@ class App extends React.Component {
                             }
                             else
                             {
-                                var MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
-                                var InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
+                                MinTime = (parseInt(MinHour) * 60) + parseInt(MinMinutes)
+                                InpTime = (parseInt(InpHour) * 60) + parseInt(InpMinutes)
                                 if((InpTime - MinTime) >= 30)
                                 {
                                     this.setState({
@@ -4021,6 +4018,7 @@ class App extends React.Component {
             })
             return(el)
         })
+        
         orderCity.push({
             idCity: this.state.OnCity.idCity,
             city: this.state.OnCity.city, 
@@ -4038,14 +4036,14 @@ class App extends React.Component {
             }
             else
             {
-                var MaxTime = this.state.MaxTimeTakeaway
+                MaxTime = this.state.MaxTimeTakeaway
             }
         }
         else
         {
             var MaxTimeHour = this.state.TimeInputContain[0].Hour
             var MaxTimeMinutes = this.state.TimeInputContain[0].Minutes
-            var MaxTime = [{Hour: MaxTimeHour, Minutes: MaxTimeMinutes}]
+            MaxTime = [{Hour: MaxTimeHour, Minutes: MaxTimeMinutes}]
             this.setState({
                 TimeSave: [
                     {
@@ -4076,7 +4074,7 @@ class App extends React.Component {
         }
         else
         {
-            var Status = this.state.EditOrderStatus
+            Status = this.state.EditOrderStatus
         }
         if(this.state.PreOrder === true)
         {
@@ -4139,7 +4137,6 @@ class App extends React.Component {
             Saved: [...this.state.Saved, {SavedIdOrd, orderPosSaved, orderCity, orderDetal, orderAdditionSaved, orderAddress, orderMarksSaved}]
         })
         await this.setState
-        console.log(this.state.Saved)
         this.cleanOrder()
         this.setState({
             ActiveComponent: 2
@@ -4410,7 +4407,6 @@ class App extends React.Component {
         })
 
         var CheckerCity = this.state.City.filter((el) => el.idCity === Saved.orderCity[0].idCity)
-        console.log(CheckerCity)
 
         this.setState({
             OnCity: {
@@ -4581,6 +4577,7 @@ class App extends React.Component {
                     el.id = a.id
                     orderPositionArray.push(el)
                 }
+                return(a)
             })
             
             return(el)
@@ -4671,11 +4668,6 @@ class App extends React.Component {
         {
             this.ButtonSaleColor(1)
         }
-        console.log(Saved)
-
-
-        console.log('хуй')
-        console.log(this.state.orderAddition)
 
     }
     
