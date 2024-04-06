@@ -2384,7 +2384,9 @@ class App extends React.Component {
                         }
                         else
                         {
-                            this.AlertAdd('SauceSumLimit')
+                            this.setState({
+                                orderAddition: this.state.orderAddition.filter((a) => a.idAddition !== idAddition)
+                            })
                         }
                     }
                 
