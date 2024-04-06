@@ -855,17 +855,13 @@ input:checked + .editdiamslide:before {
   font-size: 9pt;   
 }
 
-.AdditionContainer{
-  position: relative;
-}
-
 .AdditionMainDiv{
   background-color: var(--ColorWindowSaleSum, rgb(224, 231, 235));
   margin-left: 5px;
   max-width: 27.85vw;
   overflow-x: hidden;
   overflow-y: auto;
-  position: absolute;
+  position: relative;
   color: var(--Text2-Color, black);
   box-shadow: 0px 0px 3px 0px black;
   z-index: 2;
