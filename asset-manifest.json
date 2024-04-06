@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/CRMAddOrderLayout/static/css/main.88a43fb3.css",
-    "main.js": "/CRMAddOrderLayout/static/js/main.a72b575a.js",
+    "main.js": "/CRMAddOrderLayout/static/js/main.f56bdc9f.js",
     "index.html": "/CRMAddOrderLayout/index.html",
     "main.88a43fb3.css.map": "/CRMAddOrderLayout/static/css/main.88a43fb3.css.map",
-    "main.a72b575a.js.map": "/CRMAddOrderLayout/static/js/main.a72b575a.js.map"
+    "main.f56bdc9f.js.map": "/CRMAddOrderLayout/static/js/main.f56bdc9f.js.map"
   },
   "entrypoints": [
     "static/css/main.88a43fb3.css",
-    "static/js/main.a72b575a.js"
+    "static/js/main.f56bdc9f.js"
   ]
 }
