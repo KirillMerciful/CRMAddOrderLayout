@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "./static/css/main.622544b9.css",
-    "main.js": "./static/js/main.6bffe9f4.js",
-    "index.html": "./index.html",
-    "main.622544b9.css.map": "./static/css/main.622544b9.css.map",
-    "main.6bffe9f4.js.map": "./static/js/main.6bffe9f4.js.map"
+    "main.css": "/KirillMerciful.github.io/static/css/main.622544b9.css",
+    "main.js": "/KirillMerciful.github.io/static/js/main.6bffe9f4.js",
+    "index.html": "/KirillMerciful.github.io/index.html",
+    "main.622544b9.css.map": "/KirillMerciful.github.io/static/css/main.622544b9.css.map",
+    "main.6bffe9f4.js.map": "/KirillMerciful.github.io/static/js/main.6bffe9f4.js.map"
   },
   "entrypoints": [
     "static/css/main.622544b9.css",
