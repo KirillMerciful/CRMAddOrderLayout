@@ -156,9 +156,6 @@ class AddOrder extends React.Component {
             </tbody>
           </table>
           {this.state.OpenDropDownAddition === true && 
-                <div
-                className="AdditionContainer"
-                >
                   <div 
                   className='AdditionMainDiv'
                   id={'AdditionMainDiv' + this.props.orderPosition.idOrd}
@@ -194,7 +191,6 @@ class AddOrder extends React.Component {
                       
                     ))}
                   </div>
-                </div>
                   }
           <div>
           {this.props.orderPosition.categ ==="Пицца" &&
