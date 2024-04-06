@@ -2345,11 +2345,12 @@ class App extends React.Component {
                                     orderAddition: [...this.state.orderAddition]
                                 })
                             }
+                        }
                         else
                         {
                            this.AlertAdd('SauceSumLimit')
                         }
-                    }
+                    
                 }
                 
                 return(el)
