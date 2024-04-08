@@ -157,7 +157,7 @@ class App extends React.Component {
                 },
                 {
                     id: 18,
-                    name: "Мясо В Вок",
+                    name: "Мясо В ВОК",
                     categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
@@ -165,7 +165,7 @@ class App extends React.Component {
                 },
                 {
                     id: 19,
-                    name: "Доп В Вок",
+                    name: "Доп В ВОК",
                     categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
@@ -173,7 +173,7 @@ class App extends React.Component {
                 },
                 {
                     id: 20,
-                    name: "Соус В Вок",
+                    name: "Соус В ВОК",
                     categories: "Добавка В ВОК",
                     CheckStopList: false,
                     CheckIndeterminate: false,
@@ -2788,7 +2788,7 @@ class App extends React.Component {
                 id: 189,
                 name: "Острый",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2801,7 +2801,7 @@ class App extends React.Component {
                 id: 190,
                 name: "Сладкий чили",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2814,7 +2814,7 @@ class App extends React.Component {
                 id: 191,
                 name: "Сливочный",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2827,7 +2827,7 @@ class App extends React.Component {
                 id: 192,
                 name: "Терияки",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2840,7 +2840,7 @@ class App extends React.Component {
                 id: 193,
                 name: "Том ям",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2853,7 +2853,7 @@ class App extends React.Component {
                 id: 194,
                 name: "Устричный",
                 salecheck: true,
-                categ: "Соус в Вок",
+                categ: "Соус В ВОК",
                 price: 0,
                 dkprice: 0,
                 num: 1,
@@ -2866,7 +2866,7 @@ class App extends React.Component {
                 id: 195,
                 name: "Грибы",
                 salecheck: true,
-                categ: "Доп в Вок",
+                categ: "Доп В ВОК",
                 price: 50,
                 dkprice: 50,
                 num: 1,
@@ -2879,7 +2879,7 @@ class App extends React.Component {
                 id: 196,
                 name: "Кукуруза",
                 salecheck: true,
-                categ: "Доп в Вок",
+                categ: "Доп В ВОК",
                 price: 50,
                 dkprice: 50,
                 num: 1,
@@ -2892,7 +2892,7 @@ class App extends React.Component {
                 id: 197,
                 name: "Пармезан",
                 salecheck: true,
-                categ: "Доп в Вок",
+                categ: "Доп В ВОК",
                 price: 50,
                 dkprice: 50,
                 num: 1,
@@ -2905,7 +2905,7 @@ class App extends React.Component {
                 id: 198,
                 name: "Фасоль",
                 salecheck: true,
-                categ: "Доп в Вок",
+                categ: "Доп В ВОК",
                 price: 50,
                 dkprice: 50,
                 num: 1,
@@ -2918,7 +2918,7 @@ class App extends React.Component {
                 id: 199,
                 name: "Гречневая",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 price: 159,
                 dkprice: 189,
                 num: 1,
@@ -2931,7 +2931,7 @@ class App extends React.Component {
                 id: 200,
                 name: "Удон",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 price: 159,
                 dkprice: 189,
                 num: 1,
@@ -2944,7 +2944,7 @@ class App extends React.Component {
                 id: 201,
                 name: "Фунчеза",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 price: 159,
                 dkprice: 189,
                 num: 1,
@@ -2957,7 +2957,7 @@ class App extends React.Component {
                 id: 202,
                 name: "Яичная",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 price: 159,
                 dkprice: 189,
                 num: 1,
@@ -2970,7 +2970,7 @@ class App extends React.Component {
                 id: 203,
                 name: "Говядина",
                 salecheck: true,
-                categ: "Мясо в Вок",
+                categ: "Мясо В ВОК",
                 price: 180,
                 dkprice: 180,
                 num: 1,
@@ -2983,7 +2983,7 @@ class App extends React.Component {
                 id: 204,
                 name: "Креветка",
                 salecheck: true,
-                categ: "Мясо в Вок",
+                categ: "Мясо В ВОК",
                 price: 190,
                 dkprice: 190,
                 num: 1,
@@ -2996,7 +2996,7 @@ class App extends React.Component {
                 id: 205,
                 name: "Курица",
                 salecheck: true,
-                categ: "Мясо в Вок",
+                categ: "Мясо В ВОК",
                 price: 100,
                 dkprice: 100,
                 num: 1,
@@ -3009,7 +3009,7 @@ class App extends React.Component {
                 id: 206,
                 name: "Лосось",
                 salecheck: true,
-                categ: "Мясо в Вок",
+                categ: "Мясо В ВОК",
                 price: 220,
                 dkprice: 220,
                 num: 1,
@@ -3022,7 +3022,7 @@ class App extends React.Component {
                 id: 207,
                 name: "Свинина",
                 salecheck: true,
-                categ: "Мясо в Вок",
+                categ: "Мясо В ВОК",
                 price: 120,
                 dkprice: 120,
                 num: 1,
@@ -3035,7 +3035,7 @@ class App extends React.Component {
                 id: 208,
                 name: "Гречневая с говядиной в соусе сладкий чили",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Говядина, капуста, морковь, болгарский перец, соус сладкий чили.",
                 price: 349,
                 dkprice: 449,
@@ -3049,7 +3049,7 @@ class App extends React.Component {
                 id: 209,
                 name: "Удон с креветкой в соусе терияки",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Креветки, капуста, морковь, болгарский перец, соус терияки.",
                 price: 359,
                 dkprice: 469,
@@ -3063,7 +3063,7 @@ class App extends React.Component {
                 id: 210,
                 name: "Удон с курицей в соусе сладкий чили",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Куриное филе, капуста, морковь, болгарский перец, соус сладкий чили.",
                 price: 259,
                 dkprice: 339,
@@ -3077,7 +3077,7 @@ class App extends React.Component {
                 id: 211,
                 name: "Фунчеза со свининой в соусе терияки",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Свинина, капуста, морковь, болгарский перец, соус терияки.",
                 price: 279,
                 dkprice: 359,
@@ -3091,7 +3091,7 @@ class App extends React.Component {
                 id: 212,
                 name: "Яичная с курицей в сливочном соусе",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Куриное филе, капуста, морковь, болгарский перец, соус сливочный.",
                 price: 259,
                 dkprice: 339,
@@ -3105,7 +3105,7 @@ class App extends React.Component {
                 id: 213,
                 name: "Рис с овощами",
                 salecheck: true,
-                categ: "Вок",
+                categ: "ВОК",
                 sost: "Состав: Капуста, морковь, болгарский перец, соус терияки.",
                 price: 159,
                 dkprice: 209,
@@ -3420,7 +3420,7 @@ class App extends React.Component {
                 salecheck: false,
                 soysause: 0,
                 categ: "Бизнес обеды (с 11 до 15)",
-                sost: "Состав: Вок с яичной лапшой, курицей в сливочном соусе, салат с курицей, морс 0,5л(смородина).",
+                sost: "Состав: ВОК с яичной лапшой, курицей в сливочном соусе, салат с курицей, морс 0,5л(смородина).",
                 price: 449,
                 dkprice: 449,
                 num: 1,
@@ -5099,7 +5099,7 @@ class App extends React.Component {
             if(a.categ === "ВОК")
             {
                 this.state.orderAddition.map((el) => {
-                    if(el.idOrd === id && el.categ === "Соус В Вок")
+                    if(el.idOrd === id && el.categ === "Соус В ВОК")
                     {
                         el.num = a.num
                         this.setState({
@@ -5135,7 +5135,7 @@ class App extends React.Component {
             if(a.categ === "ВОК")
             {
                 this.state.orderAddition.map((el) => {
-                    if(el.idOrd === id && el.categ === "Соус В Вок")
+                    if(el.idOrd === id && el.categ === "Соус В ВОК")
                     {
                         el.num = a.num
                         this.setState({
@@ -5171,7 +5171,7 @@ class App extends React.Component {
             if(a.categ === "ВОК")
                 {
                     this.state.orderAddition.map((el) => {
-                        if(el.idOrd === id && el.categ === "Соус В Вок")
+                        if(el.idOrd === id && el.categ === "Соус В ВОК")
                         {
                             el.num = a.num
                             this.setState({
@@ -5203,7 +5203,7 @@ class App extends React.Component {
             this.state.orderAddition.map((a) => {
                 if(a.idAddition === ch.idAddition)
                 {
-                    if(a.categ !== "Соус В Вок")
+                    if(a.categ !== "Соус В ВОК")
                     {
                     if (a.num !== 99)
                         a.num = parseInt(a.num) + 1
@@ -5220,9 +5220,9 @@ class App extends React.Component {
         }
         else
         {
-            if(pos.categ === "Соус В Вок")
+            if(pos.categ === "Соус В ВОК")
             {
-                if(this.state.orderAddition.filter((el) => el.categ === "Соус В Вок" && el.idOrd === idOrd).length >= 2)//проверка, чтобы больше 2ух соусов нельзя было добавить
+                if(this.state.orderAddition.filter((el) => el.categ === "Соус В ВОК" && el.idOrd === idOrd).length >= 2)//проверка, чтобы больше 2ух соусов нельзя было добавить
                 {
                     this.AlertAdd("SauceLimit")
                 }
@@ -5251,7 +5251,7 @@ class App extends React.Component {
                 
                     if(el.idAddition === idAddition)
                     {
-                        if(el.categ !== "Соус В Вок")
+                        if(el.categ !== "Соус В ВОК")
                         {
                             if(el.num < 99)
                             {
@@ -5281,7 +5281,7 @@ class App extends React.Component {
                 
                     if(el.idAddition === idAddition)
                     {
-                        if(el.categ !== "Соус В Вок")
+                        if(el.categ !== "Соус В ВОК")
                         {
                             if(el.num > 1)
                             {
@@ -5318,7 +5318,7 @@ class App extends React.Component {
             this.state.orderAddition.map((a) => {
                 if(a.idAddition === idAddition)
                 {
-                    if(a.categ !== "Соус В Вок")
+                    if(a.categ !== "Соус В ВОК")
                     {
                         a.num = parseInt(val)
                         a.totalprice = a.price * a.num
@@ -5862,7 +5862,7 @@ class App extends React.Component {
     StopListChecCatOnPosition()//функция для проверки стопов по категориям, для корректного отображения
     {
         this.state.cat.map((el) => {
-            if(el.name !== "Добавка В Вок")
+            if(el.name !== "Добавка В ВОК")
             {
             var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
             var CheckPos = 0//счетчик для общего кол-ва позиций из категории
@@ -6151,7 +6151,7 @@ class App extends React.Component {
     {
         this.state.StopCat.map((el) => {
             
-            if(el.name !== "Добавка В Вок" && el.idCity === idCity)
+            if(el.name !== "Добавка В ВОК" && el.idCity === idCity)
             {
             var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
             var CheckPos = 0//счетчик для общего кол-ва позиций из категории
@@ -6341,7 +6341,7 @@ class App extends React.Component {
                 {
                     this.state.cat.map((a) => 
                     {
-                        if(a.id === el.id && el.name !== "Добавка В Вок")
+                        if(a.id === el.id && el.name !== "Добавка В ВОК")
                         {
                             a.CheckStopList = el.CheckStopList
                             this.setState({
@@ -6463,7 +6463,7 @@ class App extends React.Component {
         this.state.orderPosition.map((el) => {
             if(el.categ === "ВОК" && el.haveAddition === true)
             {
-                if(this.state.orderAddition.filter((a) => a.categ === "Соус В Вок" && a.idOrd === el.idOrd).length > 0)
+                if(this.state.orderAddition.filter((a) => a.categ === "Соус В ВОК" && a.idOrd === el.idOrd).length > 0)
                 {
 
                 }
@@ -6566,7 +6566,7 @@ class App extends React.Component {
                     return(el)})
                     
                     this.state.cat.map((el) => {
-                        if(el.name !== "Добавка В Вок")
+                        if(el.name !== "Добавка В ВОК")
                         {
                         var CheckCat = 0//счетчик для кол-ва позиций из категории которые в стопе
                         var CheckPos = 0//счетчик для общего кол-ва позиций из категории
@@ -7411,7 +7411,7 @@ class App extends React.Component {
                 {
                     this.state.cat.map((a) => 
                     {
-                        if(a.id === el.id && el.name !== "Добавка В Вок")
+                        if(a.id === el.id && el.name !== "Добавка В ВОК")
                         {
                             a.CheckStopList = el.CheckStopList
                             this.setState({
