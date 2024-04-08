@@ -148,7 +148,7 @@ class AddOrder extends React.Component {
                   {
                     this.props.pdkon === 0 ? 
                     this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totalprice + " руб."  : this.props.orderPosition.totalprice36 + " руб."
-                    :this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totaldkprice + " руб." : this.props.orderPosition.totaldkprice36 + " руб." /*также проверяет ктивен ли переключатель цен на дк и умножает уже цену исходя из активности на num */
+                    :this.props.orderPosition.Proverka36 !== true ? this.props.orderPosition.totaldkprice + " руб." : this.props.orderPosition.totaldkprice36 + " руб." /*также проверяет активен ли переключатель цен на дк */
                   }
                 </td>
               </tr>

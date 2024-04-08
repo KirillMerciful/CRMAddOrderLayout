@@ -2,7 +2,7 @@ import React from 'react';
 
 class PositionAddition extends React.Component {    
     render() {
-      if(this.props.position.categ === this.props.cat.name && this.props.position.CanBeAddiion !== false)
+      if(this.props.position.categ === this.props.cat.name && this.props.position.CanBeAddition !== false)
       return(
         <div>
       <button 
